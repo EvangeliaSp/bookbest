@@ -2,9 +2,10 @@ package dao;
 
 import entities.Hotel;
 
-import javax.persistence.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
 
 public class HotelDAOImpl implements HotelDAO {
@@ -14,37 +15,82 @@ public class HotelDAOImpl implements HotelDAO {
         try {
             String sql = "INSERT INTO Hotel VALUES (" +
                     hotel.getIdHotel() + ", " +
-                    hotel.getName() + ", " +
-                    hotel.getPrice() + ", " +
-                    hotel.getRating() + ", " +
-                    hotel.getDistance() + ")";
+                    "'"+hotel.getName()+"'" + ", " +
+                    "'"+hotel.getPrice()+"'" + ", " +
+                    "'"+hotel.getRating()+"'" + ", " +
+                    "'"+hotel.getDistance()+"'" + ")";
             stmt.executeUpdate(sql);
         }
         catch (SQLException ex){
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+            // Handle the errors
+            System.out.println("SQLException in create: " + ex.getMessage());
+            System.out.println("SQLState in create: " + ex.getSQLState());
+            System.out.println("VendorError in create: " + ex.getErrorCode());
         }
-        /*EntityManagerFactory entityManagerFactory;
-        entityManagerFactory = Persistence.createEntityManagerFactory("bookbest");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.persist(hotel);
-        entityManager.close();
-        entityManagerFactory.close();*/
     }
 
     @Override
-    public List<Hotel> list() {
-        List<Hotel> hotels;
-        EntityManagerFactory entityManagerFactory;
-        entityManagerFactory = Persistence.createEntityManagerFactory("bookbest");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createQuery("SELECT h FROM Hotel h", Hotel.class);
-        hotels = query.getResultList();
-        entityManager.close();
-        entityManagerFactory.close();
+    public void delete(Statement stmt, int idHotel) {
+        try {
+            String sql = "DELETE FROM Hotel WHERE idHotel = " + idHotel;
+            stmt.executeUpdate(sql);
+        }
+        catch (SQLException ex){
+            // Handle the errors
+            System.out.println("SQLException in delete: " + ex.getMessage());
+            System.out.println("SQLState in delete: " + ex.getSQLState());
+            System.out.println("VendorError in delete: " + ex.getErrorCode());
+        }
+    }
+
+    @Override
+    public List<Hotel> list(Statement stmt) {
+        List<Hotel> hotels = new LinkedList<>();
+
+        try {
+            String sql = "SELECT * FROM Hotel";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()) {
+                Hotel hotel = new Hotel();
+                hotel.setIdHotel(rs.getInt("idHotel"));
+                hotel.setName(rs.getString("name"));
+                hotel.setPrice(rs.getString("price"));
+                hotel.setRating(rs.getString("rating"));
+                hotel.setDistance(rs.getString("distance"));
+
+                hotels.add(hotel);
+            }
+
+        }
+        catch (SQLException ex){
+            // Handle the errors
+            System.out.println("SQLException in list: " + ex.getMessage());
+            System.out.println("SQLState in list: " + ex.getSQLState());
+            System.out.println("VendorError in list: " + ex.getErrorCode());
+        }
+
         return hotels;
-        //return null;
+    }
+
+    @Override
+    public int count(Statement stmt) {
+        int counter=0;
+        try {
+            String sql = "SELECT COUNT(*) AS total FROM Hotel";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next())
+                counter = rs.getInt("total");
+        }
+        catch (SQLException ex){
+            // Handle the errors
+            System.out.println("SQLException in count: " + ex.getMessage());
+            System.out.println("SQLState in count: " + ex.getSQLState());
+            System.out.println("VendorError in count: " + ex.getErrorCode());
+        }
+        finally {
+            return counter;
+        }
     }
 }

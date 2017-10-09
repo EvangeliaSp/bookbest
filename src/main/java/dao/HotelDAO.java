@@ -9,5 +9,9 @@ public interface HotelDAO {
 
     void create(Statement stmt, Hotel hotel);
 
-    List<Hotel> list();
+    void delete(Statement stmt, int idHotel);
+
+    List<Hotel> list(Statement stmt);
+
+    int count(Statement stmt);
 }

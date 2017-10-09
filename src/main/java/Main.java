@@ -8,20 +8,20 @@ public class Main {
     public static void main(String[] args) {
 
         Hotel hotel = new Hotel();
-        hotel.setIdHotel(1);
+        Hotel hotel2 = new Hotel();
+        hotel.setIdHotel(2);
         hotel.setDistance("Away");
-        hotel.setName("HotelMy");
+        hotel.setName("HotelMy2");
         hotel.setPrice("Cheap");
         hotel.setRating("Good");
 
-        /*HotelDAO hotelDAO = new HotelDAOImpl();
-        hotelDAO.create(hotel);
-        List<Hotel> hotels = hotelDAO.list();
-        for(Hotel h:hotels) {
-            System.out.println("Hotel: "+h.getName());
-            System.out.println("~price: "+h.getPrice()+", rating"+h.getRating()+", distance: "+h.getDistance()+"~");
-        }*/
+        hotel2.setIdHotel(3);
+        hotel2.setDistance("FarAway");
+        hotel2.setName("HotelMy3");
+        hotel2.setPrice("VeryCheap");
+        hotel2.setRating("Good");
 
+        HotelDAO hotelDAO = new HotelDAOImpl();
 
         // Load driver
         try {
@@ -42,35 +42,37 @@ public class Main {
         }
 
 
-
         Statement stmt = null;
-        ResultSet rs = null;
 
         try {
             stmt = conn.createStatement();
+           // hotelDAO.create(stmt, hotel);
+           // hotelDAO.create(stmt, hotel2);
+            List<Hotel> hotels = hotelDAO.list(stmt);
+            for(Hotel h:hotels) {
+                System.out.println("Hotel: "+h.getName()+" "+h.getIdHotel());
+                //System.out.println("~"+h.getPrice()+", "+h.getRating()+", "+h.getRating()+", "+h.getDistance()+"~");
+            }
+            System.out.println("Counter: "+hotelDAO.count(stmt));
+            System.out.println();
+            hotelDAO.delete(stmt, 3);
+
+            hotels = hotelDAO.list(stmt);
+            for(Hotel h:hotels) {
+                System.out.println("Hotel: "+h.getName()+" "+h.getIdHotel());
+                //System.out.println("~"+h.getPrice()+", "+h.getRating()+", "+h.getRating()+", "+h.getDistance()+"~");
+            }
+
+            System.out.println("Counter: "+hotelDAO.count(stmt));
 
         }
         catch (SQLException ex){
-            // handle any errors
+            // Handle the errors
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
         finally {
-            // it is a good idea to release
-            // resources in a finally{} block
-            // in reverse-order of their creation
-            // if they are no-longer needed
-
-            if (rs != null) {
-                try {
-
-                    rs.close();
-                } catch (SQLException sqlEx) { } // ignore
-
-                rs = null;
-            }
-
             if (stmt != null) {
                 try {
                     stmt.close();
