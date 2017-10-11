@@ -1,16 +1,11 @@
-import dao.*;
-import entities.*;
-import hotelGeneration.NameGenerator;
-import hotelGeneration.RandomValues;
+import hotelGeneration.HotelGenerator;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
+import static java.lang.System.exit;
 
 public class Main {
     public static void main(String[] args) {
-
-        HotelDAO hotelDAO = new HotelDAOImpl();
 
         // Load driver
         try {
@@ -18,8 +13,11 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        finally {
+            exit(0);
+        }
 
-        // Obtaining a connection from the DriverManager
+        // Obtain a connection from the DriverManager
         Connection conn = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/bookbest?" + "user=root&password=5698");
@@ -29,40 +27,15 @@ public class Main {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
-
+        finally {
+            //conn.close();
+        }
 
         Statement stmt = null;
-
         try {
             stmt = conn.createStatement();
-
-
-            try {
-                List<Hotel> hotels = new ArrayList<>();
-                RandomValues randomValues = new RandomValues();
-                NameGenerator nameGenerator = new NameGenerator("./src/main/resources/names.txt");
-                System.out.println("Generate Hotels");
-                for(int i=0; i<10; i++) {
-                    Hotel hotel = new Hotel();
-                    hotel.setIdHotel(i+1);
-                    hotel.setName(nameGenerator.compose(3));
-                    hotel.setPrice(randomValues.price());
-                    hotel.setRating(randomValues.rating());
-                    hotel.setDistance(randomValues.distance());
-                    hotels.add(hotel);
-                }
-                for(Hotel h:hotels) {
-                    System.out.println("Hotel: "+h.getName()+" "+h.getIdHotel());
-                    System.out.println("~"+h.getPrice()+", "+h.getRating()+", "+h.getRating()+", "+h.getDistance()+"~");
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-
-
+            HotelGenerator hotelGenerator = new HotelGenerator();
+            hotelGenerator.generate(stmt);
         }
         catch (SQLException ex){
             // Handle the errors
@@ -75,8 +48,7 @@ public class Main {
                 try {
                     stmt.close();
                 } catch (SQLException sqlEx) { } // ignore
-
-                stmt = null;
+                //stmt = null;
             }
         }
     }

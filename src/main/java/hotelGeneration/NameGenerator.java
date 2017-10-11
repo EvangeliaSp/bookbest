@@ -4,8 +4,51 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 // http://forum.codecall.net/topic/49665-java-random-name-generator/
+
+/**
+ * This class is released under GNU general public license
+ *
+ * Description: This class generates random names from syllables, and provides programmer a
+ * simple way to set a group of rules for generator to avoid unpronounceable and bizarre names.
+ *
+ * SYLLABLE FILE REQUIREMENTS/FORMAT:
+ * 1) all syllables are separated by line break.
+ * 2) Syllable should not contain or start with whitespace, as this character is ignored and only first part of the syllable is read.
+ * 3) + and - characters are used to set rules, and using them in other way, may result in unpredictable results.
+ * 4) Empty lines are ignored.
+ *
+ * SYLLABLE CLASSIFICATION:
+ * Name is usually composed from 3 different class of syllables, which include prefix, middle part and suffix.
+ * To declare syllable as a prefix in the file, insert "-" as a first character of the line.
+ * To declare syllable as a suffix in the file, insert "+" as a first character of the line.
+ * everything else is read as a middle part.
+ *
+ * NUMBER OF SYLLABLES:
+ * Names may have any positive number of syllables. In case of 2 syllables, name will be composed from prefix and suffix.
+ * In case of 1 syllable, name will be chosen from amongst the prefixes.
+ * In case of 3 and more syllables, name will begin with prefix, is filled with middle parts and ended with suffix.
+ *
+ * ASSIGNING RULES:
+ * I included a way to set 4 kind of rules for every syllable. To add rules to the syllables, write them right after the
+ * syllable and SEPARATE WITH WHITESPACE. (example: "aad +v -c"). The order of rules is not important.
+ *
+ * RULES:
+ * 1) +v means that next syllable must definitely start with a Vowel.
+ * 2) +c means that next syllable must definitely start with a consonant.
+ * 3) -v means that this syllable can only be added to another syllable, that ends with a Vowel.
+ * 4) -c means that this syllable can only be added to another syllable, that ends with a consonant.
+ * So, our example: "aad +v -c" means that "aad" can only be after consonant and next syllable must start with Vowel.
+ * Beware of creating logical mistakes, like providing only syllables ending with consonants, but expecting only Vowels, which will be detected
+ * and RuntimeException will be thrown.
+ *
+ * TO START:
+ * Create a new NameGenerator object, provide the syllable file, and create names using compose() method.
+ *
+ *
+ */
 
 public class NameGenerator {
     ArrayList<String> pre = new ArrayList<String>();
@@ -145,11 +188,12 @@ public class NameGenerator {
 
     /**
      * Compose a new name.
-     * @param syls The number of syllables used in name.
+     * @var syls The number of syllables used in name.
      * @return Returns composed name as a String
      * @throws RuntimeException when logical mistakes are detected inside chosen file, and program is unable to complete the name.
      */
-    public String compose(int syls){
+    public String compose(){
+        int syls = new Random().nextInt(4)+2;
         if(syls > 2 && mid.size() == 0) throw new RuntimeException("You are trying to create a name with more than 3 parts, which requires middle parts, " +
                 "which you have none in the file "+fileName+". You should add some. Every word, which doesn't have + or - for a prefix is counted as a middle part.");
         if(pre.size() == 0) throw new RuntimeException("You have no prefixes to start creating a name. add some and use \"-\" prefix, to identify it as a prefix for a name. (example: -asd)");
