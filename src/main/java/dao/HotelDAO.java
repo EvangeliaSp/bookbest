@@ -14,4 +14,6 @@ public interface HotelDAO {
     List<Hotel> list(Statement stmt);
 
     int count(Statement stmt);
+
+    Hotel find(Statement stmt, int idHotel);
 }

@@ -69,8 +69,9 @@ public class HotelDAOImpl implements HotelDAO {
             System.out.println("SQLState in list: " + ex.getSQLState());
             System.out.println("VendorError in list: " + ex.getErrorCode());
         }
-
-        return hotels;
+        finally {
+            return hotels;
+        }
     }
 
     @Override
@@ -91,6 +92,34 @@ public class HotelDAOImpl implements HotelDAO {
         }
         finally {
             return counter;
+        }
+    }
+
+    @Override
+    public Hotel find(Statement stmt, int idHotel) {
+        Hotel hotel = null;
+
+        try {
+            String sql = "SELECT * FROM Hotel WHERE idHotel = "+idHotel;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()) {
+                hotel = new Hotel();
+                hotel.setIdHotel(rs.getInt("idHotel"));
+                hotel.setName(rs.getString("name"));
+                hotel.setPrice(rs.getString("price"));
+                hotel.setRating(rs.getString("rating"));
+                hotel.setDistance(rs.getString("distance"));
+            }
+        }
+        catch (SQLException ex){
+            // Handle the errors
+            System.out.println("SQLException in list: " + ex.getMessage());
+            System.out.println("SQLState in list: " + ex.getSQLState());
+            System.out.println("VendorError in list: " + ex.getErrorCode());
+        }
+        finally {
+            return hotel;
         }
     }
 }

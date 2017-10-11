@@ -1,25 +1,14 @@
 import dao.*;
 import entities.*;
+import hotelGeneration.NameGenerator;
+import hotelGeneration.RandomValues;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
-        Hotel hotel = new Hotel();
-        Hotel hotel2 = new Hotel();
-        hotel.setIdHotel(2);
-        hotel.setDistance("Away");
-        hotel.setName("HotelMy2");
-        hotel.setPrice("Cheap");
-        hotel.setRating("Good");
-
-        hotel2.setIdHotel(3);
-        hotel2.setDistance("FarAway");
-        hotel2.setName("HotelMy3");
-        hotel2.setPrice("VeryCheap");
-        hotel2.setRating("Good");
 
         HotelDAO hotelDAO = new HotelDAOImpl();
 
@@ -46,24 +35,33 @@ public class Main {
 
         try {
             stmt = conn.createStatement();
-           // hotelDAO.create(stmt, hotel);
-           // hotelDAO.create(stmt, hotel2);
-            List<Hotel> hotels = hotelDAO.list(stmt);
-            for(Hotel h:hotels) {
-                System.out.println("Hotel: "+h.getName()+" "+h.getIdHotel());
-                //System.out.println("~"+h.getPrice()+", "+h.getRating()+", "+h.getRating()+", "+h.getDistance()+"~");
-            }
-            System.out.println("Counter: "+hotelDAO.count(stmt));
-            System.out.println();
-            hotelDAO.delete(stmt, 3);
 
-            hotels = hotelDAO.list(stmt);
-            for(Hotel h:hotels) {
-                System.out.println("Hotel: "+h.getName()+" "+h.getIdHotel());
-                //System.out.println("~"+h.getPrice()+", "+h.getRating()+", "+h.getRating()+", "+h.getDistance()+"~");
+
+            try {
+                List<Hotel> hotels = new ArrayList<>();
+                RandomValues randomValues = new RandomValues();
+                NameGenerator nameGenerator = new NameGenerator("./src/main/resources/names.txt");
+                System.out.println("Generate Hotels");
+                for(int i=0; i<10; i++) {
+                    Hotel hotel = new Hotel();
+                    hotel.setIdHotel(i+1);
+                    hotel.setName(nameGenerator.compose(3));
+                    hotel.setPrice(randomValues.price());
+                    hotel.setRating(randomValues.rating());
+                    hotel.setDistance(randomValues.distance());
+                    hotels.add(hotel);
+                }
+                for(Hotel h:hotels) {
+                    System.out.println("Hotel: "+h.getName()+" "+h.getIdHotel());
+                    System.out.println("~"+h.getPrice()+", "+h.getRating()+", "+h.getRating()+", "+h.getDistance()+"~");
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
             }
 
-            System.out.println("Counter: "+hotelDAO.count(stmt));
+
+
 
         }
         catch (SQLException ex){
