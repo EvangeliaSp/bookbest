@@ -13,8 +13,9 @@ public class HotelGenerator {
             RandomValues randomValues = new RandomValues();
             NameGenerator nameGenerator = new NameGenerator("./src/main/resources/names.txt");
             System.out.println("Generate Hotels");
-            for(int i=1; i<20; i++) {
+            for(int i=1; i<22; i++) {
                 Hotel hotel = new Hotel();
+                hotel.setIdHotel(i);
                 hotel.setName(nameGenerator.compose());
                 hotel.setPrice(randomValues.price());
                 hotel.setRating(randomValues.rating());
