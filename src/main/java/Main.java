@@ -2,10 +2,9 @@ import dao.HotelDAO;
 import dao.HotelDAOImpl;
 import entities.Hotel;
 import hotelGeneration.HotelGenerator;
-import org.semanticweb.owlapi.apibinding.OWLManager;
+import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
 
-import java.net.URI;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,44 +66,34 @@ public class Main {
 
        /////// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ///////
 
-        String ontFile = "./src/main/resources/bookbest.owl";
-        String prefix = "file:";
-
-        URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
-
-        OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
+        OntologyHelper ontologyHelper = new OntologyHelper();
 
         try {
-            OWLOntology owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(IRI.create(basePhysicalURI));
-            for(OWLClass c: owlOntology.getClassesInSignature()) {
-                System.out.println("Class: "+c.getIRI().getFragment());
+            OWLOntology owlOntology = ontologyHelper.readOntology();
 
-                /*Set<OWLDataPropertyAssertionAxiom> dataProperties = owlOntology.getDataPropertyAssertionAxioms();
-                for(OWLDataPropertyAssertionAxiom p: dataProperties) {
-                    System.out.println("Property: "+p.getProperty());
-                }*/
+            ontologyHelper.printOWLClasses(owlOntology);
 
-                // Print class data properties
-                Set<OWLDataPropertyDomainAxiom> properties = owlOntology.getAxioms(AxiomType.DATA_PROPERTY_DOMAIN);
-                for(OWLDataPropertyDomainAxiom p: properties)
-                    System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
-                System.out.println();
+            Set<OWLClass> owlClasses = ontologyHelper.getOWLClasses(owlOntology);
 
-                // Print class instances
-                Set<OWLNamedIndividual> individuals = owlOntology.getIndividualsInSignature();
-                int l=1;
-                for(OWLNamedIndividual i:individuals) {
-                    System.out.println("Individual: "+(l++)+": "+i.getIndividualsInSignature());
-                    Set<OWLDataPropertyAssertionAxiom> props = owlOntology.getDataPropertyAssertionAxioms(i);
-                    int k=1;
-                    for (OWLDataPropertyAssertionAxiom ax: props) {
-                        System.out.print((k++)+". "+ax.getProperty().asOWLDataProperty().getIRI().getFragment()+": ");
-                        System.out.println(ax);
+            // Print class data properties
+            ontologyHelper.printOWLDataProperties(owlOntology);
 
-                    }
-                    //System.out.println("Instance: "+i.getDataPropertiesInSignature());
+            /*System.out.println();
+
+            // Print class instances
+            Set<OWLNamedIndividual> individuals = owlOntology.getIndividualsInSignature();
+            int l=1;
+            for(OWLNamedIndividual i:individuals) {
+                System.out.println("Individual: "+(l++)+": "+i.getIndividualsInSignature());
+                Set<OWLDataPropertyAssertionAxiom> props = owlOntology.getDataPropertyAssertionAxioms(i);
+                int k=1;
+                for (OWLDataPropertyAssertionAxiom ax: props) {
+                    System.out.print((k++)+". "+ax.getProperty().asOWLDataProperty().getIRI().getFragment()+": ");
+                    System.out.println(ax);
+
                 }
-            }
+                //System.out.println("Instance: "+i.getDataPropertiesInSignature());
+            }*/
         }
         catch (OWLOntologyCreationException e) {
             e.printStackTrace();
