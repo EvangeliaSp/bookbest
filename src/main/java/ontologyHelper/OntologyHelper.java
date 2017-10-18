@@ -1,10 +1,12 @@
 package ontologyHelper;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.io.OWLOntologyDocumentSource;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.vocab.OWL2Datatype;
 
+import java.io.File;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Set;
 
 public class OntologyHelper {
@@ -16,36 +18,86 @@ public class OntologyHelper {
     IRI iri = IRI.create(basePhysicalURI);
 
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
+    OWLDataFactory owlDataFactory = OWLManager.getOWLDataFactory();
 
 
-    public OWLOntology readOntology()
-            throws OWLOntologyCreationException {
+    public OWLOntology readOntology() throws OWLOntologyCreationException {
         return owlOntologyManager.loadOntologyFromOntologyDocument(iri);
     }
 
-    public Set<OWLClass> getOWLClasses(OWLOntology owlOntology) {
+    public Set<OWLClass> getClasses(OWLOntology owlOntology) {
         return owlOntology.getClassesInSignature();
     }
 
-    /*public void printOWLClasses(Set<OWLClass> owlClasses) {
+    /*public void printClasses(Set<OWLClass> owlClasses) {
         for(OWLClass owlClass: owlClasses) {
             System.out.println("Class: " + owlClass.getIRI().getFragment());
         }
     }*/
 
-    public void printOWLClasses(OWLOntology owlOntology) {
+    public void printClasses(OWLOntology owlOntology) {
         for(OWLClass owlClass: owlOntology.getClassesInSignature()) {
             System.out.println("Class: " + owlClass.getIRI().getFragment());
         }
     }
 
-    public void printOWLDataProperties(OWLOntology owlOntology) {
+    public Set<OWLDataPropertyDomainAxiom> getDataProperties(OWLOntology owlOntology) {
+        return owlOntology.getAxioms(AxiomType.DATA_PROPERTY_DOMAIN);
+    }
+
+    public void printDataProperties(Set<OWLDataPropertyDomainAxiom> owlDataProperties) {
+        for(OWLDataPropertyDomainAxiom p: owlDataProperties)
+            System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
+    }
+
+    public void printDataProperties(OWLOntology owlOntology) {
         Set<OWLDataPropertyDomainAxiom> properties = owlOntology.getAxioms(AxiomType.DATA_PROPERTY_DOMAIN);
         for(OWLDataPropertyDomainAxiom p: properties)
             System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
     }
 
+    public OWLIndividual createIndividual(String name) {
+        return owlDataFactory.getOWLNamedIndividual(iri.create(basePhysicalURI+"#"+name));
+    }
+
+    public int getIndividualsCounter(OWLOntology owlOntology) {
+        return owlOntology.getIndividualsInSignature().size();
+    }
+
+    public void addIndividual() {
+
+    }
+
+    public OWLAxiom createAxiom(OWLIndividual owlIndividual, OWLClass owlClass) {
+        return owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
+    }
 
 
+    public OWLAxiomChange associateIndividualWithClass(OWLOntology owlOntology, OWLClass owlClass, OWLIndividual owlIndividual) {
+        return new AddAxiom(owlOntology, owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual));
+    }
+
+    public OWLAxiomChange addDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, OWLDataProperty owlDataProperty, String value) {
+        OWLLiteral literal = owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_STRING);
+        return new AddAxiom(owlOntology, owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal));
+    }
+
+    public OWLAxiomChange addDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, OWLDataProperty owlDataProperty, boolean value) {
+        OWLLiteral literal = owlDataFactory.getOWLLiteral(value);
+        return new AddAxiom(owlOntology, owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal));
+    }
+
+    public OWLAxiomChange addDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, OWLDataProperty owlDataProperty, int value) {
+        OWLLiteral literal = owlDataFactory.getOWLLiteral(value);
+        return new AddAxiom(owlOntology, owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal));
+    }
+
+    public void saveOntology(OWLOntology owlOntology, AddAxiom addAxiom) throws OWLOntologyStorageException {
+        File file = new File("./src/main/resources/bookbest2.owl");
+
+        owlOntologyManager.applyChange(addAxiom);
+
+        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+    }
 
 }
