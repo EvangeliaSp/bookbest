@@ -10,6 +10,8 @@ import java.util.List;
 
 public class HotelDAOImpl implements HotelDAO {
 
+    // Override methods do not throw Exceptions
+
     @Override
     public void create(Statement stmt, Hotel hotel) {
         try {
