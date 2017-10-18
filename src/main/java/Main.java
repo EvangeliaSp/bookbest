@@ -2,6 +2,7 @@ import dao.HotelDAO;
 import dao.HotelDAOImpl;
 import entities.Hotel;
 import hotelGeneration.HotelGenerator;
+import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
 
@@ -33,40 +34,14 @@ public class Main {
 
         Statement stmt;
         HotelDAO hotelDAO = new HotelDAOImpl();
-
-        try {
-            stmt = conn.createStatement();
-            //HotelGenerator hotelGenerator = new HotelGenerator();
-
-            //hotelGenerator.generate(stmt);
-
-            // Print hotels
-            List<Hotel> hotels;
-            hotels = hotelDAO.list(stmt);
-            System.out.println(hotels.size());
-            //for(Hotel hotel: hotels)
-                //System.out.println(hotel.getName());
-        }
-        catch (SQLException ex){
-            // Handle the errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
-       /* finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException sqlEx) { } // ignore
-                //stmt = null;
-            }
-        }*/
-
-       /////// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ///////
-
         OntologyHelper ontologyHelper = new OntologyHelper();
 
         try {
+            stmt = conn.createStatement();
+
+            //HotelGenerator hotelGenerator = new HotelGenerator();
+
+            //hotelGenerator.generate(stmt);
             OWLOntology owlOntology = ontologyHelper.readOntology();
 
             // Print OWLClasses
@@ -80,44 +55,62 @@ public class Main {
             System.out.println("Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
             System.out.println();
 
-            OWLIndividual individual = ontologyHelper.createIndividual("vaggo");
+
+            // Create Individuals from database
+
+            //OWLIndividual individual = ontologyHelper.createIndividual("vaggo2");
+
+            //OWLDataProperty owlDataProperty = ontologyHelper.createDataProperty("price");
+            //OWLAxiom owlAxiom1 = ontologyHelper.createDataPropertyAssertionAxiom(owlDataProperty, individual, "VeryCheap");
+
+            //OWLDataProperty owlDataProperty = ontologyHelper.createDataProperty("distance");
+            //OWLAxiom owlAxiom1 = ontologyHelper.createDataPropertyAssertionAxiom(owlDataProperty, individual, "Away");
 
             Set<OWLClass> owlClasses = ontologyHelper.getClasses(owlOntology);
-            int l = 1;
             for(OWLClass owlClass: owlClasses) {
                 if(owlClass.getIRI().getFragment().toString().equals("Hotel")) {
-                    ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, individual);
-                    OWLAxiom owlAxiom = ontologyHelper.createAxiom(individual, owlClass);
-                    AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
-                    ontologyHelper.saveOntology(owlOntology, addAxiom);
+                    //ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, individual);
+                    //OWLAxiom owlAxiom = ontologyHelper.createAxiom(individual, owlClass);
+                    //AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom1);
+                    //ontologyHelper.saveOntology(owlOntology, addAxiom);
+                    DataToOntology dataToOntology = new DataToOntology();
+                    dataToOntology.importData(stmt, ontologyHelper, owlOntology, owlClass);
                     break;
                 }
             }
 
 
-            /*
 
-            Set<OWLDataPropertyDomainAxiom> owlDataProperties = ontologyHelper.getDataProperties(owlOntology);
-            OWLAxiomChange owlAxiomChange;
-
-            for(OWLDataPropertyDomainAxiom owlDataProperty: owlDataProperties) {
-                OWLDataProperty dataProperty = (OWLDataProperty) owlDataProperty;
-                String a = dataProperty.asOWLDataProperty().getIRI().getFragment().toString();
-                if(a.equals("name")) {
-                    owlAxiomChange = ontologyHelper.addDataToIndividual(owlOntology, individual, dataProperty, "newIndividual");
-                    System.out.println();
-                }
-            }
-
-            Set<OWLClass> owlClasses = ontologyHelper.getClasses(owlOntology);
-            for(OWLClass owlClass: owlClasses) {
-                ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, individual);
-            }*/
-
-
-           // ontologyHelper.addDataToIndividual(owlOntology, individual, "newIndividual");
+            // ontologyHelper.addDataToIndividual(owlOntology, individual, "newIndividual");
 
             System.out.println("Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
+
+
+        }
+        catch (Exception e){
+            // Handle the errors
+            e.printStackTrace();
+            //System.out.println("SQLException: " + ex.getMessage());
+            //System.out.println("SQLState: " + ex.getSQLState());
+            //System.out.println("VendorError: " + ex.getErrorCode());
+        }
+       /* finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException sqlEx) { } // ignore
+                //stmt = null;
+            }
+        }*/
+
+       /////// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ///////
+
+
+
+        //try {
+
+
+
             System.out.println();
 
             /*
@@ -135,10 +128,10 @@ public class Main {
                 }
                 //System.out.println("Instance: "+i.getDataPropertiesInSignature());
             }*/
-        }
-        catch (OWLException e) {
+        //}
+       /* catch (OWLException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

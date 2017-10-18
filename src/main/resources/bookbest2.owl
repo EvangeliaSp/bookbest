@@ -8,6 +8,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:bookbest="http://www.semanticweb.org/euaggelia/ontologies/2017/bookbest#"
      xmlns:bookbest1="http://localhost/euaggelia/ontologies/2017/bookbest#"
+     xmlns:bookbest2="file:./src/main/resources/bookbest.owl#"
      xmlns:untitled-ontology-19="http://www.semanticweb.org/euaggelia/ontologies/2017/6/untitled-ontology-19#">
     <owl:Ontology rdf:about="http://www.example.org/bookbest"/>
     
@@ -21,6 +22,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- file:./src/main/resources/bookbest.owl#price -->
+
+    <owl:DatatypeProperty rdf:about="file:./src/main/resources/bookbest.owl#price"/>
     
 
 
@@ -175,10 +182,10 @@
     
 
 
-    <!-- file:./src/main/resources/bookbest.owl#vaggo -->
+    <!-- file:./src/main/resources/bookbest.owl#vaggo2 -->
 
-    <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#vaggo">
-        <rdf:type rdf:resource="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
+    <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#vaggo2">
+        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
     </owl:NamedIndividual>
     
 
