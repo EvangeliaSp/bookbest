@@ -124,4 +124,28 @@ public class HotelDAOImpl implements HotelDAO {
             return hotel;
         }
     }
+
+    @Override
+    public Boolean find(Statement stmt, String name) {
+        int counter = 0;
+        try {
+            String sql = "SELECT COUNT(*) AS total FROM Hotel WHERE name = '"+name+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next())
+                counter = rs.getInt("total");
+
+        }
+        catch (SQLException ex){
+            // Handle the errors
+            System.out.println("SQLException in list: " + ex.getMessage());
+            System.out.println("SQLState in list: " + ex.getSQLState());
+            System.out.println("VendorError in list: " + ex.getErrorCode());
+        }
+        finally {
+            if(counter == 0)
+                return false;
+            return true;
+        }
+    }
 }

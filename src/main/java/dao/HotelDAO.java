@@ -16,4 +16,6 @@ public interface HotelDAO {
     int count(Statement stmt);
 
     Hotel find(Statement stmt, int idHotel);
+
+    Boolean find(Statement stmt, String name);
 }

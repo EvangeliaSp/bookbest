@@ -1,6 +1,3 @@
-import dao.HotelDAO;
-import dao.HotelDAOImpl;
-import entities.Hotel;
 import hotelGeneration.HotelGenerator;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
@@ -39,17 +36,25 @@ public class Main {
             stmt = conn.createStatement();
 
             // Generate data
-            //HotelGenerator hotelGenerator = new HotelGenerator();
-            //hotelGenerator.generate(stmt);
+            System.out.println("Generate Hotels");
+            HotelGenerator hotelGenerator = new HotelGenerator();
+            hotelGenerator.generate(stmt);
+            System.out.println();
 
             // Read Ontology
+            System.out.println("Read Ontology");
             OWLOntology owlOntology = ontologyHelper.readOntology();
+            System.out.println();
 
             // Print OWLClasses
+            System.out.println("Classes:");
             ontologyHelper.printClasses(owlOntology);
+            System.out.println();
 
             // Print OWLDataProperties
+            System.out.println("Data Properties");
             ontologyHelper.printDataProperties(owlOntology);
+            System.out.println();
 
             Set<OWLClass> owlClasses = ontologyHelper.getClasses(owlOntology);
             for(OWLClass owlClass: owlClasses) {
@@ -59,7 +64,7 @@ public class Main {
                     break;
                 }
             }
-            System.out.println("Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
+            System.out.println("Number of Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
         }
         catch (Exception e){
             e.printStackTrace();
