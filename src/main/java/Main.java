@@ -1,3 +1,4 @@
+import DLReasoner.Reasoner;
 import hotelGeneration.HotelGenerator;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
@@ -29,17 +30,16 @@ public class Main {
         }
 
         Statement stmt = null;
-        //HotelDAO hotelDAO = new HotelDAOImpl();
         OntologyHelper ontologyHelper = new OntologyHelper();
 
         try {
             stmt = conn.createStatement();
 
             // Generate data
-            System.out.println("Generate Hotels");
+            /*System.out.println("Generate Hotels");
             HotelGenerator hotelGenerator = new HotelGenerator();
             hotelGenerator.generate(stmt);
-            System.out.println();
+            System.out.println();*/
 
             // Read Ontology
             System.out.println("Read Ontology");
@@ -47,7 +47,6 @@ public class Main {
             System.out.println();
 
             // Print OWLClasses
-            System.out.println("Classes:");
             ontologyHelper.printClasses(owlOntology);
             System.out.println();
 
@@ -59,11 +58,24 @@ public class Main {
             Set<OWLClass> owlClasses = ontologyHelper.getClasses(owlOntology);
             for(OWLClass owlClass: owlClasses) {
                 if(owlClass.getIRI().getFragment().toString().equals("Hotel")) {
-                    DataToOntology dataToOntology = new DataToOntology();
-                    dataToOntology.importData(stmt, ontologyHelper, owlOntology, owlClass);
+                    //DataToOntology dataToOntology = new DataToOntology();
+                    //dataToOntology.importData(stmt, ontologyHelper, owlOntology, owlClass);
+                    // Print Individuals
+                    System.out.println("Before Reasoner");
+                    Reasoner reasoner = new Reasoner(owlOntology);
+                    reasoner.classifyOntology();
+                    reasoner.printSubclasses(owlClass);
+                    reasoner.printInstances(owlClass);
+
+                    System.out.println("After Reasoner");
+                    //reasoner.getIndividuals(owlClass);
+                    //System.out.println("!!!: "+owlClass.getIRI().getFragment().toString());
+
                     break;
                 }
             }
+
+            System.out.println();
             System.out.println("Number of Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
         }
         catch (Exception e){
