@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import java.util.Set;
 
 public class OntologyHelper {
-    String ontFile = "./src/main/resources/bookbest.owl";
+        String ontFile = "./src/main/resources/bookbest.owl";
     String prefix = "file:";
 
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
@@ -20,12 +20,24 @@ public class OntologyHelper {
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
     OWLDataFactory owlDataFactory = OWLManager.getOWLDataFactory();
 
+    public OWLOntologyManager getOwlOntologyManager() {
+        return owlOntologyManager;
+    }
+
+    public OWLDataFactory getOwlDataFactory() {
+        return owlDataFactory;
+    }
 
     public OWLOntology readOntology() throws OWLOntologyCreationException {
         return owlOntologyManager.loadOntologyFromOntologyDocument(iri);
     }
 
     // OWL Class functions
+
+    public OWLClass createClass(String name) {
+        return this.owlDataFactory.getOWLEntity(EntityType.CLASS, iri.create(basePhysicalURI+"#"+name));
+    }
+
     public Set<OWLClass> getClasses(OWLOntology owlOntology) {
         return owlOntology.getClassesInSignature();
     }
@@ -43,6 +55,10 @@ public class OntologyHelper {
     }
 
     // OWL Data Property functions
+    public OWLDataProperty createDataProperty(String property) {
+        return owlDataFactory.getOWLDataProperty(iri.create(basePhysicalURI+"#"+property));
+    }
+
     public Set<OWLDataPropertyDomainAxiom> getDataProperties(OWLOntology owlOntology) {
         return owlOntology.getAxioms(AxiomType.DATA_PROPERTY_DOMAIN);
     }
@@ -50,10 +66,6 @@ public class OntologyHelper {
     public void printDataProperties(Set<OWLDataPropertyDomainAxiom> owlDataProperties) {
         for(OWLDataPropertyDomainAxiom p: owlDataProperties)
             System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
-    }
-
-    public OWLDataProperty createDataProperty(String property) {
-        return owlDataFactory.getOWLDataProperty(iri.create(basePhysicalURI+"#"+property));
     }
 
     public void printDataProperties(OWLOntology owlOntology) {

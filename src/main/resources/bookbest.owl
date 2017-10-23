@@ -6,10 +6,7 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:bookbest="http://www.semanticweb.org/euaggelia/ontologies/2017/bookbest#"
-     xmlns:bookbest1="http://localhost/euaggelia/ontologies/2017/bookbest#"
-     xmlns:bookbest2="file:./src/main/resources/bookbest.owl#"
-     xmlns:untitled-ontology-19="http://www.semanticweb.org/euaggelia/ontologies/2017/6/untitled-ontology-19#">
+     xmlns:bookbest="file:./src/main/resources/bookbest.owl#">
     <owl:Ontology rdf:about="http://www.example.org/bookbest"/>
     
 
@@ -49,10 +46,10 @@
     
 
 
-    <!-- http://localhost/euaggelia/ontologies/2017/bookbest#distance -->
+    <!-- http://www.example.org/bookbest#distance -->
 
-    <owl:DatatypeProperty rdf:about="http://localhost/euaggelia/ontologies/2017/bookbest#distance">
-        <rdfs:domain rdf:resource="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/bookbest#distance">
+        <rdfs:domain rdf:resource="http://www.example.org/bookbest#Hotel"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -80,19 +77,28 @@
     
 
 
-    <!-- http://localhost/euaggelia/ontologies/2017/bookbest#name -->
+    <!-- http://www.example.org/bookbest#hasId -->
 
-    <owl:DatatypeProperty rdf:about="http://localhost/euaggelia/ontologies/2017/bookbest#name">
-        <rdfs:domain rdf:resource="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/bookbest#hasId">
+        <rdfs:domain rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/bookbest#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/bookbest#name">
+        <rdfs:domain rdf:resource="http://www.example.org/bookbest#Hotel"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#Name"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://localhost/euaggelia/ontologies/2017/bookbest#price -->
+    <!-- http://www.example.org/bookbest#price -->
 
-    <owl:DatatypeProperty rdf:about="http://localhost/euaggelia/ontologies/2017/bookbest#price">
-        <rdfs:domain rdf:resource="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/bookbest#price">
+        <rdfs:domain rdf:resource="http://www.example.org/bookbest#Hotel"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -126,10 +132,10 @@
     
 
 
-    <!-- http://localhost/euaggelia/ontologies/2017/bookbest#rating -->
+    <!-- http://www.example.org/bookbest#rating -->
 
-    <owl:DatatypeProperty rdf:about="http://localhost/euaggelia/ontologies/2017/bookbest#rating">
-        <rdfs:domain rdf:resource="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/bookbest#rating">
+        <rdfs:domain rdf:resource="http://www.example.org/bookbest#Hotel"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -163,15 +169,6 @@
     
 
 
-    <!-- http://www.example.org/bookbest#hasId -->
-
-    <owl:DatatypeProperty rdf:about="http://www.example.org/bookbest#hasId">
-        <rdfs:domain rdf:resource="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -183,9 +180,9 @@
     
 
 
-    <!-- http://localhost/euaggelia/ontologies/2017/bookbest#Hotel -->
+    <!-- http://www.example.org/bookbest#Hotel -->
 
-    <owl:Class rdf:about="http://localhost/euaggelia/ontologies/2017/bookbest#Hotel"/>
+    <owl:Class rdf:about="http://www.example.org/bookbest#Hotel"/>
     
 
 
@@ -203,10 +200,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Abegusbunus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Abegusbunus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">99</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">99</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -214,10 +212,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Abobetor -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Abobetor">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">55</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">55</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -225,10 +224,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Acio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Acio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">25</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">25</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -236,10 +236,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Afritus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Afritus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -247,10 +248,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Agusdacio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Agusdacio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">47</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">47</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -258,10 +260,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Aguses -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Aguses">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">70</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">70</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -269,10 +272,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Albebotus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Albebotus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">54</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">54</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -280,10 +284,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Albobolius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Albobolius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">36</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">36</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -291,10 +296,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Algusbofries -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Algusbofries">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -302,10 +308,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Allius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Allius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">78</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">78</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -313,10 +320,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Allus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Allus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">59</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">59</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -324,10 +332,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Alnulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Alnulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">48</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">48</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -335,10 +344,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Altus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Altus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -346,10 +356,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Anbibinules -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Anbibinules">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -357,10 +368,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Anbigunules -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Anbigunules">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">92</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">92</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -368,10 +380,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Angucus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Angucus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">35</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">35</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -379,10 +392,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Angufribetus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Angufribetus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">20</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">20</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -390,10 +404,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Anlus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Anlus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">28</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">28</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -401,10 +416,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Anules -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Anules">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">23</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">23</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -412,10 +428,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Atin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Atin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">89</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">89</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -423,10 +440,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Aubebetin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Aubebetin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">19</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">19</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -434,10 +452,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Aubibogustus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Aubibogustus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">73</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">73</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -445,10 +464,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Audabulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Audabulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">65</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">65</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -456,10 +476,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Babeguscus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Babeguscus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">81</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">81</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -467,10 +488,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Babobubunus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Babobubunus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">82</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">82</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -478,10 +500,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Babugubilius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Babugubilius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -489,10 +512,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bacus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bacus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -500,10 +524,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Badagucus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Badagucus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -511,10 +536,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Badagustin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Badagustin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">63</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">63</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -522,10 +548,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bafrigubenus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bafrigubenus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">68</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">68</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -533,10 +560,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bagucus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bagucus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">87</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">87</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -544,10 +572,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bator -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bator">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">93</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">93</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -555,10 +584,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bebegusbies -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bebegusbies">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">53</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">53</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -566,10 +596,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bebibubilius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bebibubilius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">90</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">90</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -577,10 +608,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Beboguslius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Beboguslius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -588,10 +620,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bebunulautin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bebunulautin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">84</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">84</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -599,10 +632,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Becus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Becus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">24</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">24</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -610,10 +644,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Begusgubucio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Begusgubucio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">76</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">76</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -621,10 +656,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Benulaudatin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Benulaudatin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">79</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">79</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -632,10 +668,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Benus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Benus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">97</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">97</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -643,10 +680,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Betin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Betin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">72</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">72</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -654,10 +692,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bibies -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bibies">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -665,10 +704,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bigugustin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bigugustin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">42</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">42</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -676,10 +716,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bigusbunus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bigusbunus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">51</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">51</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -687,10 +728,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Binulaunus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Binulaunus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">61</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">61</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -698,10 +740,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Bitor -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Bitor">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">94</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">94</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -709,10 +752,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braubicus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braubicus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">75</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">75</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -720,10 +764,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braubies -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braubies">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -731,10 +776,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braubifricus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braubifricus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -742,10 +788,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braubifritus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braubifritus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">83</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">83</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -753,10 +800,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braudanules -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braudanules">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">71</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">71</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -764,10 +812,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braufrinulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braufrinulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">46</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">46</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -775,10 +824,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braugubutor -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braugubutor">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">86</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">86</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -786,10 +836,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Braugustin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Braugustin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">69</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">69</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -797,10 +848,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Brius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Brius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">30</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">30</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -808,10 +860,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dabegustus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dabegustus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">26</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -819,10 +872,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dadafrinus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dadafrinus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -830,10 +884,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dafribubetin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dafribubetin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -841,10 +896,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dalius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dalius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">56</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">56</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -852,10 +908,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Datin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Datin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">41</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">41</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -863,10 +920,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dibolius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dibolius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -874,10 +932,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Digubugustin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Digubugustin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">31</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">31</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -885,10 +944,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dilus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dilus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -896,10 +956,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dinules -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dinules">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">27</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">27</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -907,10 +968,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Ditus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Ditus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">50</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">50</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -918,10 +980,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dobelus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dobelus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">52</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">52</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -929,10 +992,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dobenulaucio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dobenulaucio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -940,10 +1004,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dobigustus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dobigustus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">62</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">62</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -951,10 +1016,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dobubegulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dobubegulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">74</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">74</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -962,10 +1028,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Docio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Docio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -973,10 +1040,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Docus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Docus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">18</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">18</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -984,10 +1052,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dogubiguscus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dogubiguscus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">66</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">66</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -995,10 +1064,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dolus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dolus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">29</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">29</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1006,10 +1076,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Donulaunulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Donulaunulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">91</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">91</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1017,10 +1088,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Donulautin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Donulautin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">95</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1028,10 +1100,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dububetin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dububetin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">44</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">44</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1039,10 +1112,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dubucio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dubucio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">80</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">80</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1050,10 +1124,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dugubotin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dugubotin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">37</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">37</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1061,10 +1136,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dunulaulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dunulaulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">77</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">77</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1072,10 +1148,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Dutin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Dutin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1083,10 +1160,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Ebegusius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Ebegusius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">96</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">96</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1094,10 +1172,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eboboes -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eboboes">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">49</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">49</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1105,10 +1184,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Edafrifritin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Edafrifritin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1116,10 +1196,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Elus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Elus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">98</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">98</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1127,10 +1208,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eubegusius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eubegusius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">32</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">32</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1138,10 +1220,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eubelus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eubelus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">85</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">85</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1149,10 +1232,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eubibitin -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eubibitin">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">43</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">43</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1160,10 +1244,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eubidagusnus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eubidagusnus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">60</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">60</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superb</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1171,10 +1256,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eudafrilius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eudafrilius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">34</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">34</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1182,10 +1268,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eugusbudacio -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eugusbudacio">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1193,10 +1280,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eunules -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eunules">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">57</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">57</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1204,10 +1292,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Eutor -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Eutor">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">40</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">40</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1215,10 +1304,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fabibues -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fabibues">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">45</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">45</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1226,10 +1316,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fabigucus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fabigucus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">64</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">64</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VeryCheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1237,10 +1328,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fabufrinus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fabufrinus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">33</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">33</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoRate</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1248,10 +1340,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fabulius -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fabulius">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1259,10 +1352,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fafrigusguses -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fafrigusguses">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">67</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">67</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheap</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1270,10 +1364,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fagusbies -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fagusbies">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">58</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FarAway</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">58</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasant</bookbest:rating>
     </owl:NamedIndividual>
     
 
@@ -1281,10 +1376,11 @@
     <!-- file:./src/main/resources/bookbest.owl#Fagusgusnus -->
 
     <owl:NamedIndividual rdf:about="file:./src/main/resources/bookbest.owl#Fagusgusnus">
-        <bookbest2:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest2:distance>
-        <bookbest2:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">88</bookbest2:hasId>
-        <bookbest2:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest2:price>
-        <bookbest2:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest2:rating>
+        <rdf:type rdf:resource="http://www.example.org/bookbest#Hotel"/>
+        <bookbest:distance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Away</bookbest:distance>
+        <bookbest:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">88</bookbest:hasId>
+        <bookbest:price rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expensive</bookbest:price>
+        <bookbest:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</bookbest:rating>
     </owl:NamedIndividual>
 </rdf:RDF>
 

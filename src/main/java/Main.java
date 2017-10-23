@@ -1,5 +1,4 @@
 import DLReasoner.Reasoner;
-import hotelGeneration.HotelGenerator;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
@@ -46,37 +45,42 @@ public class Main {
             OWLOntology owlOntology = ontologyHelper.readOntology();
             System.out.println();
 
-            // Print OWLClasses
+            /*OWLClass c = ontologyHelper.createClass("newclass");
+            OWLAxiom a = ontologyHelper.getOwlDataFactory().getOWLDeclarationAxiom(c);
+            AddAxiom aa = new AddAxiom(owlOntology, a);*/
+
+            //ontologyHelper.saveOntology(owlOntology, aa);
+
             ontologyHelper.printClasses(owlOntology);
-            System.out.println();
+
+            // Print OWLClasses
+            //ontologyHelper.printClasses(owlOntology);
+            //System.out.println();
 
             // Print OWLDataProperties
-            System.out.println("Data Properties");
-            ontologyHelper.printDataProperties(owlOntology);
-            System.out.println();
+            //System.out.println("Data Properties");
+            //ontologyHelper.printDataProperties(owlOntology);
+            //System.out.println();
 
             Set<OWLClass> owlClasses = ontologyHelper.getClasses(owlOntology);
             for(OWLClass owlClass: owlClasses) {
                 if(owlClass.getIRI().getFragment().toString().equals("Hotel")) {
-                    //DataToOntology dataToOntology = new DataToOntology();
-                    //dataToOntology.importData(stmt, ontologyHelper, owlOntology, owlClass);
+                    DataToOntology dataToOntology = new DataToOntology();
+                    dataToOntology.importData(stmt, ontologyHelper, owlOntology, owlClass);
                     // Print Individuals
                     System.out.println("Before Reasoner");
                     Reasoner reasoner = new Reasoner(owlOntology);
                     reasoner.classifyOntology();
-                    reasoner.printSubclasses(owlClass);
-                    reasoner.printInstances(owlClass);
+                    reasoner.printSubclasses();
+                    reasoner.printInstances();
 
                     System.out.println("After Reasoner");
-                    //reasoner.getIndividuals(owlClass);
-                    //System.out.println("!!!: "+owlClass.getIRI().getFragment().toString());
-
                     break;
                 }
             }
 
             System.out.println();
-            System.out.println("Number of Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
+            //System.out.println("Number of Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
         }
         catch (Exception e){
             e.printStackTrace();
