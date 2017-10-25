@@ -95,7 +95,7 @@
             <scope>main</scope>
         </dependency>
 
-        <!--dependency>
+        <dependency>
             <groupId>com.github.ansell.pellet</groupId>
             <artifactId>pellet-owlapiv3</artifactId>
             <version>2.3.6-ansell</version>
@@ -113,7 +113,7 @@
                     <artifactId>owlapi-parsers</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency-->
+        </dependency>
 
 
     </dependencies>

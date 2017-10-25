@@ -6,34 +6,43 @@ import static org.junit.Assert.assertTrue;
 //import aterm.ATermAppl;
 //import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
 //import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
+import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
+import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.*;
-import uk.ac.manchester.cs.jfact.JFactFactory;
+//import uk.ac.manchester.cs.jfact.JFactFactory;
 
 import java.util.Set;
 
 public class Reasoner {
 
     // JFact
-    OWLReasonerFactory owlReasonerFactory = null;
+    /*OWLReasonerFactory owlReasonerFactory = null;
     OWLOntology owlOntology;
     OWLReasonerConfiguration owlReasonerConfiguration;
     OWLReasoner owlReasoner;
-/*
+    OntologyHelper ontologyHelper;*/
+
     OWLOntology owlOntology;
+    OntologyHelper ontologyHelper;
     com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory reasonerFactory;
-    PelletReasoner owlReasoner;*/
+    PelletReasoner owlReasoner;
 
 
-    public Reasoner(OWLOntology owlOntology) {
-        this.owlReasonerFactory = new JFactFactory();
+
+    public Reasoner(OWLOntology owlOntology, OntologyHelper ontologyHelper) {
+/*
         this.owlOntology = owlOntology;
+        this.ontologyHelper = ontologyHelper;
+        this.owlReasonerFactory = new JFactFactory();
         this.owlReasonerConfiguration = new SimpleConfiguration(50000);
         this.owlReasoner = this.owlReasonerFactory.createReasoner(this.owlOntology, owlReasonerConfiguration);
-/*
+
+*/
         this.owlOntology = owlOntology;
-        this.reasonerFactory =  com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory.getInstance();
-        this.owlReasoner = reasonerFactory.createReasoner(owlOntology);*/
+        this.ontologyHelper = ontologyHelper;
+        this.reasonerFactory = com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory.getInstance();
+        this.owlReasoner = reasonerFactory.createReasoner(owlOntology);
     }
 
     public void classifyOntology() {
@@ -84,28 +93,23 @@ public class Reasoner {
 
     public void printInstances() {
         // for each class, look up the instances
-        int m=1;
-        
+
         for (OWLClass owlClass : this.owlOntology.getClassesInSignature()) {
             // the boolean argument specifies direct subclasses; false would specify all subclasses
             // a NodeSet represents a set of Nodes.
             // a Node represents a set of equivalent classes/or sameAs individuals
-            System.out.println(m++);
+
             Set<OWLNamedIndividual> instances = this.owlReasoner.getInstances(owlClass, true).getFlattened();
             if(instances.size()==0)
                 System.out.println("Class '"+owlClass.getIRI().getFragment()+"' has no instances!!!");
             for (OWLNamedIndividual i : instances) {
-                System.out.println(i.getIRI().getFragment() + "\tinstance of\t"
-                        + owlClass.getIRI().getFragment());
-                // look up all property assertions
-                for (OWLObjectProperty op : this.owlOntology
-                        .getObjectPropertiesInSignature()) {
-                    NodeSet<OWLNamedIndividual> petValuesNodeSet = this.owlReasoner
-                            .getObjectPropertyValues(i, op);
-                    for (OWLNamedIndividual value : petValuesNodeSet.getFlattened()) {
-                        System.out.println(i.getIRI().getFragment() + "\t"
-                                + op.getIRI().getFragment() + "\t"
-                                + value.getIRI().getFragment());
+                System.out.println(i.getIRI().getFragment()+" instance of "+owlClass.getIRI().getFragment());
+
+                for(OWLDataProperty owlDataProperty: this.ontologyHelper.getDataProperties(this.owlOntology)) {
+                    System.out.print("\t"+owlDataProperty.getIRI().getFragment()+": ");
+                    Set<OWLLiteral> owlLiterals = owlReasoner.getDataPropertyValues(i,owlDataProperty);
+                    for(OWLLiteral owlLiteral: owlLiterals) {
+                        System.out.println(owlLiteral.getLiteral());
                     }
                 }
             }

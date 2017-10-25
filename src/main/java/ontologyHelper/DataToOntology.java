@@ -3,7 +3,6 @@ package ontologyHelper;
 import dao.HotelDAO;
 import dao.HotelDAOImpl;
 import entities.Hotel;
-import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
 import java.sql.Statement;
@@ -17,41 +16,30 @@ public class DataToOntology {
         for(Hotel hotel: hotels) {
             String name = hotel.getName(), price, rating, distance;
 
-            OWLIndividual individual = ontologyHelper.createIndividual(name);
-            ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, individual);
+            OWLIndividual owlIndividual = ontologyHelper.createIndividual(name);
+            ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, owlIndividual);
 
-            createIndividual(ontologyHelper, owlOntology, individual, owlClass);
+            ontologyHelper.createIndividual(owlOntology, owlIndividual, owlClass);
+            createIndividual(ontologyHelper, owlOntology, owlIndividual, owlClass);
 
             int id = hotel.getIdHotel();
-            saveChanges(ontologyHelper, owlOntology, individual, "hasId", String.valueOf(id), owlClass);
-
+            ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasId", String.valueOf(id));
 
             if(hotel.getPrice() != null) {
                 price = hotel.getPrice();
-                saveChanges(ontologyHelper, owlOntology, individual, "price", price, owlClass);
+                ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasPrice", price);
             }
             if(hotel.getRating() != null) {
                 rating = hotel.getRating();
-                saveChanges(ontologyHelper, owlOntology, individual, "rating", rating, owlClass);
+                ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasRating", rating);
             }
             if(hotel.getDistance() != null) {
                 distance = hotel.getDistance();
-                saveChanges(ontologyHelper, owlOntology, individual, "distance", distance, owlClass);
+                ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasDistance", distance);
             }
         }
     }
 
-    private void saveChanges(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value, OWLClass owlClass) throws OWLOntologyStorageException {
-        OWLDataProperty owlDataProperty = ontologyHelper.createDataProperty(property);
-        OWLAxiom owlAxiom = ontologyHelper.createDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, value);
-
-        //OWLDataFactory owlDataFactory = ontologyHelper.getOwlDataFactory();
-
-       // OWLClassAssertionAxiom owlClassAssertionAxiom = owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
-
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
-        ontologyHelper.saveOntology(owlOntology, addAxiom);
-    }
 
     private void createIndividual(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, OWLClass owlClass) throws OWLOntologyStorageException {
         OWLDataFactory owlDataFactory = ontologyHelper.getOwlDataFactory();
@@ -61,6 +49,4 @@ public class DataToOntology {
         AddAxiom addAxiom = new AddAxiom(owlOntology, owlClassAssertionAxiom);
         ontologyHelper.saveOntology(owlOntology, addAxiom);
     }
-
-
 }

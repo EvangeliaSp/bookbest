@@ -2,23 +2,36 @@ package ontologyHelper;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 
 import java.io.File;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Set;
 
 public class OntologyHelper {
-        String ontFile = "./src/main/resources/bookbest.owl";
+    String ontFile = "./src/main/resources/bookbest.owl";
     String prefix = "file:";
-
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
 
-    IRI iri = IRI.create(basePhysicalURI);
+    String base = "http://www.example.org/";
+    String ontName = "bookbest";
+    IRI iri = IRI.create(base+ontName);
 
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
     OWLDataFactory owlDataFactory = OWLManager.getOWLDataFactory();
+
+    OWLOntology owlOntology;
+
+    @Deprecated
+    PrefixManager prefixManager = new DefaultPrefixManager(base+"#");
+
+
+
+
+    public void printBasePhysicalURI() {
+        //System.out.println(basePhysicalURI+"#");
+    }
 
     public OWLOntologyManager getOwlOntologyManager() {
         return owlOntologyManager;
@@ -28,14 +41,21 @@ public class OntologyHelper {
         return owlDataFactory;
     }
 
+    public OWLOntology createOntology() throws OWLOntologyCreationException {
+        this.owlOntology = owlOntologyManager.createOntology(this.iri);
+        return this.owlOntology;
+    }
+
     public OWLOntology readOntology() throws OWLOntologyCreationException {
-        return owlOntologyManager.loadOntologyFromOntologyDocument(iri);
+        this.owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(IRI.create(this.basePhysicalURI));
+        return this.owlOntology;
     }
 
     // OWL Class functions
 
     public OWLClass createClass(String name) {
-        return this.owlDataFactory.getOWLEntity(EntityType.CLASS, iri.create(basePhysicalURI+"#"+name));
+        //return this.owlDataFactory.getOWLEntity(EntityType.CLASS, iri.create(basePhysicalURI+"#"+name));
+        return this.owlDataFactory.getOWLEntity(EntityType.CLASS, iri.create(this.base+this.ontName+"#"+name));
     }
 
     public Set<OWLClass> getClasses(OWLOntology owlOntology) {
@@ -56,27 +76,43 @@ public class OntologyHelper {
 
     // OWL Data Property functions
     public OWLDataProperty createDataProperty(String property) {
-        return owlDataFactory.getOWLDataProperty(iri.create(basePhysicalURI+"#"+property));
+        //return owlDataFactory.getOWLDataProperty(iri.create(basePhysicalURI+"#"+property));
+        return owlDataFactory.getOWLDataProperty(iri.create(this.base+this.ontName+"#"+property));
     }
 
-    public Set<OWLDataPropertyDomainAxiom> getDataProperties(OWLOntology owlOntology) {
+    @Deprecated
+    public OWLDataProperty getDataProperty(String property) {
+        return this.owlDataFactory.getOWLDataProperty(property, this.prefixManager);
+    }
+
+ /*   public Set<OWLDataPropertyDomainAxiom> getDataProperties(OWLOntology owlOntology) {
         return owlOntology.getAxioms(AxiomType.DATA_PROPERTY_DOMAIN);
+    }*/
+
+    public Set<OWLDataProperty> getDataProperties(OWLOntology owlOntology) {
+        return owlOntology.getDataPropertiesInSignature();
     }
 
-    public void printDataProperties(Set<OWLDataPropertyDomainAxiom> owlDataProperties) {
+/*    public void printDataProperties(Set<OWLDataPropertyDomainAxiom> owlDataProperties) {
         for(OWLDataPropertyDomainAxiom p: owlDataProperties)
             System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
-    }
+    }*/
 
     public void printDataProperties(OWLOntology owlOntology) {
-        Set<OWLDataPropertyDomainAxiom> properties = owlOntology.getAxioms(AxiomType.DATA_PROPERTY_DOMAIN);
-        for(OWLDataPropertyDomainAxiom p: properties)
-            System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
+        Set<OWLDataProperty> owlDataProperties = owlOntology.getDataPropertiesInSignature();
+        for(OWLDataProperty owlDataProperty: owlDataProperties)
+            System.out.println("Data Property: "+owlDataProperty.getIRI().getFragment());
     }
 
     // OWL Individual functions
     public OWLIndividual createIndividual(String name) {
-        return owlDataFactory.getOWLNamedIndividual(iri.create(basePhysicalURI+"#"+name));
+        return owlDataFactory.getOWLNamedIndividual(iri.create(this.base+this.ontName+"#"+name));
+    }
+
+    public void createIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, OWLClass owlClass) throws OWLOntologyStorageException {
+        OWLClassAssertionAxiom owlClassAssertionAxiom = this.owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
+        AddAxiom addAxiom = new AddAxiom(owlOntology, owlClassAssertionAxiom);
+        saveOntology(owlOntology, addAxiom);
     }
 
     public int getIndividualsCounter(OWLOntology owlOntology) {
@@ -116,10 +152,44 @@ public class OntologyHelper {
         return new AddAxiom(owlOntology, owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal));
     }
 
+    public void addDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
+        OWLDataProperty owlDataProperty = createDataProperty(property);
+        OWLAxiom owlAxiom = createDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, value);
+
+        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+        saveOntology(owlOntology, addAxiom);
+    }
+
     public void saveOntology(OWLOntology owlOntology, AddAxiom addAxiom) throws OWLOntologyStorageException {
         File file = new File("./src/main/resources/bookbest.owl");
 
         owlOntologyManager.applyChange(addAxiom);
+
+        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+    }
+
+    public void saveOntology(OWLOntology owlOntology, OWLClass owlClass) throws OWLOntologyStorageException {
+        File file = new File("./src/main/resources/bookbest.owl");
+
+        OWLAxiom owlAxiom = this.owlDataFactory.getOWLDeclarationAxiom(owlClass);
+        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+
+        owlOntologyManager.applyChange(addAxiom);
+        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+    }
+
+    public void saveOntology(OWLOntology owlOntology, OWLDataProperty owlDataProperty) throws OWLOntologyStorageException {
+        File file = new File("./src/main/resources/bookbest.owl");
+
+        OWLAxiom owlAxiom = this.owlDataFactory.getOWLDeclarationAxiom(owlDataProperty);
+        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+
+        owlOntologyManager.applyChange(addAxiom);
+        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+    }
+
+    public void saveOntology(OWLOntology owlOntology) throws OWLOntologyStorageException {
+        File file = new File("./src/main/resources/bookbest.owl");
 
         owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
     }
