@@ -40,7 +40,6 @@ public class DataToOntology {
         }
     }
 
-
     private void createIndividual(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, OWLClass owlClass) throws OWLOntologyStorageException {
         OWLDataFactory owlDataFactory = ontologyHelper.getOwlDataFactory();
 

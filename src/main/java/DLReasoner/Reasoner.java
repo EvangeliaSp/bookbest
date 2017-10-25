@@ -8,6 +8,8 @@ import static org.junit.Assert.assertTrue;
 //import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
 import ontologyHelper.OntologyHelper;
+import org.mindswap.pellet.KnowledgeBase;
+import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.*;
 //import uk.ac.manchester.cs.jfact.JFactFactory;
@@ -114,5 +116,13 @@ public class Reasoner {
                 }
             }
         }
+    }
+
+    public KnowledgeBase getKnowledgeBase() {
+        return this.owlReasoner.getKB();
+    }
+
+    public PelletInfGraph getGraph(KnowledgeBase knowledgeBase) {
+        return new org.mindswap.pellet.jena.PelletReasoner().bind(knowledgeBase);
     }
 }

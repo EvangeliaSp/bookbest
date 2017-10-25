@@ -1,6 +1,11 @@
 import DLReasoner.Reasoner;
+import com.hp.hpl.jena.rdf.model.InfModel;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
+import org.mindswap.pellet.KnowledgeBase;
+import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.*;
 
 import java.sql.*;
@@ -76,7 +81,7 @@ public class Main {
             ontologyHelper.printDataProperties(owlOntology);
             System.out.println();
 
-
+            Reasoner reasoner = new Reasoner(owlOntology, ontologyHelper);
 
             Set<OWLClass> owlClasses = ontologyHelper.getClasses(owlOntology);
             for(OWLClass owlClass1: owlClasses) {
@@ -85,7 +90,7 @@ public class Main {
                   //  dataToOntology.importData(stmt, ontologyHelper, owlOntology, owlClass1);
                     // Print Individuals
                     System.out.println("Before Reasoner");
-                    Reasoner reasoner = new Reasoner(owlOntology, ontologyHelper);
+
                     reasoner.classifyOntology();
                     reasoner.printSubclasses();
                     reasoner.printInstances();
@@ -94,10 +99,24 @@ public class Main {
                     break;
                 }
             }
+            // Get the KB from the reasoner
+            KnowledgeBase knowledgeBase = reasoner.getKnowledgeBase();
+
+            // Create a Pellet graph using the KB from OWLAPI
+            PelletInfGraph graph = reasoner.getGraph(knowledgeBase);
+
+            // Wrap the graph in a Jena model
+            InfModel model = ModelFactory.createInfModel(graph);
+
+            // Use the model to answer SPARQL queries
+            StmtIterator stmtIterator = model.listStatements();
+            while (stmtIterator.hasNext()) {
+                System.out.println(stmtIterator.nextStatement());
+            }
+
+
 
             ontologyHelper.saveOntology(owlOntology);
-            System.out.println();
-            System.out.println("Number of Individuals: " + ontologyHelper.getIndividualsCounter(owlOntology));
         }
         catch (Exception e){
             e.printStackTrace();
