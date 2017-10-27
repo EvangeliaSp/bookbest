@@ -1,4 +1,5 @@
 import DLReasoner.Reasoner;
+import DL_Queries.SPARQL;
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
@@ -93,7 +94,7 @@ public class Main {
 
                     reasoner.classifyOntology();
                     reasoner.printSubclasses();
-                    reasoner.printInstances();
+                    //reasoner.printInstances();
 
                     System.out.println("After Reasoner");
                     break;
@@ -110,9 +111,12 @@ public class Main {
 
             // Use the model to answer SPARQL queries
             StmtIterator stmtIterator = model.listStatements();
-            while (stmtIterator.hasNext()) {
-                System.out.println(stmtIterator.nextStatement());
-            }
+           // while (stmtIterator.hasNext()) {
+             //   System.out.println(stmtIterator.nextStatement());
+            //}
+
+            SPARQL sparql = new SPARQL();
+            sparql.getCheap(model);
 
 
 
