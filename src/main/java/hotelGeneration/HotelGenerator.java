@@ -32,7 +32,5 @@ public class HotelGenerator {
                 hotel.setDistance(randomValues.distance());
                 hotelDAO.create(stmt, hotel);
             }
-
-
     }
 }

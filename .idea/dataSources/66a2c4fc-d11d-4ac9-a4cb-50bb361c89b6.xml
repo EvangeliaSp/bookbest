@@ -12,33 +12,152 @@
     <schema id="6" parent="1" name="performance_schema"/>
     <schema id="7" parent="1" name="sys"/>
     <schema id="8" parent="1" name="travel"/>
-    <table id="9" parent="2" name="Hotel"/>
-    <column id="10" parent="9" name="idHotel">
+    <schema id="9" parent="1" name="eProc"/>
+    <table id="10" parent="2" name="Accommodation"/>
+    <table id="11" parent="2" name="AccommodationRoom"/>
+    <table id="12" parent="2" name="Hotel"/>
+    <table id="13" parent="2" name="Reservation"/>
+    <column id="14" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="11" parent="9" name="name">
+    <column id="15" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="10" name="type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="10" name="stars">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="10" name="country">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="10" name="city">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="10" name="address">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="10" name="postal_code">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="11" name="acc_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="11" name="price_per_night">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="11" name="rating">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="27" parent="11" name="acc_id">
+      <ColNames>acc_id</ColNames>
+    </index>
+    <key id="28" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="29" parent="11" name="AccommodationRoom_ibfk_1">
+      <ColNames>acc_id</ColNames>
+      <RefSchemaName>bookbest</RefSchemaName>
+      <RefTableName>Accommodation</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="30" parent="12" name="idHotel">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="12" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="12" parent="9" name="price">
+    <column id="32" parent="12" name="price">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="13" parent="9" name="rating">
+    <column id="33" parent="12" name="rating">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="14" parent="9" name="distance">
+    <column id="34" parent="12" name="distance">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <key id="15" parent="9" name="PRIMARY">
+    <key id="35" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idHotel</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="36" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="13" name="room_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="13" name="arrival">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="13" name="departure">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="40" parent="13" name="room_id">
+      <ColNames>room_id</ColNames>
+    </index>
+    <key id="41" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="13" name="Reservation_ibfk_1">
+      <ColNames>room_id</ColNames>
+      <RefSchemaName>bookbest</RefSchemaName>
+      <RefTableName>AccommodationRoom</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

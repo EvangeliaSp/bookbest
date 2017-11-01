@@ -120,7 +120,7 @@ public class Main {
 
 
 
-            ontologyHelper.saveOntology(owlOntology);
+            //ontologyHelper.saveOntology(owlOntology);
         }
         catch (Exception e){
             e.printStackTrace();
