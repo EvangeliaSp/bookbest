@@ -3,6 +3,7 @@ import DL_Queries.SPARQL;
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import hotelGeneration.CountryGenerator;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
@@ -121,6 +122,10 @@ public class Main {
 
 
             //ontologyHelper.saveOntology(owlOntology);
+
+
+            CountryGenerator countryGenerator = new CountryGenerator();
+            System.out.println(countryGenerator.generate());
         }
         catch (Exception e){
             e.printStackTrace();
