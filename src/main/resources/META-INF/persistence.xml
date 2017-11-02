@@ -5,8 +5,10 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>entities.Hotel</class>
         <class>entities.Accommodation</class>
-        <class>entities.AccommodationRoom</class>
         <class>entities.Reservation</class>
+        <class>entities.Facility</class>
+        <class>entities.Room</class>
+        <class>entities.RoomFacility</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bookbest"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

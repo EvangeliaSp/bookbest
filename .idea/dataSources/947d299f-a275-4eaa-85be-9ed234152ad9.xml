@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="bookbest@localhost">
+<dataSource name="bookbest/EclipseLink">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
     <root id="1"/>
     <schema id="2" parent="1" name="bookbest">
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="information_schema"/>
-    <schema id="4" parent="1" name="monkeybnb"/>
-    <schema id="5" parent="1" name="mysql"/>
-    <schema id="6" parent="1" name="performance_schema"/>
-    <schema id="7" parent="1" name="sys"/>
-    <schema id="8" parent="1" name="travel"/>
-    <schema id="9" parent="1" name="eProc"/>
+    <schema id="3" parent="1" name="eProc"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="monkeybnb"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="sys"/>
+    <schema id="9" parent="1" name="travel"/>
     <table id="10" parent="2" name="Accommodation"/>
     <table id="11" parent="2" name="Facility"/>
     <table id="12" parent="2" name="Hotel"/>
@@ -118,7 +118,7 @@
       <Position>13</Position>
       <DataType>binary(1)|0</DataType>
     </column>
-    <column id="38" parent="11" name="reception_24-hour">
+    <column id="38" parent="11" name="24-hour_reception">
       <Position>14</Position>
       <DataType>binary(1)|0</DataType>
     </column>
@@ -229,7 +229,7 @@
     </column>
     <column id="61" parent="14" name="rating">
       <Position>4</Position>
-      <DataType>double|0</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <index id="62" parent="14" name="acc_id">

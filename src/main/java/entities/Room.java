@@ -3,10 +3,10 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-public class AccommodationRoom {
+public class Room {
     private int id;
     private int pricePerNight;
-    private int rating;
+    private double rating;
     private Accommodation accommodationByAccId;
 
     @Id
@@ -30,12 +30,12 @@ public class AccommodationRoom {
     }
 
     @Basic
-    @Column(name = "rating", nullable = false)
-    public int getRating() {
+    @Column(name = "rating", nullable = false, precision = 0)
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -44,20 +44,23 @@ public class AccommodationRoom {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AccommodationRoom that = (AccommodationRoom) o;
+        Room room = (Room) o;
 
-        if (id != that.id) return false;
-        if (pricePerNight != that.pricePerNight) return false;
-        if (rating != that.rating) return false;
+        if (id != room.id) return false;
+        if (pricePerNight != room.pricePerNight) return false;
+        if (Double.compare(room.rating, rating) != 0) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result;
+        long temp;
+        result = id;
         result = 31 * result + pricePerNight;
-        result = 31 * result + rating;
+        temp = Double.doubleToLongBits(rating);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
