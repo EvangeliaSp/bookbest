@@ -1,7 +1,5 @@
 package dataGeneration;
 
-import entities.Reservation;
-
 import java.sql.Date;
 
 

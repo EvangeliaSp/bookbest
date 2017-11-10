@@ -1,6 +1,6 @@
-package dao;
+package dao.booking;
 
-import entities.Facility;
+import entities.booking.Facility;
 
 import java.sql.Statement;
 

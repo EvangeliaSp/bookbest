@@ -1,9 +1,5 @@
 package dataGeneration;
 
-import dao.RoomFacilityDAO;
-import dao.RoomFacilityDAOImpl;
-import entities.RoomFacility;
-
 import java.sql.Statement;
 import java.util.Random;
 

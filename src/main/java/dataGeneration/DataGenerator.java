@@ -1,15 +1,7 @@
 package dataGeneration;
 
-import dao.AccommodationDAO;
-import dao.AccommodationDAOImpl;
-import dao.RoomDAO;
-import dao.RoomDAOImpl;
-import entities.Accommodation;
-import entities.Room;
-
 import java.io.IOException;
 import java.sql.Statement;
-import java.util.List;
 
 public class DataGenerator {
 

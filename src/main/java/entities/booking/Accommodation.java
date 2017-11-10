@@ -1,7 +1,6 @@
-package entities;
+package entities.booking;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Accommodation {
@@ -13,8 +12,10 @@ public class Accommodation {
     private String city;
     private String address;
     private int postalCode;
+    private String roomType;
     private Facility facilityById;
-    private Collection<Room> roomsById;
+    private int pricePerNight;
+    private double rating;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -96,6 +97,16 @@ public class Accommodation {
         this.postalCode = postalCode;
     }
 
+    @Basic
+    @Column(name = "room_type", nullable = false, length = 255)
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,6 +122,7 @@ public class Accommodation {
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (roomType != null ? !roomType.equals(that.roomType) : that.roomType != null) return false;
 
         return true;
     }
@@ -125,6 +137,7 @@ public class Accommodation {
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + postalCode;
+        result = 31 * result + (roomType != null ? roomType.hashCode() : 0);
         return result;
     }
 
@@ -137,12 +150,23 @@ public class Accommodation {
         this.facilityById = facilityById;
     }
 
-    @OneToMany(mappedBy = "accommodationByAccId")
-    public Collection<Room> getRoomsById() {
-        return roomsById;
+    @Basic
+    @Column(name = "price_per_night", nullable = false)
+    public int getPricePerNight() {
+        return pricePerNight;
     }
 
-    public void setRoomsById(Collection<Room> roomsById) {
-        this.roomsById = roomsById;
+    public void setPricePerNight(int pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
+    @Basic
+    @Column(name = "rating", nullable = false, precision = 0)
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }

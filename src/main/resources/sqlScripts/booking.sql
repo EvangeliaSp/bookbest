@@ -1,6 +1,6 @@
-CREATE DATABASE bookbest;
+CREATE DATABASE booking;
 
-USE bookbest;
+USE booking;
 
 CREATE TABLE `Accommodation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -11,16 +11,8 @@ CREATE TABLE `Accommodation` (
   `city` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `postal_code` int(11) NOT NULL,
+  `room_type` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `Room` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `acc_id` int(11) NOT NULL,
-  `price_per_night` int(11) NOT NULL,
-  `rating` double NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT FOREIGN KEY (`acc_id`) REFERENCES `Accommodation` (`id`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Facility` (
@@ -42,12 +34,6 @@ CREATE TABLE `Facility` (
   `massage` tinyint(1) NULL,
   `bicycle_rental` tinyint(1) NULL,
   `cycling` tinyint(1) NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT FOREIGN KEY (`id`) REFERENCES `Accommodation` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `RoomFacility` (
-  `id` int(11) NOT NULL,
   `breakfast_included` tinyint(1) NULL,
   `breakfast_and_dinner` tinyint(1) NULL,
   `self_catering` tinyint(1) NULL,
@@ -63,5 +49,5 @@ CREATE TABLE `RoomFacility` (
   `sound_proofing` tinyint(1) NULL,
   `tea/coffee_maker` tinyint(1) NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT FOREIGN KEY (`id`) REFERENCES `Room` (`id`)
+  CONSTRAINT FOREIGN KEY (`id`) REFERENCES `Accommodation` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

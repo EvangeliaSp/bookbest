@@ -2,10 +2,6 @@ package dataGeneration;
 
 // General: random.nextInt(max - min + 1) + min
 
-import dao.AccommodationDAO;
-import dao.AccommodationDAOImpl;
-import entities.Accommodation;
-
 import java.io.IOException;
 import java.sql.Statement;
 import java.util.Random;

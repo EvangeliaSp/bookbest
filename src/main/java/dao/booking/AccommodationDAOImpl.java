@@ -1,6 +1,6 @@
-package dao;
+package dao.booking;
 
-import entities.Accommodation;
+import entities.booking.Accommodation;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,20 +8,24 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class AccommodationDAOImpl implements AccommodationDAO {
 
     @Override
     public void create(Statement stmt, Accommodation accommodation) {
         try {
             String sql = "INSERT INTO Accommodation VALUES (" +
-                accommodation.getId() + ", " +
-                "'"+accommodation.getName()+"'" + ", " +
-                "'"+accommodation.getType()+"'" + ", " +
-                "'"+accommodation.getStars()+"'" + ", " +
-                "'"+accommodation.getCountry()+"'" + ", " +
-                "'"+accommodation.getCity()+"'" + ", " +
-                "'"+accommodation.getAddress()+"'" + ", " +
-                "'"+accommodation.getPostalCode()+"'" + ")";
+                    accommodation.getId() + ", " +
+                    "'"+accommodation.getName()+"'" + ", " +
+                    "'"+accommodation.getType()+"'" + ", " +
+                    "'"+accommodation.getStars()+"'" + ", " +
+                    "'"+accommodation.getRoomType()+"'" + ", " +
+                    "'"+accommodation.getPricePerNight()+"'" + ", " +
+                    "'"+accommodation.getRating()+"'" + ", " +
+                    "'"+accommodation.getCountry()+"'" + ", " +
+                    "'"+accommodation.getCity()+"'" + ", " +
+                    "'"+accommodation.getAddress()+"'" + ", " +
+                    "'"+accommodation.getPostalCode()+"'" + ")";
             stmt.executeUpdate(sql);
         }
         catch (SQLException ex){
@@ -47,6 +51,9 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                 accommodation.setName(rs.getString("name"));
                 accommodation.setType(rs.getString("type"));
                 accommodation.setStars(rs.getInt("stars"));
+                accommodation.setRoomType(rs.getString("room_type"));
+                accommodation.setPricePerNight(rs.getInt("price_per_night"));
+                accommodation.setRating(rs.getDouble("rating"));
                 accommodation.setCountry(rs.getString("country"));
                 accommodation.setCity(rs.getString("city"));
                 accommodation.setAddress(rs.getString("address"));
