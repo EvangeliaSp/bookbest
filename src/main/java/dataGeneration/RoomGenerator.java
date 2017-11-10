@@ -1,15 +1,35 @@
 package dataGeneration;
 
+import dao.RoomDAO;
+import dao.RoomDAOImpl;
 import entities.Room;
 
+import java.sql.Statement;
 import java.util.Random;
 
 public class RoomGenerator {
 
-    public RoomGenerator() {
+    Statement statement;
+    private Room room;
+    int accId;
+
+    public RoomGenerator(Statement statement, int accId) {
+        this.statement = statement;
+        this.accId = accId;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void generate() {
         Room room = new Room();
+        room.setAccId(this.accId);
         room.setPricePerNight(price_per_night());
         room.setRating(rating());
+        RoomDAO roomDAO = new RoomDAOImpl();
+        roomDAO.create(this.statement, room);
+        this.room = room;
     }
 
     private int price_per_night() {

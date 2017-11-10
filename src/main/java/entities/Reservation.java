@@ -1,9 +1,6 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -11,6 +8,8 @@ public class Reservation {
     private int id;
     private Date arrival;
     private Date departure;
+    private int roomId;
+    private Room roomByRoomId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -62,5 +61,25 @@ public class Reservation {
         result = 31 * result + (arrival != null ? arrival.hashCode() : 0);
         result = 31 * result + (departure != null ? departure.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "room_id", nullable = false)
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "room_id", referencedColumnName = "id", nullable = false)
+    public Room getRoomByRoomId() {
+        return roomByRoomId;
+    }
+
+    public void setRoomByRoomId(Room roomByRoomId) {
+        this.roomByRoomId = roomByRoomId;
     }
 }

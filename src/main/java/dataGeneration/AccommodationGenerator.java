@@ -2,26 +2,46 @@ package dataGeneration;
 
 // General: random.nextInt(max - min + 1) + min
 
+import dao.AccommodationDAO;
+import dao.AccommodationDAOImpl;
 import entities.Accommodation;
-import hotelGeneration.NameGenerator;
 
 import java.io.IOException;
-import java.util.Locale;
+import java.sql.Statement;
 import java.util.Random;
 
 public class AccommodationGenerator {
 
-    public AccommodationGenerator() throws IOException {
+    Accommodation accommodation;
+    Statement statement;
+
+    public AccommodationGenerator(Statement statement) {
+        this.statement = statement;
+    }
+
+    public Accommodation getAccommodation() {
+        return accommodation;
+    }
+
+    public void generate() throws IOException {
         Accommodation accommodation = new Accommodation();
         accommodation.setName(name());
         accommodation.setType(type());
         accommodation.setStars(stars());
-        accommodation.setCountry(country());
+        CSVReader csvReader = new CSVReader();
+        String[][] place = csvReader.getRandomPlace();
+        accommodation.setCountry(place[0][0]);
+        accommodation.setCity(place[1][0]);
         accommodation.setPostalCode(postal_code());
+
+        AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
+        accommodationDAO.create(this.statement, accommodation);
+
+        this.accommodation = accommodation;
     }
 
     private String name() throws IOException {
-        NameGenerator nameGenerator = new NameGenerator("./src/main/resources/names.txt");
+        NameGenerator nameGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
         String name;
         Boolean flag;
         //do {
@@ -43,23 +63,6 @@ public class AccommodationGenerator {
     private int stars() {
         int k = new Random().nextInt(5) + 1;
         return k;
-    }
-
-    private String country() {
-        String[] locales = Locale.getISOCountries();
-
-        int k = new Random().nextInt(locales.length);
-        String countryCode = locales[k];
-
-        Locale obj = new Locale("", countryCode);
-
-        return obj.getDisplayCountry();
-    }
-
-
-    private String city() {
-        String city=null;
-        return city;
     }
 
     private String address() {

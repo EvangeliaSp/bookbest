@@ -1,9 +1,7 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Accommodation {
@@ -15,6 +13,8 @@ public class Accommodation {
     private String city;
     private String address;
     private int postalCode;
+    private Facility facilityById;
+    private Collection<Room> roomsById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -126,5 +126,23 @@ public class Accommodation {
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + postalCode;
         return result;
+    }
+
+    @OneToOne(mappedBy = "accommodationById")
+    public Facility getFacilityById() {
+        return facilityById;
+    }
+
+    public void setFacilityById(Facility facilityById) {
+        this.facilityById = facilityById;
+    }
+
+    @OneToMany(mappedBy = "accommodationByAccId")
+    public Collection<Room> getRoomsById() {
+        return roomsById;
+    }
+
+    public void setRoomsById(Collection<Room> roomsById) {
+        this.roomsById = roomsById;
     }
 }

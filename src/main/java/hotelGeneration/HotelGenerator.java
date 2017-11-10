@@ -2,6 +2,7 @@ package hotelGeneration;
 
 import dao.HotelDAO;
 import dao.HotelDAOImpl;
+import dataGeneration.NameGenerator;
 import entities.Hotel;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class HotelGenerator {
 
             RandomValues randomValues = new RandomValues();
 
-            nameGenerator = new NameGenerator("./src/main/resources/names.txt");
+            nameGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
 
             for(int i=1; i<100; i++) {
                 Hotel hotel = new Hotel();

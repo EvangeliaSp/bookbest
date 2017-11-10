@@ -3,6 +3,8 @@ import DL_Queries.SPARQL;
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import dataGeneration.CSVReader;
+import database.DBConnection;
 import hotelGeneration.CountryGenerator;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
@@ -18,61 +20,48 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Load driver
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // Connect to database
+        DBConnection dbConnection = new DBConnection();
+        dbConnection.connect();
+        Statement stmt = dbConnection.getStatement();
 
-        // Obtain a connection from the DriverManager
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/bookbest?" + "user=root&password=5698");
-        } catch (SQLException ex) {
-            // handle the errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
-
-        Statement stmt = null;
         OntologyHelper ontologyHelper = new OntologyHelper();
 
+
+        // Generate data
+        /*System.out.println("Generate Hotels");
+        HotelGenerator hotelGenerator = new HotelGenerator();
+        hotelGenerator.generate(stmt);
+        System.out.println();*/
+
+        // Read Ontology
         try {
-            stmt = conn.createStatement();
-
-            // Generate data
-            /*System.out.println("Generate Hotels");
-            HotelGenerator hotelGenerator = new HotelGenerator();
-            hotelGenerator.generate(stmt);
-            System.out.println();*/
-
-            // Read Ontology
             OWLOntology owlOntology = ontologyHelper.readOntology();
 
-            // Create Ontology
-            //OWLOntology owlOntology = ontologyHelper.createOntology();
-
-            // Create OWL Class
-        /*    OWLClass owlClass = ontologyHelper.createClass("Hotel");
-            ontologyHelper.saveOntology(owlOntology, owlClass);*/
 
 
-            // Create OWL Data Properties
-        /*    OWLDataProperty owlDataProperty;
+        // Create Ontology
+        //OWLOntology owlOntology = ontologyHelper.createOntology();
 
-            owlDataProperty = ontologyHelper.createDataProperty("hasId");
-            ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+        // Create OWL Class
+    /*    OWLClass owlClass = ontologyHelper.createClass("Hotel");
+        ontologyHelper.saveOntology(owlOntology, owlClass);*/
 
-            owlDataProperty = ontologyHelper.createDataProperty("hasPrice");
-            ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-            owlDataProperty = ontologyHelper.createDataProperty("hasRating");
-            ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+        // Create OWL Data Properties
+    /*    OWLDataProperty owlDataProperty;
 
-            owlDataProperty = ontologyHelper.createDataProperty("hasDistance");
-            ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+        owlDataProperty = ontologyHelper.createDataProperty("hasId");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
+        owlDataProperty = ontologyHelper.createDataProperty("hasPrice");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
+        owlDataProperty = ontologyHelper.createDataProperty("hasRating");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
+        owlDataProperty = ontologyHelper.createDataProperty("hasDistance");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 */
             // Print OWLClasses
             ontologyHelper.printClasses(owlOntology);
@@ -124,20 +113,17 @@ public class Main {
             //ontologyHelper.saveOntology(owlOntology);
 
 
-            CountryGenerator countryGenerator = new CountryGenerator();
-            System.out.println(countryGenerator.generate());
+           // CountryGenerator countryGenerator = new CountryGenerator();
+           // System.out.println(countryGenerator.generate());
+
+            CSVReader csvReader = new CSVReader();
+            String[][] place = csvReader.getRandomPlace();
+            System.out.println("Country: "+place[0][0]+", City: "+place[1][0]);
+
         }
-        catch (Exception e){
+        catch (OWLOntologyCreationException e) {
             e.printStackTrace();
         }
-        finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        dbConnection.disconnect();
     }
 }

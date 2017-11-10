@@ -1,85 +1,80 @@
 package dataGeneration;
 
+import dao.FacilityDAO;
+import dao.FacilityDAOImpl;
 import entities.Facility;
 
+import java.sql.Statement;
 import java.util.Random;
 
 public class FacilityGenerator {
 
-    public FacilityGenerator() {
+    Statement statement;
+    int id;
+
+    public FacilityGenerator(Statement statement, int id) {
+        this.statement = statement;
+        this.id = id;
+    }
+
+    public void generate() {
         Facility facility = new Facility();
+        facility.setId(this.id);
         int k;
-        byte[] bit = new byte[1];
 
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setPetsAllowed(bit);
+            facility.setPetsAllowed((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setParking(bit);
+            facility.setParking((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setNonSmokingRooms(bit);
+            facility.setNonSmokingRooms((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setRoomService(bit);
+            facility.setRoomService((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setRestaurant(bit);
+            facility.setRestaurant((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setForDisabledGuests(bit);
+            facility.setForDisabledGuests((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setFreeWifi(bit);
+            facility.setFreeWifi((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setFitnessCentre(bit);
+            facility.setFitnessCentre((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setFamilyRooms(bit);
+            facility.setFamilyRooms((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setSwimmingPool(bit);
+            facility.setSwimmingPool((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setSpaAndWellnessCentre(bit);
+            facility.setSpaAndWellnessCentre((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setAirportShuttle(bit);
+            facility.setAirportShuttle((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setReception24Hour(bit);
+            facility.setReception24Hour((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setSauna(bit);
+            facility.setSauna((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setMassage(bit);
+            facility.setMassage((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setBicycleRental(bit);
+            facility.setBicycleRental((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            facility.setCycling(bit);
+            facility.setCycling((byte) k);
         }
-
+        FacilityDAO facilityDAO = new FacilityDAOImpl();
+        facilityDAO.create(this.statement, facility);
     }
 
     private int bit() {

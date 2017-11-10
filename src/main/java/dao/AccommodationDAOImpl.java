@@ -14,21 +14,21 @@ public class AccommodationDAOImpl implements AccommodationDAO {
     public void create(Statement stmt, Accommodation accommodation) {
         try {
             String sql = "INSERT INTO Accommodation VALUES (" +
-                    accommodation.getId() + ", " +
-                    "'"+accommodation.getName()+"'" + ", " +
-                    "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStars()+"'" + ", " +
-                    "'"+accommodation.getCountry()+"'" + ", " +
-                    "'"+accommodation.getCity()+"'" + ", " +
-                    "'"+accommodation.getAddress()+"'" + ", " +
-                    "'"+accommodation.getPostalCode()+"'" + ")";
+                accommodation.getId() + ", " +
+                "'"+accommodation.getName()+"'" + ", " +
+                "'"+accommodation.getType()+"'" + ", " +
+                "'"+accommodation.getStars()+"'" + ", " +
+                "'"+accommodation.getCountry()+"'" + ", " +
+                "'"+accommodation.getCity()+"'" + ", " +
+                "'"+accommodation.getAddress()+"'" + ", " +
+                "'"+accommodation.getPostalCode()+"'" + ")";
             stmt.executeUpdate(sql);
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in create: " + ex.getMessage());
-            System.out.println("SQLState in create: " + ex.getSQLState());
-            System.out.println("VendorError in create: " + ex.getErrorCode());
+            System.out.println("SQLException in accommodation create: " + ex.getMessage());
+            System.out.println("SQLState in accommodation create: " + ex.getSQLState());
+            System.out.println("VendorError in accommodation create: " + ex.getErrorCode());
         }
     }
 
@@ -57,9 +57,9 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in list: " + ex.getMessage());
-            System.out.println("SQLState in list: " + ex.getSQLState());
-            System.out.println("VendorError in list: " + ex.getErrorCode());
+            System.out.println("SQLException in accommodation list: " + ex.getMessage());
+            System.out.println("SQLState in accommodation list: " + ex.getSQLState());
+            System.out.println("VendorError in accommodation list: " + ex.getErrorCode());
         }
         finally {
             return accommodations;

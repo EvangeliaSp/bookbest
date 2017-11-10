@@ -1,28 +1,27 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 public class Facility {
     private int id;
-    private byte[] petsAllowed;
-    private byte[] parking;
-    private byte[] nonSmokingRooms;
-    private byte[] roomService;
-    private byte[] restaurant;
-    private byte[] forDisabledGuests;
-    private byte[] freeWifi;
-    private byte[] fitnessCentre;
-    private byte[] familyRooms;
-    private byte[] swimmingPool;
-    private byte[] spaAndWellnessCentre;
-    private byte[] airportShuttle;
-    private byte[] reception24Hour;
-    private byte[] sauna;
-    private byte[] massage;
-    private byte[] bicycleRental;
-    private byte[] cycling;
+    private Byte petsAllowed;
+    private Byte parking;
+    private Byte nonSmokingRooms;
+    private Byte roomService;
+    private Byte restaurant;
+    private Byte forDisabledGuests;
+    private Byte freeWifi;
+    private Byte fitnessCentre;
+    private Byte familyRooms;
+    private Byte swimmingPool;
+    private Byte spaAndWellnessCentre;
+    private Byte airportShuttle;
+    private Byte reception24Hour;
+    private Byte sauna;
+    private Byte massage;
+    private Byte bicycleRental;
+    private Byte cycling;
     private Accommodation accommodationById;
 
     @Id
@@ -37,171 +36,171 @@ public class Facility {
 
     @Basic
     @Column(name = "pets_allowed", nullable = true)
-    public byte[] getPetsAllowed() {
+    public Byte getPetsAllowed() {
         return petsAllowed;
     }
 
-    public void setPetsAllowed(byte[] petsAllowed) {
+    public void setPetsAllowed(Byte petsAllowed) {
         this.petsAllowed = petsAllowed;
     }
 
     @Basic
     @Column(name = "parking", nullable = true)
-    public byte[] getParking() {
+    public Byte getParking() {
         return parking;
     }
 
-    public void setParking(byte[] parking) {
+    public void setParking(Byte parking) {
         this.parking = parking;
     }
 
     @Basic
     @Column(name = "non_smoking_rooms", nullable = true)
-    public byte[] getNonSmokingRooms() {
+    public Byte getNonSmokingRooms() {
         return nonSmokingRooms;
     }
 
-    public void setNonSmokingRooms(byte[] nonSmokingRooms) {
+    public void setNonSmokingRooms(Byte nonSmokingRooms) {
         this.nonSmokingRooms = nonSmokingRooms;
     }
 
     @Basic
     @Column(name = "room_service", nullable = true)
-    public byte[] getRoomService() {
+    public Byte getRoomService() {
         return roomService;
     }
 
-    public void setRoomService(byte[] roomService) {
+    public void setRoomService(Byte roomService) {
         this.roomService = roomService;
     }
 
     @Basic
     @Column(name = "restaurant", nullable = true)
-    public byte[] getRestaurant() {
+    public Byte getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(byte[] restaurant) {
+    public void setRestaurant(Byte restaurant) {
         this.restaurant = restaurant;
     }
 
     @Basic
     @Column(name = "for_disabled_guests", nullable = true)
-    public byte[] getForDisabledGuests() {
+    public Byte getForDisabledGuests() {
         return forDisabledGuests;
     }
 
-    public void setForDisabledGuests(byte[] forDisabledGuests) {
+    public void setForDisabledGuests(Byte forDisabledGuests) {
         this.forDisabledGuests = forDisabledGuests;
     }
 
     @Basic
     @Column(name = "free_wifi", nullable = true)
-    public byte[] getFreeWifi() {
+    public Byte getFreeWifi() {
         return freeWifi;
     }
 
-    public void setFreeWifi(byte[] freeWifi) {
+    public void setFreeWifi(Byte freeWifi) {
         this.freeWifi = freeWifi;
     }
 
     @Basic
     @Column(name = "fitness_centre", nullable = true)
-    public byte[] getFitnessCentre() {
+    public Byte getFitnessCentre() {
         return fitnessCentre;
     }
 
-    public void setFitnessCentre(byte[] fitnessCentre) {
+    public void setFitnessCentre(Byte fitnessCentre) {
         this.fitnessCentre = fitnessCentre;
     }
 
     @Basic
     @Column(name = "family_rooms", nullable = true)
-    public byte[] getFamilyRooms() {
+    public Byte getFamilyRooms() {
         return familyRooms;
     }
 
-    public void setFamilyRooms(byte[] familyRooms) {
+    public void setFamilyRooms(Byte familyRooms) {
         this.familyRooms = familyRooms;
     }
 
     @Basic
     @Column(name = "swimming_pool", nullable = true)
-    public byte[] getSwimmingPool() {
+    public Byte getSwimmingPool() {
         return swimmingPool;
     }
 
-    public void setSwimmingPool(byte[] swimmingPool) {
+    public void setSwimmingPool(Byte swimmingPool) {
         this.swimmingPool = swimmingPool;
     }
 
     @Basic
     @Column(name = "spa_and_wellness_centre", nullable = true)
-    public byte[] getSpaAndWellnessCentre() {
+    public Byte getSpaAndWellnessCentre() {
         return spaAndWellnessCentre;
     }
 
-    public void setSpaAndWellnessCentre(byte[] spaAndWellnessCentre) {
+    public void setSpaAndWellnessCentre(Byte spaAndWellnessCentre) {
         this.spaAndWellnessCentre = spaAndWellnessCentre;
     }
 
     @Basic
     @Column(name = "airport_shuttle", nullable = true)
-    public byte[] getAirportShuttle() {
+    public Byte getAirportShuttle() {
         return airportShuttle;
     }
 
-    public void setAirportShuttle(byte[] airportShuttle) {
+    public void setAirportShuttle(Byte airportShuttle) {
         this.airportShuttle = airportShuttle;
     }
 
     @Basic
     @Column(name = "reception_24-hour", nullable = true)
-    public byte[] getReception24Hour() {
+    public Byte getReception24Hour() {
         return reception24Hour;
     }
 
-    public void setReception24Hour(byte[] reception24Hour) {
+    public void setReception24Hour(Byte reception24Hour) {
         this.reception24Hour = reception24Hour;
     }
 
     @Basic
     @Column(name = "sauna", nullable = true)
-    public byte[] getSauna() {
+    public Byte getSauna() {
         return sauna;
     }
 
-    public void setSauna(byte[] sauna) {
+    public void setSauna(Byte sauna) {
         this.sauna = sauna;
     }
 
     @Basic
     @Column(name = "massage", nullable = true)
-    public byte[] getMassage() {
+    public Byte getMassage() {
         return massage;
     }
 
-    public void setMassage(byte[] massage) {
+    public void setMassage(Byte massage) {
         this.massage = massage;
     }
 
     @Basic
     @Column(name = "bicycle_rental", nullable = true)
-    public byte[] getBicycleRental() {
+    public Byte getBicycleRental() {
         return bicycleRental;
     }
 
-    public void setBicycleRental(byte[] bicycleRental) {
+    public void setBicycleRental(Byte bicycleRental) {
         this.bicycleRental = bicycleRental;
     }
 
     @Basic
     @Column(name = "cycling", nullable = true)
-    public byte[] getCycling() {
+    public Byte getCycling() {
         return cycling;
     }
 
-    public void setCycling(byte[] cycling) {
+    public void setCycling(Byte cycling) {
         this.cycling = cycling;
     }
 
@@ -213,23 +212,34 @@ public class Facility {
         Facility facility = (Facility) o;
 
         if (id != facility.id) return false;
-        if (!Arrays.equals(petsAllowed, facility.petsAllowed)) return false;
-        if (!Arrays.equals(parking, facility.parking)) return false;
-        if (!Arrays.equals(nonSmokingRooms, facility.nonSmokingRooms)) return false;
-        if (!Arrays.equals(roomService, facility.roomService)) return false;
-        if (!Arrays.equals(restaurant, facility.restaurant)) return false;
-        if (!Arrays.equals(forDisabledGuests, facility.forDisabledGuests)) return false;
-        if (!Arrays.equals(freeWifi, facility.freeWifi)) return false;
-        if (!Arrays.equals(fitnessCentre, facility.fitnessCentre)) return false;
-        if (!Arrays.equals(familyRooms, facility.familyRooms)) return false;
-        if (!Arrays.equals(swimmingPool, facility.swimmingPool)) return false;
-        if (!Arrays.equals(spaAndWellnessCentre, facility.spaAndWellnessCentre)) return false;
-        if (!Arrays.equals(airportShuttle, facility.airportShuttle)) return false;
-        if (!Arrays.equals(reception24Hour, facility.reception24Hour)) return false;
-        if (!Arrays.equals(sauna, facility.sauna)) return false;
-        if (!Arrays.equals(massage, facility.massage)) return false;
-        if (!Arrays.equals(bicycleRental, facility.bicycleRental)) return false;
-        if (!Arrays.equals(cycling, facility.cycling)) return false;
+        if (petsAllowed != null ? !petsAllowed.equals(facility.petsAllowed) : facility.petsAllowed != null)
+            return false;
+        if (parking != null ? !parking.equals(facility.parking) : facility.parking != null) return false;
+        if (nonSmokingRooms != null ? !nonSmokingRooms.equals(facility.nonSmokingRooms) : facility.nonSmokingRooms != null)
+            return false;
+        if (roomService != null ? !roomService.equals(facility.roomService) : facility.roomService != null)
+            return false;
+        if (restaurant != null ? !restaurant.equals(facility.restaurant) : facility.restaurant != null) return false;
+        if (forDisabledGuests != null ? !forDisabledGuests.equals(facility.forDisabledGuests) : facility.forDisabledGuests != null)
+            return false;
+        if (freeWifi != null ? !freeWifi.equals(facility.freeWifi) : facility.freeWifi != null) return false;
+        if (fitnessCentre != null ? !fitnessCentre.equals(facility.fitnessCentre) : facility.fitnessCentre != null)
+            return false;
+        if (familyRooms != null ? !familyRooms.equals(facility.familyRooms) : facility.familyRooms != null)
+            return false;
+        if (swimmingPool != null ? !swimmingPool.equals(facility.swimmingPool) : facility.swimmingPool != null)
+            return false;
+        if (spaAndWellnessCentre != null ? !spaAndWellnessCentre.equals(facility.spaAndWellnessCentre) : facility.spaAndWellnessCentre != null)
+            return false;
+        if (airportShuttle != null ? !airportShuttle.equals(facility.airportShuttle) : facility.airportShuttle != null)
+            return false;
+        if (reception24Hour != null ? !reception24Hour.equals(facility.reception24Hour) : facility.reception24Hour != null)
+            return false;
+        if (sauna != null ? !sauna.equals(facility.sauna) : facility.sauna != null) return false;
+        if (massage != null ? !massage.equals(facility.massage) : facility.massage != null) return false;
+        if (bicycleRental != null ? !bicycleRental.equals(facility.bicycleRental) : facility.bicycleRental != null)
+            return false;
+        if (cycling != null ? !cycling.equals(facility.cycling) : facility.cycling != null) return false;
 
         return true;
     }
@@ -237,23 +247,23 @@ public class Facility {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + Arrays.hashCode(petsAllowed);
-        result = 31 * result + Arrays.hashCode(parking);
-        result = 31 * result + Arrays.hashCode(nonSmokingRooms);
-        result = 31 * result + Arrays.hashCode(roomService);
-        result = 31 * result + Arrays.hashCode(restaurant);
-        result = 31 * result + Arrays.hashCode(forDisabledGuests);
-        result = 31 * result + Arrays.hashCode(freeWifi);
-        result = 31 * result + Arrays.hashCode(fitnessCentre);
-        result = 31 * result + Arrays.hashCode(familyRooms);
-        result = 31 * result + Arrays.hashCode(swimmingPool);
-        result = 31 * result + Arrays.hashCode(spaAndWellnessCentre);
-        result = 31 * result + Arrays.hashCode(airportShuttle);
-        result = 31 * result + Arrays.hashCode(reception24Hour);
-        result = 31 * result + Arrays.hashCode(sauna);
-        result = 31 * result + Arrays.hashCode(massage);
-        result = 31 * result + Arrays.hashCode(bicycleRental);
-        result = 31 * result + Arrays.hashCode(cycling);
+        result = 31 * result + (petsAllowed != null ? petsAllowed.hashCode() : 0);
+        result = 31 * result + (parking != null ? parking.hashCode() : 0);
+        result = 31 * result + (nonSmokingRooms != null ? nonSmokingRooms.hashCode() : 0);
+        result = 31 * result + (roomService != null ? roomService.hashCode() : 0);
+        result = 31 * result + (restaurant != null ? restaurant.hashCode() : 0);
+        result = 31 * result + (forDisabledGuests != null ? forDisabledGuests.hashCode() : 0);
+        result = 31 * result + (freeWifi != null ? freeWifi.hashCode() : 0);
+        result = 31 * result + (fitnessCentre != null ? fitnessCentre.hashCode() : 0);
+        result = 31 * result + (familyRooms != null ? familyRooms.hashCode() : 0);
+        result = 31 * result + (swimmingPool != null ? swimmingPool.hashCode() : 0);
+        result = 31 * result + (spaAndWellnessCentre != null ? spaAndWellnessCentre.hashCode() : 0);
+        result = 31 * result + (airportShuttle != null ? airportShuttle.hashCode() : 0);
+        result = 31 * result + (reception24Hour != null ? reception24Hour.hashCode() : 0);
+        result = 31 * result + (sauna != null ? sauna.hashCode() : 0);
+        result = 31 * result + (massage != null ? massage.hashCode() : 0);
+        result = 31 * result + (bicycleRental != null ? bicycleRental.hashCode() : 0);
+        result = 31 * result + (cycling != null ? cycling.hashCode() : 0);
         return result;
     }
 

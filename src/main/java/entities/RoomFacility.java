@@ -1,25 +1,24 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 public class RoomFacility {
     private int id;
-    private byte[] breakfastIncluded;
-    private byte[] breakfastAndDinner;
-    private byte[] selfCatering;
-    private byte[] freeCancellation;
-    private byte[] bookWithoutCredit;
-    private byte[] noPrepayment;
-    private byte[] airConditioning;
-    private byte[] bath;
-    private byte[] coffeeMachine;
-    private byte[] electricKettle;
-    private byte[] flatScreenTv;
-    private byte[] kitchenKitchenette;
-    private byte[] soundProofing;
-    private byte[] teaCoffeeMaker;
+    private Byte breakfastIncluded;
+    private Byte breakfastAndDinner;
+    private Byte selfCatering;
+    private Byte freeCancellation;
+    private Byte bookWithoutCreditCard;
+    private Byte noPrepayment;
+    private Byte airConditioning;
+    private Byte bath;
+    private Byte coffeeMachine;
+    private Byte electricKettle;
+    private Byte flatScreenTv;
+    private Byte kitchenKitchenette;
+    private Byte soundProofing;
+    private Byte teaCoffeeMaker;
     private Room roomById;
 
     @Id
@@ -34,141 +33,141 @@ public class RoomFacility {
 
     @Basic
     @Column(name = "breakfast_included", nullable = true)
-    public byte[] getBreakfastIncluded() {
+    public Byte getBreakfastIncluded() {
         return breakfastIncluded;
     }
 
-    public void setBreakfastIncluded(byte[] breakfastIncluded) {
+    public void setBreakfastIncluded(Byte breakfastIncluded) {
         this.breakfastIncluded = breakfastIncluded;
     }
 
     @Basic
     @Column(name = "breakfast_and_dinner", nullable = true)
-    public byte[] getBreakfastAndDinner() {
+    public Byte getBreakfastAndDinner() {
         return breakfastAndDinner;
     }
 
-    public void setBreakfastAndDinner(byte[] breakfastAndDinner) {
+    public void setBreakfastAndDinner(Byte breakfastAndDinner) {
         this.breakfastAndDinner = breakfastAndDinner;
     }
 
     @Basic
     @Column(name = "self_catering", nullable = true)
-    public byte[] getSelfCatering() {
+    public Byte getSelfCatering() {
         return selfCatering;
     }
 
-    public void setSelfCatering(byte[] selfCatering) {
+    public void setSelfCatering(Byte selfCatering) {
         this.selfCatering = selfCatering;
     }
 
     @Basic
     @Column(name = "free_cancellation", nullable = true)
-    public byte[] getFreeCancellation() {
+    public Byte getFreeCancellation() {
         return freeCancellation;
     }
 
-    public void setFreeCancellation(byte[] freeCancellation) {
+    public void setFreeCancellation(Byte freeCancellation) {
         this.freeCancellation = freeCancellation;
     }
 
     @Basic
-    @Column(name = "book_without_credit", nullable = true)
-    public byte[] getBookWithoutCredit() {
-        return bookWithoutCredit;
+    @Column(name = "book_without_credit_card", nullable = true)
+    public Byte getBookWithoutCreditCard() {
+        return bookWithoutCreditCard;
     }
 
-    public void setBookWithoutCredit(byte[] bookWithoutCredit) {
-        this.bookWithoutCredit = bookWithoutCredit;
+    public void setBookWithoutCreditCard(Byte bookWithoutCreditCard) {
+        this.bookWithoutCreditCard = bookWithoutCreditCard;
     }
 
     @Basic
     @Column(name = "no_prepayment", nullable = true)
-    public byte[] getNoPrepayment() {
+    public Byte getNoPrepayment() {
         return noPrepayment;
     }
 
-    public void setNoPrepayment(byte[] noPrepayment) {
+    public void setNoPrepayment(Byte noPrepayment) {
         this.noPrepayment = noPrepayment;
     }
 
     @Basic
     @Column(name = "air_conditioning", nullable = true)
-    public byte[] getAirConditioning() {
+    public Byte getAirConditioning() {
         return airConditioning;
     }
 
-    public void setAirConditioning(byte[] airConditioning) {
+    public void setAirConditioning(Byte airConditioning) {
         this.airConditioning = airConditioning;
     }
 
     @Basic
     @Column(name = "bath", nullable = true)
-    public byte[] getBath() {
+    public Byte getBath() {
         return bath;
     }
 
-    public void setBath(byte[] bath) {
+    public void setBath(Byte bath) {
         this.bath = bath;
     }
 
     @Basic
     @Column(name = "coffee_machine", nullable = true)
-    public byte[] getCoffeeMachine() {
+    public Byte getCoffeeMachine() {
         return coffeeMachine;
     }
 
-    public void setCoffeeMachine(byte[] coffeeMachine) {
+    public void setCoffeeMachine(Byte coffeeMachine) {
         this.coffeeMachine = coffeeMachine;
     }
 
     @Basic
     @Column(name = "electric_kettle", nullable = true)
-    public byte[] getElectricKettle() {
+    public Byte getElectricKettle() {
         return electricKettle;
     }
 
-    public void setElectricKettle(byte[] electricKettle) {
+    public void setElectricKettle(Byte electricKettle) {
         this.electricKettle = electricKettle;
     }
 
     @Basic
     @Column(name = "flat-screen_TV", nullable = true)
-    public byte[] getFlatScreenTv() {
+    public Byte getFlatScreenTv() {
         return flatScreenTv;
     }
 
-    public void setFlatScreenTv(byte[] flatScreenTv) {
+    public void setFlatScreenTv(Byte flatScreenTv) {
         this.flatScreenTv = flatScreenTv;
     }
 
     @Basic
     @Column(name = "kitchen/kitchenette", nullable = true)
-    public byte[] getKitchenKitchenette() {
+    public Byte getKitchenKitchenette() {
         return kitchenKitchenette;
     }
 
-    public void setKitchenKitchenette(byte[] kitchenKitchenette) {
+    public void setKitchenKitchenette(Byte kitchenKitchenette) {
         this.kitchenKitchenette = kitchenKitchenette;
     }
 
     @Basic
     @Column(name = "sound_proofing", nullable = true)
-    public byte[] getSoundProofing() {
+    public Byte getSoundProofing() {
         return soundProofing;
     }
 
-    public void setSoundProofing(byte[] soundProofing) {
+    public void setSoundProofing(Byte soundProofing) {
         this.soundProofing = soundProofing;
     }
 
     @Basic
     @Column(name = "tea/coffee_maker", nullable = true)
-    public byte[] getTeaCoffeeMaker() {
+    public Byte getTeaCoffeeMaker() {
         return teaCoffeeMaker;
     }
 
-    public void setTeaCoffeeMaker(byte[] teaCoffeeMaker) {
+    public void setTeaCoffeeMaker(Byte teaCoffeeMaker) {
         this.teaCoffeeMaker = teaCoffeeMaker;
     }
 
@@ -180,20 +179,30 @@ public class RoomFacility {
         RoomFacility that = (RoomFacility) o;
 
         if (id != that.id) return false;
-        if (!Arrays.equals(breakfastIncluded, that.breakfastIncluded)) return false;
-        if (!Arrays.equals(breakfastAndDinner, that.breakfastAndDinner)) return false;
-        if (!Arrays.equals(selfCatering, that.selfCatering)) return false;
-        if (!Arrays.equals(freeCancellation, that.freeCancellation)) return false;
-        if (!Arrays.equals(bookWithoutCredit, that.bookWithoutCredit)) return false;
-        if (!Arrays.equals(noPrepayment, that.noPrepayment)) return false;
-        if (!Arrays.equals(airConditioning, that.airConditioning)) return false;
-        if (!Arrays.equals(bath, that.bath)) return false;
-        if (!Arrays.equals(coffeeMachine, that.coffeeMachine)) return false;
-        if (!Arrays.equals(electricKettle, that.electricKettle)) return false;
-        if (!Arrays.equals(flatScreenTv, that.flatScreenTv)) return false;
-        if (!Arrays.equals(kitchenKitchenette, that.kitchenKitchenette)) return false;
-        if (!Arrays.equals(soundProofing, that.soundProofing)) return false;
-        if (!Arrays.equals(teaCoffeeMaker, that.teaCoffeeMaker)) return false;
+        if (breakfastIncluded != null ? !breakfastIncluded.equals(that.breakfastIncluded) : that.breakfastIncluded != null)
+            return false;
+        if (breakfastAndDinner != null ? !breakfastAndDinner.equals(that.breakfastAndDinner) : that.breakfastAndDinner != null)
+            return false;
+        if (selfCatering != null ? !selfCatering.equals(that.selfCatering) : that.selfCatering != null) return false;
+        if (freeCancellation != null ? !freeCancellation.equals(that.freeCancellation) : that.freeCancellation != null)
+            return false;
+        if (bookWithoutCreditCard != null ? !bookWithoutCreditCard.equals(that.bookWithoutCreditCard) : that.bookWithoutCreditCard != null)
+            return false;
+        if (noPrepayment != null ? !noPrepayment.equals(that.noPrepayment) : that.noPrepayment != null) return false;
+        if (airConditioning != null ? !airConditioning.equals(that.airConditioning) : that.airConditioning != null)
+            return false;
+        if (bath != null ? !bath.equals(that.bath) : that.bath != null) return false;
+        if (coffeeMachine != null ? !coffeeMachine.equals(that.coffeeMachine) : that.coffeeMachine != null)
+            return false;
+        if (electricKettle != null ? !electricKettle.equals(that.electricKettle) : that.electricKettle != null)
+            return false;
+        if (flatScreenTv != null ? !flatScreenTv.equals(that.flatScreenTv) : that.flatScreenTv != null) return false;
+        if (kitchenKitchenette != null ? !kitchenKitchenette.equals(that.kitchenKitchenette) : that.kitchenKitchenette != null)
+            return false;
+        if (soundProofing != null ? !soundProofing.equals(that.soundProofing) : that.soundProofing != null)
+            return false;
+        if (teaCoffeeMaker != null ? !teaCoffeeMaker.equals(that.teaCoffeeMaker) : that.teaCoffeeMaker != null)
+            return false;
 
         return true;
     }
@@ -201,20 +210,20 @@ public class RoomFacility {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + Arrays.hashCode(breakfastIncluded);
-        result = 31 * result + Arrays.hashCode(breakfastAndDinner);
-        result = 31 * result + Arrays.hashCode(selfCatering);
-        result = 31 * result + Arrays.hashCode(freeCancellation);
-        result = 31 * result + Arrays.hashCode(bookWithoutCredit);
-        result = 31 * result + Arrays.hashCode(noPrepayment);
-        result = 31 * result + Arrays.hashCode(airConditioning);
-        result = 31 * result + Arrays.hashCode(bath);
-        result = 31 * result + Arrays.hashCode(coffeeMachine);
-        result = 31 * result + Arrays.hashCode(electricKettle);
-        result = 31 * result + Arrays.hashCode(flatScreenTv);
-        result = 31 * result + Arrays.hashCode(kitchenKitchenette);
-        result = 31 * result + Arrays.hashCode(soundProofing);
-        result = 31 * result + Arrays.hashCode(teaCoffeeMaker);
+        result = 31 * result + (breakfastIncluded != null ? breakfastIncluded.hashCode() : 0);
+        result = 31 * result + (breakfastAndDinner != null ? breakfastAndDinner.hashCode() : 0);
+        result = 31 * result + (selfCatering != null ? selfCatering.hashCode() : 0);
+        result = 31 * result + (freeCancellation != null ? freeCancellation.hashCode() : 0);
+        result = 31 * result + (bookWithoutCreditCard != null ? bookWithoutCreditCard.hashCode() : 0);
+        result = 31 * result + (noPrepayment != null ? noPrepayment.hashCode() : 0);
+        result = 31 * result + (airConditioning != null ? airConditioning.hashCode() : 0);
+        result = 31 * result + (bath != null ? bath.hashCode() : 0);
+        result = 31 * result + (coffeeMachine != null ? coffeeMachine.hashCode() : 0);
+        result = 31 * result + (electricKettle != null ? electricKettle.hashCode() : 0);
+        result = 31 * result + (flatScreenTv != null ? flatScreenTv.hashCode() : 0);
+        result = 31 * result + (kitchenKitchenette != null ? kitchenKitchenette.hashCode() : 0);
+        result = 31 * result + (soundProofing != null ? soundProofing.hashCode() : 0);
+        result = 31 * result + (teaCoffeeMaker != null ? teaCoffeeMaker.hashCode() : 0);
         return result;
     }
 

@@ -1,72 +1,71 @@
 package dataGeneration;
 
+import dao.RoomFacilityDAO;
+import dao.RoomFacilityDAOImpl;
 import entities.RoomFacility;
 
+import java.sql.Statement;
 import java.util.Random;
 
 public class RoomFacilityGenerator {
 
-    public RoomFacilityGenerator() {
+    Statement statement;
+    int id;
+
+    public RoomFacilityGenerator(Statement statement, int id) {
+        this.statement = statement;
+        this.id = id;
+    }
+
+    public void generate() {
         RoomFacility roomFacility = new RoomFacility();
+        roomFacility.setId(this.id);
         int k;
-        byte[] bit = new byte[1];
 
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setBreakfastIncluded(bit);
+            roomFacility.setBreakfastIncluded((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setBreakfastAndDinner(bit);
+            roomFacility.setBreakfastAndDinner((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setSelfCatering(bit);
+            roomFacility.setSelfCatering((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setFreeCancellation(bit);
+            roomFacility.setFreeCancellation((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setBookWithoutCredit(bit);
+            roomFacility.setBookWithoutCreditCard((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setNoPrepayment(bit);
+            roomFacility.setNoPrepayment((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setAirConditioning(bit);
+            roomFacility.setAirConditioning((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setBath(bit);
+            roomFacility.setBath((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setCoffeeMachine(bit);
+            roomFacility.setCoffeeMachine((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setElectricKettle(bit);
+            roomFacility.setElectricKettle((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setFlatScreenTv(bit);
+            roomFacility.setFlatScreenTv((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setKitchenKitchenette(bit);
+            roomFacility.setKitchenKitchenette((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setSoundProofing(bit);
+            roomFacility.setSoundProofing((byte) k);
         }
         if((k=bit()) != 2) {
-            bit[0] = (byte) k;
-            roomFacility.setTeaCoffeeMaker(bit);
+            roomFacility.setTeaCoffeeMaker((byte) k);
         }
+        RoomFacilityDAO roomFacilityDAO = new RoomFacilityDAOImpl();
+        roomFacilityDAO.create(this.statement, roomFacility);
     }
 
     private int bit() {
