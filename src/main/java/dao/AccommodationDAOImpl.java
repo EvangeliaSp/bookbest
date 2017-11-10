@@ -37,8 +37,9 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         List<Accommodation> accommodations = new LinkedList<>();
 
         try {
-            String sql = "SELECT * FROM Hotel";
+            String sql = "SELECT * FROM Accommodation";
             ResultSet rs = stmt.executeQuery(sql);
+            System.out.println(rs);
 
             while(rs.next()) {
                 Accommodation accommodation = new Accommodation();

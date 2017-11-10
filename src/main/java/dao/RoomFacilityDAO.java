@@ -6,6 +6,6 @@ import java.sql.Statement;
 
 public interface RoomFacilityDAO {
 
-    void create(Statement stmt, RoomFacility roomFacility);
+    void create(Statement statement, RoomFacility roomFacility);
 
 }

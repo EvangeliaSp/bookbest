@@ -118,7 +118,7 @@
       <Position>13</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
-    <column id="38" parent="11" name="reception_24-hour">
+    <column id="38" parent="11" name="reception_24_hour">
       <Position>14</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
@@ -291,11 +291,11 @@
       <Position>11</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
-    <column id="76" parent="15" name="flat-screen_TV">
+    <column id="76" parent="15" name="flat_screen_TV">
       <Position>12</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
-    <column id="77" parent="15" name="kitchen/kitchenette">
+    <column id="77" parent="15" name="kitchen_kitchenette">
       <Position>13</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
@@ -303,7 +303,7 @@
       <Position>14</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
-    <column id="79" parent="15" name="tea/coffee_maker">
+    <column id="79" parent="15" name="tea_coffee_maker">
       <Position>15</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>

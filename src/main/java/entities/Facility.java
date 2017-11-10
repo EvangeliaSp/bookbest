@@ -155,7 +155,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "reception_24-hour", nullable = true)
+    @Column(name = "reception_24_hour", nullable = true)
     public Byte getReception24Hour() {
         return reception24Hour;
     }

@@ -132,7 +132,7 @@ public class RoomFacility {
     }
 
     @Basic
-    @Column(name = "flat-screen_TV", nullable = true)
+    @Column(name = "flat_screen_TV", nullable = true)
     public Byte getFlatScreenTv() {
         return flatScreenTv;
     }
@@ -142,7 +142,7 @@ public class RoomFacility {
     }
 
     @Basic
-    @Column(name = "kitchen/kitchenette", nullable = true)
+    @Column(name = "kitchen_kitchenette", nullable = true)
     public Byte getKitchenKitchenette() {
         return kitchenKitchenette;
     }
@@ -162,7 +162,7 @@ public class RoomFacility {
     }
 
     @Basic
-    @Column(name = "tea/coffee_maker", nullable = true)
+    @Column(name = "tea_coffee_maker", nullable = true)
     public Byte getTeaCoffeeMaker() {
         return teaCoffeeMaker;
     }
