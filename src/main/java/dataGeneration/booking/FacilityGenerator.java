@@ -1,10 +1,13 @@
-package dataGeneration;
+package dataGeneration.booking;
+
+import dao.booking.FacilityDAO;
+import dao.booking.FacilityDAOImpl;
+import entities.booking.Facility;
 
 import java.sql.Statement;
 import java.util.Random;
 
 public class FacilityGenerator {
-
     Statement statement;
     int id;
 
@@ -69,6 +72,49 @@ public class FacilityGenerator {
         if((k=bit()) != 2) {
             facility.setCycling((byte) k);
         }
+        if((k=bit()) != 2) {
+            facility.setBreakfastIncluded((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setBreakfastAndDinner((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setSelfCatering((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setFreeCancellation((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setBookWithoutCreditCard((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setNoPrepayment((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setAirConditioning((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setBath((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setCoffeeMachine((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setElectricKettle((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setFlatScreenTv((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setKitchenKitchenette((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setSoundProofing((byte) k);
+        }
+        if((k=bit()) != 2) {
+            facility.setTeaCoffeeMaker((byte) k);
+        }
+
         FacilityDAO facilityDAO = new FacilityDAOImpl();
         facilityDAO.create(this.statement, facility);
     }
@@ -76,5 +122,4 @@ public class FacilityGenerator {
     private int bit() {
         return new Random().nextInt(3);
     }
-
 }

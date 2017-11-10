@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class CSVReader {
 
-    int mapLength = 7323;
+    int mapLength = 6441;
     String[][] map = new String[2][mapLength];
 
 
@@ -23,7 +23,7 @@ public class CSVReader {
     public void importFromCSV() {
         String csvFile = "./src/main/resources/dataFiles/simplemaps-worldcities-basic.csv";
         BufferedReader br = null;
-        String line = "";
+        String line;
         String cvsSplitBy = ",";
         int i=0;
 
@@ -32,11 +32,10 @@ public class CSVReader {
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
-                String[] country = line.split(cvsSplitBy);
+                String[] place = line.split(cvsSplitBy);
 
-
-                this.map[0][i] = country[5];
-                this.map[1][i] = country[0];
+                this.map[0][i] = place[0];
+                this.map[1][i] = place[1];
                 i++;
             }
 
