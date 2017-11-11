@@ -12,21 +12,22 @@ import java.util.List;
 public class AccommodationDAOImpl implements AccommodationDAO {
 
     @Override
-    public void create(Statement stmt, Accommodation accommodation) {
+    public void create(Statement statement, Accommodation accommodation) {
         try {
-            String sql = "INSERT INTO Accommodation VALUES (" +
+            String sql = "INSERT INTO booking.Accommodation VALUES (" +
                     accommodation.getId() + ", " +
                     "'"+accommodation.getName()+"'" + ", " +
                     "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStars()+"'" + ", " +
-                    "'"+accommodation.getRoomType()+"'" + ", " +
+                    "'"+accommodation.getStarRating()+"'" + ", " +
                     "'"+accommodation.getPricePerNight()+"'" + ", " +
-                    "'"+accommodation.getRating()+"'" + ", " +
+                    "'"+accommodation.getGuestRating()+"'" + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
-                    "'"+accommodation.getAddress()+"'" + ", " +
-                    "'"+accommodation.getPostalCode()+"'" + ")";
-            stmt.executeUpdate(sql);
+                    "'"+accommodation.getLocation()+"'" + ", " +
+                    "'"+accommodation.getDistanceFromCityCenter()+"'" + ", " +
+                    "'"+accommodation.getGuestLocationRating()+"'" + ", " +
+                    "'"+accommodation.getRoomType()+"'" + ")";
+            statement.executeUpdate(sql);
         }
         catch (SQLException ex){
             // Handle the errors
@@ -37,12 +38,12 @@ public class AccommodationDAOImpl implements AccommodationDAO {
     }
 
     @Override
-    public List<Accommodation> list(Statement stmt) {
+    public List<Accommodation> list(Statement statement) {
         List<Accommodation> accommodations = new LinkedList<>();
 
         try {
-            String sql = "SELECT * FROM Accommodation";
-            ResultSet rs = stmt.executeQuery(sql);
+            String sql = "SELECT * FROM booking.Accommodation";
+            ResultSet rs = statement.executeQuery(sql);
             System.out.println(rs);
 
             while(rs.next()) {
@@ -50,18 +51,18 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                 accommodation.setId(rs.getInt("id"));
                 accommodation.setName(rs.getString("name"));
                 accommodation.setType(rs.getString("type"));
-                accommodation.setStars(rs.getInt("stars"));
-                accommodation.setRoomType(rs.getString("room_type"));
-                accommodation.setPricePerNight(rs.getInt("price_per_night"));
-                accommodation.setRating(rs.getDouble("rating"));
+                accommodation.setStarRating(rs.getInt("starRating"));
+                accommodation.setPricePerNight(rs.getInt("pricePerNight"));
+                accommodation.setGuestRating(rs.getDouble("guestRating"));
                 accommodation.setCountry(rs.getString("country"));
                 accommodation.setCity(rs.getString("city"));
-                accommodation.setAddress(rs.getString("address"));
-                accommodation.setPostalCode(rs.getInt("postal_code"));
+                accommodation.setLocation(rs.getDouble("location"));
+                accommodation.setDistanceFromCityCenter(rs.getDouble("distanceFromCityCenter"));
+                accommodation.setGuestLocationRating(rs.getDouble("guestLocationRating"));
+                accommodation.setRoomType(rs.getString("roomType"));
 
                 accommodations.add(accommodation);
             }
-
         }
         catch (SQLException ex){
             // Handle the errors

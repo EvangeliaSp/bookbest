@@ -1,6 +1,6 @@
-package dao.hotelclub;
+package dao.priceline;
 
-import entities.hotelclub.Accommodation;
+import entities.priceline.Accommodation;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,19 +13,17 @@ public class AccommodationDAOImpl implements AccommodationDAO {
     @Override
     public void create(Statement statement, Accommodation accommodation) {
         try {
-            String sql = "INSERT INTO hotelclub.Accommodation VALUES (" +
+            String sql = "INSERT INTO priceline.Accommodation VALUES (" +
                     accommodation.getId() + ", " +
                     "'"+accommodation.getName()+"'" + ", " +
                     "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStars()+"'" + ", " +
+                    "'"+accommodation.getStarRating()+"'" + ", " +
                     "'"+accommodation.getPricePerNight()+"'" + ", " +
-                    "'"+accommodation.getRating()+"'" + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
+                    "'"+accommodation.getPeople()+"'" + ", " +
                     "'"+accommodation.getLocation()+"'" + ", " +
-                    "'"+accommodation.getLocation()+"'" + ", " +
-                    "'"+accommodation.getDistanceFromCityCenter()+"'" + ", " +
-                    "'"+accommodation.getRoomTypePeople()+"'" + ")";
+                    "'"+accommodation.getGuestRating()+"'" + ", " + ")";
             statement.executeUpdate(sql);
         }
         catch (SQLException ex){
@@ -41,7 +39,7 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         List<Accommodation> accommodations = new LinkedList<>();
 
         try {
-            String sql = "SELECT * FROM hotelclub.Accommodation";
+            String sql = "SELECT * FROM priceline.Accommodation";
             ResultSet rs = statement.executeQuery(sql);
             System.out.println(rs);
 
@@ -50,18 +48,16 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                 accommodation.setId(rs.getInt("id"));
                 accommodation.setName(rs.getString("name"));
                 accommodation.setType(rs.getString("type"));
-                accommodation.setStars(rs.getInt("stars"));
+                accommodation.setStarRating(rs.getInt("starRating"));
                 accommodation.setPricePerNight(rs.getInt("pricePerNight"));
-                accommodation.setRating(rs.getDouble("rating"));
                 accommodation.setCountry(rs.getString("country"));
                 accommodation.setCity(rs.getString("city"));
+                accommodation.setPeople(rs.getInt("people"));
                 accommodation.setLocation(rs.getDouble("location"));
-                accommodation.setDistanceFromCityCenter(rs.getDouble("distanceFromCityCenter"));
-                accommodation.setRoomTypePeople(rs.getInt("roomTypePeople"));
+                accommodation.setGuestRating(rs.getDouble("guestRating"));
 
                 accommodations.add(accommodation);
             }
-
         }
         catch (SQLException ex){
             // Handle the errors

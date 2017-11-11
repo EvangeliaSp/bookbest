@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface AccommodationDAO {
 
-    void create(Statement stmt, Accommodation accommodation);
+    void create(Statement statement, Accommodation accommodation);
 
-    List<Accommodation> list(Statement stmt);
+    List<Accommodation> list(Statement statement);
 
 }

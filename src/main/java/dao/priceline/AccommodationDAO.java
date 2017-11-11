@@ -1,6 +1,6 @@
-package dao.hotelclub;
+package dao.priceline;
 
-import entities.hotelclub.Accommodation;
+import entities.priceline.Accommodation;
 
 import java.sql.Statement;
 import java.util.List;
