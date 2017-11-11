@@ -1,6 +1,6 @@
-CREATE DATABASE booking;
+CREATE DATABASE airtickets;
 
-USE booking;
+USE airtickets;
 
 CREATE TABLE `Accommodation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -11,7 +11,6 @@ CREATE TABLE `Accommodation` (
   `guestRating` double NULL,
   `country` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `location` double NULL,
   `distanceFromCityCenter` double NULL,
   `guestLocationRating` double NULL,
   `roomType` varchar(255) NULL,
@@ -32,7 +31,7 @@ CREATE TABLE `Facility` (
   `swimmingPool` tinyint(1) NULL,
   `spaAndWellnessCentre` tinyint(1) NULL,
   `airportShuttle` tinyint(1) NULL,
-  `reception24Hour` tinyint(1) NULL,
+  `frontDesk24Hour` tinyint(1) NULL,
   `sauna` tinyint(1) NULL,
   `massage` tinyint(1) NULL,
   `bicycleRental` tinyint(1) NULL,

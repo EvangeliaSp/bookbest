@@ -1,4 +1,4 @@
-package entities.hotelclub;
+package entities.airtickets;
 
 import javax.persistence.*;
 
@@ -7,14 +7,14 @@ public class Accommodation {
     private int id;
     private String name;
     private String type;
-    private Integer stars;
+    private Integer starRating;
     private int pricePerNight;
-    private Double rating;
+    private Double guestRating;
     private String country;
     private String city;
-    private Double location;
     private Double distanceFromCityCenter;
-    private Integer roomTypePeople;
+    private Double guestLocationRating;
+    private String roomType;
     private Facility facilityById;
 
     @Id
@@ -48,13 +48,13 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "stars", nullable = true)
-    public Integer getStars() {
-        return stars;
+    @Column(name = "starRating", nullable = true)
+    public Integer getStarRating() {
+        return starRating;
     }
 
-    public void setStars(Integer stars) {
-        this.stars = stars;
+    public void setStarRating(Integer starRating) {
+        this.starRating = starRating;
     }
 
     @Basic
@@ -68,13 +68,13 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "rating", nullable = true, precision = 0)
-    public Double getRating() {
-        return rating;
+    @Column(name = "guestRating", nullable = true, precision = 0)
+    public Double getGuestRating() {
+        return guestRating;
     }
 
-    public void setRating(Double rating) {
-        this.rating = rating;
+    public void setGuestRating(Double guestRating) {
+        this.guestRating = guestRating;
     }
 
     @Basic
@@ -98,16 +98,6 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "location", nullable = true, precision = 0)
-    public Double getLocation() {
-        return location;
-    }
-
-    public void setLocation(Double location) {
-        this.location = location;
-    }
-
-    @Basic
     @Column(name = "distanceFromCityCenter", nullable = true, precision = 0)
     public Double getDistanceFromCityCenter() {
         return distanceFromCityCenter;
@@ -118,13 +108,23 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "roomTypePeople", nullable = true)
-    public Integer getRoomTypePeople() {
-        return roomTypePeople;
+    @Column(name = "guestLocationRating", nullable = true, precision = 0)
+    public Double getGuestLocationRating() {
+        return guestLocationRating;
     }
 
-    public void setRoomTypePeople(Integer roomTypePeople) {
-        this.roomTypePeople = roomTypePeople;
+    public void setGuestLocationRating(Double guestLocationRating) {
+        this.guestLocationRating = guestLocationRating;
+    }
+
+    @Basic
+    @Column(name = "roomType", nullable = true, length = 255)
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 
     @Override
@@ -138,15 +138,15 @@ public class Accommodation {
         if (pricePerNight != that.pricePerNight) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        if (stars != null ? !stars.equals(that.stars) : that.stars != null) return false;
-        if (rating != null ? !rating.equals(that.rating) : that.rating != null) return false;
+        if (starRating != null ? !starRating.equals(that.starRating) : that.starRating != null) return false;
+        if (guestRating != null ? !guestRating.equals(that.guestRating) : that.guestRating != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (location != null ? !location.equals(that.location) : that.location != null) return false;
         if (distanceFromCityCenter != null ? !distanceFromCityCenter.equals(that.distanceFromCityCenter) : that.distanceFromCityCenter != null)
             return false;
-        if (roomTypePeople != null ? !roomTypePeople.equals(that.roomTypePeople) : that.roomTypePeople != null)
+        if (guestLocationRating != null ? !guestLocationRating.equals(that.guestLocationRating) : that.guestLocationRating != null)
             return false;
+        if (roomType != null ? !roomType.equals(that.roomType) : that.roomType != null) return false;
 
         return true;
     }
@@ -156,14 +156,14 @@ public class Accommodation {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (stars != null ? stars.hashCode() : 0);
+        result = 31 * result + (starRating != null ? starRating.hashCode() : 0);
         result = 31 * result + pricePerNight;
-        result = 31 * result + (rating != null ? rating.hashCode() : 0);
+        result = 31 * result + (guestRating != null ? guestRating.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (distanceFromCityCenter != null ? distanceFromCityCenter.hashCode() : 0);
-        result = 31 * result + (roomTypePeople != null ? roomTypePeople.hashCode() : 0);
+        result = 31 * result + (guestLocationRating != null ? guestLocationRating.hashCode() : 0);
+        result = 31 * result + (roomType != null ? roomType.hashCode() : 0);
         return result;
     }
 

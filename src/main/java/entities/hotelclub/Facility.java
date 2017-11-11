@@ -44,7 +44,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "airport_transfer", nullable = true)
+    @Column(name = "airportTransfer", nullable = true)
     public Byte getAirportTransfer() {
         return airportTransfer;
     }
@@ -64,7 +64,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "business_facilities", nullable = true)
+    @Column(name = "businessFacilities", nullable = true)
     public Byte getBusinessFacilities() {
         return businessFacilities;
     }
@@ -84,7 +84,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "connecting_rooms_available", nullable = true)
+    @Column(name = "connectingRoomsAvailable", nullable = true)
     public Byte getConnectingRoomsAvailable() {
         return connectingRoomsAvailable;
     }
@@ -94,7 +94,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "cribs_available", nullable = true)
+    @Column(name = "cribsAvailable", nullable = true)
     public Byte getCribsAvailable() {
         return cribsAvailable;
     }
@@ -104,7 +104,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "free_breakfast", nullable = true)
+    @Column(name = "freeBreakfast", nullable = true)
     public Byte getFreeBreakfast() {
         return freeBreakfast;
     }
@@ -114,7 +114,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "free_parking", nullable = true)
+    @Column(name = "freeParking", nullable = true)
     public Byte getFreeParking() {
         return freeParking;
     }
@@ -124,7 +124,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "free_wifi", nullable = true)
+    @Column(name = "freeWifi", nullable = true)
     public Byte getFreeWifi() {
         return freeWifi;
     }
@@ -144,7 +144,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "pet_friendly", nullable = true)
+    @Column(name = "petFriendly", nullable = true)
     public Byte getPetFriendly() {
         return petFriendly;
     }
@@ -174,7 +174,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "smoking_areas", nullable = true)
+    @Column(name = "smokingAreas", nullable = true)
     public Byte getSmokingAreas() {
         return smokingAreas;
     }
@@ -194,7 +194,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "bathtub_in_room", nullable = true)
+    @Column(name = "bathtubInRoom", nullable = true)
     public Byte getBathtubInRoom() {
         return bathtubInRoom;
     }
@@ -214,7 +214,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "accessible_bathroom", nullable = true)
+    @Column(name = "accessibleBathroom", nullable = true)
     public Byte getAccessibleBathroom() {
         return accessibleBathroom;
     }
@@ -224,7 +224,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "in_room_accessebility", nullable = true)
+    @Column(name = "inRoomAccessebility", nullable = true)
     public Byte getInRoomAccessebility() {
         return inRoomAccessebility;
     }
@@ -234,7 +234,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "roll_in_shower", nullable = true)
+    @Column(name = "rollInShower", nullable = true)
     public Byte getRollInShower() {
         return rollInShower;
     }
@@ -244,7 +244,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "wheelchair_access", nullable = true)
+    @Column(name = "wheelchairAccess", nullable = true)
     public Byte getWheelchairAccess() {
         return wheelchairAccess;
     }
@@ -254,7 +254,7 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "family_friendly", nullable = true)
+    @Column(name = "familyFriendly", nullable = true)
     public Byte getFamilyFriendly() {
         return familyFriendly;
     }

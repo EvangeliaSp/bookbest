@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="priceline@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="priceline">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="airtickets"/>
+    <schema id="4" parent="1" name="bookbest"/>
+    <schema id="5" parent="1" name="booking"/>
+    <schema id="6" parent="1" name="eProc"/>
+    <schema id="7" parent="1" name="hotelclub"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="monkeybnb"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="sys"/>
+    <schema id="13" parent="1" name="travel"/>
+    <table id="14" parent="2" name="Accommodation"/>
+    <table id="15" parent="2" name="Facility"/>
+    <column id="16" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="14" name="type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="14" name="starRating">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="20" parent="14" name="pricePerNight">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="14" name="country">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="14" name="city">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="14" name="people">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="24" parent="14" name="location">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="25" parent="14" name="guestRating">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="26" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="15" name="freeInternet">
+      <Position>2</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="29" parent="15" name="freeParking">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="30" parent="15" name="freeBreakfast">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="31" parent="15" name="petsAllowed">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="32" parent="15" name="swimmingPool">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="33" parent="15" name="airportShuttle">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="34" parent="15" name="noSmokingRoomsFacilities">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="35" parent="15" name="fitnessCenter">
+      <Position>9</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="36" parent="15" name="handicappedRoomsFacilities">
+      <Position>10</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="37" parent="15" name="businessCenter">
+      <Position>11</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="38" parent="15" name="casino">
+      <Position>12</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="39" parent="15" name="spa">
+      <Position>13</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="40" parent="15" name="restaurant">
+      <Position>14</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="41" parent="15" name="freeCancellation">
+      <Position>15</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="42" parent="15" name="payLater">
+      <Position>16</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <key id="43" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="15" name="Facility_ibfk_1">
+      <ColNames>id</ColNames>
+      <RefSchemaName>priceline</RefSchemaName>
+      <RefTableName>Accommodation</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

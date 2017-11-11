@@ -1,4 +1,4 @@
-package entities.booking;
+package entities.airtickets;
 
 import javax.persistence.*;
 
@@ -17,7 +17,7 @@ public class Facility {
     private Byte swimmingPool;
     private Byte spaAndWellnessCentre;
     private Byte airportShuttle;
-    private Byte reception24Hour;
+    private Byte frontDesk24Hour;
     private Byte sauna;
     private Byte massage;
     private Byte bicycleRental;
@@ -169,13 +169,13 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "reception24Hour", nullable = true)
-    public Byte getReception24Hour() {
-        return reception24Hour;
+    @Column(name = "frontDesk24Hour", nullable = true)
+    public Byte getFrontDesk24Hour() {
+        return frontDesk24Hour;
     }
 
-    public void setReception24Hour(Byte reception24Hour) {
-        this.reception24Hour = reception24Hour;
+    public void setFrontDesk24Hour(Byte frontDesk24Hour) {
+        this.frontDesk24Hour = frontDesk24Hour;
     }
 
     @Basic
@@ -387,7 +387,7 @@ public class Facility {
             return false;
         if (airportShuttle != null ? !airportShuttle.equals(facility.airportShuttle) : facility.airportShuttle != null)
             return false;
-        if (reception24Hour != null ? !reception24Hour.equals(facility.reception24Hour) : facility.reception24Hour != null)
+        if (frontDesk24Hour != null ? !frontDesk24Hour.equals(facility.frontDesk24Hour) : facility.frontDesk24Hour != null)
             return false;
         if (sauna != null ? !sauna.equals(facility.sauna) : facility.sauna != null) return false;
         if (massage != null ? !massage.equals(facility.massage) : facility.massage != null) return false;
@@ -440,7 +440,7 @@ public class Facility {
         result = 31 * result + (swimmingPool != null ? swimmingPool.hashCode() : 0);
         result = 31 * result + (spaAndWellnessCentre != null ? spaAndWellnessCentre.hashCode() : 0);
         result = 31 * result + (airportShuttle != null ? airportShuttle.hashCode() : 0);
-        result = 31 * result + (reception24Hour != null ? reception24Hour.hashCode() : 0);
+        result = 31 * result + (frontDesk24Hour != null ? frontDesk24Hour.hashCode() : 0);
         result = 31 * result + (sauna != null ? sauna.hashCode() : 0);
         result = 31 * result + (massage != null ? massage.hashCode() : 0);
         result = 31 * result + (bicycleRental != null ? bicycleRental.hashCode() : 0);
