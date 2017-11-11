@@ -1,6 +1,6 @@
-package dao.booking;
+package dao.priceline;
 
-import entities.booking.Facility;
+import entities.priceline.Facility;
 
 import java.sql.Statement;
 

@@ -12,10 +12,10 @@ public class FacilityDAOImpl implements FacilityDAO {
         try {
             String columns = "(id";
             String values = "("+facility.getId();
-            String sql = "INSERT INTO Facility";
+            String sql = "INSERT INTO hotelclub.Facility";
 
             if(facility.getAirportTransfer() != null) {
-                columns = columns + ", airport_transfer";
+                columns = columns + ", airportTransfer";
                 values = values + ", '" + facility.getAirportTransfer() + "'";
             }
             if(facility.getBar() != null) {
@@ -23,7 +23,7 @@ public class FacilityDAOImpl implements FacilityDAO {
                 values = values + ", '" + facility.getBar() + "'";
             }
             if(facility.getBusinessFacilities() != null) {
-                columns = columns + ", business_facilities";
+                columns = columns + ", businessFacilities";
                 values = values + ", '" + facility.getBusinessFacilities() + "'";
             }
             if(facility.getChildcare() != null) {
@@ -31,23 +31,23 @@ public class FacilityDAOImpl implements FacilityDAO {
                 values = values + ", '" + facility.getChildcare() + "'";
             }
             if(facility.getConnectingRoomsAvailable() != null) {
-                columns = columns + ", connecting_rooms_available";
+                columns = columns + ", connectingRoomsAvailable";
                 values = values + ", '" + facility.getConnectingRoomsAvailable() + "'";
             }
             if(facility.getCribsAvailable() != null) {
-                columns = columns + ", cribs_available";
+                columns = columns + ", cribsAvailable";
                 values = values + ", '" + facility.getCribsAvailable() + "'";
             }
             if(facility.getFreeBreakfast() != null) {
-                columns = columns + ", free_breakfast";
+                columns = columns + ", freeBreakfast";
                 values = values + ", '" + facility.getFreeBreakfast() + "'";
             }
             if(facility.getFreeParking() != null) {
-                columns = columns + ", free_parking";
+                columns = columns + ", freeParking";
                 values = values + ", '" + facility.getFreeParking() + "'";
             }
             if(facility.getFreeWifi() != null) {
-                columns = columns + ", free_wifi";
+                columns = columns + ", freeWifi";
                 values = values + ", '" + facility.getFreeWifi() + "'";
             }
             if(facility.getGym() != null) {
@@ -55,7 +55,7 @@ public class FacilityDAOImpl implements FacilityDAO {
                 values = values + ", '" + facility.getGym() + "'";
             }
             if(facility.getPetFriendly() != null) {
-                columns = columns + ", pet_friendly";
+                columns = columns + ", petFriendly";
                 values = values + ", '" + facility.getPetFriendly() + "'";
             }
             if(facility.getPool() != null) {
@@ -67,7 +67,7 @@ public class FacilityDAOImpl implements FacilityDAO {
                 values = values + ", '" + facility.getRestaurant() + "'";
             }
             if(facility.getSmokingAreas() != null) {
-                columns = columns + ", smoking_areas";
+                columns = columns + ", smokingAreas";
                 values = values + ", '" + facility.getSmokingAreas() + "'";
             }
             if(facility.getSpa() != null) {
@@ -75,7 +75,7 @@ public class FacilityDAOImpl implements FacilityDAO {
                 values = values + ", '" + facility.getSpa() + "'";
             }
             if(facility.getBathtubInRoom() != null) {
-                columns = columns + ", bathtub_in_room";
+                columns = columns + ", bathtubInRoom";
                 values = values + ", '" + facility.getBathtubInRoom() + "'";
             }
             if(facility.getKitchen() != null) {
@@ -83,23 +83,23 @@ public class FacilityDAOImpl implements FacilityDAO {
                 values = values + ", '" + facility.getKitchen() + "'";
             }
             if(facility.getAccessibleBathroom() != null) {
-                columns = columns + ", accessible_bathroom";
+                columns = columns + ", accessibleBathroom";
                 values = values + ", '" + facility.getAccessibleBathroom() + "'";
             }
             if(facility.getInRoomAccessebility() != null) {
-                columns = columns + ", in_room_accessibility";
+                columns = columns + ", inRoomAccessebility";
                 values = values + ", '" + facility.getInRoomAccessebility() + "'";
             }
             if(facility.getRollInShower() != null) {
-                columns = columns + ", roll_in_shower";
+                columns = columns + ", rollInShower";
                 values = values + ", '" + facility.getRollInShower() + "'";
             }
             if(facility.getWheelchairAccess() != null) {
-                columns = columns + ", wheelchair_access";
+                columns = columns + ", wheelchairAccess";
                 values = values + ", '" + facility.getWheelchairAccess() + "'";
             }
             if(facility.getFamilyFriendly() != null) {
-                columns = columns + ", family_friendly";
+                columns = columns + ", familyFriendly";
                 values = values + ", '" + facility.getFamilyFriendly() + "'";
             }
             if(facility.getBusiness() != null) {
