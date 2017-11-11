@@ -1,10 +1,10 @@
-package dataGeneration.booking;
+package dataGeneration.hotelclub;
 
-import dao.booking.AccommodationDAO;
-import dao.booking.AccommodationDAOImpl;
+import dao.hotelclub.AccommodationDAO;
+import dao.hotelclub.AccommodationDAOImpl;
 import dataGeneration.CSVReader;
 import dataGeneration.NameGenerator;
-import entities.booking.Accommodation;
+import entities.hotelclub.Accommodation;
 
 import java.io.IOException;
 import java.sql.Statement;
@@ -48,12 +48,13 @@ public class AccommodationGenerator {
         NameGenerator nameGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
         String name;
         name = nameGenerator.compose();
+
         return name;
     }
 
     private String type() {
-        String[] types = {"Hotel", "Apartment", "Guest_house", "Hostel", "Holiday_home",
-                "Boat", "Bed_and_breakfast", "Motel", "Homestay", "Vila", "Lodge"};
+        String[] types = {"Apart-hotel", "Apartment", "Cottage", "Guest house", "Motel",
+                "Hotel", "House_boat", "Hostel", "Pension", "Vacation_Home", "Condo"};
         int k = new Random().nextInt(types.length);
         String type = types[k];
 
@@ -66,8 +67,7 @@ public class AccommodationGenerator {
     }
 
     private String roomType() {
-        String[] roomTypes = {"Twin", "Double Room", "Single Room", "Studio", "Bed in Dormitory",
-                "Triple Room", "Family Room", "Quadruple Room", "King Suite"};
+        String[] roomTypes = {"1_guest", "2_guests", "3_guests", "4_guests", "5+_guests"};
         int k = new Random().nextInt(roomTypes.length);
         String type = roomTypes[k];
 
@@ -80,7 +80,7 @@ public class AccommodationGenerator {
     }
 
     private double rating() {
-        double k = (new Random().nextInt(100-10+1) + 10)/10.0;
+        double k = (new Random().nextInt(50-0+1) + 0)/10.0;
         return k;
     }
 
@@ -88,6 +88,7 @@ public class AccommodationGenerator {
         String address;
         NameGenerator addressGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
         address = addressGenerator.compose();
+
         return address;
     }
 
