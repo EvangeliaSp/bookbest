@@ -7,11 +7,13 @@ CREATE TABLE `Accommodation` (
   `name` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `stars` int(11) NOT NULL,
+  `room_type` varchar(255) NOT NULL,
+  `price_per_night` int(11) NOT NULL,
+  `rating` double NOT NULL,
   `country` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `postal_code` int(11) NOT NULL,
-  `room_type` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
