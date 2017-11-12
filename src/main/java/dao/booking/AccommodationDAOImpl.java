@@ -23,7 +23,6 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                     "'"+accommodation.getGuestRating()+"'" + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
-                    "'"+accommodation.getLocation()+"'" + ", " +
                     "'"+accommodation.getDistanceFromCityCenter()+"'" + ", " +
                     "'"+accommodation.getGuestLocationRating()+"'" + ", " +
                     "'"+accommodation.getRoomType()+"'" + ")";
@@ -56,7 +55,6 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                 accommodation.setGuestRating(rs.getDouble("guestRating"));
                 accommodation.setCountry(rs.getString("country"));
                 accommodation.setCity(rs.getString("city"));
-                accommodation.setLocation(rs.getDouble("location"));
                 accommodation.setDistanceFromCityCenter(rs.getDouble("distanceFromCityCenter"));
                 accommodation.setGuestLocationRating(rs.getDouble("guestLocationRating"));
                 accommodation.setRoomType(rs.getString("roomType"));

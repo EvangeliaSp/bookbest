@@ -62,7 +62,7 @@ public class AccommodationGenerator {
     }
 
     private int stars() {
-        int k = new Random().nextInt(5) + 1;
+        int k = new Random().nextInt(6);
         return k;
     }
 
@@ -72,17 +72,17 @@ public class AccommodationGenerator {
     }
 
     private double guestRating() {
-        double k = (new Random().nextInt(100-10+1) + 10)/10.0;
+        double k = (new Random().nextInt(101))/10.0;
         return k;
     }
 
     private double distanceFromCityCenter() throws IOException {
-        double k = (new Random().nextInt(100-10+1) + 10)/10.0;
+        double k = (new Random().nextInt(101))/10.0;
         return k;
     }
 
     private double guestLocationRating() {
-        double k = (new Random().nextInt(100-10+1) + 10)/10.0;
+        double k = (new Random().nextInt(101))/10.0;
         return k;
     }
 

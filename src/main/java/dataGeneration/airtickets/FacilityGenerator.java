@@ -76,7 +76,7 @@ public class FacilityGenerator {
         if((k=bit()) != 2) {
             facility.setBreakfastIncluded((byte) k);
         }
-        if(facility.getBreakfastIncluded() == null || facility.getBreakfastIncluded()==1) {
+        if(facility.getBreakfastIncluded()==null || facility.getBreakfastIncluded()==0) {
             if ((k = bit()) != 2) {
                 facility.setBreakfastAndDinner((byte) k);
             }

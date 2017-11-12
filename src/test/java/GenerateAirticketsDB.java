@@ -1,15 +1,14 @@
-import dataGeneration.DataGenerator;
+import dataGeneration.airtickets.DataGenerator;
 import database.DBConnection;
 
 import java.sql.Statement;
 
-
-public class GenerateDatabase {
+public class GenerateAirticketsDB {
     public static void main(String[] args) {
 
         // Connect to database
         DBConnection dbConnection = new DBConnection();
-        dbConnection.connect();
+        dbConnection.connect("airtickets");
         Statement statement = dbConnection.getStatement();
 
         // Generate data

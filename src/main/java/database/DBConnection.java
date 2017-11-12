@@ -13,7 +13,7 @@ public class DBConnection {
         return statement;
     }
 
-    public void connect() {
+    public void connect(String name) {
         // Load driver
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -24,7 +24,7 @@ public class DBConnection {
         // Obtain a connection from the DriverManager
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/bookbest?" + "user=root&password=5698");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/"+name+"?" + "user=root&password=5698");
         } catch (SQLException ex) {
             // handle the errors
             System.out.println("SQLException: " + ex.getMessage());

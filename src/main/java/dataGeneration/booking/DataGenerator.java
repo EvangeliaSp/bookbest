@@ -1,7 +1,5 @@
-package dataGeneration;
+package dataGeneration.booking;
 
-import dataGeneration.booking.AccommodationGenerator;
-import dataGeneration.booking.FacilityGenerator;
 import entities.booking.Accommodation;
 
 import java.io.IOException;
@@ -16,16 +14,17 @@ public class DataGenerator {
     }
 
     public void accommodationGenerate() throws IOException {
-        for(int i=0; i<20; i++) {
+
+        int bookingCounter = 10;// = new Random().nextInt();
+
+        for(int i=0; i<bookingCounter; i++) {
+            // Create Accommodation
             AccommodationGenerator accommodationGenerator = new AccommodationGenerator(this.statement);
             accommodationGenerator.generate();
             Accommodation accommodation = accommodationGenerator.getAccommodation();
-            facilityGenerate(accommodation.getId());
+            // Create Facilities for the above Accommodation
+           FacilityGenerator facilityGenerator = new FacilityGenerator(this.statement, accommodation.getId());
+            facilityGenerator.generate();
         }
-    }
-
-    private void facilityGenerate(int id) {
-        FacilityGenerator facilityGenerator = new FacilityGenerator(this.statement, id);
-        facilityGenerator.generate();
     }
 }

@@ -26,16 +26,16 @@ public class AccommodationGenerator {
         Accommodation accommodation = new Accommodation();
         accommodation.setName(name());
         accommodation.setType(type());
-        accommodation.setStars(stars());
-        accommodation.setRoomType(roomType());
+        accommodation.setStarRating(stars());
         accommodation.setPricePerNight(price_per_night());
-        accommodation.setRating(rating());
+        accommodation.setGuestRating(guestRating());
         CSVReader csvReader = new CSVReader();
         String[][] place = csvReader.getRandomPlace();
         accommodation.setCountry(place[0][0]);
         accommodation.setCity(place[1][0]);
-        accommodation.setAddress(address());
-        accommodation.setPostalCode(postal_code());
+        accommodation.setDistanceFromCityCenter(distanceFromCityCenter());
+        accommodation.setGuestLocationRating(guestLocationRating());
+        accommodation.setRoomType(roomType());
 
         AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
         accommodationDAO.create(this.statement, accommodation);
@@ -61,17 +61,8 @@ public class AccommodationGenerator {
     }
 
     private int stars() {
-        int k = new Random().nextInt(5) + 1;
+        int k = new Random().nextInt(6);
         return k;
-    }
-
-    private String roomType() {
-        String[] roomTypes = {"Twin", "Double Room", "Single Room", "Studio", "Bed in Dormitory",
-                "Triple Room", "Family Room", "Quadruple Room", "King Suite"};
-        int k = new Random().nextInt(roomTypes.length);
-        String type = roomTypes[k];
-
-        return type;
     }
 
     private int price_per_night() {
@@ -79,22 +70,26 @@ public class AccommodationGenerator {
         return k;
     }
 
-    private double rating() {
-        double k = (new Random().nextInt(100-10+1) + 10)/10.0;
+    private double guestRating() {
+        double k = (new Random().nextInt(101))/10.0;
         return k;
     }
 
-    private String address() throws IOException {
-        String address;
-        NameGenerator addressGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
-        address = addressGenerator.compose();
-        return address;
+    private double distanceFromCityCenter() throws IOException {
+        double k = (new Random().nextInt(101))/10.0;
+        return k;
     }
 
-    private int postal_code() {
+    private double guestLocationRating() {
+        double k = (new Random().nextInt(101))/10.0;
+        return k;
+    }
 
-        int postal_code = new Random().nextInt(100000-10000+1) + 10000;
+    private String roomType() {
+        String[] roomTypes = {"Single Room", "Double Room", "Triple Room", "Quadruple Room", "Family Room"};
+        int k = new Random().nextInt(roomTypes.length);
+        String type = roomTypes[k];
 
-        return postal_code;
+        return type;
     }
 }

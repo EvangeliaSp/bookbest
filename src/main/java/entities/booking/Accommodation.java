@@ -12,7 +12,6 @@ public class Accommodation {
     private Double guestRating;
     private String country;
     private String city;
-    private Double location;
     private Double distanceFromCityCenter;
     private Double guestLocationRating;
     private String roomType;
@@ -99,16 +98,6 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "location", nullable = true, precision = 0)
-    public Double getLocation() {
-        return location;
-    }
-
-    public void setLocation(Double location) {
-        this.location = location;
-    }
-
-    @Basic
     @Column(name = "distanceFromCityCenter", nullable = true, precision = 0)
     public Double getDistanceFromCityCenter() {
         return distanceFromCityCenter;
@@ -153,7 +142,6 @@ public class Accommodation {
         if (guestRating != null ? !guestRating.equals(that.guestRating) : that.guestRating != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (location != null ? !location.equals(that.location) : that.location != null) return false;
         if (distanceFromCityCenter != null ? !distanceFromCityCenter.equals(that.distanceFromCityCenter) : that.distanceFromCityCenter != null)
             return false;
         if (guestLocationRating != null ? !guestLocationRating.equals(that.guestLocationRating) : that.guestLocationRating != null)
@@ -173,7 +161,6 @@ public class Accommodation {
         result = 31 * result + (guestRating != null ? guestRating.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (distanceFromCityCenter != null ? distanceFromCityCenter.hashCode() : 0);
         result = 31 * result + (guestLocationRating != null ? guestLocationRating.hashCode() : 0);
         result = 31 * result + (roomType != null ? roomType.hashCode() : 0);

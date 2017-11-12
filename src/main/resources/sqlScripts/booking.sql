@@ -11,7 +11,6 @@ CREATE TABLE `Accommodation` (
   `guestRating` double NULL,
   `country` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `location` double NULL,
   `distanceFromCityCenter` double NULL,
   `guestLocationRating` double NULL,
   `roomType` varchar(255) NULL,
