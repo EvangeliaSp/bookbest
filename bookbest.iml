@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="bookbest" value="a637bdd9-3ccf-463c-a937-54b9f71268ef" />
+          <factory-entry name="bookbest" value="d1317b89-bc87-437c-91a4-c75c5f283955" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>

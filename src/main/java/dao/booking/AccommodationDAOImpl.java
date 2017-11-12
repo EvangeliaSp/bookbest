@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class AccommodationDAOImpl implements AccommodationDAO {
 
     @Override
@@ -18,14 +17,15 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                     accommodation.getId() + ", " +
                     "'"+accommodation.getName()+"'" + ", " +
                     "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStarRating()+"'" + ", " +
-                    "'"+accommodation.getPricePerNight()+"'" + ", " +
-                    "'"+accommodation.getGuestRating()+"'" + ", " +
+                    accommodation.getStarRating() + ", " +
+                    accommodation.getPricePerNight() + ", " +
+                    accommodation.getGuestRating() + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
-                    "'"+accommodation.getDistanceFromCityCenter()+"'" + ", " +
-                    "'"+accommodation.getGuestLocationRating()+"'" + ", " +
+                    accommodation.getDistanceFromCityCenter() + ", " +
+                    accommodation.getGuestLocationRating()+ ", " +
                     "'"+accommodation.getRoomType()+"'" + ")";
+
             statement.executeUpdate(sql);
         }
         catch (SQLException ex){
@@ -43,7 +43,6 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         try {
             String sql = "SELECT * FROM booking.Accommodation";
             ResultSet rs = statement.executeQuery(sql);
-            System.out.println(rs);
 
             while(rs.next()) {
                 Accommodation accommodation = new Accommodation();

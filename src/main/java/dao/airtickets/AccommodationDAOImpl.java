@@ -25,7 +25,7 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                     accommodation.getDistanceFromCityCenter() + ", " +
                     accommodation.getGuestLocationRating() + ", " +
                     "'"+accommodation.getRoomType()+"'" + ")";
-            System.out.println(sql);
+
             statement.executeUpdate(sql);
         }
         catch (SQLException ex){
