@@ -10,7 +10,7 @@ CREATE TABLE `Accommodation` (
   `pricePerNight` int(11) NOT NULL,
   `country` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `people` int(11) NULL,
+  `roomType` varchar(255) NULL,
   `location` double NULL,
   `guestRating` double NULL,
   PRIMARY KEY (`id`)

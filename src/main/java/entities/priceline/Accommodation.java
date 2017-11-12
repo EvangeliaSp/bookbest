@@ -11,7 +11,7 @@ public class Accommodation {
     private int pricePerNight;
     private String country;
     private String city;
-    private Integer people;
+    private String roomType;
     private Double location;
     private Double guestRating;
     private Facility facilityById;
@@ -87,13 +87,13 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "people", nullable = true)
-    public Integer getPeople() {
-        return people;
+    @Column(name = "roomType", nullable = true, length = 255)
+    public String getRoomType() {
+        return roomType;
     }
 
-    public void setPeople(Integer people) {
-        this.people = people;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 
     @Basic
@@ -130,7 +130,7 @@ public class Accommodation {
         if (starRating != null ? !starRating.equals(that.starRating) : that.starRating != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (people != null ? !people.equals(that.people) : that.people != null) return false;
+        if (roomType != null ? !roomType.equals(that.roomType) : that.roomType != null) return false;
         if (location != null ? !location.equals(that.location) : that.location != null) return false;
         if (guestRating != null ? !guestRating.equals(that.guestRating) : that.guestRating != null) return false;
 
@@ -146,7 +146,7 @@ public class Accommodation {
         result = 31 * result + pricePerNight;
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (people != null ? people.hashCode() : 0);
+        result = 31 * result + (roomType != null ? roomType.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (guestRating != null ? guestRating.hashCode() : 0);
         return result;
