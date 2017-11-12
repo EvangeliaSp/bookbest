@@ -57,7 +57,7 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                 accommodation.setCity(rs.getString("city"));
                 accommodation.setLocation(rs.getDouble("location"));
                 accommodation.setDistanceFromCityCenter(rs.getDouble("distanceFromCityCenter"));
-                accommodation.setRoomTypePeople(rs.getInt("roomTypePeople"));
+                accommodation.setRoomTypePeople(rs.getString("roomTypePeople"));
 
                 accommodations.add(accommodation);
             }

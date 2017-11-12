@@ -68,7 +68,7 @@
     </column>
     <column id="26" parent="14" name="roomTypePeople">
       <Position>11</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
     </column>
     <key id="27" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

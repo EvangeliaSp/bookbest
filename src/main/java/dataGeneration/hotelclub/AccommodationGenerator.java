@@ -27,15 +27,15 @@ public class AccommodationGenerator {
         accommodation.setName(name());
         accommodation.setType(type());
         accommodation.setStars(stars());
-        accommodation.setRoomType(roomType());
         accommodation.setPricePerNight(price_per_night());
         accommodation.setRating(rating());
         CSVReader csvReader = new CSVReader();
         String[][] place = csvReader.getRandomPlace();
         accommodation.setCountry(place[0][0]);
         accommodation.setCity(place[1][0]);
-        accommodation.setAddress(address());
-        accommodation.setPostalCode(postal_code());
+        accommodation.setLocation(location());
+        accommodation.setDistanceFromCityCenter(distanceFromCityCenter());
+        accommodation.setRoomTypePeople(roomType());
 
         AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
         accommodationDAO.create(this.statement, accommodation);
@@ -62,7 +62,27 @@ public class AccommodationGenerator {
     }
 
     private int stars() {
-        int k = new Random().nextInt(5) + 1;
+        int k = new Random().nextInt(6);
+        return k;
+    }
+
+    private int price_per_night() {
+        int k = new Random().nextInt(2000);
+        return k;
+    }
+
+    private double rating() {
+        double k = (new Random().nextInt(51) )/10.0;
+        return k;
+    }
+
+    private double location() {
+        double k = (new Random().nextInt(51) )/10.0;
+        return k;
+    }
+
+    private double distanceFromCityCenter() {
+        double k = (new Random().nextInt(101) + 1)/10.0;
         return k;
     }
 
@@ -72,30 +92,5 @@ public class AccommodationGenerator {
         String type = roomTypes[k];
 
         return type;
-    }
-
-    private int price_per_night() {
-        int k = new Random().nextInt(2000);
-        return k;
-    }
-
-    private double rating() {
-        double k = (new Random().nextInt(50-0+1) + 0)/10.0;
-        return k;
-    }
-
-    private String address() throws IOException {
-        String address;
-        NameGenerator addressGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
-        address = addressGenerator.compose();
-
-        return address;
-    }
-
-    private int postal_code() {
-
-        int postal_code = new Random().nextInt(100000-10000+1) + 10000;
-
-        return postal_code;
     }
 }

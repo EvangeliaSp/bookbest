@@ -14,7 +14,7 @@ public class Accommodation {
     private String city;
     private Double location;
     private Double distanceFromCityCenter;
-    private Integer roomTypePeople;
+    private String roomTypePeople;
     private Facility facilityById;
 
     @Id
@@ -118,12 +118,12 @@ public class Accommodation {
     }
 
     @Basic
-    @Column(name = "roomTypePeople", nullable = true)
-    public Integer getRoomTypePeople() {
+    @Column(name = "roomTypePeople", nullable = true, length = 255)
+    public String getRoomTypePeople() {
         return roomTypePeople;
     }
 
-    public void setRoomTypePeople(Integer roomTypePeople) {
+    public void setRoomTypePeople(String roomTypePeople) {
         this.roomTypePeople = roomTypePeople;
     }
 

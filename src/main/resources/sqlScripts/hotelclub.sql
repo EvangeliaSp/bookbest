@@ -13,7 +13,7 @@ CREATE TABLE `Accommodation` (
   `city` varchar(255) NOT NULL,
   `location` double NULL,
   `distanceFromCityCenter` double NULL,
-  `roomTypePeople` int(11) NULL,
+  `roomTypePeople` varchar(255) NULL,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
