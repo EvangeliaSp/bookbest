@@ -15,16 +15,17 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         try {
             String sql = "INSERT INTO airtickets.Accommodation VALUES (" +
                     accommodation.getId() + ", " +
-                    "'"+accommodation.getName()+"'" + ", " +
-                    "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStarRating()+"'" + ", " +
-                    "'"+accommodation.getPricePerNight()+"'" + ", " +
-                    "'"+accommodation.getGuestRating()+"'" + ", " +
+                    "'"+accommodation.getName() +"'" + ", " +
+                    "'"+accommodation.getType() +"'" + ", " +
+                    accommodation.getStarRating() + ", " +
+                    accommodation.getPricePerNight() + ", " +
+                    accommodation.getGuestRating() + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
-                    "'"+accommodation.getDistanceFromCityCenter()+"'" + ", " +
-                    "'"+accommodation.getGuestLocationRating()+"'" +
-                    "'"+accommodation.getRoomType()+"'" + ", " + ")";
+                    accommodation.getDistanceFromCityCenter() + ", " +
+                    accommodation.getGuestLocationRating() + ", " +
+                    "'"+accommodation.getRoomType()+"'" + ")";
+            System.out.println(sql);
             statement.executeUpdate(sql);
         }
         catch (SQLException ex){
@@ -42,7 +43,6 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         try {
             String sql = "SELECT * FROM airtickets.Accommodation";
             ResultSet rs = statement.executeQuery(sql);
-            System.out.println(rs);
 
             while(rs.next()) {
                 Accommodation accommodation = new Accommodation();

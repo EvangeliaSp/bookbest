@@ -22,7 +22,7 @@ public class Main {
 
         // Connect to database
         DBConnection dbConnection = new DBConnection();
-        dbConnection.connect();
+        dbConnection.connect("airtickets");
         Statement stmt = dbConnection.getStatement();
 
         OntologyHelper ontologyHelper = new OntologyHelper();

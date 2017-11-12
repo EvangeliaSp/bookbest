@@ -1,9 +1,12 @@
 package dataGeneration.airtickets;
 
+import dao.airtickets.AccommodationDAO;
+import dao.airtickets.AccommodationDAOImpl;
 import entities.airtickets.Accommodation;
 
 import java.io.IOException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Random;
 
 public class DataGenerator {
