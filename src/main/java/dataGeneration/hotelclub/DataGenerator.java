@@ -1,9 +1,12 @@
 package dataGeneration.hotelclub;
 
+import dao.hotelclub.AccommodationDAO;
+import dao.hotelclub.AccommodationDAOImpl;
 import entities.hotelclub.Accommodation;
 
 import java.io.IOException;
 import java.sql.Statement;
+import java.util.List;
 
 public class DataGenerator {
 
@@ -15,14 +18,18 @@ public class DataGenerator {
 
     public void accommodationGenerate() throws IOException {
 
-        int hotelclubCounter = 10;// = new Random().nextInt();
+        int hotelclubCounter = 6;// = new Random().nextInt();
 
-        for(int i=0; i<hotelclubCounter ; i++) {
+        AccommodationGenerator accommodationGenerator = new AccommodationGenerator(this.statement);
+        for(int i=0; i<hotelclubCounter; i++) {
             // Create Accommodation
-            AccommodationGenerator accommodationGenerator = new AccommodationGenerator(this.statement);
             accommodationGenerator.generate();
-            Accommodation accommodation = accommodationGenerator.getAccommodation();
-            // Create Facilities for the above Accommodation
+        }
+
+        AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
+        List<Accommodation> accommodations = accommodationDAO.list(this.statement);
+        for(Accommodation accommodation: accommodations) {
+            // Creates Accommodation Facilities
             FacilityGenerator facilityGenerator = new FacilityGenerator(this.statement, accommodation.getId());
             facilityGenerator.generate();
         }

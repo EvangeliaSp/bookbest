@@ -21,12 +21,16 @@ public class DataGenerator {
 
         int airticketsCounter = 10;// = new Random().nextInt();
 
+        AccommodationGenerator accommodationGenerator = new AccommodationGenerator(this.statement);
         for(int i=0; i<airticketsCounter; i++) {
             // Create Accommodation
-            AccommodationGenerator accommodationGenerator = new AccommodationGenerator(this.statement);
             accommodationGenerator.generate();
-            Accommodation accommodation = accommodationGenerator.getAccommodation();
-            // Create Facilities for the above Accommodation
+        }
+
+        AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
+        List<Accommodation> accommodations = accommodationDAO.list(this.statement);
+        for(Accommodation accommodation: accommodations) {
+            // Create Accommodation Facilities
             FacilityGenerator facilityGenerator = new FacilityGenerator(this.statement, accommodation.getId());
             facilityGenerator.generate();
         }

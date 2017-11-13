@@ -10,72 +10,72 @@ public class FacilityDAOImpl implements FacilityDAO {
     @Override
     public void create(Statement statement, Facility facility) {
         try {
-            String columns = "(id";
-            String values = "("+facility.getId();
+            String columns = "id";
+            String values = String.valueOf(facility.getId());
             String sql = "INSERT INTO priceline.Facility";
 
             if(facility.getFreeInternet() != null) {
                 columns = columns + ", freeInternet";
-                values = values + ", '" + facility.getFreeInternet() + "'";
+                values = values + ", " + facility.getFreeInternet();
             }
             if(facility.getFreeParking() != null) {
                 columns = columns + ", freeParking";
-                values = values + ", '" + facility.getFreeParking() + "'";
+                values = values + ", " + facility.getFreeParking();
             }
             if(facility.getFreeBreakfast() != null) {
                 columns = columns + ", freeBreakfast";
-                values = values + ", '" + facility.getFreeBreakfast() + "'";
+                values = values + ", " + facility.getFreeBreakfast();
             }
             if(facility.getPetsAllowed() != null) {
                 columns = columns + ", petsAllowed";
-                values = values + ", '" + facility.getPetsAllowed() + "'";
+                values = values + ", " + facility.getPetsAllowed();
             }
             if(facility.getSwimmingPool() != null) {
                 columns = columns + ", swimmingPool";
-                values = values + ", '" + facility.getSwimmingPool() + "'";
+                values = values + ", " + facility.getSwimmingPool();
             }
             if(facility.getAirportShuttle() != null) {
                 columns = columns + ", airportShuttle";
-                values = values + ", '" + facility.getAirportShuttle() + "'";
+                values = values + ", " + facility.getAirportShuttle();
             }
             if(facility.getNoSmokingRoomsFacilities() != null) {
                 columns = columns + ", noSmokingRoomsFacilities";
-                values = values + ", '" + facility.getNoSmokingRoomsFacilities() + "'";
+                values = values + ", " + facility.getNoSmokingRoomsFacilities();
             }
             if(facility.getFitnessCenter() != null) {
                 columns = columns + ", fitnessCenter";
-                values = values + ", '" + facility.getFitnessCenter() + "'";
+                values = values + ", " + facility.getFitnessCenter();
             }
             if(facility.getHandicappedRoomsFacilities() != null) {
                 columns = columns + ", handicappedRoomsFacilities";
-                values = values + ", '" + facility.getHandicappedRoomsFacilities() + "'";
+                values = values + ", " + facility.getHandicappedRoomsFacilities();
             }
             if(facility.getBusinessCenter() != null) {
                 columns = columns + ", businessCenter";
-                values = values + ", '" + facility.getBusinessCenter() + "'";
+                values = values + ", " + facility.getBusinessCenter();
             }
             if(facility.getCasino() != null) {
                 columns = columns + ", casino";
-                values = values + ", '" + facility.getCasino() + "'";
+                values = values + ", " + facility.getCasino();
             }
             if(facility.getSpa() != null) {
                 columns = columns + ", spa";
-                values = values + ", '" + facility.getSpa() + "'";
+                values = values + ", " + facility.getSpa();
             }
             if(facility.getRestaurant() != null) {
                 columns = columns + ", restaurant";
-                values = values + ", '" + facility.getRestaurant() + "'";
+                values = values + ", " + facility.getRestaurant();
             }
             if(facility.getFreeCancellation() != null) {
                 columns = columns + ", freeCancellation";
-                values = values + ", '" + facility.getFreeCancellation() + "'";
+                values = values + ", " + facility.getFreeCancellation();
             }
             if(facility.getPayLater() != null) {
                 columns = columns + ", payLater";
-                values = values + ", '" + facility.getPayLater() + "'";
+                values = values + ", " + facility.getPayLater();
             }
 
-            sql = sql + columns+") VALUES "+values+")";
+            sql = sql + "(" + columns + ") VALUES " + "(" + values + ")";
 
             statement.executeUpdate(sql);
         }

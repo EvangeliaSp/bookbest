@@ -17,14 +17,13 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                     accommodation.getId() + ", " +
                     "'"+accommodation.getName()+"'" + ", " +
                     "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStars()+"'" + ", " +
-                    "'"+accommodation.getPricePerNight()+"'" + ", " +
-                    "'"+accommodation.getRating()+"'" + ", " +
+                    accommodation.getStars() + ", " +
+                    accommodation.getPricePerNight() + ", " +
+                    accommodation.getRating() + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
-                    "'"+accommodation.getLocation()+"'" + ", " +
-                    "'"+accommodation.getLocation()+"'" + ", " +
-                    "'"+accommodation.getDistanceFromCityCenter()+"'" + ", " +
+                    accommodation.getLocation() + ", " +
+                    accommodation.getDistanceFromCityCenter() + ", " +
                     "'"+accommodation.getRoomTypePeople()+"'" + ")";
             statement.executeUpdate(sql);
         }
@@ -43,7 +42,6 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         try {
             String sql = "SELECT * FROM hotelclub.Accommodation";
             ResultSet rs = statement.executeQuery(sql);
-            System.out.println(rs);
 
             while(rs.next()) {
                 Accommodation accommodation = new Accommodation();

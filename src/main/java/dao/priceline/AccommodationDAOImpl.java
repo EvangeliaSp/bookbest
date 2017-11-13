@@ -17,13 +17,13 @@ public class AccommodationDAOImpl implements AccommodationDAO {
                     accommodation.getId() + ", " +
                     "'"+accommodation.getName()+"'" + ", " +
                     "'"+accommodation.getType()+"'" + ", " +
-                    "'"+accommodation.getStarRating()+"'" + ", " +
-                    "'"+accommodation.getPricePerNight()+"'" + ", " +
+                    accommodation.getStarRating() + ", " +
+                    accommodation.getPricePerNight() + ", " +
                     "'"+accommodation.getCountry()+"'" + ", " +
                     "'"+accommodation.getCity()+"'" + ", " +
                     "'"+accommodation.getRoomType()+"'" + ", " +
-                    "'"+accommodation.getLocation()+"'" + ", " +
-                    "'"+accommodation.getGuestRating()+"'" + ", " + ")";
+                    accommodation.getLocation() + ", " +
+                    accommodation.getGuestRating() + ")";
             statement.executeUpdate(sql);
         }
         catch (SQLException ex){
@@ -41,7 +41,6 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         try {
             String sql = "SELECT * FROM priceline.Accommodation";
             ResultSet rs = statement.executeQuery(sql);
-            System.out.println(rs);
 
             while(rs.next()) {
                 Accommodation accommodation = new Accommodation();

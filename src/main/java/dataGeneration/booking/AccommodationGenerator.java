@@ -66,7 +66,7 @@ public class AccommodationGenerator {
     }
 
     private int price_per_night() {
-        int k = new Random().nextInt(2000);
+        int k = new Random().nextInt(700);
         return k;
     }
 
