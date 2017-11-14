@@ -5,8 +5,6 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import dataGeneration.CSVReader;
 import database.DBConnection;
-import hotelGeneration.CountryGenerator;
-import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
@@ -30,8 +28,7 @@ public class Main {
 
         // Generate data
         /*System.out.println("Generate Hotels");
-        HotelGenerator hotelGenerator = new HotelGenerator();
-        hotelGenerator.generate(stmt);
+
         System.out.println();*/
 
         // Read Ontology
@@ -112,9 +109,6 @@ public class Main {
 
             //ontologyHelper.saveOntology(owlOntology);
 
-
-           // CountryGenerator countryGenerator = new CountryGenerator();
-           // System.out.println(countryGenerator.generate());
 
             CSVReader csvReader = new CSVReader();
             String[][] place = csvReader.getRandomPlace();

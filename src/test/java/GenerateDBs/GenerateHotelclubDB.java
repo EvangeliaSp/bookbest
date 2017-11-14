@@ -1,3 +1,5 @@
+package GenerateDBs;
+
 import dataGeneration.hotelclub.DataGenerator;
 import database.DBConnection;
 

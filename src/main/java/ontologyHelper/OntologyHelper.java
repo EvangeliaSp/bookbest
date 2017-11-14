@@ -14,7 +14,7 @@ public class OntologyHelper {
     String prefix = "file:";
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
 
-    String base = "http://www.example.org/";
+    String base = "";
     String ontName = "bookbest";
     IRI iri = IRI.create(base+ontName);
 

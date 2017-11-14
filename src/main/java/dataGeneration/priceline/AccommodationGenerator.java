@@ -44,7 +44,6 @@ public class AccommodationGenerator {
         this.accommodation = accommodation;
     }
 
-
     private String name() throws IOException {
         NameGenerator nameGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
         String name;

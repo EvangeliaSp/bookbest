@@ -1,14 +1,16 @@
-import dataGeneration.priceline.DataGenerator;
+package GenerateDBs;
+
+import dataGeneration.booking.DataGenerator;
 import database.DBConnection;
 
 import java.sql.Statement;
 
-public class GeneratePricelineDB {
+public class GenerateBookingDB {
     public static void main(String[] args) {
 
         // Connect to database
         DBConnection dbConnection = new DBConnection();
-        dbConnection.connect("priceline");
+        dbConnection.connect("booking");
         Statement statement = dbConnection.getStatement();
 
         // Generate data
