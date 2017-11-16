@@ -9,8 +9,7 @@ public class OntologyGenerator {
     public OntologyGenerator() throws OWLOntologyCreationException {
         OntologyHelper ontologyHelper = new OntologyHelper();
         this.ontologyHelper = ontologyHelper;
-        OWLOntology owlOntology = ontologyHelper.createOntology();
-        this.owlOntology = owlOntology;
+        this.owlOntology = ontologyHelper.createOntology();
     }
 
     // Create OWL Class
@@ -25,9 +24,6 @@ public class OntologyGenerator {
         OWLDataProperty owlDataProperty;
 
         // Data Properties about Hotel
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasName");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
         owlDataProperty = ontologyHelper.createDataProperty("hasType");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
@@ -50,10 +46,10 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasLocationRating");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasRoomType");
+        owlDataProperty = ontologyHelper.createDataProperty("hasCityCenterDistance");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasCityCenterDistance");
+        owlDataProperty = ontologyHelper.createDataProperty("hasNumberO9fPeople");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
 
@@ -113,29 +109,27 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasMassage");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasBicycleRental");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasCycling");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasBusinessCenter");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasBusinessFacilities");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
         owlDataProperty = ontologyHelper.createDataProperty("hasCasino");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
         owlDataProperty = ontologyHelper.createDataProperty("hasBar");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
+        owlDataProperty = ontologyHelper.createDataProperty("hasCribs");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
         owlDataProperty = ontologyHelper.createDataProperty("hasChildCare");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasCribs");
+        owlDataProperty = ontologyHelper.createDataProperty("hasBicycleRental");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
+        owlDataProperty = ontologyHelper.createDataProperty("hasCycling");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
+        owlDataProperty = ontologyHelper.createDataProperty("hasBusinessFacilities");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
 
 
         // Data Properties about Hotel's Rooms facilities
@@ -152,16 +146,16 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasFreeCancellation");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("booksWithoutCreditCard");
+        owlDataProperty = ontologyHelper.createDataProperty("hasNoCCBooking");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasNoPrepayment");
+        owlDataProperty = ontologyHelper.createDataProperty("needsNoPrepayment");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
         owlDataProperty = ontologyHelper.createDataProperty("hasPayLater");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasAirConditioning");
+        owlDataProperty = ontologyHelper.createDataProperty("hasAirCondition");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
         owlDataProperty = ontologyHelper.createDataProperty("hasBath");

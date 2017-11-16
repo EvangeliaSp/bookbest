@@ -5,7 +5,9 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:hasSpa="urn:absolute:bookbest#hasSpa&amp;"
+     xmlns:includesBreakfast="urn:absolute:bookbest#includesBreakfast&amp;">
     <owl:Ontology rdf:about="urn:absolute:bookbest"/>
     
 
@@ -21,369 +23,357 @@
     
 
 
-    <!-- bookbest#allowsPets -->
+    <!-- urn:absolute:bookbest#allowsPets -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#allowsPets"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#allowsPets"/>
     
 
 
-    <!-- bookbest#booksWithoutCreditCard -->
+    <!-- urn:absolute:bookbest#has24HourReception -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#booksWithoutCreditCard"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#has24HourReception"/>
     
 
 
-    <!-- bookbest#has24HourReception -->
+    <!-- urn:absolute:bookbest#hasAccessibleBathroom -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#has24HourReception"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasAccessibleBathroom"/>
     
 
 
-    <!-- bookbest#hasAccessibleBathroom -->
+    <!-- urn:absolute:bookbest#hasAdventureType -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasAccessibleBathroom"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasAdventureType"/>
     
 
 
-    <!-- bookbest#hasAdventureType -->
+    <!-- urn:absolute:bookbest#hasAirCondition -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasAdventureType"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasAirCondition"/>
     
 
 
-    <!-- bookbest#hasAirConditioning -->
+    <!-- urn:absolute:bookbest#hasAirportShuttle -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasAirConditioning"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasAirportShuttle"/>
     
 
 
-    <!-- bookbest#hasAirportShuttle -->
+    <!-- urn:absolute:bookbest#hasBar -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasAirportShuttle"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasBar"/>
     
 
 
-    <!-- bookbest#hasBar -->
+    <!-- urn:absolute:bookbest#hasBath -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBar"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasBath"/>
     
 
 
-    <!-- bookbest#hasBath -->
+    <!-- urn:absolute:bookbest#hasBathtub -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBath"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasBathtub"/>
     
 
 
-    <!-- bookbest#hasBathtub -->
+    <!-- urn:absolute:bookbest#hasBicycleRental -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBathtub"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasBicycleRental"/>
     
 
 
-    <!-- bookbest#hasBicycleRental -->
+    <!-- urn:absolute:bookbest#hasBusinessFacilities -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBicycleRental"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasBusinessFacilities"/>
     
 
 
-    <!-- bookbest#hasBusinessCenter -->
+    <!-- urn:absolute:bookbest#hasBusinessType -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBusinessCenter"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasBusinessType"/>
     
 
 
-    <!-- bookbest#hasBusinessFacilities -->
+    <!-- urn:absolute:bookbest#hasCasino -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBusinessFacilities"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasCasino"/>
     
 
 
-    <!-- bookbest#hasBusinessType -->
+    <!-- urn:absolute:bookbest#hasChildCare -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasBusinessType"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasChildCare"/>
     
 
 
-    <!-- bookbest#hasCasino -->
+    <!-- urn:absolute:bookbest#hasCityCenterDistance -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasCasino"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasCityCenterDistance"/>
     
 
 
-    <!-- bookbest#hasChildCare -->
+    <!-- urn:absolute:bookbest#hasCoffeeMachine -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasChildCare"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasCoffeeMachine"/>
     
 
 
-    <!-- bookbest#hasCityCenterDistance -->
+    <!-- urn:absolute:bookbest#hasCribs -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasCityCenterDistance"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasCribs"/>
     
 
 
-    <!-- bookbest#hasCoffeeMachine -->
+    <!-- urn:absolute:bookbest#hasCycling -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasCoffeeMachine"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasCycling"/>
     
 
 
-    <!-- bookbest#hasCribs -->
+    <!-- urn:absolute:bookbest#hasElectricKettle -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasCribs"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasElectricKettle"/>
     
 
 
-    <!-- bookbest#hasCycling -->
+    <!-- urn:absolute:bookbest#hasFamilyRooms -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasCycling"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasFamilyRooms"/>
     
 
 
-    <!-- bookbest#hasElectricKettle -->
+    <!-- urn:absolute:bookbest#hasFitnessCenter -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasElectricKettle"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasFitnessCenter"/>
     
 
 
-    <!-- bookbest#hasFamilyRooms -->
+    <!-- urn:absolute:bookbest#hasFreeCancellation -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasFamilyRooms"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasFreeCancellation"/>
     
 
 
-    <!-- bookbest#hasFitnessCenter -->
+    <!-- urn:absolute:bookbest#hasFreeWifi -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasFitnessCenter"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasFreeWifi"/>
     
 
 
-    <!-- bookbest#hasFreeCancellation -->
+    <!-- urn:absolute:bookbest#hasHandicappedFacilities -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasFreeCancellation"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasHandicappedFacilities"/>
     
 
 
-    <!-- bookbest#hasFreeWifi -->
+    <!-- urn:absolute:bookbest#hasHandicappedRooms -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasFreeWifi"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasHandicappedRooms"/>
     
 
 
-    <!-- bookbest#hasHandicappedFacilities -->
+    <!-- urn:absolute:bookbest#hasInRoomAccessibility -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasHandicappedFacilities"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasInRoomAccessibility"/>
     
 
 
-    <!-- bookbest#hasHandicappedRooms -->
+    <!-- urn:absolute:bookbest#hasKitchen -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasHandicappedRooms"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasKitchen"/>
     
 
 
-    <!-- bookbest#hasInRoomAccessibility -->
+    <!-- urn:absolute:bookbest#hasLocationRating -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasInRoomAccessibility"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasLocationRating"/>
     
 
 
-    <!-- bookbest#hasKitchen -->
+    <!-- urn:absolute:bookbest#hasLuxuryType -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasKitchen"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasLuxuryType"/>
     
 
 
-    <!-- bookbest#hasLocationRating -->
+    <!-- urn:absolute:bookbest#hasMassage -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasLocationRating"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasMassage"/>
     
 
 
-    <!-- bookbest#hasLuxuryType -->
+    <!-- urn:absolute:bookbest#hasNoCCBooking -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasLuxuryType"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasNoCCBooking"/>
     
 
 
-    <!-- bookbest#hasMassage -->
+    <!-- urn:absolute:bookbest#hasNonSmokingFacilities -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasMassage"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasNonSmokingFacilities"/>
     
 
 
-    <!-- bookbest#hasName -->
+    <!-- urn:absolute:bookbest#hasNonSmokingRooms -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasName"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasNonSmokingRooms"/>
     
 
 
-    <!-- bookbest#hasNoPrepayment -->
+    <!-- urn:absolute:bookbest#hasNumberO9fPeople -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasNoPrepayment"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasNumberO9fPeople"/>
     
 
 
-    <!-- bookbest#hasNonSmokingFacilities -->
+    <!-- urn:absolute:bookbest#hasParking -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasNonSmokingFacilities"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasParking"/>
     
 
 
-    <!-- bookbest#hasNonSmokingRooms -->
+    <!-- urn:absolute:bookbest#hasPayLater -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasNonSmokingRooms"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasPayLater"/>
     
 
 
-    <!-- bookbest#hasParking -->
+    <!-- urn:absolute:bookbest#hasPricePerNight -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasParking"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasPricePerNight"/>
     
 
 
-    <!-- bookbest#hasPayLater -->
+    <!-- urn:absolute:bookbest#hasRating -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasPayLater"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasRating"/>
     
 
 
-    <!-- bookbest#hasPricePerNight -->
+    <!-- urn:absolute:bookbest#hasRestaurant -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasPricePerNight"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasRestaurant"/>
     
 
 
-    <!-- bookbest#hasRating -->
+    <!-- urn:absolute:bookbest#hasRollInShower -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasRating"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasRollInShower"/>
     
 
 
-    <!-- bookbest#hasRestaurant -->
+    <!-- urn:absolute:bookbest#hasRomanticType -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasRestaurant"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasRomanticType"/>
     
 
 
-    <!-- bookbest#hasRollInShower -->
+    <!-- urn:absolute:bookbest#hasRoomService -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasRollInShower"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasRoomService"/>
     
 
 
-    <!-- bookbest#hasRomanticType -->
+    <!-- urn:absolute:bookbest#hasSauna -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasRomanticType"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasSauna"/>
     
 
 
-    <!-- bookbest#hasRoomService -->
+    <!-- urn:absolute:bookbest#hasSelfCatering -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasRoomService"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasSelfCatering"/>
     
 
 
-    <!-- bookbest#hasRoomType -->
+    <!-- urn:absolute:bookbest#hasSmokingAreas -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasRoomType"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasSmokingAreas"/>
     
 
 
-    <!-- bookbest#hasSauna -->
+    <!-- urn:absolute:bookbest#hasStarRating -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasSauna"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasStarRating"/>
     
 
 
-    <!-- bookbest#hasSelfCatering -->
+    <!-- urn:absolute:bookbest#hasSwimmingPool -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasSelfCatering"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasSwimmingPool"/>
     
 
 
-    <!-- bookbest#hasSmokingAreas -->
+    <!-- urn:absolute:bookbest#hasTV -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasSmokingAreas"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasTV"/>
     
 
 
-    <!-- bookbest#hasStarRating -->
+    <!-- urn:absolute:bookbest#hasTeaCoffeeMaker -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasStarRating"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasTeaCoffeeMaker"/>
     
 
 
-    <!-- bookbest#hasSwimmingPool -->
+    <!-- urn:absolute:bookbest#hasType -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasSwimmingPool"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasType"/>
     
 
 
-    <!-- bookbest#hasTV -->
+    <!-- urn:absolute:bookbest#hasWheelchairAccess -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasTV"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasWheelchairAccess"/>
     
 
 
-    <!-- bookbest#hasTeaCoffeeMaker -->
+    <!-- urn:absolute:bookbest#includesBreakfast -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasTeaCoffeeMaker"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#includesBreakfast"/>
     
 
 
-    <!-- bookbest#hasType -->
+    <!-- urn:absolute:bookbest#isFamilyFriendly -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasType"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#isFamilyFriendly"/>
     
 
 
-    <!-- bookbest#hasWheelchairAccess -->
+    <!-- urn:absolute:bookbest#isInCity -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#hasWheelchairAccess"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#isInCity"/>
     
 
 
-    <!-- bookbest#includesBreakfast -->
+    <!-- urn:absolute:bookbest#isInCountry -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#includesBreakfast"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#isInCountry"/>
     
 
 
-    <!-- bookbest#isFamilyFriendly -->
+    <!-- urn:absolute:bookbest#isSoundProofing -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#isFamilyFriendly"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#isSoundProofing"/>
     
 
 
-    <!-- bookbest#isInCity -->
+    <!-- urn:absolute:bookbest#needsNoPrepayment -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#isInCity"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#needsNoPrepayment"/>
     
 
 
-    <!-- bookbest#isInCountry -->
+    <!-- urn:absolute:bookbest#hasSpa&amp;Wellness -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#isInCountry"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#hasSpa&amp;Wellness"/>
     
 
 
-    <!-- bookbest#isSoundProofing -->
+    <!-- urn:absolute:bookbest#includesBreakfast&amp;Dinner -->
 
-    <owl:DatatypeProperty rdf:about="bookbest#isSoundProofing"/>
-    
-
-
-    <!-- bookbest#hasSpa&amp;Wellness -->
-
-    <owl:DatatypeProperty rdf:about="bookbest#hasSpa&amp;Wellness"/>
-    
-
-
-    <!-- bookbest#includesBreakfast&amp;Dinner -->
-
-    <owl:DatatypeProperty rdf:about="bookbest#includesBreakfast&amp;Dinner"/>
+    <owl:DatatypeProperty rdf:about="urn:absolute:bookbest#includesBreakfast&amp;Dinner"/>
     
 
 
@@ -398,9 +388,490 @@
     
 
 
-    <!-- bookbest#Hotel -->
+    <!-- urn:absolute:bookbest#Hotel -->
 
-    <owl:Class rdf:about="bookbest#Hotel"/>
+    <owl:Class rdf:about="urn:absolute:bookbest#Hotel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- urn:absolute:bookbest#Aguscus -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Aguscus">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.7</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.5</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">837</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.2</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lodge</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikasso</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mali</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Alnulaunulius -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Alnulaunulius">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.3</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">107</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.9</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Guest_house</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ocumare del Tuy</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Venezuela</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Angusnulautin -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Angusnulautin">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.5</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.9</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1534</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.9</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boat</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Concordia</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brazil</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Augusbodatus -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Augusbodatus">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.0</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1872</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.9</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Homestay</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikar</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">India</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Bidalus -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Bidalus">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.8</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.4</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1715</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.7</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hostel</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikasso</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mali</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Dadabubocus -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Dadabubocus">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.5</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.4</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1945</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.1</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Motel</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Groznyy</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Russia</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Dibunulaulius -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Dibunulaulius">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.5</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.5</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">541</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.4</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hotel</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Santos</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brazil</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Dugusfrinus -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Dugusfrinus">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.1</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.1</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1314</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.6</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hotel</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kingston</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Eucio -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Eucio">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.5</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.8</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1794</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.7</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hotel</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Namibe</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Angola</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:absolute:bookbest#Fagugusfricus -->
+
+    <owl:NamedIndividual rdf:about="urn:absolute:bookbest#Fagugusfricus">
+        <allowsPets rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</allowsPets>
+        <has24HourReception rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</has24HourReception>
+        <hasAirCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasAirCondition>
+        <hasAirportShuttle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasAirportShuttle>
+        <hasBath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasBath>
+        <hasBicycleRental rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasBicycleRental>
+        <hasCityCenterDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.6</hasCityCenterDistance>
+        <hasCoffeeMachine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasCoffeeMachine>
+        <hasCycling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasCycling>
+        <hasElectricKettle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasElectricKettle>
+        <hasFamilyRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFamilyRooms>
+        <hasFitnessCenter rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasFitnessCenter>
+        <hasFreeCancellation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeCancellation>
+        <hasFreeWifi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasFreeWifi>
+        <hasHandicappedFacilities rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedFacilities>
+        <hasHandicappedRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasHandicappedRooms>
+        <hasKitchen rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasKitchen>
+        <hasLocationRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.4</hasLocationRating>
+        <hasMassage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasMassage>
+        <hasNoCCBooking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNoCCBooking>
+        <hasNonSmokingRooms rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasNonSmokingRooms>
+        <hasParking rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasParking>
+        <hasPricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#string">466</hasPricePerNight>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.8</hasRating>
+        <hasRestaurant rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRestaurant>
+        <hasRoomService rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasRoomService>
+        <hasSauna rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSauna>
+        <hasSelfCatering rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasSelfCatering>
+        <hasStarRating rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</hasStarRating>
+        <hasSwimmingPool rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSwimmingPool>
+        <hasTV rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</hasTV>
+        <hasTeaCoffeeMaker rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasTeaCoffeeMaker>
+        <hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hotel</hasType>
+        <includesBreakfast rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</includesBreakfast>
+        <isInCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iguatu</isInCity>
+        <isInCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brazil</isInCountry>
+        <isSoundProofing rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</isSoundProofing>
+        <needsNoPrepayment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</needsNoPrepayment>
+        <hasSpa:Wellness rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</hasSpa:Wellness>
+        <includesBreakfast:Dinner rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</includesBreakfast:Dinner>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 

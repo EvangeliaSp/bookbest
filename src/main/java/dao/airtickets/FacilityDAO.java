@@ -8,4 +8,5 @@ public interface FacilityDAO {
 
     void create(Statement statement, Facility facility);
 
+    Facility find(Statement statement, int id);
 }

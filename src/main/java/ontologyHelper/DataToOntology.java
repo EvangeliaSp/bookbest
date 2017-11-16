@@ -1,51 +1,30 @@
 package ontologyHelper;
 
-import dao.HotelDAO;
-import dao.HotelDAOImpl;
-import entities.Hotel;
 import org.semanticweb.owlapi.model.*;
-
-import java.sql.Statement;
-import java.util.List;
 
 public class DataToOntology {
 
-    public void importData(Statement stmt, OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLClass owlClass) throws OWLOntologyStorageException {
-        HotelDAO hotelDAO = new HotelDAOImpl();
-        List<Hotel> hotels = hotelDAO.list(stmt);
-        for(Hotel hotel: hotels) {
-            String name = hotel.getName(), price, rating, distance;
-
-            OWLIndividual owlIndividual = ontologyHelper.createIndividual(name);
-            ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, owlIndividual);
-
-            ontologyHelper.createIndividual(owlOntology, owlIndividual, owlClass);
-            createIndividual(ontologyHelper, owlOntology, owlIndividual, owlClass);
-
-            int id = hotel.getIdHotel();
-            ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasId", String.valueOf(id));
-
-            if(hotel.getPrice() != null) {
-                price = hotel.getPrice();
-                ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasPrice", price);
-            }
-            if(hotel.getRating() != null) {
-                rating = hotel.getRating();
-                ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasRating", rating);
-            }
-            if(hotel.getDistance() != null) {
-                distance = hotel.getDistance();
-                ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, "hasDistance", distance);
-            }
-        }
+    // Import String data
+    public void importData(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
+        if(value != null)
+            ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, property, value);
     }
 
-    private void createIndividual(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, OWLClass owlClass) throws OWLOntologyStorageException {
-        OWLDataFactory owlDataFactory = ontologyHelper.getOwlDataFactory();
+    // Import Integer data
+    public void importData(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, Integer value) throws OWLOntologyStorageException {
+        if(value != null)
+            ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, property, String.valueOf(value));
+    }
 
-        OWLClassAssertionAxiom owlClassAssertionAxiom = owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
+    // Import Double data
+    public void importData(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, Double value) throws OWLOntologyStorageException {
+        if(value != null)
+            ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, property, String.valueOf(value));
+    }
 
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlClassAssertionAxiom);
-        ontologyHelper.saveOntology(owlOntology, addAxiom);
+    // Import Byte data
+    public void importData(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, Byte value) throws OWLOntologyStorageException {
+        if(value != null)
+            ontologyHelper.addDataToIndividual(owlOntology, owlIndividual, property, String.valueOf(value));
     }
 }

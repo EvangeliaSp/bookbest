@@ -1,16 +1,16 @@
-package GenerateDBs;
+package generateDBs;
 
-import dataGeneration.airtickets.DataGenerator;
+import dataGeneration.priceline.DataGenerator;
 import database.DBConnection;
 
 import java.sql.Statement;
 
-public class GenerateAirticketsDB {
+public class GeneratePricelineDB {
     public static void main(String[] args) {
 
         // Connect to database
         DBConnection dbConnection = new DBConnection();
-        dbConnection.connect("airtickets");
+        dbConnection.connect("priceline");
         Statement statement = dbConnection.getStatement();
 
         // Generate data

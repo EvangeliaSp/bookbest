@@ -1,4 +1,4 @@
-package GenerateDBs;
+package generateDBs;
 
 import dataGeneration.booking.DataGenerator;
 import database.DBConnection;

@@ -1,22 +1,21 @@
-package GenerateDBs;
+package mapData;
 
-import dataGeneration.hotelclub.DataGenerator;
+import dataMapping.AirticketsMapping;
 import database.DBConnection;
 
 import java.sql.Statement;
 
-public class GenerateHotelclubDB {
-    public static void main(String[] args) {
+public class MapAirticketsData {
 
+    public static void main(String[] args) {
         // Connect to database
         DBConnection dbConnection = new DBConnection();
-        dbConnection.connect("hotelclub");
+        dbConnection.connect("airtickets");
         Statement statement = dbConnection.getStatement();
 
-        // Generate data
-        DataGenerator dataGenerator = new DataGenerator(statement);
         try {
-            dataGenerator.accommodationGenerate();
+            AirticketsMapping airticketsMapping = new AirticketsMapping(statement);
+            airticketsMapping.importData();
         }
         catch (Exception e) {
             e.printStackTrace();

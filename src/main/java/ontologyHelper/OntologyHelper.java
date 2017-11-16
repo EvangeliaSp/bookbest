@@ -7,6 +7,7 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype;
 
 import java.io.File;
 import java.net.URI;
+import java.util.Iterator;
 import java.util.Set;
 
 public class OntologyHelper {
@@ -14,7 +15,7 @@ public class OntologyHelper {
     String prefix = "file:";
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
 
-    String base = "";
+    String base = "urn:absolute:";
     String ontName = "bookbest";
     IRI iri = IRI.create(base+ontName);
 
@@ -60,6 +61,12 @@ public class OntologyHelper {
 
     public Set<OWLClass> getClasses(OWLOntology owlOntology) {
         return owlOntology.getClassesInSignature();
+    }
+
+    public OWLClass getFirstClass(OWLOntology owlOntology) {
+        Set<OWLClass> owlClasses = owlOntology.getClassesInSignature();
+        Iterator<OWLClass> iterator = owlClasses.iterator();
+        return iterator.next();
     }
 
     public void printClasses(Set<OWLClass> owlClasses) {
