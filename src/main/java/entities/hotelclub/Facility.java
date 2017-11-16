@@ -9,7 +9,6 @@ public class Facility {
     private Byte bar;
     private Byte businessFacilities;
     private Byte childcare;
-    private Byte connectingRoomsAvailable;
     private Byte cribsAvailable;
     private Byte freeBreakfast;
     private Byte freeParking;
@@ -23,14 +22,9 @@ public class Facility {
     private Byte bathtubInRoom;
     private Byte kitchen;
     private Byte accessibleBathroom;
-    private Byte inRoomAccessebility;
+    private Byte inRoomAccessibility;
     private Byte rollInShower;
     private Byte wheelchairAccess;
-    private Byte familyFriendly;
-    private Byte business;
-    private Byte romantic;
-    private Byte adventure;
-    private Byte luxury;
     private Accommodation accommodationById;
 
     @Id
@@ -81,16 +75,6 @@ public class Facility {
 
     public void setChildcare(Byte childcare) {
         this.childcare = childcare;
-    }
-
-    @Basic
-    @Column(name = "connectingRoomsAvailable", nullable = true)
-    public Byte getConnectingRoomsAvailable() {
-        return connectingRoomsAvailable;
-    }
-
-    public void setConnectingRoomsAvailable(Byte connectingRoomsAvailable) {
-        this.connectingRoomsAvailable = connectingRoomsAvailable;
     }
 
     @Basic
@@ -224,13 +208,13 @@ public class Facility {
     }
 
     @Basic
-    @Column(name = "inRoomAccessebility", nullable = true)
-    public Byte getInRoomAccessebility() {
-        return inRoomAccessebility;
+    @Column(name = "inRoomAccessibility", nullable = true)
+    public Byte getInRoomAccessibility() {
+        return inRoomAccessibility;
     }
 
-    public void setInRoomAccessebility(Byte inRoomAccessebility) {
-        this.inRoomAccessebility = inRoomAccessebility;
+    public void setInRoomAccessibility(Byte inRoomAccessibility) {
+        this.inRoomAccessibility = inRoomAccessibility;
     }
 
     @Basic
@@ -253,56 +237,6 @@ public class Facility {
         this.wheelchairAccess = wheelchairAccess;
     }
 
-    @Basic
-    @Column(name = "familyFriendly", nullable = true)
-    public Byte getFamilyFriendly() {
-        return familyFriendly;
-    }
-
-    public void setFamilyFriendly(Byte familyFriendly) {
-        this.familyFriendly = familyFriendly;
-    }
-
-    @Basic
-    @Column(name = "business", nullable = true)
-    public Byte getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Byte business) {
-        this.business = business;
-    }
-
-    @Basic
-    @Column(name = "romantic", nullable = true)
-    public Byte getRomantic() {
-        return romantic;
-    }
-
-    public void setRomantic(Byte romantic) {
-        this.romantic = romantic;
-    }
-
-    @Basic
-    @Column(name = "adventure", nullable = true)
-    public Byte getAdventure() {
-        return adventure;
-    }
-
-    public void setAdventure(Byte adventure) {
-        this.adventure = adventure;
-    }
-
-    @Basic
-    @Column(name = "luxury", nullable = true)
-    public Byte getLuxury() {
-        return luxury;
-    }
-
-    public void setLuxury(Byte luxury) {
-        this.luxury = luxury;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -317,8 +251,6 @@ public class Facility {
         if (businessFacilities != null ? !businessFacilities.equals(facility.businessFacilities) : facility.businessFacilities != null)
             return false;
         if (childcare != null ? !childcare.equals(facility.childcare) : facility.childcare != null) return false;
-        if (connectingRoomsAvailable != null ? !connectingRoomsAvailable.equals(facility.connectingRoomsAvailable) : facility.connectingRoomsAvailable != null)
-            return false;
         if (cribsAvailable != null ? !cribsAvailable.equals(facility.cribsAvailable) : facility.cribsAvailable != null)
             return false;
         if (freeBreakfast != null ? !freeBreakfast.equals(facility.freeBreakfast) : facility.freeBreakfast != null)
@@ -339,18 +271,12 @@ public class Facility {
         if (kitchen != null ? !kitchen.equals(facility.kitchen) : facility.kitchen != null) return false;
         if (accessibleBathroom != null ? !accessibleBathroom.equals(facility.accessibleBathroom) : facility.accessibleBathroom != null)
             return false;
-        if (inRoomAccessebility != null ? !inRoomAccessebility.equals(facility.inRoomAccessebility) : facility.inRoomAccessebility != null)
+        if (inRoomAccessibility != null ? !inRoomAccessibility.equals(facility.inRoomAccessibility) : facility.inRoomAccessibility != null)
             return false;
         if (rollInShower != null ? !rollInShower.equals(facility.rollInShower) : facility.rollInShower != null)
             return false;
         if (wheelchairAccess != null ? !wheelchairAccess.equals(facility.wheelchairAccess) : facility.wheelchairAccess != null)
             return false;
-        if (familyFriendly != null ? !familyFriendly.equals(facility.familyFriendly) : facility.familyFriendly != null)
-            return false;
-        if (business != null ? !business.equals(facility.business) : facility.business != null) return false;
-        if (romantic != null ? !romantic.equals(facility.romantic) : facility.romantic != null) return false;
-        if (adventure != null ? !adventure.equals(facility.adventure) : facility.adventure != null) return false;
-        if (luxury != null ? !luxury.equals(facility.luxury) : facility.luxury != null) return false;
 
         return true;
     }
@@ -362,7 +288,6 @@ public class Facility {
         result = 31 * result + (bar != null ? bar.hashCode() : 0);
         result = 31 * result + (businessFacilities != null ? businessFacilities.hashCode() : 0);
         result = 31 * result + (childcare != null ? childcare.hashCode() : 0);
-        result = 31 * result + (connectingRoomsAvailable != null ? connectingRoomsAvailable.hashCode() : 0);
         result = 31 * result + (cribsAvailable != null ? cribsAvailable.hashCode() : 0);
         result = 31 * result + (freeBreakfast != null ? freeBreakfast.hashCode() : 0);
         result = 31 * result + (freeParking != null ? freeParking.hashCode() : 0);
@@ -376,14 +301,9 @@ public class Facility {
         result = 31 * result + (bathtubInRoom != null ? bathtubInRoom.hashCode() : 0);
         result = 31 * result + (kitchen != null ? kitchen.hashCode() : 0);
         result = 31 * result + (accessibleBathroom != null ? accessibleBathroom.hashCode() : 0);
-        result = 31 * result + (inRoomAccessebility != null ? inRoomAccessebility.hashCode() : 0);
+        result = 31 * result + (inRoomAccessibility != null ? inRoomAccessibility.hashCode() : 0);
         result = 31 * result + (rollInShower != null ? rollInShower.hashCode() : 0);
         result = 31 * result + (wheelchairAccess != null ? wheelchairAccess.hashCode() : 0);
-        result = 31 * result + (familyFriendly != null ? familyFriendly.hashCode() : 0);
-        result = 31 * result + (business != null ? business.hashCode() : 0);
-        result = 31 * result + (romantic != null ? romantic.hashCode() : 0);
-        result = 31 * result + (adventure != null ? adventure.hashCode() : 0);
-        result = 31 * result + (luxury != null ? luxury.hashCode() : 0);
         return result;
     }
 

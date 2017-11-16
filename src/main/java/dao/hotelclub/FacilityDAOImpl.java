@@ -2,6 +2,7 @@ package dao.hotelclub;
 
 import entities.hotelclub.Facility;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -29,10 +30,6 @@ public class FacilityDAOImpl implements FacilityDAO {
             if(facility.getChildcare() != null) {
                 columns = columns + ", childcare";
                 values = values + ", " + facility.getChildcare();
-            }
-            if(facility.getConnectingRoomsAvailable() != null) {
-                columns = columns + ", connectingRoomsAvailable";
-                values = values + ", " + facility.getConnectingRoomsAvailable();
             }
             if(facility.getCribsAvailable() != null) {
                 columns = columns + ", cribsAvailable";
@@ -86,9 +83,9 @@ public class FacilityDAOImpl implements FacilityDAO {
                 columns = columns + ", accessibleBathroom";
                 values = values + ", " + facility.getAccessibleBathroom();
             }
-            if(facility.getInRoomAccessebility() != null) {
-                columns = columns + ", inRoomAccessebility";
-                values = values + ", " + facility.getInRoomAccessebility();
+            if(facility.getInRoomAccessibility() != null) {
+                columns = columns + ", inRoomAccessibility";
+                values = values + ", " + facility.getInRoomAccessibility();
             }
             if(facility.getRollInShower() != null) {
                 columns = columns + ", rollInShower";
@@ -97,26 +94,6 @@ public class FacilityDAOImpl implements FacilityDAO {
             if(facility.getWheelchairAccess() != null) {
                 columns = columns + ", wheelchairAccess";
                 values = values + ", " + facility.getWheelchairAccess();
-            }
-            if(facility.getFamilyFriendly() != null) {
-                columns = columns + ", familyFriendly";
-                values = values + ", " + facility.getFamilyFriendly();
-            }
-            if(facility.getBusiness() != null) {
-                columns = columns + ", business";
-                values = values + ", " + facility.getBusiness();
-            }
-            if(facility.getRomantic() != null) {
-                columns = columns + ", romantic";
-                values = values + ", " + facility.getRomantic();
-            }
-            if(facility.getAdventure() != null) {
-                columns = columns + ", adventure";
-                values = values + ", " + facility.getAdventure();
-            }
-            if(facility.getLuxury() != null) {
-                columns = columns + ", luxury";
-                values = values + ", " + facility.getLuxury();
             }
 
             sql = sql + "(" + columns + ") VALUES " + "(" + values + ")";
@@ -128,6 +105,48 @@ public class FacilityDAOImpl implements FacilityDAO {
             System.out.println("Hotelclub: SQLException in facility create: " + ex.getMessage());
             System.out.println("Hotelclub: SQLState in facility create: " + ex.getSQLState());
             System.out.println("Hotelclub: VendorError in facility create: " + ex.getErrorCode());
+        }
+    }
+
+    @Override
+    public Facility find(Statement statement, int id) {
+        Facility facility = null;
+
+        try {
+            String sql = "SELECT * FROM hotelclub.Facility WHERE id=" + id;
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs.next()) {
+                facility = new Facility();
+                facility.setAirportTransfer(rs.getByte("airportTransfer"));
+                facility.setBar(rs.getByte("bar"));
+                facility.setBusinessFacilities(rs.getByte("businessFacilities"));
+                facility.setChildcare(rs.getByte("childcare"));
+                facility.setCribsAvailable(rs.getByte("cribsAvailable"));
+                facility.setFreeBreakfast(rs.getByte("freeBreakfast"));
+                facility.setFreeParking(rs.getByte("freeParking"));
+                facility.setFreeWifi(rs.getByte("freeWifi"));
+                facility.setGym(rs.getByte("gym"));
+                facility.setPetFriendly(rs.getByte("petFriendly"));
+                facility.setPool(rs.getByte("pool"));
+                facility.setRestaurant(rs.getByte("restaurant"));
+                facility.setSmokingAreas(rs.getByte("smokingAreas"));
+                facility.setSpa(rs.getByte("spa"));
+                facility.setBathtubInRoom(rs.getByte("bathtubInRoom"));
+                facility.setKitchen(rs.getByte("kitchen"));
+                facility.setAccessibleBathroom(rs.getByte("accessibleBathroom"));
+                facility.setInRoomAccessibility(rs.getByte("inRoomAccessibility"));
+                facility.setRollInShower(rs.getByte("rollInShower"));
+                facility.setWheelchairAccess(rs.getByte("wheelchairAccess"));
+            }
+        }
+        catch (SQLException ex) {
+            // Handle the errors
+            System.out.println("Booking: SQLException in facility find: " + ex.getMessage());
+            System.out.println("Booking: SQLState in facility find: " + ex.getSQLState());
+            System.out.println("Booking: VendorError in facility find: " + ex.getErrorCode());
+        }
+        finally {
+            return facility;
         }
     }
 }

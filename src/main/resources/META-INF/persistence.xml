@@ -17,7 +17,7 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="5698"/>
-            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/priceline"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/hotelclub"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
         </properties>
     </persistence-unit>

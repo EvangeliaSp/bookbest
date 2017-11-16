@@ -34,9 +34,6 @@ public class FacilityGenerator {
             facility.setChildcare((byte) k);
         }
         if((k=bit()) != 2) {
-            facility.setConnectingRoomsAvailable((byte) k);
-        }
-        if((k=bit()) != 2) {
             facility.setCribsAvailable((byte) k);
         }
         if((k=bit()) != 2) {
@@ -76,28 +73,13 @@ public class FacilityGenerator {
             facility.setAccessibleBathroom((byte) k);
         }
         if((k=bit()) != 2) {
-            facility.setInRoomAccessebility((byte) k);
+            facility.setInRoomAccessibility((byte) k);
         }
         if((k=bit()) != 2) {
             facility.setRollInShower((byte) k);
         }
         if((k=bit()) != 2) {
             facility.setWheelchairAccess((byte) k);
-        }
-        if((k=bit()) != 2) {
-            facility.setFamilyFriendly((byte) k);
-        }
-        if((k=bit()) != 2) {
-            facility.setBusiness((byte) k);
-        }
-        if((k=bit()) != 2) {
-            facility.setRomantic((byte) k);
-        }
-        if((k=bit()) != 2) {
-            facility.setAdventure((byte) k);
-        }
-        if((k=bit()) != 2) {
-            facility.setLuxury((byte) k);
         }
 
         FacilityDAO facilityDAO = new FacilityDAOImpl();

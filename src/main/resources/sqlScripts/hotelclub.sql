@@ -37,7 +37,7 @@ CREATE TABLE `Facility` (
   `bathtubInRoom` tinyint(1) NULL,
   `kitchen` tinyint(1) NULL,
   `accessibleBathroom` tinyint(1) NULL,
-  `inRoomAccessebility` tinyint(1) NULL,
+  `inRoomAccessibility` tinyint(1) NULL,
   `rollInShower` tinyint(1) NULL,
   `wheelchairAccess` tinyint(1) NULL,
   `familyFriendly` tinyint(1) NULL,

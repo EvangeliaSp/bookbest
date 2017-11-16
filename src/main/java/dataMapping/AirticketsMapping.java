@@ -26,6 +26,7 @@ public class AirticketsMapping {
         this.owlOntology = ontologyHelper.readOntology();
         this.dataToOntology = new DataToOntology();
     }
+
     public void importData() throws OWLOntologyStorageException {
         AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
         List<Accommodation> accommodations = accommodationDAO.list(this.statement);

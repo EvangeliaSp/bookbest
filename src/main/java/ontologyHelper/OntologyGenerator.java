@@ -49,8 +49,8 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasCityCenterDistance");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasNumberO9fPeople");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+        //owlDataProperty = ontologyHelper.createDataProperty("hasNumberOfPeople");
+        //ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
 
         // Data Properties about Hotel facilities
@@ -106,6 +106,9 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasSauna");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
+        owlDataProperty = ontologyHelper.createDataProperty("hasSpa");
+        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+
         owlDataProperty = ontologyHelper.createDataProperty("hasMassage");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
@@ -118,7 +121,7 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasCribs");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        owlDataProperty = ontologyHelper.createDataProperty("hasChildCare");
+        owlDataProperty = ontologyHelper.createDataProperty("hasChildcare");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
         owlDataProperty = ontologyHelper.createDataProperty("hasBicycleRental");
@@ -129,7 +132,6 @@ public class OntologyGenerator {
 
         owlDataProperty = ontologyHelper.createDataProperty("hasBusinessFacilities");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
 
 
         // Data Properties about Hotel's Rooms facilities
@@ -193,25 +195,6 @@ public class OntologyGenerator {
 
         owlDataProperty = ontologyHelper.createDataProperty("hasWheelchairAccess");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        // Data Properties about Hotel's Room type
-
-        owlDataProperty = ontologyHelper.createDataProperty("isFamilyFriendly");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasBusinessType");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasRomanticType");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasAdventureType");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-        owlDataProperty = ontologyHelper.createDataProperty("hasLuxuryType");
-        ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
-
     }
 
 }
