@@ -28,9 +28,9 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in accommodation create: " + ex.getMessage());
-            System.out.println("SQLState in accommodation create: " + ex.getSQLState());
-            System.out.println("VendorError in accommodation create: " + ex.getErrorCode());
+            System.out.println("Priceline: SQLException in accommodation create: " + ex.getMessage());
+            System.out.println("Priceline: SQLState in accommodation create: " + ex.getSQLState());
+            System.out.println("Priceline: VendorError in accommodation create: " + ex.getErrorCode());
         }
     }
 
@@ -60,9 +60,9 @@ public class AccommodationDAOImpl implements AccommodationDAO {
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in accommodation list: " + ex.getMessage());
-            System.out.println("SQLState in accommodation list: " + ex.getSQLState());
-            System.out.println("VendorError in accommodation list: " + ex.getErrorCode());
+            System.out.println("Priceline: SQLException in accommodation list: " + ex.getMessage());
+            System.out.println("Priceline: SQLState in accommodation list: " + ex.getSQLState());
+            System.out.println("Priceline: VendorError in accommodation list: " + ex.getErrorCode());
         }
         finally {
             return accommodations;

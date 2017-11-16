@@ -81,9 +81,9 @@ public class FacilityDAOImpl implements FacilityDAO {
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in facility create: " + ex.getMessage());
-            System.out.println("SQLState in facility create: " + ex.getSQLState());
-            System.out.println("VendorError in facility create: " + ex.getErrorCode());
+            System.out.println("Priceline: SQLException in facility create: " + ex.getMessage());
+            System.out.println("Priceline: SQLState in facility create: " + ex.getSQLState());
+            System.out.println("Priceline: VendorError in facility create: " + ex.getErrorCode());
         }
     }
 }

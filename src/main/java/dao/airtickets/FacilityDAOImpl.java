@@ -145,9 +145,9 @@ public class FacilityDAOImpl implements FacilityDAO {
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in facility create: " + ex.getMessage());
-            System.out.println("SQLState in facility create: " + ex.getSQLState());
-            System.out.println("VendorError in facility create: " + ex.getErrorCode());
+            System.out.println("Airtickets: SQLException in facility create: " + ex.getMessage());
+            System.out.println("Airtickets: SQLState in facility create: " + ex.getSQLState());
+            System.out.println("Airtickets: VendorError in facility create: " + ex.getErrorCode());
         }
     }
 
@@ -195,9 +195,9 @@ public class FacilityDAOImpl implements FacilityDAO {
         }
         catch (SQLException ex) {
             // Handle the errors
-            System.out.println("SQLException in facility find: " + ex.getMessage());
-            System.out.println("SQLState in facility find: " + ex.getSQLState());
-            System.out.println("VendorError in facility find: " + ex.getErrorCode());
+            System.out.println("Airtickets: SQLException in facility find: " + ex.getMessage());
+            System.out.println("Airtickets: SQLState in facility find: " + ex.getSQLState());
+            System.out.println("Airtickets: VendorError in facility find: " + ex.getErrorCode());
         }
         finally {
             return facility;

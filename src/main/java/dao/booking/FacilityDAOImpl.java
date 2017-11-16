@@ -2,6 +2,7 @@ package dao.booking;
 
 import entities.booking.Facility;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -145,10 +146,62 @@ public class FacilityDAOImpl implements FacilityDAO {
         }
         catch (SQLException ex){
             // Handle the errors
-            System.out.println("SQLException in facility create: " + ex.getMessage());
-            System.out.println("SQLState in facility create: " + ex.getSQLState());
-            System.out.println("VendorError in facility create: " + ex.getErrorCode());
+            System.out.println("Booking: SQLException in facility create: " + ex.getMessage());
+            System.out.println("Booking: SQLState in facility create: " + ex.getSQLState());
+            System.out.println("Booking: VendorError in facility create: " + ex.getErrorCode());
         }
     }
 
+    @Override
+    public Facility find(Statement statement, int id) {
+        Facility facility = null;
+        try {
+            String sql = "SELECT * FROM booking.Facility WHERE id=" + id;
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs.next()) {
+                facility = new Facility();
+                facility.setPetsAllowed(rs.getByte("petsAllowed"));
+                facility.setParking(rs.getByte("parking"));
+                facility.setNonSmokingRooms(rs.getByte("nonSmokingRooms"));
+                facility.setRoomService(rs.getByte("roomService"));
+                facility.setRestaurant(rs.getByte("restaurant"));
+                facility.setForDisabledGuests(rs.getByte("forDisabledGuests"));
+                facility.setFreeWifi(rs.getByte("freeWifi"));
+                facility.setFitnessCentre(rs.getByte("fitnessCentre"));
+                facility.setFamilyRooms(rs.getByte("familyRooms"));
+                facility.setSwimmingPool(rs.getByte("swimmingPool"));
+                facility.setSpaAndWellnessCentre(rs.getByte("spaAndWellnessCentre"));
+                facility.setAirportShuttle(rs.getByte("airportShuttle"));
+                facility.setReception24Hour(rs.getByte("reception24Hour"));
+                facility.setSauna(rs.getByte("sauna"));
+                facility.setMassage(rs.getByte("massage"));
+                facility.setBicycleRental(rs.getByte("bicycleRental"));
+                facility.setCycling(rs.getByte("cycling"));
+                facility.setSelfCatering(rs.getByte("selfCatering"));
+                facility.setBreakfastIncluded(rs.getByte("breakfastIncluded"));
+                facility.setBreakfastAndDinner(rs.getByte("breakfastAndDinner"));
+                facility.setFreeCancellation(rs.getByte("freeCancellation"));
+                facility.setBookWithoutCreditCard(rs.getByte("bookWithoutCreditCard"));
+                facility.setNoPrepayment(rs.getByte("noPrepayment"));
+                facility.setAirConditioning(rs.getByte("airConditioning"));
+                facility.setBath(rs.getByte("bath"));
+                facility.setCoffeeMachine(rs.getByte("coffeeMachine"));
+                facility.setElectricKettle(rs.getByte("electricKettle"));
+                facility.setFlatScreenTv(rs.getByte("flatScreenTV"));
+                facility.setKitchenKitchenette(rs.getByte("kitchenKitchenette"));
+                facility.setSoundProofing(rs.getByte("soundProofing"));
+                facility.setTeaCoffeeMaker(rs.getByte("teaCoffeeMaker"));
+            }
+
+        }
+        catch (SQLException ex) {
+            // Handle the errors
+            System.out.println("Booking: SQLException in facility find: " + ex.getMessage());
+            System.out.println("Booking: SQLState in facility find: " + ex.getSQLState());
+            System.out.println("Booking: VendorError in facility find: " + ex.getErrorCode());
+        }
+        finally {
+            return facility;
+        }
+    }
 }
