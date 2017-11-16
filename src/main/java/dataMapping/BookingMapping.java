@@ -58,10 +58,8 @@ public class BookingMapping {
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasNonSmokingRooms", facility.getNonSmokingRooms());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasRoomService", facility.getRoomService());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasRestaurant", facility.getRestaurant());
-            if(facility.getForDisabledGuests() != null) {
-                dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasHandicappedRooms", facility.getForDisabledGuests());
-                dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasHandicappedFacilities", facility.getForDisabledGuests());
-            }
+            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasHandicappedRooms", facility.getForDisabledGuests());
+            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasHandicappedFacilities", facility.getForDisabledGuests());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasFreeWifi", facility.getFreeWifi());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasFitnessCenter", facility.getFitnessCentre());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasFamilyRooms", facility.getFamilyRooms());
