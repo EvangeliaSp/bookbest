@@ -216,7 +216,7 @@ public class OntologyHelper {
         // Create rule body
         SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, swrlVariable);
 
-        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(1);
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(5);
         SWRLLiteralArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
         SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, swrlVariable, swrldArgument);
                 //(owlDataProperty, swrlVariable, owlLiteral);

@@ -2010,7 +2010,7 @@
                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
                         <swrl:propertyPredicate rdf:resource="urn:absolute:#hasStarRating"/>
                         <swrl:argument1 rdf:resource="urn:absolute:bookbest#x"/>
-                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</swrl:argument2>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</swrl:argument2>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest>
