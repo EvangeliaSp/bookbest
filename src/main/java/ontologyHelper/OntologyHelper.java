@@ -7,6 +7,8 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype;
 
 import java.io.File;
 import java.net.URI;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -198,6 +200,44 @@ public class OntologyHelper {
     public void saveOntology(OWLOntology owlOntology) throws OWLOntologyStorageException {
         File file = new File("./src/main/resources/bookbest.owl");
 
+        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+    }
+
+    // OWL Individual functions
+    @Deprecated
+    public void createRule(OWLOntology owlOntology, String rule) throws OWLOntologyStorageException {
+        File file = new File("./src/main/resources/bookbest.owl");
+
+        OWLClass owlClass = getFirstClass(owlOntology);
+        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+
+        OWLDataProperty owlDataProperty = getDataProperty("hasStarRating");
+
+        // Create rule body
+        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, swrlVariable);
+
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(1);
+        SWRLLiteralArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, swrlVariable, swrldArgument);
+                //(owlDataProperty, swrlVariable, owlLiteral);
+
+        Set<SWRLAtom> body = new HashSet<>();
+        body.add(atom1);
+        body.add(atom2);
+
+        // Create rule head
+        OWLDataProperty dataProperty;
+
+        dataProperty = createDataProperty(rule);
+        saveOntology(owlOntology, dataProperty);
+
+        Set<SWRLAtom> head = new HashSet<>();
+        owlLiteral = this.owlDataFactory.getOWLLiteral(100);
+        swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(dataProperty, swrlVariable, swrldArgument));
+
+        SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
+        this.owlOntologyManager.applyChange(new AddAxiom(owlOntology, swrlRule));
         owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
     }
 
