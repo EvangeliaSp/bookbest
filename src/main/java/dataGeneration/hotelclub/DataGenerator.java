@@ -18,7 +18,7 @@ public class DataGenerator {
 
     public void accommodationGenerate() throws IOException {
 
-        int hotelclubCounter = 6;// = new Random().nextInt();
+        int hotelclubCounter = 10;// = new Random().nextInt();
 
         AccommodationGenerator accommodationGenerator = new AccommodationGenerator(this.statement);
         for(int i=0; i<hotelclubCounter; i++) {

@@ -10,7 +10,9 @@ import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
 
+import java.math.RoundingMode;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class HotelclubMapping {
@@ -30,6 +32,8 @@ public class HotelclubMapping {
     public void importData() throws OWLOntologyStorageException {
         AccommodationDAO accommodationDAO = new AccommodationDAOImpl();
         List<Accommodation> accommodations = accommodationDAO.list(this.statement);
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
 
         FacilityDAO facilityDAO = new FacilityDAOImpl();
         Facility facility;
@@ -46,11 +50,11 @@ public class HotelclubMapping {
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasType", accommodation.getType());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasStarRating", accommodation.getStars());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasPricePerNight", accommodation.getPricePerNight());
-            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasRating", accommodation.getRating());
+            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasRating", (accommodation.getRating())*2);
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "isInCountry", accommodation.getCountry());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "isInCity", accommodation.getCity());
-            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasLocationRating", accommodation.getLocation());
-            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasCityCenterDistance", accommodation.getDistanceFromCityCenter());
+            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasLocationRating", (accommodation.getLocation()*2));
+            dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasCityCenterDistance", df.format(accommodation.getDistanceFromCityCenter()/0.62137));
 
             // Hotel Facilities
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "allowsPets", facility.getPetFriendly());

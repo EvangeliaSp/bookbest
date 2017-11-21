@@ -208,7 +208,7 @@ public class OntologyHelper {
     public void createRule(OWLOntology owlOntology, String rule) throws OWLOntologyStorageException {
         File file = new File("./src/main/resources/bookbest.owl");
 
-        OWLClass owlClass = getFirstClass(owlOntology);
+        OWLClass owlClass = getFirstClass(owlOntology); // hotel
         SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
 
         OWLDataProperty owlDataProperty = getDataProperty("hasStarRating");

@@ -1,29 +1,18 @@
 package DLReasoner;
 
-// http://jfact.sourceforge.net/Example.java
 import static org.junit.Assert.assertTrue;
 
-//import aterm.ATermAppl;
-//import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
-//import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
+import aterm.ATermAppl;
 import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.*;
-//import uk.ac.manchester.cs.jfact.JFactFactory;
 
 import java.util.Set;
 
 public class Reasoner {
-
-    // JFact
-    /*OWLReasonerFactory owlReasonerFactory = null;
-    OWLOntology owlOntology;
-    OWLReasonerConfiguration owlReasonerConfiguration;
-    OWLReasoner owlReasoner;
-    OntologyHelper ontologyHelper;*/
 
     OWLOntology owlOntology;
     OntologyHelper ontologyHelper;
@@ -33,14 +22,6 @@ public class Reasoner {
 
 
     public Reasoner(OWLOntology owlOntology, OntologyHelper ontologyHelper) {
-/*
-        this.owlOntology = owlOntology;
-        this.ontologyHelper = ontologyHelper;
-        this.owlReasonerFactory = new JFactFactory();
-        this.owlReasonerConfiguration = new SimpleConfiguration(50000);
-        this.owlReasoner = this.owlReasonerFactory.createReasoner(this.owlOntology, owlReasonerConfiguration);
-
-*/
         this.owlOntology = owlOntology;
         this.ontologyHelper = ontologyHelper;
         this.reasonerFactory = com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory.getInstance();
@@ -93,10 +74,10 @@ public class Reasoner {
         }
     }
 
-    public void printInstances() {
+    public void printInstances(OWLClass owlClass) {
         // for each class, look up the instances
 
-        for (OWLClass owlClass : this.owlOntology.getClassesInSignature()) {
+        //for (OWLClass owlClass : this.owlOntology.getClassesInSignature()) {
             // the boolean argument specifies direct subclasses; false would specify all subclasses
             // a NodeSet represents a set of Nodes.
             // a Node represents a set of equivalent classes/or sameAs individuals
@@ -115,7 +96,7 @@ public class Reasoner {
                     }
                 }
             }
-        }
+       // }
     }
 
     public KnowledgeBase getKnowledgeBase() {
@@ -124,5 +105,18 @@ public class Reasoner {
 
     public PelletInfGraph getGraph(KnowledgeBase knowledgeBase) {
         return new org.mindswap.pellet.jena.PelletReasoner().bind(knowledgeBase);
+    }
+
+    public void printInstances() {
+        KnowledgeBase knowledgeBase = getKnowledgeBase();
+        knowledgeBase.realize();
+
+        Set<ATermAppl> inds = knowledgeBase.getIndividuals();
+        System.out.println("Individuals::: "+inds.size());
+
+        for(ATermAppl a: inds) {
+            System.out.println(a.getName().toString());
+        }
+
     }
 }
