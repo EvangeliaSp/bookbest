@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import aterm.ATermAppl;
 import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
+import com.clarkparsia.pellet.rules.model.Rule;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
@@ -46,6 +47,11 @@ public class Reasoner {
 
     }
 
+    public void printOntologyInfo() {
+        KnowledgeBase knowledgeBase = getKnowledgeBase();
+        System.out.println(knowledgeBase.getInfo());
+    }
+
     public void printSubclasses() {
         // Look up and print all direct subclasses for all classes
         for (OWLClass c : this.owlOntology.getClassesInSignature()) {
@@ -68,13 +74,10 @@ public class Reasoner {
         }
     }
 
-    /*public void printDataProperties() {
-        for (OWLClass owlClass : this.owlOntology.getClassesInSignature()) {
-            //NodeSet<OWLDataProperty> owlDataProperties = owlReasoner.get
-        }
-    }*/
-
     public KnowledgeBase getKnowledgeBase() {
+//        KnowledgeBase knowledgeBase = this.owlReasoner.getKB();
+//        knowledgeBase.realize();
+//        return  knowledgeBase;
         return this.owlReasoner.getKB();
     }
 
@@ -84,25 +87,36 @@ public class Reasoner {
 
     public void printInstances() {
         KnowledgeBase knowledgeBase = getKnowledgeBase();
-        knowledgeBase.realize();
 
-        Set<ATermAppl> inds = knowledgeBase.getIndividuals();
-        System.out.println("Individuals::: "+inds.size());
+        Set<ATermAppl> individuals = knowledgeBase.getIndividuals();
+        System.out.println("Individuals::: "+individuals.size());
 
-        for(ATermAppl a: inds) {
-            System.out.println(a.getName().toString());
+        for(ATermAppl individual: individuals) {
+            System.out.println(individual.getName().toString());
         }
     }
 
     public void printDataproperties() {
         KnowledgeBase knowledgeBase = getKnowledgeBase();
-        knowledgeBase.realize();
 
-        Set<ATermAppl> inds = knowledgeBase.getDataProperties();
-        System.out.println("Data Properties::: "+inds.size());
+        Set<ATermAppl> dataProperties = knowledgeBase.getDataProperties();
+        System.out.println("Data Properties::: "+dataProperties.size());
 
-        for(ATermAppl a: inds) {
-            System.out.println(a.getName().toString());
+        for(ATermAppl dataProperty: dataProperties) {
+            System.out.println(dataProperty.getName().toString());
+        }
+    }
+
+    public void printRules() {
+        KnowledgeBase knowledgeBase = getKnowledgeBase();
+
+        Set<Rule> rules = knowledgeBase.getRules();
+        System.out.println("Rules::: "+rules.size());
+
+        for(Rule rule: rules) {
+            System.out.println(rule.toString());
+            System.out.println("Body: "+rule.getBody().toString());
+            System.out.println("Head: "+rule.getHead().toString());
         }
     }
 
