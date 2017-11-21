@@ -68,36 +68,11 @@ public class Reasoner {
         }
     }
 
-    public void printDataProperties() {
+    /*public void printDataProperties() {
         for (OWLClass owlClass : this.owlOntology.getClassesInSignature()) {
             //NodeSet<OWLDataProperty> owlDataProperties = owlReasoner.get
         }
-    }
-
-    public void printInstances(OWLClass owlClass) {
-        // for each class, look up the instances
-
-        //for (OWLClass owlClass : this.owlOntology.getClassesInSignature()) {
-            // the boolean argument specifies direct subclasses; false would specify all subclasses
-            // a NodeSet represents a set of Nodes.
-            // a Node represents a set of equivalent classes/or sameAs individuals
-
-            Set<OWLNamedIndividual> instances = this.owlReasoner.getInstances(owlClass, true).getFlattened();
-            if(instances.size()==0)
-                System.out.println("Class '"+owlClass.getIRI().getFragment()+"' has no instances!!!");
-            for (OWLNamedIndividual i : instances) {
-                System.out.println(i.getIRI().getFragment()+" instance of "+owlClass.getIRI().getFragment());
-
-                for(OWLDataProperty owlDataProperty: this.ontologyHelper.getDataProperties(this.owlOntology)) {
-                    System.out.print("\t"+owlDataProperty.getIRI().getFragment()+": ");
-                    Set<OWLLiteral> owlLiterals = owlReasoner.getDataPropertyValues(i,owlDataProperty);
-                    for(OWLLiteral owlLiteral: owlLiterals) {
-                        System.out.println(owlLiteral.getLiteral());
-                    }
-                }
-            }
-       // }
-    }
+    }*/
 
     public KnowledgeBase getKnowledgeBase() {
         return this.owlReasoner.getKB();
@@ -117,6 +92,18 @@ public class Reasoner {
         for(ATermAppl a: inds) {
             System.out.println(a.getName().toString());
         }
-
     }
+
+    public void printDataproperties() {
+        KnowledgeBase knowledgeBase = getKnowledgeBase();
+        knowledgeBase.realize();
+
+        Set<ATermAppl> inds = knowledgeBase.getDataProperties();
+        System.out.println("Data Properties::: "+inds.size());
+
+        for(ATermAppl a: inds) {
+            System.out.println(a.getName().toString());
+        }
+    }
+
 }

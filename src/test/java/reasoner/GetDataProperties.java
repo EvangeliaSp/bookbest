@@ -7,8 +7,7 @@ import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
-public class GetIndividuals {
-
+public class GetDataProperties {
     private OWLOntology owlOntology;
     private OntologyHelper ontologyHelper;
     private Reasoner reasoner;
@@ -25,7 +24,7 @@ public class GetIndividuals {
         // Classify ontology
         reasoner.classifyOntology();
 
-        // Print instances
-        reasoner.printInstances();
+        // Print datatype properties
+        reasoner.printDataproperties();
     }
 }
