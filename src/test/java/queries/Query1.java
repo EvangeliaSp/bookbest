@@ -27,7 +27,7 @@ public class Query1 {
     }
 
     @Test
-    public void getIndividuals() {
+    public void getCheapAccommodations() {
         // Get the KB from the reasoner
         KnowledgeBase knowledgeBase = reasoner.getKnowledgeBase();
 

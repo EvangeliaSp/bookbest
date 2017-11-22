@@ -222,23 +222,20 @@ public class OntologyHelper {
         // Create rule body
         SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, swrlVariable);
 
-        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(5);
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("5", OWL2Datatype.XSD_INTEGER);
         SWRLLiteralArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
         SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, swrlVariable, swrldArgument);
-                //(owlDataProperty, swrlVariable, owlLiteral);
 
         Set<SWRLAtom> body = new HashSet<>();
         body.add(atom1);
         body.add(atom2);
 
         // Create rule head
-        OWLDataProperty dataProperty;
-
-        dataProperty = createDataProperty(rule);
-        saveOntology(owlOntology, dataProperty);
+        OWLDataProperty dataProperty = createDataProperty(rule);
+        //saveOntology(owlOntology, dataProperty);
 
         Set<SWRLAtom> head = new HashSet<>();
-        owlLiteral = this.owlDataFactory.getOWLLiteral(100);
+        owlLiteral = this.owlDataFactory.getOWLLiteral("100", OWL2Datatype.XSD_INTEGER);
         swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
         head.add(this.owlDataFactory.getSWRLDataPropertyAtom(dataProperty, swrlVariable, swrldArgument));
 

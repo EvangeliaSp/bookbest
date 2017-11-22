@@ -5,14 +5,14 @@ import com.hp.hpl.jena.rdf.model.InfModel;
 
 public class SPARQL {
 
-    public void getInstances(InfModel model) {
+    public void getLuxurious(InfModel model) {
         String s =
-                "PREFIX hotel: <urn:absolute:bookbest#>" +
-                        "SELECT ?x\n" +
-                        "WHERE {" +
-                        "   ?x hotel:isLuxurious ?value ." +
-                        "FILTER (?value = 100) " +
-                        "}";
+            "PREFIX hotel: <urn:absolute:bookbest#>" +
+            "SELECT ?x " +
+            "WHERE {" +
+            "   ?x hotel:isLuxurious ?value ." +
+            "FILTER (?value = 100) " +
+            "}";
         Query query = QueryFactory.create(s);
 
         // Execute the query and obtain results
@@ -30,13 +30,13 @@ public class SPARQL {
         System.out.println("Before Query");
         // Create a new query
         String s =
-                "PREFIX hotel: <urn:absolute:bookbest#>" +
-                "SELECT ?x ?price\n" +
-                "WHERE {" +
-                "   ?x hotel:hasPricePerNight ?price." +
-                "FILTER (?price < 500) " +
-                "}"+
-                "ORDER BY ?price";
+            "PREFIX hotel: <urn:absolute:bookbest#>" +
+            "SELECT ?x ?price " +
+            "WHERE {" +
+            "   ?x hotel:hasPricePerNight ?price." +
+            "FILTER (?price < 500) " +
+            "}"+
+            "ORDER BY ?price";
         Query query = QueryFactory.create(s);
 
         // Execute the query and obtain results

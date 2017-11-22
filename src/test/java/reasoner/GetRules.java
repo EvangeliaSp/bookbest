@@ -20,7 +20,7 @@ public class GetRules {
     }
 
     @Test
-    public void getIndividuals() {
+    public void getRules() {
         // Classify ontology
         reasoner.classifyOntology();
 

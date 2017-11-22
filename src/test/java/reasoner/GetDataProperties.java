@@ -20,7 +20,7 @@ public class GetDataProperties {
     }
 
     @Test
-    public void getIndividuals() {
+    public void getDataProperties() {
         // Classify ontology
         reasoner.classifyOntology();
 
