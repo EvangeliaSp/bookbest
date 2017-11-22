@@ -3,9 +3,6 @@ package DL_Queries;
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.InfModel;
 
-import java.util.Iterator;
-
-
 public class SPARQL {
 
     public void getInstances(InfModel model) {
@@ -34,11 +31,12 @@ public class SPARQL {
         // Create a new query
         String s =
                 "PREFIX hotel: <urn:absolute:bookbest#>" +
-                "SELECT ?x\n" +
+                "SELECT ?x ?price\n" +
                 "WHERE {" +
-                "   ?x hotel:hasPrice \"VeryCheap\" . ?x hotel:hasRating \"NoRate\"" +
-                "}\n" +
-                "ORDER BY ASC(?x)";
+                "   ?x hotel:hasPricePerNight ?price." +
+                "FILTER (?price < 500) " +
+                "}"+
+                "ORDER BY ?price";
         Query query = QueryFactory.create(s);
 
         // Execute the query and obtain results

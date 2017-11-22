@@ -1,6 +1,5 @@
 package mapData;
 
-import dataMapping.AirticketsMapping;
 import dataMapping.PricelineMapping;
 import database.DBConnection;
 

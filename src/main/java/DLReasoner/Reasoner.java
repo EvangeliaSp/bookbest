@@ -119,5 +119,4 @@ public class Reasoner {
             System.out.println("Head: "+rule.getHead().toString());
         }
     }
-
 }
