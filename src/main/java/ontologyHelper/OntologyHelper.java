@@ -4,13 +4,11 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
+import org.semanticweb.owlapi.vocab.SWRLBuiltInsVocabulary;
 
 import java.io.File;
 import java.net.URI;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class OntologyHelper {
     String ontFile = "./src/main/resources/bookbest.owl";
@@ -65,6 +63,15 @@ public class OntologyHelper {
         return owlOntology.getClassesInSignature();
     }
 
+    public OWLClass getClass(OWLOntology owlOntology, String name) {
+        Set<OWLClass> owlClasses = owlOntology.getClassesInSignature();
+        for(OWLClass owlClass: owlClasses) {
+            if(owlClass.getIRI().getFragment().equals(name))
+                return owlClass;
+        }
+        return null;
+    }
+
     public OWLClass getFirstClass(OWLOntology owlOntology) {
         Set<OWLClass> owlClasses = owlOntology.getClassesInSignature();
         Iterator<OWLClass> iterator = owlClasses.iterator();
@@ -82,6 +89,14 @@ public class OntologyHelper {
             System.out.println("Class: " + owlClass.getIRI().getFragment());
         }
     }
+
+    // OWL Object property functions
+
+    public OWLObjectProperty createObjectProperty(String property) {
+        return owlDataFactory.getOWLObjectProperty(iri.create(this.base+this.ontName+"#"+property));
+    }
+
+    // OWL Data property functions
 
     public OWLDataProperty createDataProperty(String property) {
         return owlDataFactory.getOWLDataProperty(iri.create(this.base+this.ontName+"#"+property));
@@ -116,12 +131,6 @@ public class OntologyHelper {
         return owlDataFactory.getOWLNamedIndividual(iri.create(this.base+this.ontName+"#"+name));
     }
 
-    public void createIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, OWLClass owlClass) throws OWLOntologyStorageException {
-        OWLClassAssertionAxiom owlClassAssertionAxiom = this.owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlClassAssertionAxiom);
-        saveOntology(owlOntology, addAxiom);
-    }
-
     public int getIndividualsCounter(OWLOntology owlOntology) {
         return owlOntology.getIndividualsInSignature().size();
     }
@@ -135,8 +144,10 @@ public class OntologyHelper {
     }
 
 
-    public OWLAxiomChange associateIndividualWithClass(OWLOntology owlOntology, OWLClass owlClass, OWLIndividual owlIndividual) {
-        return new AddAxiom(owlOntology, owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual));
+    public void associateIndividualWithClass(OWLOntology owlOntology, OWLClass owlClass, OWLIndividual owlIndividual) throws OWLOntologyStorageException {
+        OWLClassAssertionAxiom owlClassAssertionAxiom = this.owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
+        AddAxiom addAxiom = new AddAxiom(owlOntology, owlClassAssertionAxiom);
+        saveOntology(owlOntology, addAxiom);
     }
 
     public void addStringDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
@@ -203,45 +214,96 @@ public class OntologyHelper {
         owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
     }
 
+    public void saveOntology(OWLOntology owlOntology, SWRLRule rule) throws OWLOntologyStorageException {
+        File file = new File("./src/main/resources/bookbest.owl");
+
+        AddAxiom addAxiom = new AddAxiom(owlOntology, rule);
+
+        owlOntologyManager.applyChange(addAxiom);
+        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+    }
+
     public void saveOntology(OWLOntology owlOntology) throws OWLOntologyStorageException {
         File file = new File("./src/main/resources/bookbest.owl");
 
         owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
     }
 
-    // OWL Individual functions
-    @Deprecated
+    // OWL Rule functions
     public void createRule(OWLOntology owlOntology, String rule) throws OWLOntologyStorageException {
-        File file = new File("./src/main/resources/bookbest.owl");
+        OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
 
-        OWLClass owlClass = getFirstClass(owlOntology); // hotel
-        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
-
-        OWLDataProperty owlDataProperty = getDataProperty("hasStarRating");
+        OWLDataProperty owlDataProperty = createDataProperty("hasStarRating");
 
         // Create rule body
-        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, swrlVariable);
+        // 1st Atom
+        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
 
-        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("5", OWL2Datatype.XSD_INTEGER);
-        SWRLLiteralArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
-        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, swrlVariable, swrldArgument);
+        //2nd Atom
+        OWLLiteral five = this.owlDataFactory.getOWLLiteral("5", OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument fiveArgument = this.owlDataFactory.getSWRLLiteralArgument(five);
+        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, fiveArgument);
 
+        // Intersection of Atoms
         Set<SWRLAtom> body = new HashSet<>();
         body.add(atom1);
         body.add(atom2);
 
         // Create rule head
         OWLDataProperty dataProperty = createDataProperty(rule);
-        //saveOntology(owlOntology, dataProperty);
 
         Set<SWRLAtom> head = new HashSet<>();
-        owlLiteral = this.owlDataFactory.getOWLLiteral("100", OWL2Datatype.XSD_INTEGER);
-        swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
-        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(dataProperty, swrlVariable, swrldArgument));
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("100", OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(dataProperty, x, swrldArgument));
 
         SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
-        this.owlOntologyManager.applyChange(new AddAxiom(owlOntology, swrlRule));
-        owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
+        saveOntology(owlOntology, swrlRule);
     }
 
+    // OWL Rule functions
+    public void createRule2(OWLOntology owlOntology, String rule) throws OWLOntologyStorageException {
+        OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+
+        OWLDataProperty owlDataProperty = createDataProperty("hasPricePerNight");//getDataProperty("hasPricePerNight");
+        System.out.println("Data property: " + owlDataProperty.getIRI().getFragment());
+
+        SWRLVariable price = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#price"));
+
+        // Create rule body
+        // 1st Atom
+        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
+
+        // 2nd Atom
+        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, price);
+
+        // 3rd Atom
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("50", OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        List<SWRLDArgument> arguments = new ArrayList<>();
+        arguments.add(price);
+        arguments.add(swrldArgument);
+        SWRLBuiltInAtom atom3 = this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.LESS_THAN_OR_EQUAL.getIRI(), Arrays.asList(price, swrldArgument));
+
+        // Intersection of Atoms
+        Set<SWRLAtom> body = new HashSet<>();
+        body.add(atom1);
+        body.add(atom2);
+        body.add(atom3);
+
+
+        // Create rule head
+        //OWLObjectProperty objectProperty = createObjectProperty(rule);
+        //saveOntology(owlOntology, dataProperty);
+        OWLClass newClass = createClass(rule);
+
+        Set<SWRLAtom> head = new HashSet<>();
+        head.add(this.owlDataFactory.getSWRLClassAtom(newClass, x));
+
+        SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
+        saveOntology(owlOntology, swrlRule);
+    }
 }
