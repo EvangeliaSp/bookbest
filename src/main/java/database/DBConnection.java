@@ -8,9 +8,14 @@ import java.sql.Statement;
 public class DBConnection {
 
     private Statement statement;
+    private Connection connection;
 
     public Statement getStatement() {
         return statement;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 
     public void connect(String name) {
@@ -25,6 +30,7 @@ public class DBConnection {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/"+name+"?" + "user=root&password=5698");
+            this.connection = conn;
         } catch (SQLException ex) {
             // handle the errors
             System.out.println("SQLException: " + ex.getMessage());

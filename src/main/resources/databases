@@ -1,0 +1,20 @@
+airtickets
+Hotel
+id int(11),name varchar(255),starRating int(11),pricePerNight int(11),guestRating double,country varchar(255),city varchar(255),distanceFromCityCenter double,guestLocationRating double
+Facilities
+id,petsAllowed,parking,nonSmokingRooms,roomService,restaurant,forDisabledGuests,freeWifi,fitnessCenter,familyRooms,swimmingPool,spaNWellnessCenter,airportShuttle,frontDesk24Hour,sauna,massage,bicycleRental,cycling,breakfastIncluded,breakfastNDinner,selfCatering,freeCancellation,bookWithoutCreditCard,noPrepayment,airConditioning,bath,coffeeMachine,electricKettle,flatScreenTV,kitchen,soundProofing,teaCoffeeMaker
+booking
+Hotel
+id int(11),name varchar(255),starRating int(11),pricePerNight int(11),guestRating double,country varchar(255),city varchar(255),distanceFromCityCenter double,guestLocationRating double
+Facilities
+id,petsAllowed,parking,nonSmokingRooms,roomService,restaurant,forDisabledGuests,freeWifi,fitnessCenter,familyRooms,swimmingPool,spaNWellnessCenter,airportShuttle,reception24Hour,sauna,massage,bicycleRental,cycling,breakfastIncluded,breakfastNDinner,selfCatering,freeCancellation,bookWithoutCreditCard,noPrepayment,airConditioning,bath,coffeeMachine,electricKettle,flatScreenTV,kitchen,soundProofing,teaCoffeeMaker
+hotelclub
+Hotel
+id int(11),name varchar(255),stars int(11),pricePerNight int(11),rating double,country varchar(255),city varchar(255),location double,distanceFromCityCenter double
+Facilities
+id,airportTransfer,bar,businessFacilities,childcare,cribsAvailable,freeBreakfast,freeParking,freeWifi,gym,petFriendly,pool,restaurant,smokingAreas,spa,bathtubInRoom,kitchen,inRoomAccessibility,familyFriendly
+priceline
+Hotel
+id int(11),name varchar(255),starRating int(11),pricePerNight int(11),country varchar(255),city varchar(255),location double,guestRating double
+Facilities
+id,freeInternet,freeParking,freeBreakfast,petsAllowed,swimmingPool,airportShuttle,noSmokingRoomsFacilities,fitnessCenter,handicappedRoomsFacilities,businessCenter` tinyint(1) NULL,casino,spa,restaurant,freeCancellation,payLater

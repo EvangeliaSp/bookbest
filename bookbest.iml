@@ -28,13 +28,13 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="JPA 2.0-2.0" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.owlapi:jfact:unknown" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-distribution:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-compatibility:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-apibinding:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-impl:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-oboformat:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-tools:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-fixers:4.5.0" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-distribution:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-compatibility:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-apibinding:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-impl:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-oboformat:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-tools:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-fixers:4.5.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.5" level="project" />
@@ -74,9 +74,9 @@
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-multibindings:4.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-rio:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-parsers:4.5.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-api:4.5.0" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-rio:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-parsers:4.5.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.owlapi:owlapi-api:4.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.13.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.72" level="project" />

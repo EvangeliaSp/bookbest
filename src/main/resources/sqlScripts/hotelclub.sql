@@ -13,7 +13,6 @@ CREATE TABLE `Accommodation` (
   `city` varchar(255) NOT NULL,
   `location` double NULL,
   `distanceFromCityCenter` double NULL,
-  `roomTypePeople` varchar(255) NULL,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23,7 +22,6 @@ CREATE TABLE `Facility` (
   `bar` tinyint(1) NULL,
   `businessFacilities` tinyint(1) NULL,
   `childcare` tinyint(1) NULL,
-  `connectingRoomsAvailable` tinyint(1) NULL,
   `cribsAvailable` tinyint(1) NULL,
   `freeBreakfast` tinyint(1) NULL,
   `freeParking` tinyint(1) NULL,
@@ -36,15 +34,8 @@ CREATE TABLE `Facility` (
   `spa` tinyint(1) NULL,
   `bathtubInRoom` tinyint(1) NULL,
   `kitchen` tinyint(1) NULL,
-  `accessibleBathroom` tinyint(1) NULL,
   `inRoomAccessibility` tinyint(1) NULL,
-  `rollInShower` tinyint(1) NULL,
-  `wheelchairAccess` tinyint(1) NULL,
   `familyFriendly` tinyint(1) NULL,
-  `business` tinyint(1) NULL,
-  `romantic` tinyint(1) NULL,
-  `adventure` tinyint(1) NULL,
-  `luxury` tinyint(1) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT FOREIGN KEY (`id`) REFERENCES `Accommodation` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

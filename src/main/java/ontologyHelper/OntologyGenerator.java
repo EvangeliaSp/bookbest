@@ -49,9 +49,6 @@ public class OntologyGenerator {
         owlDataProperty = ontologyHelper.createDataProperty("hasCityCenterDistance");
         ontologyHelper.saveOntology(owlOntology, owlDataProperty);
 
-        //owlDataProperty = ontologyHelper.createDataProperty("hasNumberOfPeople");
-        //ontologyHelper.saveOntology(owlOntology, owlDataProperty);
-
 
         // Data Properties about Hotel facilities
 

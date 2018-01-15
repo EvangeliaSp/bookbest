@@ -31,7 +31,7 @@ public class Query2 {
         // Get the KB from the reasoner
         KnowledgeBase knowledgeBase = reasoner.getKnowledgeBase();
 
-        // Create a Pellet graph using the KB from OWLAPI
+        // Create a Pellet graph using the KB from OWL-API
         PelletInfGraph graph = reasoner.getGraph(knowledgeBase);
 
         // Wrap the graph in a Jena model

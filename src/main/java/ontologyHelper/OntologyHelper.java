@@ -25,7 +25,7 @@ public class OntologyHelper {
     OWLOntology owlOntology;
 
     @Deprecated
-    PrefixManager prefixManager = new DefaultPrefixManager(base+"#");
+    PrefixManager prefixManager = new DefaultPrefixManager(this.base+this.ontName+"#");
 
 
 
@@ -299,7 +299,6 @@ public class OntologyHelper {
         //OWLObjectProperty objectProperty = createObjectProperty(rule);
         //saveOntology(owlOntology, dataProperty);
         OWLClass newClass = createClass(rule);
-
         Set<SWRLAtom> head = new HashSet<>();
         head.add(this.owlDataFactory.getSWRLClassAtom(newClass, x));
 

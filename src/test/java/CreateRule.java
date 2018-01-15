@@ -1,8 +1,5 @@
 import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
-import org.swrlapi.core.SWRLAPIRule;
-import org.swrlapi.core.SWRLRuleEngine;
-import org.swrlapi.factory.SWRLAPIFactory;
 
 public class CreateRule {
     @Deprecated

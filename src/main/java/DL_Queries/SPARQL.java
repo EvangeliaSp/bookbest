@@ -13,7 +13,8 @@ public class SPARQL {
             "   ?x hotel:isLuxurious ?value ." +
             "FILTER (?value = 100) " +
             "}\n" +
-            "ORDER BY ?x";
+            "ORDER BY ?x " +
+            "LIMIT 5";
 
         Query query = QueryFactory.create(s);
 
@@ -24,11 +25,12 @@ public class SPARQL {
         // Output query results
         ResultSetFormatter.out(System.out, resultSet, query);
 
-        // Important - free up resources used running the query
+        // Free up resources used running the query
         queryExecution.close();
     }
 
     public void getCheap(InfModel model) {
+        // Create query
         String s =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
@@ -49,11 +51,12 @@ public class SPARQL {
         // Output query results
         ResultSetFormatter.out(System.out, resultSet, query);
 
-        // Important - free up resources used running the query
+        // Free up resources used running the query
         queryExecution.close();
     }
 
     public void getAccommodations(InfModel model) {
+
         String s =
                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
                 "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
@@ -73,7 +76,7 @@ public class SPARQL {
         // Output query results
         ResultSetFormatter.out(System.out, resultSet, query);
 
-        // Important - free up resources used running the query
+        // Free up resources used running the query
         queryExecution.close();
     }
 }

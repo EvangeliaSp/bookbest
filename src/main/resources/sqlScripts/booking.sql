@@ -13,7 +13,6 @@ CREATE TABLE `Accommodation` (
   `city` varchar(255) NOT NULL,
   `distanceFromCityCenter` double NULL,
   `guestLocationRating` double NULL,
-  `roomType` varchar(255) NULL,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -29,7 +28,7 @@ CREATE TABLE `Facility` (
   `fitnessCentre` tinyint(1) NULL,
   `familyRooms` tinyint(1) NULL,
   `swimmingPool` tinyint(1) NULL,
-  `spaAndWellnessCentre` tinyint(1) NULL,
+  `spaNWellnessCenter` tinyint(1) NULL,
   `airportShuttle` tinyint(1) NULL,
   `reception24Hour` tinyint(1) NULL,
   `sauna` tinyint(1) NULL,
@@ -37,7 +36,7 @@ CREATE TABLE `Facility` (
   `bicycleRental` tinyint(1) NULL,
   `cycling` tinyint(1) NULL,
   `breakfastIncluded` tinyint(1) NULL,
-  `breakfastAndDinner` tinyint(1) NULL,
+  `breakfastNDinner` tinyint(1) NULL,
   `selfCatering` tinyint(1) NULL,
   `freeCancellation` tinyint(1) NULL,
   `bookWithoutCreditCard` tinyint(1) NULL,
@@ -47,7 +46,7 @@ CREATE TABLE `Facility` (
   `coffeeMachine` tinyint(1) NULL,
   `electricKettle` tinyint(1) NULL,
   `flatScreenTV` tinyint(1) NULL,
-  `kitchenKitchenette` tinyint(1) NULL,
+  `kitchen` tinyint(1) NULL,
   `soundProofing` tinyint(1) NULL,
   `teaCoffeeMaker` tinyint(1) NULL,
   PRIMARY KEY (`id`),
