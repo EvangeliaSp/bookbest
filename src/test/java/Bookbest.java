@@ -4,16 +4,18 @@ import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import database.CreateDBs;
 import ontologyHelper.OntologyHelper;
-import org.junit.Before;
-import org.junit.Test;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Bookbest {
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
 
         /*///////////////////////////////////////////////////////////////////////
         //          Variables Declaration                                      //
@@ -51,7 +53,8 @@ public class Bookbest {
         OntologyHelper ontologyHelper = new OntologyHelper();
 
         try {
-            OWLOntology owlOntology = ontologyHelper.createOntology();
+            //OWLOntology owlOntology = ontologyHelper.createOntology();
+            OWLOntology owlOntology = ontologyHelper.readOntology();
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -71,15 +74,15 @@ public class Bookbest {
 
             // Print datatype properties
             System.out.println("Would you like to see the Datatype Properties?");
-            reasoner.printDataproperties();
+            //reasoner.printDataproperties();
 
             // Print rules
             System.out.println("Would you like to see the Rules?");
-            reasoner.printRules();
+            //reasoner.printRules();
 
             // Print instances
             System.out.println("Would you like to see the Instances?");
-            reasoner.printInstances();
+            //reasoner.printInstances();
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -95,22 +98,74 @@ public class Bookbest {
         // Wrap the graph in a Jena model
         InfModel model = ModelFactory.createInfModel(graph);
 
-        }
-        catch (OWLOntologyCreationException exception) {
-            exception.printStackTrace();
-        }
+
 
         /*///////////////////////////////////////////////////////////////////////
         //          Answer Queries                                             //
         ///////////////////////////////////////////////////////////////////////*/
 
-        SPARQL sparql = new SPARQL();
+            SPARQL sparql = new SPARQL();
 
-        System.out.println("Please, give the country you want to visit:");
-        System.out.println("Please, give the name of the city:");
-        System.out.println("Price: (0-Any, 1-Very Cheap, 2-Cheap, 3-Average, 4-Expensive, 5-Very Expensive");
-        System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb");
-        System.out.println("Family Friendly: (0-Any, 1-Yes, 2-No, 3-Average, 4-Expensive, 5-Very Expensive");
+            BufferedReader br = null;
+            br = new BufferedReader(new InputStreamReader(System.in));
+            int rating, price, ff;
+            String query = null;
 
+            try {
+                // Country
+                System.out.println("Country: ");
+                String country = br.readLine();
+                query = sparql.hotelsByCountry(country);
+
+                // City
+                System.out.println("City: ");
+                String city = br.readLine();
+                query = query+sparql.hotelsByCity(city);
+
+                // Price
+                System.out.println("Price: (0-Any, 1-Very Cheap, 2-Cheap, 3-Average, 4-Expensive, 5-Very Expensive)");
+                do {
+                    price = Integer.parseInt(br.readLine());
+
+                } while(price<0 || price>5);
+                if (price != 0)
+                    ;
+
+                // Rating
+                System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
+                do {
+                    rating = Integer.parseInt(br.readLine());
+
+                } while(rating<0 || rating>3);
+                if (rating != 0)
+                    ;
+
+                // Family Friendly
+                System.out.println("Family Friendly: (0-Any, 1-Yes, 2-No)");
+                do {
+                    ff = Integer.parseInt(br.readLine());
+                } while (ff<0 || ff>2);
+                if (ff != 0)
+                    ;
+
+                sparql.findResults(model, query);
+
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+            }
+            finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        catch (OWLOntologyCreationException exception) {
+            exception.printStackTrace();
+        }
     }
 }
