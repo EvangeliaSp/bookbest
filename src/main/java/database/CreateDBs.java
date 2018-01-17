@@ -25,14 +25,16 @@ public class CreateDBs {
         System.out.println(database);
     }
 
-    private void createTable(Connection connection, Statement statement, String table) throws SQLException {
+    private void createTable(Connection connection, Statement statement, String table, String columns) throws SQLException {
         System.out.println(table);
+        int k = columns.indexOf(" ");
+        String key = columns.substring(0, k);
 
-        String sqlCreate = "CREATE TABLE IF NOT EXISTS " + table;
+        String sqlCreate = "CREATE TABLE IF NOT EXISTS " + table +" ("+
+                columns+", PRIMARY KEY (`" + key + "`))";
 
         Statement stmt = connection.createStatement();
         stmt.execute(sqlCreate);
-
     }
 
     public void createDatabases() {
@@ -54,7 +56,11 @@ public class CreateDBs {
                 statement = dbConnection.getStatement();
 
                 if((currentLine = br.readLine()) != null) {
-                   // this.createTable(connection, statement, currentLine);
+                    table = currentLine;
+                    if((currentLine = br.readLine()) != null) {
+                        this.createTable(connection, statement, table, currentLine);
+                    }
+
                 }
                 if((currentLine = br.readLine()) != null) {
 

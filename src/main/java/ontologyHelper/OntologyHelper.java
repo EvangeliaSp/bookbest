@@ -305,4 +305,116 @@ public class OntologyHelper {
         SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
         saveOntology(owlOntology, swrlRule);
     }
+
+    public Set<SWRLAtom> createRuleHead(OWLOntology owlOntology, String dataProperty, String d, Set<SWRLAtom> head) throws OWLOntologyStorageException {
+        //OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+
+        OWLDataProperty owlDataProperty = createDataProperty(dataProperty);
+        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+d));
+
+        //OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("100", OWL2Datatype.XSD_INTEGER);
+        //SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrlVariable));
+        return head;
+    }
+
+    public Set<SWRLAtom> createRuleBody(OWLOntology owlOntology, String dataProperty, String variable, Set<SWRLAtom> body) throws OWLOntologyStorageException {
+        OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+        SWRLVariable price = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+variable));
+
+        OWLDataProperty owlDataProperty = createDataProperty(dataProperty);
+
+        // 1st Atom
+        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
+
+        // 2nd Atom
+        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, price);
+
+        body.add(atom1);
+        body.add(atom2);
+
+        return body;
+    }
+
+    public void createRule(OWLOntology owlOntology, Set<SWRLAtom> body, Set<SWRLAtom> head) throws OWLOntologyStorageException {
+        SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
+        saveOntology(owlOntology, swrlRule);
+    }
+
+    public SWRLBuiltInAtom createComparisonAtom(String variable, String comparison, String value) {
+        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+variable));
+
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        List<SWRLDArgument> arguments = new ArrayList<>();
+        arguments.add(swrlVariable);
+        arguments.add(swrldArgument);
+
+        switch (comparison) {
+            case "=":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.EQUAL.getIRI(), Arrays.asList(swrlVariable, swrldArgument));
+            case "!=":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.NOT_EQUAL.getIRI(), Arrays.asList(swrlVariable, swrldArgument));
+            case "<":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.LESS_THAN.getIRI(), Arrays.asList(swrlVariable, swrldArgument));
+            case "<=":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.LESS_THAN_OR_EQUAL.getIRI(), Arrays.asList(swrlVariable, swrldArgument));
+            case ">":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.GREATER_THAN.getIRI(), Arrays.asList(swrlVariable, swrldArgument));
+            case ">=":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.GREATER_THAN_OR_EQUAL.getIRI(), Arrays.asList(swrlVariable, swrldArgument));
+            default:
+                return null;
+        }
+    }
+
+    public SWRLBuiltInAtom createMathAtom(String variable, String math, String value, String result) {
+        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+variable));
+
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        SWRLVariable k = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+result));
+
+        switch (math) {
+            case "+":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.ADD.getIRI(), Arrays.asList(k, swrlVariable, swrldArgument));
+            case "-":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.SUBTRACT.getIRI(), Arrays.asList(k, swrlVariable, swrldArgument));
+            case "*":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.MULTIPLY.getIRI(), Arrays.asList(k, swrlVariable, swrldArgument));
+            case "/":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.DIVIDE.getIRI(), Arrays.asList(k, swrlVariable, swrldArgument));
+            default:
+                return null;
+        }
+    }
+
+    public SWRLBuiltInAtom createMathAtom2(String value, String math, String variable, String result) {
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+variable));
+
+        SWRLVariable d = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+result));
+
+        switch (math) {
+            case "+":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.ADD.getIRI(), Arrays.asList(d, swrldArgument, swrlVariable));
+            case "-":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.SUBTRACT.getIRI(), Arrays.asList(d, swrldArgument, swrlVariable));
+            case "*":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.MULTIPLY.getIRI(), Arrays.asList(d, swrldArgument, swrlVariable));
+            case "/":
+                return this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.DIVIDE.getIRI(), Arrays.asList(d, swrldArgument, swrlVariable));
+            default:
+                return null;
+        }
+    }
+
+
 }

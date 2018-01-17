@@ -35,7 +35,6 @@ public class SPARQL {
                 return "   ?Hotels hotel:isVeryExpensive ?value ." +
                         "FILTER (?value = 100) ";
         }
-
     }
 
     public String hotelsByRating(int k) {
@@ -58,13 +57,15 @@ public class SPARQL {
 
     public void getLuxurious(InfModel model) {
         String s =
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX hotel: <urn:absolute:bookbest#>" +
-            "SELECT ?x " +
+            "SELECT ?Hotels " +
             "WHERE {" +
-            "   ?x hotel:isLuxurious ?value ." +
+            "   ?Hotels rdf:type hotel:Hotel." +
+            "   ?Hotels hotel:isLuxurious ?value ." +
             "FILTER (?value = 100) " +
             "}\n" +
-            "ORDER BY ?x " +
+            "ORDER BY ?Hotels " +
             "LIMIT 5";
 
         Query query = QueryFactory.create(s);
@@ -86,12 +87,15 @@ public class SPARQL {
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
             "PREFIX hotel: <urn:absolute:bookbest#>" +
-            "SELECT ?VeryCheapHotels ?Price\n" +
+            "SELECT ?Hotels ?Degree \n" +
             "WHERE { \n" +
-            "  ?VeryCheapHotels rdf:type hotel:isVeryCheap." +
-                    "?VeryCheapHotels hotel:hasPricePerNight ?Price" +
-            "}" +
-            "ORDER BY ?Price";
+            "   ?Hotels hotel:isVeryCheap ?Degree.\n"+
+            "}\n" +
+            "ORDER BY DESC(?Degree)";
+
+           // "  ?Hotels hotel:isVeryCheap ?degree." +
+           //         "FILTER (?degree = 100) " +
+
 
         Query query = QueryFactory.create(s);
 

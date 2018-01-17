@@ -28,15 +28,15 @@ public class Bookbest {
         //          START                                                      //
         ///////////////////////////////////////////////////////////////////////*/
 
-        System.out.println("Please, type the name of the file which contains the databases: (including the path)");
+        //System.out.println("Please, type the name of the file which contains the databases: (including the path)");
 
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create databases                                           //
         ///////////////////////////////////////////////////////////////////////*/
 
-        CreateDBs createDBs = new CreateDBs("./src/main/resources/databases");
-        //createDBs.createDatabases();
+        CreateDBs createDBs = new CreateDBs(filename);
+        createDBs.createDatabases();
 
         System.out.println("Database(s) created successfully.");
 
@@ -104,7 +104,7 @@ public class Bookbest {
         //          Answer Queries                                             //
         ///////////////////////////////////////////////////////////////////////*/
 
-            SPARQL sparql = new SPARQL();
+           /* SPARQL sparql = new SPARQL();
 
             BufferedReader br = null;
             br = new BufferedReader(new InputStreamReader(System.in));
@@ -162,7 +162,7 @@ public class Bookbest {
                         e.printStackTrace();
                     }
                 }
-            }
+            }*/
         }
         catch (OWLOntologyCreationException exception) {
             exception.printStackTrace();
