@@ -230,81 +230,6 @@ public class OntologyHelper {
     }
 
     // OWL Rule functions
-    public void createRule(OWLOntology owlOntology, String rule) throws OWLOntologyStorageException {
-        OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
-        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
-
-        OWLDataProperty owlDataProperty = createDataProperty("hasStarRating");
-
-        // Create rule body
-        // 1st Atom
-        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
-
-        //2nd Atom
-        OWLLiteral five = this.owlDataFactory.getOWLLiteral("5", OWL2Datatype.XSD_INTEGER);
-        SWRLDArgument fiveArgument = this.owlDataFactory.getSWRLLiteralArgument(five);
-        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, fiveArgument);
-
-        // Intersection of Atoms
-        Set<SWRLAtom> body = new HashSet<>();
-        body.add(atom1);
-        body.add(atom2);
-
-        // Create rule head
-        OWLDataProperty dataProperty = createDataProperty(rule);
-
-        Set<SWRLAtom> head = new HashSet<>();
-        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("100", OWL2Datatype.XSD_INTEGER);
-        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
-        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(dataProperty, x, swrldArgument));
-
-        SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
-        saveOntology(owlOntology, swrlRule);
-    }
-
-    // OWL Rule functions
-    public void createRule2(OWLOntology owlOntology, String rule) throws OWLOntologyStorageException {
-        OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
-        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
-
-        OWLDataProperty owlDataProperty = createDataProperty("hasPricePerNight");//getDataProperty("hasPricePerNight");
-        System.out.println("Data property: " + owlDataProperty.getIRI().getFragment());
-
-        SWRLVariable price = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#price"));
-
-        // Create rule body
-        // 1st Atom
-        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
-
-        // 2nd Atom
-        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, price);
-
-        // 3rd Atom
-        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("50", OWL2Datatype.XSD_INTEGER);
-        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
-
-        List<SWRLDArgument> arguments = new ArrayList<>();
-        arguments.add(price);
-        arguments.add(swrldArgument);
-        SWRLBuiltInAtom atom3 = this.owlDataFactory.getSWRLBuiltInAtom(SWRLBuiltInsVocabulary.LESS_THAN_OR_EQUAL.getIRI(), Arrays.asList(price, swrldArgument));
-
-        // Intersection of Atoms
-        Set<SWRLAtom> body = new HashSet<>();
-        body.add(atom1);
-        body.add(atom2);
-        body.add(atom3);
-
-
-        // Create rule head
-        //OWLObjectProperty objectProperty = createObjectProperty(rule);
-        //saveOntology(owlOntology, dataProperty);
-        OWLClass newClass = createClass(rule);
-        Set<SWRLAtom> head = new HashSet<>();
-        head.add(this.owlDataFactory.getSWRLClassAtom(newClass, x));
-
-        SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
-        saveOntology(owlOntology, swrlRule);
-    }
 
     public Set<SWRLAtom> createRuleHead(OWLOntology owlOntology, String dataProperty, String d, Set<SWRLAtom> head) throws OWLOntologyStorageException {
         //OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
@@ -312,9 +237,6 @@ public class OntologyHelper {
 
         OWLDataProperty owlDataProperty = createDataProperty(dataProperty);
         SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+d));
-
-        //OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral("100", OWL2Datatype.XSD_INTEGER);
-        //SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
 
         head.add(this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrlVariable));
         return head;
