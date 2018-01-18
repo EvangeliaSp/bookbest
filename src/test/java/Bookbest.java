@@ -2,7 +2,9 @@ import DLReasoner.Reasoner;
 import DL_Queries.SPARQL;
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import dataMapping.Mappings;
 import database.CreateDBs;
+import database.DataGenerator;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
@@ -30,13 +32,22 @@ public class Bookbest {
 
         //System.out.println("Please, type the name of the file which contains the databases: (including the path)");
 
+        /*///////////////////////////////////////////////////////////////////////
+        //          Create mappings                                            //
+        ///////////////////////////////////////////////////////////////////////*/
+
+        Mappings mappings = new Mappings("./src/main/resources/mappings");
+        mappings.mapFromFile();
+        //mappings.printMappings();
+        //System.out.println(mappings.findColumn("spa"));
+
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create databases                                           //
         ///////////////////////////////////////////////////////////////////////*/
 
         CreateDBs createDBs = new CreateDBs(filename);
-        createDBs.createDatabases();
+        //createDBs.createDatabases();
 
         System.out.println("Database(s) created successfully.");
 
@@ -45,6 +56,8 @@ public class Bookbest {
         //          Generate DBs Data                                          //
         ///////////////////////////////////////////////////////////////////////*/
 
+        DataGenerator dataGenerator = new DataGenerator("./src/main/resources/databases");
+        dataGenerator.generateData();
 
 
         /*///////////////////////////////////////////////////////////////////////

@@ -1,11 +1,10 @@
 package database;
 
+import com.mysql.jdbc.ResultSetMetaData;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class CreateDBs {
 
@@ -78,6 +77,15 @@ public class CreateDBs {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void getColumns(Connection connection, String database, String table) throws SQLException {
+        DatabaseMetaData metaData = connection.getMetaData();
+        ResultSet resultSet = metaData.getColumns(database, null, table, "%");
+
+        while(resultSet.next()) {
+            System.out.println(resultSet.getString(4));
         }
     }
 }
