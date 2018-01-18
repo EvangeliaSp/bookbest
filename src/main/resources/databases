@@ -1,5 +1,20 @@
 airtickets
 Hotel
-id int(11),name varchar(255),starRating int(11),pricePerNight int(11),guestRating double,country varchar(255),city varchar(255),distanceFromCityCenter double,guestLocationRating double
+id int(11) NOT NULL AUTO_INCREMENT,name varchar(255) NOT NULL ,starRating int(11),pricePerNight int(11) NOT NULL ,guestRating double,country varchar(255) NOT NULL ,city varchar(255) NOT NULL ,distanceFromCityCenter double,guestLocationRating double,
 Facilities
-id,petsAllowed,parking,nonSmokingRooms,roomService,restaurant,forDisabledGuests,freeWifi,fitnessCenter,familyRooms,swimmingPool,spaNWellnessCenter,airportShuttle,frontDesk24Hour,sauna,massage,bicycleRental,cycling,breakfastIncluded,breakfastNDinner,selfCatering,freeCancellation,bookWithoutCreditCard,noPrepayment,airConditioning,bath,coffeeMachine,electricKettle,flatScreenTV,kitchen,soundProofing,teaCoffeeMaker
+id int(11) NOT NULL,petsAllowed tinyint(1) NULL,parking tinyint(1) NULL,nonSmokingRooms tinyint(1) NULL,roomService tinyint(1) NULL,restaurant tinyint(1) NULL,forDisabledGuests tinyint(1) NULL,freeWifi tinyint(1) NULL,fitnessCenter tinyint(1) NULL,familyRooms tinyint(1) NULL,swimmingPool tinyint(1) NULL,spaWellnessCenter tinyint(1) NULL,airportShuttle tinyint(1) NULL,frontDesk24Hour tinyint(1) NULL,sauna tinyint(1) NULL,massage tinyint(1) NULL,bicycleRental tinyint(1) NULL,cycling tinyint(1) NULL,breakfastIncluded tinyint(1) NULL,breakfastDinnerIncluded tinyint(1) NULL,selfCatering tinyint(1) NULL,freeCancellation tinyint(1) NULL,bookWithoutCreditCard tinyint(1) NULL,noPrepayment tinyint(1) NULL,airConditioning tinyint(1) NULL,bath tinyint(1) NULL,coffeeMachine tinyint(1) NULL,electricKettle tinyint(1) NULL,flatScreenTV tinyint(1) NULL,kitchen tinyint(1) NULL,soundProofing tinyint(1) NULL,teaCoffeeMaker tinyint(1) NULL,
+booking
+Hotel
+id int(11) NOT NULL AUTO_INCREMENT,name varchar(255),starRating int(11),pricePerNight int(11),guestRating double,country varchar(255),city varchar(255),distanceFromCityCenter double,guestLocationRating double,
+Facilities
+id int(11) NOT NULL,petsAllowed tinyint(1) NULL,parking tinyint(1) NULL,nonSmokingRooms tinyint(1) NULL,roomService tinyint(1) NULL,restaurant tinyint(1) NULL,forDisabledGuests tinyint(1) NULL,freeWifi tinyint(1) NULL,fitnessCenter tinyint(1) NULL,familyRooms tinyint(1) NULL,swimmingPool tinyint(1) NULL,spaWellnessCenter tinyint(1) NULL,airportShuttle tinyint(1) NULL,reception24Hour tinyint(1) NULL,sauna tinyint(1) NULL,massage tinyint(1) NULL,bicycleRental tinyint(1) NULL,cycling tinyint(1) NULL,breakfastIncluded tinyint(1) NULL,breakfastDinnerIncluded tinyint(1) NULL,selfCatering tinyint(1) NULL,freeCancellation tinyint(1) NULL,bookWithoutCreditCard tinyint(1) NULL,noPrepayment tinyint(1) NULL,airConditioning tinyint(1) NULL,bath tinyint(1) NULL,coffeeMachine tinyint(1) NULL,electricKettle tinyint(1) NULL,flatScreenTV tinyint(1) NULL,kitchen tinyint(1) NULL,soundProofing tinyint(1) NULL,teaCoffeeMaker tinyint(1) NULL,
+hotelclub
+Hotel
+id int(11) NOT NULL AUTO_INCREMENT,name varchar(255),stars int(11),pricePerNight int(11),rating double,country varchar(255),city varchar(255),location double,distanceFromCityCenter double,
+Facilities
+id int(11) NOT NULL,airportTransfer tinyint(1) NULL,bar tinyint(1) NULL,businessFacilities tinyint(1) NULL,childcare tinyint(1) NULL,cribsAvailable tinyint(1) NULL,freeBreakfast tinyint(1) NULL,freeParking tinyint(1) NULL,freeWifi tinyint(1) NULL,gym tinyint(1) NULL,petFriendly tinyint(1) NULL,pool tinyint(1) NULL,restaurant tinyint(1) NULL,smokingAreas tinyint(1) NULL,spa tinyint(1) NULL,bathtubInRoom tinyint(1) NULL,kitchen tinyint(1) NULL,inRoomAccessibility tinyint(1) NULL,
+priceline
+Hotel
+id int(11) NOT NULL AUTO_INCREMENT,name varchar(255),starRating int(11),pricePerNight int(11),country varchar(255),city varchar(255),location double,guestRating double,
+Facilities
+id int(11) NOT NULL,freeInternet tinyint(1) NULL,freeParking tinyint(1) NULL,freeBreakfast tinyint(1) NULL,petsAllowed tinyint(1) NULL,swimmingPool tinyint(1) NULL,airportShuttle tinyint(1) NULL,noSmokingRoomsFacilities tinyint(1) NULL,fitnessCenter tinyint(1) NULL,handicappedRoomsFacilities tinyint(1) NULL,businessCenter tinyint(1) NULL,casino tinyint(1) NULL,spa tinyint(1) NULL,restaurant tinyint(1) NULL,freeCancellation tinyint(1) NULL,payLater tinyint(1) NULL,
