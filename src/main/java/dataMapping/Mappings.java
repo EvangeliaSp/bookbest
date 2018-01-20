@@ -82,4 +82,8 @@ public class Mappings {
         }
         return null;
     }
+
+    public ArrayList<String> getHasIdValues() {
+        return this.mappings.get("hasId");
+    }
 }

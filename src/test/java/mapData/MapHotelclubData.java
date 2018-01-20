@@ -6,7 +6,7 @@ import database.DBConnection;
 import java.sql.Statement;
 
 public class MapHotelclubData {
-
+/*
     public static void main(String[] args) {
         // Connect to database
         DBConnection dbConnection = new DBConnection();
@@ -23,5 +23,5 @@ public class MapHotelclubData {
 
         // Disconnect from database
         dbConnection.disconnect();
-    }
+    }*/
 }

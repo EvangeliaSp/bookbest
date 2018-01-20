@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class AccommodationGenerator {
 
-    Accommodation accommodation;
+    /*Accommodation accommodation;
     Statement statement;
 
     public AccommodationGenerator(Statement statement) {
@@ -78,5 +78,5 @@ public class AccommodationGenerator {
     private double guestRating() {
         double k = (new Random().nextInt(101) )/10.0;
         return k;
-    }
+    }*/
 }

@@ -1,28 +1,43 @@
 package database;
 
+import dataMapping.Mappings;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Random;
 
+
+
 public class DataGenerator {
+
+    private static final int DATA=1000;
+
     private String filename;
     private static String jdbcDriver = "com.mysql.jdbc.Driver";
+    Mappings mappings;
+    DBConnection dbConnection;
 
-    public DataGenerator (String filename) {
+    public DataGenerator (String filename, Mappings mappings, DBConnection dbConnection) {
         this.filename = filename;
+        this.mappings = mappings;
+        this.dbConnection = dbConnection;
     }
 
     public void generateData() {
         try {
             FileReader fileReader = new FileReader(this.filename);
             BufferedReader br = new BufferedReader(fileReader);
-            String currentLine, database, table1, table2, columns1, columns2;
-            DBConnection dbConnection = new DBConnection();
+            String currentLine, database, table1, table2;
+            ArrayList<String> columns1, columns2;
             Connection connection;
             Statement statement;
+            ArrayList<String> idValues = mappings.getHasIdValues();
+
 
             while ((database = br.readLine()) != null) {
                 dbConnection.connect(database);
@@ -31,24 +46,15 @@ public class DataGenerator {
 
 
                 if((table1 = br.readLine()) != null) {
-
-                    if((columns1 = br.readLine()) != null) {
-
-                        /*for(int i=0; i<1000; i++) {
-                            generateTableData(table1, columns1);
-                        }*/
-
-                        if((table2 = br.readLine()) != null) {
-
-                            if((columns2 = br.readLine()) != null) {
-                                /*for(int j=0; j<1000; j++) {
-                                    String sqlInsert = "INSERT INTO "+table2+" (";
-                                }*/
-                                CreateDBs createDBs = new CreateDBs(database);
-                                createDBs.getColumns(connection, database, table2);
-                            }
-                        }
+                    br.readLine();
+                    columns1 = dbConnection.getColumns(connection, database, table1);
+                    this.generateHotels(statement, table1, columns1);
+                    if((table2 = br.readLine()) != null) {
+                        columns2 = dbConnection.getColumns(connection, database, table2);
+                        this.generateFacilities(statement, table2, columns2, idValues);
+                        br.readLine();
                     }
+                    break;
                 }
             }
 
@@ -57,26 +63,118 @@ public class DataGenerator {
         }
     }
 
-    private void generateFacilities(Statement statement, String table) throws SQLException {
+    private void generateHotels(Statement statement, String table, ArrayList<String> columns) {
         int k;
-
-        if((k=bit()) != 2) {
-            //facility.setPetsAllowed((byte) k);
+        String cols, values, sqlInsert, key;
+        String[][] array = new String[DATA+1][columns.size()];
+        int j=0;
+        for(String c:columns) {
+            array[0][j] = c;
+            key = mappings.findColumn(c);
+            switch (key) {
+                case "hasId":
+                    break;
+                case "hasName":
+                    break;
+                case "hasStars":
+                    break;
+                case "hasPricePerNight":
+                    break;
+                case "isInCountry":
+                    break;
+                case "isInCity":
+                    break;
+                case "hasCityCenterDistance":
+                    break;
+                default:
+                    
+            }
+            /*if(idValues.contains(c)) {
+                for(int i=1; i<=DATA; i++) {
+                    array[i][j] = String.valueOf(i);
+                }
+            }
+            else {
+                for(int i=1; i<=DATA; i++) {
+                    k=bit();
+                    array[i][j] = String.valueOf(k);
+                }
+            }*/
+            j++;
         }
+        /*for(int i=1; i<DATA+1; i++) {
+            cols="";
+            values="";
+            for(j=0; j<columns.size(); j++) {
+                if(!array[i][j].equals("2")) {
+                    cols = cols+array[0][j]+",";
+                    values = values+array[i][j]+",";
+                }
+                else {
+                    if(idValues.contains(array[0][j])) {
+                        cols = cols+array[0][j]+",";
+                        values = values+array[i][j]+",";
+                    }
+                }
+            }
+            cols = cols.substring(0, cols.length()-1);
+            values = values.substring(0, values.length()-1);
+            System.out.println(cols);
+            System.out.println(values);
 
+            //sqlInsert = "INSERT INTO "+table+" ("+cols+") VALUES ("+values+")";
+            //statement.executeUpdate(sqlInsert);
+        }*/
+    }
 
-        String sqlInsert = "INSERT INTO "+table+" ("+
-                " PRIMARY KEY ("+"))";
+    private void generateFacilities(Statement statement, String table, ArrayList<String> columns, ArrayList<String> idValues) throws SQLException {
+        int k;
+        String cols, values, sqlInsert;
+        String[][] array = new String[DATA+1][columns.size()];
+        int j=0;
+        for(String c:columns) {
+            array[0][j] = c;
 
-        statement.executeUpdate(sqlInsert);
-        return ;
+            if(idValues.contains(c)) {
+                for(int i=1; i<=DATA; i++) {
+                    array[i][j] = String.valueOf(i);
+                }
+            }
+            else {
+                for(int i=1; i<=DATA; i++) {
+                    k=bit();
+                    array[i][j] = String.valueOf(k);
+                }
+            }
+            j++;
+        }
+        for(int i=1; i<DATA+1; i++) {
+            cols="";
+            values="";
+            for(j=0; j<columns.size(); j++) {
+                if(!array[i][j].equals("2")) {
+                    cols = cols+array[0][j]+",";
+                    values = values+array[i][j]+",";
+                }
+                else {
+                    if(idValues.contains(array[0][j])) {
+                        cols = cols+array[0][j]+",";
+                        values = values+array[i][j]+",";
+                    }
+                }
+            }
+            cols = cols.substring(0, cols.length()-1);
+            values = values.substring(0, values.length()-1);
+            System.out.println(cols);
+            System.out.println(values);
+
+            //sqlInsert = "INSERT INTO "+table+" ("+cols+") VALUES ("+values+")";
+            //statement.executeUpdate(sqlInsert);
+        }
     }
 
     private int bit() {
         return new Random().nextInt(3);
     }
 
-    private void generateTableData(String table, String columns) {
-
-    }
 }

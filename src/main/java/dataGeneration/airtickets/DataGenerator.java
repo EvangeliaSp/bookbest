@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public class DataGenerator {
-
+/*
     private Statement statement;
 
     public DataGenerator(Statement statement) {
@@ -34,5 +34,5 @@ public class DataGenerator {
             FacilityGenerator facilityGenerator = new FacilityGenerator(this.statement, accommodation.getId());
             facilityGenerator.generate();
         }
-    }
+    }*/
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DataGenerator {
 
-    private Statement statement;
+    /*private Statement statement;
 
     public DataGenerator(Statement statement) {
         this.statement = statement;
@@ -33,5 +33,5 @@ public class DataGenerator {
             FacilityGenerator facilityGenerator = new FacilityGenerator(this.statement, accommodation.getId());
             facilityGenerator.generate();
         }
-    }
+    }*/
 }

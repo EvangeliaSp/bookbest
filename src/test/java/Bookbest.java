@@ -3,7 +3,7 @@ import DL_Queries.SPARQL;
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import dataMapping.Mappings;
-import database.CreateDBs;
+import database.DBConnection;
 import database.DataGenerator;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
@@ -14,6 +14,9 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 public class Bookbest {
 
@@ -38,25 +41,24 @@ public class Bookbest {
 
         Mappings mappings = new Mappings("./src/main/resources/mappings");
         mappings.mapFromFile();
-        //mappings.printMappings();
-        //System.out.println(mappings.findColumn("spa"));
 
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create databases                                           //
         ///////////////////////////////////////////////////////////////////////*/
 
-        CreateDBs createDBs = new CreateDBs(filename);
-        //createDBs.createDatabases();
+        DBConnection dbConnection = new DBConnection(filename);
+        //dbConnection.createDatabases();
 
-        System.out.println("Database(s) created successfully.");
+
+        //System.out.println("Database(s) created successfully.");
 
 
         /*///////////////////////////////////////////////////////////////////////
         //          Generate DBs Data                                          //
         ///////////////////////////////////////////////////////////////////////*/
 
-        DataGenerator dataGenerator = new DataGenerator("./src/main/resources/databases");
+        DataGenerator dataGenerator = new DataGenerator("./src/main/resources/databases", mappings, dbConnection);
         dataGenerator.generateData();
 
 

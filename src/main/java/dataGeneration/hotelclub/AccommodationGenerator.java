@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.Random;
 
 public class AccommodationGenerator {
-    Accommodation accommodation;
+    /*Accommodation accommodation;
     Statement statement;
 
     public AccommodationGenerator(Statement statement) {
@@ -92,5 +92,5 @@ public class AccommodationGenerator {
         String type = roomTypes[k];
 
         return type;
-    }
+    }*/
 }

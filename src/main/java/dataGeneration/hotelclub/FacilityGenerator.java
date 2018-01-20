@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.Random;
 
 public class FacilityGenerator {
-    Statement statement;
+    /*Statement statement;
     int id;
 
     public FacilityGenerator(Statement statement, int id) {
@@ -88,5 +88,5 @@ public class FacilityGenerator {
 
     private int bit() {
         return new Random().nextInt(3);
-    }
+    }*/
 }

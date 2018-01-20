@@ -6,7 +6,7 @@ import database.DBConnection;
 import java.sql.Statement;
 
 public class GenerateAirticketsDB {
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
 
         // Connect to database
         DBConnection dbConnection = new DBConnection();
@@ -24,5 +24,5 @@ public class GenerateAirticketsDB {
 
         // Disconnect from database
         dbConnection.disconnect();
-    }
+    }*/
 }
