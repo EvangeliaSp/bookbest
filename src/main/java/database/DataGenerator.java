@@ -130,7 +130,6 @@ public class DataGenerator {
                     if (idValues.contains(c)) {
                         cols = cols + c + ",";
                         values = values + String.valueOf(i) + ",";
-                        //array[0][j] = c;
                     } else {
                         if ((k = bit()) != 2) {
                             cols = cols + c + ",";
@@ -184,11 +183,5 @@ public class DataGenerator {
     private double rating(int n) {
         double k = (new Random().nextInt(n+1))/10.0;
         return k;
-    }
-
-    private String convertMiToKm(double k) {
-        DecimalFormat df = new DecimalFormat("#.###");
-        df.setRoundingMode(RoundingMode.CEILING);
-        return df.format(k/0.62137);
     }
 }

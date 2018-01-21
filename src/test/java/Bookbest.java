@@ -73,7 +73,7 @@ public class Bookbest {
         OntologyHelper ontologyHelper = new OntologyHelper();
 
 
-        OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings);
+        OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
         ontologyGenerator.generateOntology();
         OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
 
@@ -139,41 +139,33 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
            /* SPARQL sparql = new SPARQL();
-
             //BufferedReader br = null;
             //br = new BufferedReader(new InputStreamReader(System.in));
             int rating, price, ff;
             String query = null;
-
             try {
                 // Country
                 System.out.println("Country: ");
                 String country = br.readLine();
                 query = sparql.hotelsByCountry(country);
-
                 // City
                 System.out.println("City: ");
                 String city = br.readLine();
                 query = query+sparql.hotelsByCity(city);
-
                 // Price
                 System.out.println("Price: (0-Any, 1-Very Cheap, 2-Cheap, 3-Average, 4-Expensive, 5-Very Expensive)");
                 do {
                     price = Integer.parseInt(br.readLine());
-
                 } while(price<0 || price>5);
                 if (price != 0)
                     ;
-
                 // Rating
                 System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
                 do {
                     rating = Integer.parseInt(br.readLine());
-
                 } while(rating<0 || rating>3);
                 if (rating != 0)
                     ;
-
                 // Family Friendly
                 System.out.println("Family Friendly: (0-Any, 1-Yes, 2-No)");
                 do {
@@ -181,9 +173,7 @@ public class Bookbest {
                 } while (ff<0 || ff>2);
                 if (ff != 0)
                     ;
-
                 sparql.findResults(model, query);
-
             }
             catch (IOException exception) {
                 exception.printStackTrace();

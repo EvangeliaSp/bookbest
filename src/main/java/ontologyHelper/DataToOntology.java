@@ -3,7 +3,7 @@ package ontologyHelper;
 import org.semanticweb.owlapi.model.*;
 
 public class DataToOntology {
-
+/*
     // Import String data
     public void importData(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
         if(value != null)
@@ -26,5 +26,5 @@ public class DataToOntology {
     public void importData(OntologyHelper ontologyHelper, OWLOntology owlOntology, OWLIndividual owlIndividual, String property, Byte value) throws OWLOntologyStorageException {
         if(value != null)
             ontologyHelper.addByteDataToIndividual(owlOntology, owlIndividual, property, String.valueOf(value));
-    }
+    }*/
 }

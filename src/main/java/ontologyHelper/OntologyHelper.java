@@ -152,39 +152,39 @@ public class OntologyHelper {
         saveOntology(owlOntology, addAxiom);
     }
 
-    public void addStringDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
+    public void addStringDataToIndividual(OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
         OWLDataProperty owlDataProperty = createDataProperty(property);//getDataProperty(property);
         OWLLiteral literal = owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_STRING);
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+        AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
         saveOntology(owlOntology, addAxiom);
     }
 
-    public void addIntegerDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
+    public void addIntegerDataToIndividual(OWLIndividual owlIndividual, String property, String value) throws OWLOntologyStorageException {
         OWLDataProperty owlDataProperty = createDataProperty(property);
         OWLLiteral literal = owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_INTEGER);
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+        AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
         saveOntology(owlOntology, addAxiom);
     }
 
-    public void addDoubleDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String  value) throws OWLOntologyStorageException {
+    public void addDoubleDataToIndividual(OWLIndividual owlIndividual, String property, String  value) throws OWLOntologyStorageException {
         OWLDataProperty owlDataProperty = createDataProperty(property);
         OWLLiteral literal = owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_DOUBLE);
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+        AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
         saveOntology(owlOntology, addAxiom);
     }
 
-    public void addByteDataToIndividual(OWLOntology owlOntology, OWLIndividual owlIndividual, String property, String  value) throws OWLOntologyStorageException {
+    public void addByteDataToIndividual(OWLIndividual owlIndividual, String property, String  value) throws OWLOntologyStorageException {
         OWLDataProperty owlDataProperty = createDataProperty(property);
         OWLLiteral literal = owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_BYTE);
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
-        AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
+        AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
         saveOntology(owlOntology, addAxiom);
     }
 
@@ -339,6 +339,4 @@ public class OntologyHelper {
                 return null;
         }
     }
-
-
 }

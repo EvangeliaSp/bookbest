@@ -1,12 +1,17 @@
 package ontologyHelper;
 
 import dataMapping.Mappings;
+import database.DBConnection;
 import org.semanticweb.owlapi.model.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,15 +19,19 @@ public class OntologyGenerator {
     OntologyHelper ontologyHelper;
     OWLOntology owlOntology;
     Mappings mappings;
+    DBConnection dbConnection;
+    DataToOntology dataToOntology;
 
     public OWLOntology getOwlOntology() {
         return owlOntology;
     }
 
-    public OntologyGenerator(Mappings mappings) {
+    public OntologyGenerator(Mappings mappings, DBConnection dbConnection) {
         OntologyHelper ontologyHelper = new OntologyHelper();
         this.ontologyHelper = ontologyHelper;
         this.mappings = mappings;
+        this.dbConnection = dbConnection;
+        this.dataToOntology = new DataToOntology();
     }
 
     // Create OWL Ontology
@@ -32,6 +41,7 @@ public class OntologyGenerator {
             this.generateClasses();
             this.generateDataProperties();
             this.generateRules();
+            this.mapInstances();
         }
         catch (OWLOntologyCreationException ce) {
             ce.printStackTrace();
@@ -209,5 +219,80 @@ public class OntologyGenerator {
     private void generateRatingRules() {
 
 
+    }
+
+    public void mapInstances() {
+        Set<String> keys = mappings.getCharacteristics().keySet();
+        int i, j, counter=1, k;
+        String dp;
+        for(String database: keys) {
+            dbConnection.connect(database);
+            Connection connection = dbConnection.getConnection();
+            ArrayList<String> characteristics = this.mappings.findCharacteristic(database);
+            ResultSet hotels = dbConnection.getAll("Hotel");
+            ResultSet facilities = dbConnection.getAll("Facilities");
+
+
+            ArrayList<String> hotelCols = dbConnection.getColumns(connection, database, "Hotel");
+            ArrayList<String> hotelDataProps = mappings.getDataPropCols(hotelCols);
+
+            ArrayList<String> facilitiesCols = dbConnection.getColumns(connection, database, "Facilities");
+            ArrayList<String> facilitiesDataProps = mappings.getDataPropCols(facilitiesCols);
+            try {
+                while (hotels.next() && facilities.next()) {
+                    // Create the individual
+                    OWLIndividual owlIndividual = ontologyHelper.createIndividual("Hotel_"+counter);
+                    System.out.println("Hotel_"+counter++);
+                    OWLClass owlClass = ontologyHelper.getFirstClass(owlOntology);
+                    this.ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, owlIndividual);
+                    i=0;
+                    j=0;
+                    for (String c : hotelCols) {
+                        dp = hotelDataProps.get(i++);
+                        if(dp.equals("hasName") || dp.equals("isInCountry") || dp.equals("isInCity"))
+                            this.ontologyHelper.addStringDataToIndividual(owlIndividual, dp, hotels.getString(c));
+                            //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getString(c));
+                        else if(dp.equals("hasRating") || dp.equals("hasLocationRating")) {
+                            if((k=Integer.parseInt(characteristics.get(0)))!=10) {
+                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, this.mappings.convertRate(k,hotels.getDouble(c)));
+                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, this.mappings.convertRate(k,hotels.getDouble(c)));
+                            }
+                            else this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
+                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getDouble(c));
+                        }
+                        else if(dp.equals("hasCityCenterDistance")) {
+                            if(characteristics.get(1).equals("mi"))
+                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, this.mappings.convertMiToKm(hotels.getDouble(c)));
+                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, mappings.convertMiToKm(hotels.getDouble(c)));
+                            else this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
+                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getDouble(c));
+                        }
+                        else {
+                            this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
+                            //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getInt(c));
+                        }
+                    }
+                    for (String c : facilitiesCols) {
+                        dp = facilitiesDataProps.get(j++);
+                        if(dp.equals("hasId"))
+                            this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facilities.getString(c));
+                            //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, facilities.getInt(c));
+                        else {
+                            if(facilities.getString(c) != null)
+                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facilities.getString(c));
+                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, facilities.getByte(c));
+                        }
+                    }
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+            catch (OWLOntologyStorageException se) {
+                se.printStackTrace();
+            }
+
+            dbConnection.disconnect();
+        }
     }
 }

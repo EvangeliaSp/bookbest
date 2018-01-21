@@ -4,15 +4,15 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.*;
 
 public class Mappings {
 
     private String filename;
     private String flCharacteristics;
+
 
     public String getFilename() {
         return filename;
@@ -54,7 +54,6 @@ public class Mappings {
                 index = values.indexOf(",");
                 while (index != -1) {
                     if((value = values.substring(0, index)) != null) {
-                        //System.out.print(value+"-");
                         arrayValues.add(value);
                         values = values.substring(index+1);
                         index = values.indexOf(",");
@@ -62,7 +61,6 @@ public class Mappings {
                     else break;
                 }
                 if((value = values.substring(0)) != null && (values.length() > 0)) {
-                    //System.out.println(value);
                     arrayValues.add(value);
                 }
                 mappings.put(key, arrayValues);
@@ -156,5 +154,27 @@ public class Mappings {
             }
         }
         return null;
+    }
+
+    public ArrayList<String> getDataPropCols(ArrayList<String> columns) {
+        ArrayList<String> dataPropCols = new ArrayList<>();
+        for(String c: columns) {
+            String dp = this.findColumn(c);
+            dataPropCols.add(dp);
+        }
+
+        return dataPropCols;
+    }
+
+    public String convertMiToKm(double k) {
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return df.format(k/0.62137);
+    }
+
+    public String convertRate(int k, double l) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return df.format(10*l/k);
     }
 }

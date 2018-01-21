@@ -1,5 +1,7 @@
 package database;
 
+import com.sun.rowset.internal.Row;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
@@ -110,10 +112,12 @@ public class DBConnection {
                     table = currentLine;
                     if((currentLine = br.readLine()) != null) {
                         key = this.createTable(statement, table, currentLine);
+                        ArrayList<String> cols = this.getColumns(connection, database, table);
                         if((currentLine = br.readLine()) != null) {
                             table2 = currentLine;
                             if((currentLine = br.readLine()) != null) {
                                 this.createTable2(statement, table2, currentLine, key, table);
+                                cols = this.getColumns(connection, database, table2);
                             }
                         }
                     }
@@ -134,6 +138,19 @@ public class DBConnection {
                 columns.add(resultSet.getString(4));
             }
             return columns;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet getAll(String table) {
+        try {
+            Statement statement = this.connection.createStatement();
+            String sqlSelect = "SELECT * FROM " + table;
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            return resultSet;
         }
         catch (SQLException e) {
             e.printStackTrace();
