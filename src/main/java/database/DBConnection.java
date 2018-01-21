@@ -88,7 +88,6 @@ public class DBConnection {
                 columns +
                 " PRIMARY KEY ("+key+"), "+
                 " FOREIGN KEY ("+key+") REFERENCES "+ftable+" ("+fkey+"))";
-        System.out.println(sqlCreate);
         statement.executeUpdate(sqlCreate);
     }
 

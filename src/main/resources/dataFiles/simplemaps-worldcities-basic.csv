@@ -386,7 +386,6 @@ United States of America,Cody,8976.5
 Argentina,Chamical,8989
 Australia,Port Hedland,8997
 Tanzania,Mbamba Bay,8997
-Lebanon,B'abda,9000
 Peru,Puquio,9027.5
 Norway,Namsos,9035
 Peru,Motupe,9048
@@ -721,7 +720,6 @@ Mexico,Santiago Tuxtla,13598
 Argentina,Mar de Ajo,13610
 Brazil,Pedreiras,13638
 United States of America,La Grande,13646
-Jamaica,St. Ann's Bay,13671
 United States of America,Pierre,13734.5
 Afghanistan,Zareh Sharan,13737
 Thailand,Ang Thong,13738
@@ -778,7 +776,6 @@ Tanzania,Karema,14507.5
 Uganda,Kiboga,14512
 Kyrgyzstan,Kok Yangak,14523
 United States of America,Alpena,14524
-Russia,Ust' Ordynskiy,14538
 Tanzania,Sikonge,14549.5
 Mexico,Villa Union,14563
 Suriname,Nieuw Nickerie,14567.5
@@ -1155,7 +1152,6 @@ Armenia,Artashat,20562
 Russia,Krasnouralsk,20571
 Mexico,Tekax,20577
 Panama,Penonome,20580
-Canada,Val d'Or,20625
 Russia,Krasnoarmeysk,20625.5
 United States of America,Hays,20638.5
 Ecuador,Macas,20644
@@ -1422,7 +1418,6 @@ United States of America,Roseburg,25454.5
 Russia,Okha,25461
 Bolivia,Tupiza,25499.5
 Guinea,Tongue,25531
-South Africa,Qacha's Nek,25573
 Angola,Lucapa,25578
 United States of America,Laramie,25587.5
 Mexico,San Fernando,25596
@@ -1582,7 +1577,6 @@ Kenya,Kisii,28547
 Brazil,Rosario do Sul,28596.5
 Central African Republic,Bangassou,28601
 Mexico,Cananea,28625.5
-Algeria,I-n-Salah,28632
 Gabon,Moanda,28633
 Kyrgyzstan,Talas,28646
 Thailand,Tak,28647.5
@@ -1628,7 +1622,6 @@ United States of America,Winona,29757.5
 Paraguay,Ita,29774.5
 Brazil,Palmas,29794.5
 Brazil,Chapadinha,29807.5
-Antigua and Barbuda,Saint John's,29862.5
 Australia,Warrnambool,29882
 Russia,Barabinsk,29888.5
 Thailand,Loei,29908
@@ -1660,7 +1653,6 @@ Honduras,Nacaome,30464.5
 Australia,Dubbo,30467.5
 United States of America,Oak Ridge,30471.5
 Russia,Mirnyy,30535.5
-Grenada,Saint George's,30538.5
 Mali,Bougouni,30547
 Brazil,Jaguaquara,30554.5
 Peru,Huaura,30561.5
@@ -1843,7 +1835,6 @@ Indonesia,Merauke,34412
 Venezuela,Altagracia de Orituco,34427
 United States of America,Huntsville,34444.5
 Ivory Coast,Odienne,34488
-United States of America,Coeur d'Alene,34514
 Thailand,Satun,34544
 Zimbabwe,Zvishavane,34557.5
 New Zealand,Upper Hutt,34591
@@ -1951,7 +1942,6 @@ New Zealand,Invercargill,37135.5
 Gabon,Oyem,37146.5
 United States of America,Minot,37162
 Tunisia,Tozeur,37223.5
-Yemen,'Ataq,37315
 South Africa,Port Shepstone,37325.5
 El Salvador,San Vicente,37326
 United States of America,Myrtle Beach,37333.5
@@ -2445,7 +2435,6 @@ Brazil,Porto Uniao,50242.5
 Russia,Vyshnniy Volochek,50254
 Russia,Zelenodolsk,50338.5
 Botswana,Lobatse,50343.5
-Jordan,Ma'an,50350
 Indonesia,Sawahlunto,50354
 Russia,Krasnokamsk,50382
 Brazil,Araguaina,50444
@@ -2801,7 +2790,6 @@ Hungary,Veszprem,62023
 Russia,Volsk,62027
 South Africa,Upington,62086
 Nigeria,Kontagora,62144
-Italy,L'Aquila,62201.5
 Netherlands,Assen,62237
 Belize,Belize City,62244.5
 Mexico,Juchitan,62254.5
@@ -3529,7 +3517,6 @@ Greece,Volos,97528.5
 Brazil,Barretos,97562
 Ukraine,Konotop,97672.5
 United States of America,Las Cruces,97675.5
-Tunisia,L'Ariana,97687
 Argentina,Santa Rosa,97693.5
 Brazil,Uruguaiana,97736.5
 Czech Republic,Olomouc,97829
@@ -3847,7 +3834,6 @@ Ecuador,Loja,122082
 United States of America,Clarksville,122115
 Russia,Neftekamsk,122170
 Mozambique,Tete,122183
-Syria,Dar'a,122225
 Iraq,Ash Shatrah,122340.5
 Cuba,Ciego de Avila,122343.5
 Netherlands,Maastricht,122378
@@ -3885,7 +3871,6 @@ Japan,Takaoka,124437
 Kazakhstan,Ekibastuz,124669
 El Salvador,Nueva San Salvador,124694
 Myanmar,Pyay,124833.5
-Algeria,M'sila,125000
 Iran,Shahrud,125304
 Brazil,Castanhal,125314.5
 United States of America,Springfield,125345
@@ -4007,7 +3992,6 @@ Russia,Nevinnomyssk,134362.5
 Ecuador,Esmeraldas,134365.5
 Greece,Iraklio,134404
 Algeria,Bordj Bou Arreridj,134500
-Netherlands,'s-Hertogenbosch,134520
 Canada,Sherbrooke,134549.5
 Romania,Baia Mare,134630
 Brazil,Caxias,134640
@@ -5958,7 +5942,6 @@ Indonesia,Bogor,859000
 Philippines,Cagayan de Oro,861824.5
 India,Tiruchirappalli,863242
 China,Xuanzhou,866000
-South Korea,Puch'on,866000
 Nigeria,Abuja,869067.5
 India,Thiruvananthapuram,869076.5
 Iraq,Basra,870000

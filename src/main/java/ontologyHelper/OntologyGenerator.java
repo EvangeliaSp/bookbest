@@ -6,6 +6,10 @@ public class OntologyGenerator {
     OntologyHelper ontologyHelper;
     OWLOntology owlOntology;
 
+    public OWLOntology getOwlOntology() {
+        return owlOntology;
+    }
+
     public OntologyGenerator() throws OWLOntologyCreationException {
         OntologyHelper ontologyHelper = new OntologyHelper();
         this.ontologyHelper = ontologyHelper;

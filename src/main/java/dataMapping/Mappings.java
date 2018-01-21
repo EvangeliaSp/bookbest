@@ -1,7 +1,9 @@
 package dataMapping;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,15 +12,25 @@ import java.util.Map;
 public class Mappings {
 
     private String filename;
+    private String flCharacteristics;
+
     public HashMap<String, ArrayList<String>> mappings;
+
+    public HashMap<String, ArrayList<String>> characteristics;
 
     public HashMap<String, ArrayList<String>> getMappings() {
         return mappings;
     }
 
-    public Mappings(String filename) {
+    public HashMap<String, ArrayList<String>> getCharacteristics() {
+        return characteristics;
+    }
+
+    public Mappings(String filename, String flCharacteristics) {
         this.filename = filename;
+        this.flCharacteristics = flCharacteristics;
         this.mappings = new HashMap<>();
+        this.characteristics = new HashMap<>();
     }
 
     public void mapFromFile() {
@@ -85,5 +97,60 @@ public class Mappings {
 
     public ArrayList<String> getHasIdValues() {
         return this.mappings.get("hasId");
+    }
+
+    public void makeCharacteristics() {
+        try {
+            FileReader fileReader = new FileReader(this.flCharacteristics);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line, database, rating, distance, subline;
+            int index;
+            while((line = bufferedReader.readLine()) != null) {
+                index = line.indexOf(":");
+                database = line.substring(0, index);
+                subline = line.substring(index+1, line.length());
+
+                index = subline.indexOf(",");
+                rating = subline.substring(0, index);
+                subline = subline.substring(index+1, subline.length());
+
+                distance = subline.substring(0);
+
+                ArrayList<String> array = new ArrayList<>();
+                array.add(rating);
+                array.add(distance);
+                this.characteristics.put(database, array);
+            }
+        }
+        catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
+        catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    public void printCharacteristics() {
+        Iterator iterator = this.characteristics.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, ArrayList<String>> pair = (Map.Entry)iterator.next();
+            System.out.print(pair.getKey()+": ");
+            ArrayList<String> values = pair.getValue();
+            for(String value: values) {
+                System.out.print(value+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public ArrayList<String> findCharacteristic(String database) {
+        Iterator iterator = this.characteristics.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, ArrayList<String>> pair = (Map.Entry)iterator.next();
+            if(pair.getKey().equals(database)) {
+                return pair.getValue();
+            }
+        }
+        return null;
     }
 }

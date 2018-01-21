@@ -5,6 +5,7 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import dataMapping.Mappings;
 import database.DBConnection;
 import database.DataGenerator;
+import ontologyHelper.OntologyGenerator;
 import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
@@ -26,7 +27,9 @@ public class Bookbest {
         //          Variables Declaration                                      //
         ///////////////////////////////////////////////////////////////////////*/
 
-        String filename = "./src/main/resources/databases";
+        String filenameDBs = "./src/main/resources/databases";
+        String filenameMaps = "./src/main/resources/mappings";
+        String filenameCharacteristics = "./src/main/resources/specificCharacteristics";
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -39,17 +42,17 @@ public class Bookbest {
         //          Create mappings                                            //
         ///////////////////////////////////////////////////////////////////////*/
 
-        Mappings mappings = new Mappings("./src/main/resources/mappings");
+        Mappings mappings = new Mappings(filenameMaps, filenameCharacteristics);
         mappings.mapFromFile();
+        mappings.makeCharacteristics();
 
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create databases                                           //
         ///////////////////////////////////////////////////////////////////////*/
 
-        DBConnection dbConnection = new DBConnection(filename);
+        DBConnection dbConnection = new DBConnection(filenameDBs);
         //dbConnection.createDatabases();
-
 
         //System.out.println("Database(s) created successfully.");
 
@@ -58,8 +61,8 @@ public class Bookbest {
         //          Generate DBs Data                                          //
         ///////////////////////////////////////////////////////////////////////*/
 
-        DataGenerator dataGenerator = new DataGenerator("./src/main/resources/databases", mappings, dbConnection);
-        dataGenerator.generateData();
+        DataGenerator dataGenerator = new DataGenerator(filenameDBs, mappings, dbConnection);
+        //dataGenerator.generateData();
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -68,8 +71,10 @@ public class Bookbest {
         OntologyHelper ontologyHelper = new OntologyHelper();
 
         try {
+            OntologyGenerator ontologyGenerator = new OntologyGenerator();
+            OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
             //OWLOntology owlOntology = ontologyHelper.createOntology();
-            OWLOntology owlOntology = ontologyHelper.readOntology();
+            //OWLOntology owlOntology = ontologyHelper.readOntology();
 
 
         /*///////////////////////////////////////////////////////////////////////

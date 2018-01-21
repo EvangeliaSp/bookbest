@@ -4,10 +4,12 @@ import dataMapping.Mappings;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.math.RoundingMode;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -31,30 +33,30 @@ public class DataGenerator {
     public void generateData() {
         try {
             FileReader fileReader = new FileReader(this.filename);
-            BufferedReader br = new BufferedReader(fileReader);
-            String currentLine, database, table1, table2;
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String database, table1, table2;
             ArrayList<String> columns1, columns2;
             Connection connection;
             Statement statement;
             ArrayList<String> idValues = mappings.getHasIdValues();
 
 
-            while ((database = br.readLine()) != null) {
+            while ((database = bufferedReader.readLine()) != null) {
                 dbConnection.connect(database);
                 connection = dbConnection.getConnection();
                 statement = dbConnection.getStatement();
+                ArrayList<String> characteristics = this.mappings.findCharacteristic(database);
 
-
-                if((table1 = br.readLine()) != null) {
-                    br.readLine();
+                if((table1 = bufferedReader.readLine()) != null) {
+                    bufferedReader.readLine();
                     columns1 = dbConnection.getColumns(connection, database, table1);
-                    this.generateHotels(statement, table1, columns1);
-                    if((table2 = br.readLine()) != null) {
+                    this.generateHotels(statement, table1, columns1, characteristics.get(0));
+                    if((table2 = bufferedReader.readLine()) != null) {
                         columns2 = dbConnection.getColumns(connection, database, table2);
                         this.generateFacilities(statement, table2, columns2, idValues);
-                        br.readLine();
+                        bufferedReader.readLine();
                     }
-                    break;
                 }
             }
 
@@ -63,113 +65,87 @@ public class DataGenerator {
         }
     }
 
-    private void generateHotels(Statement statement, String table, ArrayList<String> columns) {
+    private void generateHotels(Statement statement, String table, ArrayList<String> columns, String rate) {
         int k;
         String cols, values, sqlInsert, key;
-        String[][] array = new String[DATA+1][columns.size()];
-        int j=0;
-        for(String c:columns) {
-            array[0][j] = c;
-            key = mappings.findColumn(c);
-            switch (key) {
-                case "hasId":
-                    break;
-                case "hasName":
-                    break;
-                case "hasStars":
-                    break;
-                case "hasPricePerNight":
-                    break;
-                case "isInCountry":
-                    break;
-                case "isInCity":
-                    break;
-                case "hasCityCenterDistance":
-                    break;
-                default:
-                    
-            }
-            /*if(idValues.contains(c)) {
-                for(int i=1; i<=DATA; i++) {
-                    array[i][j] = String.valueOf(i);
-                }
-            }
-            else {
-                for(int i=1; i<=DATA; i++) {
-                    k=bit();
-                    array[i][j] = String.valueOf(k);
-                }
-            }*/
-            j++;
-        }
-        /*for(int i=1; i<DATA+1; i++) {
-            cols="";
-            values="";
-            for(j=0; j<columns.size(); j++) {
-                if(!array[i][j].equals("2")) {
-                    cols = cols+array[0][j]+",";
-                    values = values+array[i][j]+",";
-                }
-                else {
-                    if(idValues.contains(array[0][j])) {
-                        cols = cols+array[0][j]+",";
-                        values = values+array[i][j]+",";
+        CSVReader csvReader = new CSVReader();
+        try {
+            for (int i = 1; i <= DATA; i++) {
+                cols = "";
+                values = "";
+                String[][] place = csvReader.getRandomPlace();
+                for (String c : columns) {
+                    key = mappings.findColumn(c);
+                    switch (key) {
+                        case "hasId":
+                            break;
+                        case "hasName":
+                            cols = cols + c + ",";
+                            values = values +"'"+name()+"'"+ ",";
+                            break;
+                        case "hasStars":
+                            cols = cols + c + ",";
+                            values = values + stars() + ",";
+                            break;
+                        case "hasPricePerNight":
+                            cols = cols + c + ",";
+                            values = values + price_per_night() + ",";
+                            break;
+                        case "isInCountry":
+                            cols = cols + c + ",";
+                            values = values+"'" + place[0][0]+"'" + ",";
+                            break;
+                        case "isInCity":
+                            cols = cols + c + ",";
+                            values = values+"'" + place[0][1]+"'" + ",";
+                            break;
+                        case "hasCityCenterDistance":
+                            cols = cols + c + ",";
+                            values = values + distance() + ",";
+                            break;
+                        default:    // hasRating or hasLocationRating
+                            cols = cols + c + ",";
+                            values = values + rating(Integer.valueOf(rate)) + ",";
                     }
                 }
+                cols = cols.substring(0, cols.length() - 1);
+                values = values.substring(0, values.length() - 1);
+                sqlInsert = "INSERT INTO " + table + " (" + cols + ") VALUES (" + values + ")";
+                statement.executeUpdate(sqlInsert);
             }
-            cols = cols.substring(0, cols.length()-1);
-            values = values.substring(0, values.length()-1);
-            System.out.println(cols);
-            System.out.println(values);
-
-            //sqlInsert = "INSERT INTO "+table+" ("+cols+") VALUES ("+values+")";
-            //statement.executeUpdate(sqlInsert);
-        }*/
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void generateFacilities(Statement statement, String table, ArrayList<String> columns, ArrayList<String> idValues) throws SQLException {
         int k;
         String cols, values, sqlInsert;
-        String[][] array = new String[DATA+1][columns.size()];
-        int j=0;
-        for(String c:columns) {
-            array[0][j] = c;
-
-            if(idValues.contains(c)) {
-                for(int i=1; i<=DATA; i++) {
-                    array[i][j] = String.valueOf(i);
-                }
-            }
-            else {
-                for(int i=1; i<=DATA; i++) {
-                    k=bit();
-                    array[i][j] = String.valueOf(k);
-                }
-            }
-            j++;
-        }
-        for(int i=1; i<DATA+1; i++) {
-            cols="";
-            values="";
-            for(j=0; j<columns.size(); j++) {
-                if(!array[i][j].equals("2")) {
-                    cols = cols+array[0][j]+",";
-                    values = values+array[i][j]+",";
-                }
-                else {
-                    if(idValues.contains(array[0][j])) {
-                        cols = cols+array[0][j]+",";
-                        values = values+array[i][j]+",";
+        try {
+            for (int i = 1; i <= DATA; i++) {
+                cols = "";
+                values = "";
+                for (String c : columns) {
+                    if (idValues.contains(c)) {
+                        cols = cols + c + ",";
+                        values = values + String.valueOf(i) + ",";
+                        //array[0][j] = c;
+                    } else {
+                        if ((k = bit()) != 2) {
+                            cols = cols + c + ",";
+                            values = values + String.valueOf(k) + ",";
+                        }
                     }
                 }
+                cols = cols.substring(0, cols.length() - 1);
+                values = values.substring(0, values.length() - 1);
+                sqlInsert = "INSERT INTO "+table+" ("+cols+") VALUES ("+values+")";
+                statement.executeUpdate(sqlInsert);
             }
-            cols = cols.substring(0, cols.length()-1);
-            values = values.substring(0, values.length()-1);
-            System.out.println(cols);
-            System.out.println(values);
-
-            //sqlInsert = "INSERT INTO "+table+" ("+cols+") VALUES ("+values+")";
-            //statement.executeUpdate(sqlInsert);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -177,4 +153,42 @@ public class DataGenerator {
         return new Random().nextInt(3);
     }
 
+    private String name() {
+        try {
+            NameGenerator nameGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
+            String name;
+            name = nameGenerator.compose();
+            return name;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private int stars() {
+        int k = new Random().nextInt(6);
+        return k;
+    }
+
+    private int price_per_night() {
+        int k = new Random().nextInt(220);
+        return k;
+    }
+
+    private double distance() {
+        double k = (new Random().nextInt(101))/10.0;
+        return k;
+    }
+
+    private double rating(int n) {
+        double k = (new Random().nextInt(n+1))/10.0;
+        return k;
+    }
+
+    private String convertMiToKm(double k) {
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return df.format(k/0.62137);
+    }
 }

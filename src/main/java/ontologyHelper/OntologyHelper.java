@@ -15,8 +15,8 @@ public class OntologyHelper {
     String prefix = "file:";
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
 
-    String base = "urn:absolute:";
-    String ontName = "bookbest";
+    String base = "";
+    private static String ontName = "bookbest";
     IRI iri = IRI.create(base+ontName);
 
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
@@ -26,8 +26,6 @@ public class OntologyHelper {
 
     @Deprecated
     PrefixManager prefixManager = new DefaultPrefixManager(this.base+this.ontName+"#");
-
-
 
 
     public void printBasePhysicalURI() {

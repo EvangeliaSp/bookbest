@@ -1,4 +1,4 @@
-package dataGeneration;
+package database;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -58,9 +58,9 @@ public class CSVReader {
 
     public String[][] getRandomPlace() {
         int k = new Random().nextInt(mapLength);
-        String[][] place = new String[2][1];
+        String[][] place = new String[1][2];
         place[0][0] = this.map[0][k];
-        place[1][0] = this.map[1][k];
+        place[0][1] = this.map[1][k];
 
         return place;
     }
