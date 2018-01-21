@@ -14,6 +14,10 @@ public class Mappings {
     private String filename;
     private String flCharacteristics;
 
+    public String getFilename() {
+        return filename;
+    }
+
     public HashMap<String, ArrayList<String>> mappings;
 
     public HashMap<String, ArrayList<String>> characteristics;
@@ -36,12 +40,12 @@ public class Mappings {
     public void mapFromFile() {
         try {
             FileReader fileReader = new FileReader(this.filename);
-            BufferedReader br = new BufferedReader(fileReader);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line, key, value, values;
             int k, index;
             ArrayList<String> arrayValues;
 
-            while ((line = br.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 k = line.indexOf(":");
                 key = line.substring(0, k);
                 values = line.substring(k+1, line.length());

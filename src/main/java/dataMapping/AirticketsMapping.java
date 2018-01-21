@@ -1,20 +1,13 @@
 package dataMapping;
 
-import dao.airtickets.AccommodationDAO;
-import dao.airtickets.AccommodationDAOImpl;
-import dao.airtickets.FacilityDAO;
-import dao.airtickets.FacilityDAOImpl;
-import entities.airtickets.Accommodation;
-import entities.airtickets.Facility;
 import ontologyHelper.DataToOntology;
 import ontologyHelper.OntologyHelper;
 import org.semanticweb.owlapi.model.*;
 
 import java.sql.Statement;
-import java.util.List;
 
 public class AirticketsMapping {
-    Statement statement;
+    /*Statement statement;
     OntologyHelper ontologyHelper;
     OWLOntology owlOntology;
     DataToOntology dataToOntology;
@@ -88,5 +81,5 @@ public class AirticketsMapping {
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "isSoundProofing", facility.getSoundProofing());
             dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, "hasKitchen", facility.getKitchenKitchenette());
         }
-    }
+    }*/
 }

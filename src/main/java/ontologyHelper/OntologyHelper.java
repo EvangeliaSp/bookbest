@@ -11,12 +11,12 @@ import java.net.URI;
 import java.util.*;
 
 public class OntologyHelper {
-    String ontFile = "./src/main/resources/bookbest.owl";
+    static String ontFile = "./src/main/resources/bookbest.owl";
     String prefix = "file:";
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
 
     String base = "";
-    private static String ontName = "bookbest";
+    private static String ontName = "http://example.com/bookbest";
     IRI iri = IRI.create(base+ontName);
 
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
@@ -40,6 +40,9 @@ public class OntologyHelper {
         return owlDataFactory;
     }
 
+
+    // OWL Ontology functions
+
     public OWLOntology createOntology() throws OWLOntologyCreationException {
         this.owlOntology = owlOntologyManager.createOntology(this.iri);
         return this.owlOntology;
@@ -49,6 +52,7 @@ public class OntologyHelper {
         this.owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(IRI.create(this.basePhysicalURI));
         return this.owlOntology;
     }
+
 
     // OWL Class functions
 
@@ -185,7 +189,7 @@ public class OntologyHelper {
     }
 
     public void saveOntology(OWLOntology owlOntology, AddAxiom addAxiom) throws OWLOntologyStorageException {
-        File file = new File("./src/main/resources/bookbest.owl");
+        File file = new File(this.ontFile);
 
         owlOntologyManager.applyChange(addAxiom);
 
@@ -193,7 +197,7 @@ public class OntologyHelper {
     }
 
     public void saveOntology(OWLOntology owlOntology, OWLClass owlClass) throws OWLOntologyStorageException {
-        File file = new File("./src/main/resources/bookbest.owl");
+        File file = new File(this.ontFile);
 
         OWLAxiom owlAxiom = this.owlDataFactory.getOWLDeclarationAxiom(owlClass);
         AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
@@ -203,7 +207,7 @@ public class OntologyHelper {
     }
 
     public void saveOntology(OWLOntology owlOntology, OWLDataProperty owlDataProperty) throws OWLOntologyStorageException {
-        File file = new File("./src/main/resources/bookbest.owl");
+        File file = new File(this.ontFile);
 
         OWLAxiom owlAxiom = this.owlDataFactory.getOWLDeclarationAxiom(owlDataProperty);
         AddAxiom addAxiom = new AddAxiom(owlOntology, owlAxiom);
@@ -213,7 +217,7 @@ public class OntologyHelper {
     }
 
     public void saveOntology(OWLOntology owlOntology, SWRLRule rule) throws OWLOntologyStorageException {
-        File file = new File("./src/main/resources/bookbest.owl");
+        File file = new File(this.ontFile);
 
         AddAxiom addAxiom = new AddAxiom(owlOntology, rule);
 
@@ -222,7 +226,7 @@ public class OntologyHelper {
     }
 
     public void saveOntology(OWLOntology owlOntology) throws OWLOntologyStorageException {
-        File file = new File("./src/main/resources/bookbest.owl");
+        File file = new File(this.ontFile);
 
         owlOntologyManager.saveOntology(owlOntology, IRI.create(file.toURI()));
     }
