@@ -54,7 +54,7 @@ public class OntologyGenerator {
     // Create OWL Class
     private void generateClasses() throws OWLOntologyStorageException {
         OWLClass owlClass = ontologyHelper.createClass("Hotel");
-        ontologyHelper.saveOntology(owlOntology, owlClass);
+        ontologyHelper.saveOntology(owlClass);
     }
 
     // Create OWL Data Properties
@@ -69,7 +69,7 @@ public class OntologyGenerator {
             while((line = bufferedReader.readLine()) != null) {
                 value = line.substring(0, line.indexOf(":"));
                 owlDataProperty = ontologyHelper.createDataProperty(value);
-                ontologyHelper.saveOntology(owlOntology, owlDataProperty);
+                ontologyHelper.saveOntology(owlDataProperty);
             }
         }
         catch (FileNotFoundException fnfe) {
@@ -110,14 +110,14 @@ public class OntologyGenerator {
             body.add(k);
             d = ontologyHelper.createMathAtom2("1", "-", "k", "d");
             body.add(d);
-            body = ontologyHelper.createRuleBody(owlOntology, "hasPricePerNight", "price", body);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
             // Create head of "isVeryCheap" rule
             head.clear();
-            ontologyHelper.createRuleHead(owlOntology, "isVeryCheap", "d", head);
+            ontologyHelper.createRuleHead("isVeryCheap", "d", head);
 
             // Create "isVeryCheap" rule
-            ontologyHelper.createRule(owlOntology, body, head);
+            ontologyHelper.createRule(body, head);
 
             /*///////////////////////////////////////////////////////////////////////
             //          Rule for Cheap hotels                                      //
@@ -135,14 +135,14 @@ public class OntologyGenerator {
             body.add(l);
             d = ontologyHelper.createMathAtom2("1", "-", "k", "d");
             body.add(d);
-            body = ontologyHelper.createRuleBody(owlOntology, "hasPricePerNight", "price", body);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
             // Create head of "isVeryCheap" rule
             head.clear();
-            ontologyHelper.createRuleHead(owlOntology, "isVeryCheap", "d", head);
+            ontologyHelper.createRuleHead("isVeryCheap", "d", head);
 
             // Create "isVeryCheap" rule
-            ontologyHelper.createRule(owlOntology, body, head);
+            ontologyHelper.createRule(body, head);
 
             /*///////////////////////////////////////////////////////////////////////
             //          Rule for Average hotels                                    //
@@ -158,14 +158,14 @@ public class OntologyGenerator {
             body.add(k);
             d = ontologyHelper.createMathAtom("k", "/", "50", "d");
             body.add(d);
-            body = ontologyHelper.createRuleBody(owlOntology, "hasPricePerNight", "price", body);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
             // Create head of "isAverage" rule
             head.clear();
-            ontologyHelper.createRuleHead(owlOntology, "isAverage", "d", head);
+            ontologyHelper.createRuleHead("isAverage", "d", head);
 
             // Create "isAverage" rule
-            ontologyHelper.createRule(owlOntology, body, head);
+            ontologyHelper.createRule(body, head);
 
             /*///////////////////////////////////////////////////////////////////////
             //          Rule for Expensive hotels                                  //
@@ -181,14 +181,14 @@ public class OntologyGenerator {
             body.add(k);
             d = ontologyHelper.createMathAtom("k", "/", "50", "d");
             body.add(d);
-            body = ontologyHelper.createRuleBody(owlOntology, "hasPricePerNight", "price", body);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
             // Create head of "isExpensive" rule
             head.clear();
-            ontologyHelper.createRuleHead(owlOntology, "isExpensive", "d", head);
+            ontologyHelper.createRuleHead("isExpensive", "d", head);
 
             // Create "isExpensive" rule
-            ontologyHelper.createRule(owlOntology, body, head);
+            ontologyHelper.createRule(body, head);
 
             /*///////////////////////////////////////////////////////////////////////
             //          Rule for Very Expensive hotels                             //
@@ -202,14 +202,14 @@ public class OntologyGenerator {
             body.add(k);
             d = ontologyHelper.createMathAtom("k", "/", "50", "d");
             body.add(d);
-            body = ontologyHelper.createRuleBody(owlOntology, "hasPricePerNight", "price", body);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
             // Create head of "isVeryExpensive" rule
             head.clear();
-            ontologyHelper.createRuleHead(owlOntology, "isVeryExpensive", "d", head);
+            ontologyHelper.createRuleHead("isVeryExpensive", "d", head);
 
             // Create "isVeryExpensive" rule
-            ontologyHelper.createRule(owlOntology, body, head);
+            ontologyHelper.createRule(body, head);
         }
         catch (OWLOntologyStorageException se) {
             se.printStackTrace();
@@ -223,65 +223,61 @@ public class OntologyGenerator {
 
     public void mapInstances() {
         Set<String> keys = mappings.getCharacteristics().keySet();
-        int i, j, counter=1, k;
-        String dp;
+        OWLClass owlClass = ontologyHelper.getFirstClass();
+        OWLIndividual owlIndividual;
+        int i, j, counter=1;
+        String dp, facility, rate, distance;
         for(String database: keys) {
+            System.out.println("Database: "+database);
             dbConnection.connect(database);
             Connection connection = dbConnection.getConnection();
+
             ArrayList<String> characteristics = this.mappings.findCharacteristic(database);
+            rate = characteristics.get(0);
+            distance = characteristics.get(1);
+
             ResultSet hotels = dbConnection.getAll("Hotel");
             ResultSet facilities = dbConnection.getAll("Facilities");
-
 
             ArrayList<String> hotelCols = dbConnection.getColumns(connection, database, "Hotel");
             ArrayList<String> hotelDataProps = mappings.getDataPropCols(hotelCols);
 
             ArrayList<String> facilitiesCols = dbConnection.getColumns(connection, database, "Facilities");
             ArrayList<String> facilitiesDataProps = mappings.getDataPropCols(facilitiesCols);
+
             try {
                 while (hotels.next() && facilities.next()) {
                     // Create the individual
-                    OWLIndividual owlIndividual = ontologyHelper.createIndividual("Hotel_"+counter);
-                    System.out.println("Hotel_"+counter++);
-                    OWLClass owlClass = ontologyHelper.getFirstClass(owlOntology);
-                    this.ontologyHelper.associateIndividualWithClass(owlOntology, owlClass, owlIndividual);
+                    owlIndividual = this.ontologyHelper.createIndividual("Hotel_"+counter++);
+                    System.out.println("Hotel_"+(counter-1));
+                    this.ontologyHelper.associateIndividualWithClass(owlClass, owlIndividual);
                     i=0;
                     j=0;
                     for (String c : hotelCols) {
                         dp = hotelDataProps.get(i++);
                         if(dp.equals("hasName") || dp.equals("isInCountry") || dp.equals("isInCity"))
                             this.ontologyHelper.addStringDataToIndividual(owlIndividual, dp, hotels.getString(c));
-                            //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getString(c));
                         else if(dp.equals("hasRating") || dp.equals("hasLocationRating")) {
-                            if((k=Integer.parseInt(characteristics.get(0)))!=10) {
-                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, this.mappings.convertRate(k,hotels.getDouble(c)));
-                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, this.mappings.convertRate(k,hotels.getDouble(c)));
-                            }
+                            if(!rate.equals("10"))
+                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, this.mappings.convertRate(Integer.parseInt(rate), hotels.getDouble(c)));
                             else this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
-                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getDouble(c));
                         }
                         else if(dp.equals("hasCityCenterDistance")) {
-                            if(characteristics.get(1).equals("mi"))
+                            if(distance.equals("mi"))
                                 this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, this.mappings.convertMiToKm(hotels.getDouble(c)));
-                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, mappings.convertMiToKm(hotels.getDouble(c)));
                             else this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
-                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getDouble(c));
                         }
-                        else {
+                        else
                             this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
-                            //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, hotels.getInt(c));
-                        }
                     }
-                    for (String c : facilitiesCols) {
-                        dp = facilitiesDataProps.get(j++);
-                        if(dp.equals("hasId"))
-                            this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facilities.getString(c));
-                            //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, facilities.getInt(c));
-                        else {
-                            if(facilities.getString(c) != null)
-                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facilities.getString(c));
-                                //dataToOntology.importData(this.ontologyHelper, this.owlOntology, owlIndividual, dp, facilities.getByte(c));
+                    for (String c: facilitiesCols) {
+                        if((facility=facilities.getString(c)) != null) {
+                            dp = facilitiesDataProps.get(j);
+                            if (dp.equals("hasId"))
+                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facility);
+                            else  this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facility);
                         }
+                        j++;
                     }
                 }
             }
@@ -291,7 +287,6 @@ public class OntologyGenerator {
             catch (OWLOntologyStorageException se) {
                 se.printStackTrace();
             }
-
             dbConnection.disconnect();
         }
     }

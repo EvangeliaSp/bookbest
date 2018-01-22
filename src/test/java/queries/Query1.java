@@ -22,7 +22,7 @@ public class Query1 {
     public void init() throws OWLOntologyCreationException {
         this.ontologyHelper = new OntologyHelper();
         this.owlOntology = ontologyHelper.readOntology();
-        this.reasoner = new Reasoner(owlOntology, ontologyHelper);
+        this.reasoner = new Reasoner(owlOntology);
         this.sparql = new SPARQL();
     }
 

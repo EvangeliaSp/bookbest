@@ -16,15 +16,13 @@ import java.util.Set;
 public class Reasoner {
 
     OWLOntology owlOntology;
-    OntologyHelper ontologyHelper;
     com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory reasonerFactory;
     PelletReasoner owlReasoner;
 
 
 
-    public Reasoner(OWLOntology owlOntology, OntologyHelper ontologyHelper) {
+    public Reasoner(OWLOntology owlOntology) {
         this.owlOntology = owlOntology;
-        this.ontologyHelper = ontologyHelper;
         this.reasonerFactory = com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory.getInstance();
         this.owlReasoner = reasonerFactory.createReasoner(owlOntology);
     }

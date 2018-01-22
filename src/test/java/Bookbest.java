@@ -6,7 +6,6 @@ import dataMapping.Mappings;
 import database.DBConnection;
 import database.DataGenerator;
 import ontologyHelper.OntologyGenerator;
-import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -14,9 +13,6 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.sql.Connection;
-import java.util.ArrayList;
 
 public class Bookbest {
 
@@ -29,7 +25,7 @@ public class Bookbest {
         String filenameDBs = "./src/main/resources/databases";
         String filenameMaps = "./src/main/resources/mappings";
         String filenameCharacteristics = "./src/main/resources/specificCharacteristics";
-        BufferedReader bufferedReader = null;
+        BufferedReader bufferedReader;
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int answer;
 
@@ -55,8 +51,7 @@ public class Bookbest {
 
         DBConnection dbConnection = new DBConnection(filenameDBs);
         //dbConnection.createDatabases();
-
-        //System.out.println("Database(s) created successfully.");
+        System.out.println("Database(s) created successfully.");
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -65,13 +60,11 @@ public class Bookbest {
 
         DataGenerator dataGenerator = new DataGenerator(filenameDBs, mappings, dbConnection);
         //dataGenerator.generateData();
-
+        System.out.println("Database(s) filled successfully.");
 
         /*///////////////////////////////////////////////////////////////////////
-        //          Create the Ontology                                        //
+        //          Create the Ontology and map the data from DBs              //
         ///////////////////////////////////////////////////////////////////////*/
-        OntologyHelper ontologyHelper = new OntologyHelper();
-
 
         OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
         ontologyGenerator.generateOntology();
@@ -79,16 +72,11 @@ public class Bookbest {
 
 
         /*///////////////////////////////////////////////////////////////////////
-        //          Map data from DBs to Ontology                              //
-        ///////////////////////////////////////////////////////////////////////*/
-
-
-        /*///////////////////////////////////////////////////////////////////////
         //          Create and Use the Reasoner                                //
         ///////////////////////////////////////////////////////////////////////*/
 
         // Create reasoner
-        Reasoner reasoner = new Reasoner(owlOntology, ontologyHelper);
+        Reasoner reasoner = new Reasoner(owlOntology);
 
         // Classify ontology
         reasoner.classifyOntology();
@@ -138,7 +126,7 @@ public class Bookbest {
         //          Answer Queries                                             //
         ///////////////////////////////////////////////////////////////////////*/
 
-           /* SPARQL sparql = new SPARQL();
+            SPARQL sparql = new SPARQL();
             //BufferedReader br = null;
             //br = new BufferedReader(new InputStreamReader(System.in));
             int rating, price, ff;
@@ -146,30 +134,30 @@ public class Bookbest {
             try {
                 // Country
                 System.out.println("Country: ");
-                String country = br.readLine();
+                String country = bufferedReader.readLine();
                 query = sparql.hotelsByCountry(country);
                 // City
                 System.out.println("City: ");
-                String city = br.readLine();
+                String city = bufferedReader.readLine();
                 query = query+sparql.hotelsByCity(city);
                 // Price
                 System.out.println("Price: (0-Any, 1-Very Cheap, 2-Cheap, 3-Average, 4-Expensive, 5-Very Expensive)");
                 do {
-                    price = Integer.parseInt(br.readLine());
+                    price = Integer.parseInt(bufferedReader.readLine());
                 } while(price<0 || price>5);
                 if (price != 0)
                     ;
                 // Rating
                 System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
                 do {
-                    rating = Integer.parseInt(br.readLine());
+                    rating = Integer.parseInt(bufferedReader.readLine());
                 } while(rating<0 || rating>3);
                 if (rating != 0)
                     ;
                 // Family Friendly
                 System.out.println("Family Friendly: (0-Any, 1-Yes, 2-No)");
                 do {
-                    ff = Integer.parseInt(br.readLine());
+                    ff = Integer.parseInt(bufferedReader.readLine());
                 } while (ff<0 || ff>2);
                 if (ff != 0)
                     ;
@@ -179,14 +167,14 @@ public class Bookbest {
                 exception.printStackTrace();
             }
             finally {
-                if (br != null) {
+                if (bufferedReader != null) {
                     try {
-                        br.close();
+                        bufferedReader.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-            }*/
+            }
 
     }
 }
