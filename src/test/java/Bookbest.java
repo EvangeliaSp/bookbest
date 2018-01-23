@@ -6,6 +6,7 @@ import dataMapping.Mappings;
 import database.DBConnection;
 import database.DataGenerator;
 import ontologyHelper.OntologyGenerator;
+import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -66,10 +67,11 @@ public class Bookbest {
         //          Create the Ontology and map the data from DBs              //
         ///////////////////////////////////////////////////////////////////////*/
 
-        OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
-        ontologyGenerator.generateOntology();
-        OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
-
+        //OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
+        //ontologyGenerator.generateOntology();
+        //OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
+        OntologyHelper ontologyHelper = new OntologyHelper();
+        OWLOntology owlOntology = ontologyHelper.readOntology();
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create and Use the Reasoner                                //
@@ -81,7 +83,7 @@ public class Bookbest {
         // Classify ontology
         reasoner.classifyOntology();
 
-        try {
+        /*try {
             // Print datatype properties
             System.out.println("\nWould you like to see the Datatype Properties?\n(1-Yes, 0-No)");
             do {
@@ -105,7 +107,7 @@ public class Bookbest {
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -126,55 +128,55 @@ public class Bookbest {
         //          Answer Queries                                             //
         ///////////////////////////////////////////////////////////////////////*/
 
-            SPARQL sparql = new SPARQL();
-            //BufferedReader br = null;
-            //br = new BufferedReader(new InputStreamReader(System.in));
-            int rating, price, ff;
-            String query = null;
-            try {
-                // Country
-                System.out.println("Country: ");
-                String country = bufferedReader.readLine();
-                query = sparql.hotelsByCountry(country);
-                // City
-                System.out.println("City: ");
-                String city = bufferedReader.readLine();
-                query = query+sparql.hotelsByCity(city);
-                // Price
-                System.out.println("Price: (0-Any, 1-Very Cheap, 2-Cheap, 3-Average, 4-Expensive, 5-Very Expensive)");
-                do {
-                    price = Integer.parseInt(bufferedReader.readLine());
-                } while(price<0 || price>5);
-                if (price != 0)
-                    ;
-                // Rating
-                System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
-                do {
-                    rating = Integer.parseInt(bufferedReader.readLine());
-                } while(rating<0 || rating>3);
-                if (rating != 0)
-                    ;
-                // Family Friendly
-                System.out.println("Family Friendly: (0-Any, 1-Yes, 2-No)");
-                do {
-                    ff = Integer.parseInt(bufferedReader.readLine());
-                } while (ff<0 || ff>2);
-                if (ff != 0)
-                    ;
-                sparql.findResults(model, query);
-            }
-            catch (IOException exception) {
-                exception.printStackTrace();
-            }
-            finally {
-                if (bufferedReader != null) {
-                    try {
-                        bufferedReader.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        SPARQL sparql = new SPARQL();
+        ///sparql.findResults(model,"");
+        //BufferedReader br = null;
+        //br = new BufferedReader(new InputStreamReader(System.in));
+        int rating, price, ff;
+        String query = null;
+        try {
+            // Country
+            System.out.println("Country: ");
+            String country = bufferedReader.readLine();
+            query = sparql.hotelsByCountry(country);
+            // City
+            System.out.println("City: ");
+            String city = bufferedReader.readLine();
+            query = query+sparql.hotelsByCity(city);
+            // Price
+            System.out.println("Price: (0-Any, 1-Very Cheap, 2-Cheap, 3-Average, 4-Expensive, 5-Very Expensive)");
+            do {
+                price = Integer.parseInt(bufferedReader.readLine());
+            } while(price<0 || price>5);
+            if (price != 0)
+                query = query+sparql.hotelsByPrice(price);
+            // Rating
+            System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
+            do {
+                rating = Integer.parseInt(bufferedReader.readLine());
+            } while(rating<0 || rating>3);
+            if (rating != 0)
+                ;
+            // Family Friendly
+            System.out.println("Family Friendly: (0-Any, 1-Yes, 2-No)");
+            do {
+                ff = Integer.parseInt(bufferedReader.readLine());
+            } while (ff<0 || ff>2);
+            if (ff != 0)
+                ;
+            sparql.findResults(model, query);
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
-
+        }
     }
 }

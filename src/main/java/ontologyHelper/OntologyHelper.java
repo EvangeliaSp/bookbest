@@ -40,8 +40,14 @@ public class OntologyHelper {
         return this.owlOntology;
     }
 
-    public OWLOntology readOntology() throws OWLOntologyCreationException {
-        this.owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(IRI.create(this.basePhysicalURI));
+    public OWLOntology readOntology() {
+        try {
+            this.owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(IRI.create(this.basePhysicalURI));
+
+        }
+        catch (OWLOntologyCreationException e) {
+            e.printStackTrace();
+        }
         return this.owlOntology;
     }
 

@@ -20,20 +20,15 @@ public class SPARQL {
     public String hotelsByPrice(int k) {
         switch (k) {
             case 1:
-                return "   ?Hotels hotel:isVeryCheap ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isVeryCheap ?Degree.\n";
             case 2:
-                return "   ?Hotels hotel:isCheap ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isCheap ?Degree.\n";
             case 3:
-                return "   ?Hotels hotel:isAverage ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isAverage ?Degree.\n";
             case 4:
-                return "   ?Hotels hotel:isExpensive ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isExpensive ?Degree.\n";
             default:
-                return "   ?Hotels hotel:isVeryExpensive ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isVeryExpensive ?Degree.\n";
         }
     }
 
@@ -86,7 +81,7 @@ public class SPARQL {
         String s =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-            "PREFIX hotel: <urn:absolute:bookbest#>" +
+            "PREFIX hotel: <http://example.com/bookbest#>" +
             "SELECT ?Hotels ?Degree \n" +
             "WHERE { \n" +
             "   ?Hotels hotel:isVeryCheap ?Degree.\n"+
@@ -110,17 +105,18 @@ public class SPARQL {
         queryExecution.close();
     }
 
-    public void getAccommodations(InfModel model) {
 
+    public void findResults(InfModel model, String q) {
         String s =
-                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-                "PREFIX hotel: <urn:absolute:bookbest#>" +
-                "SELECT ?Hotels \n" +
-                "WHERE { \n" +
-                "  ?Hotels rdf:type hotel:Hotel" +
-                "} \n" +
-                "ORDER BY ?Hotels";
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
+            "PREFIX hotel: <http://example.com/bookbest#>" +
+            "SELECT ?name ?Degree\n" +
+            "WHERE { \n" +
+            "  ?Hotels rdf:type hotel:Hotel. " +
+            "  ?Hotels hotel:hasName ?name. "+ q +
+            "}\n" +
+            "ORDER BY ?Degree";
 
         Query query = QueryFactory.create(s);
 
@@ -135,15 +131,15 @@ public class SPARQL {
         queryExecution.close();
     }
 
-    public void findResults(InfModel model, String q) {
+    public void getAccommodations(InfModel model) {
         String s =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-            "PREFIX hotel: <urn:absolute:bookbest#>" +
+            "PREFIX hotel: <http://example.com/bookbest#>" +
             "SELECT ?Hotels \n" +
             "WHERE { \n" +
-            "  ?Hotels rdf:type hotel:Hotel" + q +
-            "}\n" +
+            "  ?Hotels rdf:type hotel:Hotel" +
+            "} \n" +
             "ORDER BY ?Hotels";
 
         Query query = QueryFactory.create(s);
@@ -157,6 +153,5 @@ public class SPARQL {
 
         // Free up resources used running the query
         queryExecution.close();
-
     }
 }
