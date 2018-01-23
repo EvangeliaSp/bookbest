@@ -109,11 +109,6 @@ public class OntologyHelper {
         return owlOntology.getDataPropertiesInSignature();
     }
 
-/*    public void printDataProperties(Set<OWLDataPropertyDomainAxiom> owlDataProperties) {
-        for(OWLDataPropertyDomainAxiom p: owlDataProperties)
-            System.out.println("Data Property: "+p.getProperty().asOWLDataProperty().getIRI().getFragment());
-    }*/
-
     public void printDataProperties(OWLOntology owlOntology) {
         Set<OWLDataProperty> owlDataProperties = owlOntology.getDataPropertiesInSignature();
         for(OWLDataProperty owlDataProperty: owlDataProperties)
@@ -132,11 +127,6 @@ public class OntologyHelper {
     public OWLAxiom createAxiom(OWLIndividual owlIndividual, OWLClass owlClass) {
         return owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
     }
-
-    public OWLDataPropertyAssertionAxiom createDataPropertyAssertionAxiom(OWLDataProperty owlDataProperty, OWLIndividual owlIndividual, String value) {
-        return owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, value);
-    }
-
 
     public void associateIndividualWithClass(OWLClass owlClass, OWLIndividual owlIndividual) throws OWLOntologyStorageException {
         OWLClassAssertionAxiom owlClassAssertionAxiom = this.owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlIndividual);
@@ -163,6 +153,7 @@ public class OntologyHelper {
     }
 
     public void addDoubleDataToIndividual(OWLIndividual owlIndividual, String property, String  value) throws OWLOntologyStorageException {
+        //OWLDataProperty owlDataProperty = getDataProperty(property);
         OWLDataProperty owlDataProperty = createDataProperty(property);
         OWLLiteral literal = owlDataFactory.getOWLLiteral(value, OWL2Datatype.XSD_DOUBLE);
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);

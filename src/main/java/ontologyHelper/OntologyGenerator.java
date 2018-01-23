@@ -268,14 +268,14 @@ public class OntologyGenerator {
                             else this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
                         }
                         else
-                            this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, hotels.getString(c));
+                            this.ontologyHelper.addIntegerDataToIndividual(owlIndividual, dp, hotels.getString(c));
                     }
                     for (String c: facilitiesCols) {
                         if((facility=facilities.getString(c)) != null) {
                             dp = facilitiesDataProps.get(j);
                             if (dp.equals("hasId"))
-                                this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facility);
-                            else  this.ontologyHelper.addDoubleDataToIndividual(owlIndividual, dp, facility);
+                                this.ontologyHelper.addIntegerDataToIndividual(owlIndividual, dp, facility);
+                            else  this.ontologyHelper.addByteDataToIndividual(owlIndividual, dp, facility);
                         }
                         j++;
                     }
