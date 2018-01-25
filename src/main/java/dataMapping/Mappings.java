@@ -22,14 +22,6 @@ public class Mappings {
 
     public HashMap<String, ArrayList<String>> characteristics;
 
-    public HashMap<String, ArrayList<String>> getMappings() {
-        return mappings;
-    }
-
-    public HashMap<String, ArrayList<String>> getCharacteristics() {
-        return characteristics;
-    }
-
     public Mappings(String filename, String flCharacteristics) {
         this.filename = filename;
         this.flCharacteristics = flCharacteristics;

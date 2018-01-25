@@ -20,30 +20,32 @@ public class SPARQL {
     public String hotelsByPrice(int k) {
         switch (k) {
             case 1:
-                return "   ?Hotels hotel:isVeryCheap ?Degree.\n";
+                return "   ?Hotels hotel:isVeryCheap ?dPrice.\n";
             case 2:
-                return "   ?Hotels hotel:isCheap ?Degree.\n";
+                return "   ?Hotels hotel:isCheap ?dPrice.\n";
             case 3:
-                return "   ?Hotels hotel:isAverage ?Degree.\n";
+                return "   ?Hotels hotel:isAverage ?dPrice.\n";
             case 4:
-                return "   ?Hotels hotel:isExpensive ?Degree.\n";
+                return "   ?Hotels hotel:isExpensive ?dPrice.\n";
             default:
-                return "   ?Hotels hotel:isVeryExpensive ?Degree.\n";
+                return "   ?Hotels hotel:isVeryExpensive ?dPrice.\n";
         }
     }
 
     public String hotelsByRating(int k) {
         switch (k) {
             case 1:
-                return "   ?Hotels hotel:isPleasant ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isPleasant ?dRating .";
             case 2:
-                return "   ?Hotels hotel:isGood ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isGood ?dRating .";
             default:
-                return "   ?Hotels hotel:isVeryGood ?value ." +
-                        "FILTER (?value = 100) ";
+                return "   ?Hotels hotel:isVeryGood ?dRating .";
         }
+    }
+
+    public String hotelsForDisabled(int k) {
+
+        return "   ?Hotels hotel:isPleasant ?dRating .";
     }
 
     public void familyFriendlyHotels(InfModel model) {
@@ -86,7 +88,7 @@ public class SPARQL {
             "WHERE { \n" +
             "   ?Hotels hotel:isVeryCheap ?Degree.\n"+
             "}\n" +
-            "ORDER BY DESC(?Degree)";
+            "ORDER BY DESC(?dPrice+dRating)";
 
            // "  ?Hotels hotel:isVeryCheap ?degree." +
            //         "FILTER (?degree = 100) " +

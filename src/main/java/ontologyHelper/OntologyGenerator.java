@@ -37,6 +37,7 @@ public class OntologyGenerator {
     // Create OWL Ontology
     public void generateOntology() {
         try {
+            //this.owlOntology = this.ontologyHelper.readOntology();
             this.owlOntology = this.ontologyHelper.createOntology();
             this.generateClasses();
             this.generateDataProperties();
@@ -86,7 +87,10 @@ public class OntologyGenerator {
         generatePriceRules();
 
         // Create rules for Rating
-        //generateRatingRules();
+        generateRatingRules();
+
+        // Create rules for Disable people availability
+        generateFamilyRules();
 
     }
 
@@ -218,11 +222,141 @@ public class OntologyGenerator {
 
     private void generateRatingRules() {
 
+        Set<SWRLAtom> body = new HashSet<>();
+        Set<SWRLAtom> head = new HashSet<>();
 
+        SWRLBuiltInAtom atom, atom1, atom2, k, l, d;
+
+        try {
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for No Rate hotels                                 //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "hasNoRate" rule
+            body.clear();
+            atom = ontologyHelper.createComparisonAtom("rating", "<", "5");
+            body.add(atom);
+            k = ontologyHelper.createMathAtom("rating", "/", "5", "k");
+            body.add(k);
+            d = ontologyHelper.createMathAtom("k", "*", "100", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasRating", "rating", body);
+
+            // Create head of "hasNoRate" rule
+            head.clear();
+            ontologyHelper.createRuleHead("hasNoRate", "d", head);
+
+            // Create "hasNoRate" rule
+            ontologyHelper.createRule(body, head);
+
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for Pleasant hotels                                      //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isPleasant" rule
+            body.clear();
+            atom1 = ontologyHelper.createComparisonAtom("rating", ">=", "5");
+            body.add(atom1);
+            atom2 = ontologyHelper.createComparisonAtom("rating", "<", "7");
+            body.add(atom2);
+            k = ontologyHelper.createMathAtom("rating", "-", "5", "k");
+            body.add(k);
+            l = ontologyHelper.createMathAtom("k", "/", "2", "l");
+            body.add(l);
+            d = ontologyHelper.createMathAtom("l", "*", "100", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasRating", "rating", body);
+
+            // Create head of "isPleasant" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isPleasant", "d", head);
+
+            // Create "isPleasant" rule
+            ontologyHelper.createRule(body, head);
+
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for Good hotels                                    //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isGood" rule
+            body.clear();
+            atom1 = ontologyHelper.createComparisonAtom("rating", ">=", "7");
+            body.add(atom1);
+            atom2 = ontologyHelper.createComparisonAtom("rating", "<", "9");
+            body.add(atom2);
+            k = ontologyHelper.createMathAtom("rating", "-", "7", "k");
+            body.add(k);
+            l = ontologyHelper.createMathAtom("k", "/", "2", "l");
+            body.add(l);
+            d = ontologyHelper.createMathAtom("l", "*", "100", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasRating", "rating", body);
+
+            // Create head of "isGood" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isGood", "d", head);
+
+            // Create "isGood" rule
+            ontologyHelper.createRule(body, head);
+
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for Superb hotels                                  //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isSuperb" rule
+            body.clear();
+            atom1 = ontologyHelper.createComparisonAtom("rating", ">=", "9");
+            body.add(atom1);
+            k = ontologyHelper.createMathAtom("rating", "-", "9", "k");
+            body.add(k);
+            d = ontologyHelper.createMathAtom("k", "*", "100", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasRating", "rating", body);
+
+            // Create head of "isSuperb" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isSuperb", "d", head);
+
+            // Create "isSuperb" rule
+            ontologyHelper.createRule(body, head);
+
+        }
+        catch (OWLOntologyStorageException se) {
+            se.printStackTrace();
+        }
+    }
+
+    public void generateFamilyRules() {
+        Set<SWRLAtom> body = new HashSet<>();
+        Set<SWRLAtom> head = new HashSet<>();
+
+        try {
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for hotels that accept Disabled people                //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isAvailableForDisabled" rule
+            body.clear();
+            body = ontologyHelper.createRuleBody("isForDisabled", "1", body);
+
+            // Create head of "hasNoRate" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isAvailableForDisabled", "1", head);
+
+            // Create "isAvailableForDisabled" rule
+            ontologyHelper.createRule(body, head);
+
+        }
+        catch (OWLOntologyStorageException se) {
+            se.printStackTrace();
+        }
     }
 
     public void mapInstances() {
-        Set<String> keys = mappings.getCharacteristics().keySet();
+        Set<String> keys = mappings.characteristics.keySet();
         OWLClass owlClass = ontologyHelper.getFirstClass();
         OWLIndividual owlIndividual;
         int i, j, counter=1;
