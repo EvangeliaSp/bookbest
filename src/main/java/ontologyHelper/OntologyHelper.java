@@ -240,18 +240,55 @@ public class OntologyHelper {
         return head;
     }
 
+    public Set<SWRLAtom> createRuleHead(String dataProperty, int d, Set<SWRLAtom> head) throws OWLOntologyStorageException {
+        //OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+
+        OWLDataProperty owlDataProperty = createDataProperty(dataProperty);
+
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(String.valueOf(d), OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrldArgument));
+        return head;
+    }
+
+    @Deprecated
     public Set<SWRLAtom> createRuleBody(String dataProperty, String variable, Set<SWRLAtom> body) throws OWLOntologyStorageException {
         OWLClass owlClass = getClass("Hotel"); // hotel
         SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
-        SWRLVariable price = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+variable));
+        SWRLVariable swrlVariable = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#"+variable));
 
-        OWLDataProperty owlDataProperty = createDataProperty(dataProperty);
+        OWLDataProperty owlDataProperty = getDataProperty(dataProperty);
 
         // 1st Atom
         SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
 
         // 2nd Atom
-        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, price);
+        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrlVariable);
+
+        body.add(atom1);
+        body.add(atom2);
+
+        return body;
+    }
+
+    @Deprecated
+    public Set<SWRLAtom> createRuleBody(String dataProperty, int value, Set<SWRLAtom> body) throws OWLOntologyStorageException {
+        OWLClass owlClass = getClass("Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(String.valueOf(value), OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+
+        OWLDataProperty owlDataProperty = getDataProperty(dataProperty);
+
+        // 1st Atom
+        SWRLClassAtom atom1 = this.owlDataFactory.getSWRLClassAtom(owlClass, x);
+
+        // 2nd Atom
+        SWRLDataPropertyAtom atom2 = this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrldArgument);
 
         body.add(atom1);
         body.add(atom2);

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Bookbest {
-
+    @Deprecated
     public static void main(String[] args) {
 
         /*///////////////////////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ public class Bookbest {
         // Classify ontology
         reasoner.classifyOntology();
 
-        /*try {
+        try {
             // Print datatype properties
             System.out.println("\nWould you like to see the Datatype Properties?\n(1-Yes, 0-No)");
             do {
@@ -107,7 +107,7 @@ public class Bookbest {
         }
         catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
 
         /*///////////////////////////////////////////////////////////////////////

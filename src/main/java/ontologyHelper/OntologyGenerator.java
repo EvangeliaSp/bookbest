@@ -35,21 +35,22 @@ public class OntologyGenerator {
     }
 
     // Create OWL Ontology
+    @Deprecated
     public void generateOntology() {
-        try {
-            //this.owlOntology = this.ontologyHelper.readOntology();
-            this.owlOntology = this.ontologyHelper.createOntology();
-            this.generateClasses();
-            this.generateDataProperties();
+        //try {
+            this.owlOntology = this.ontologyHelper.readOntology();
+            //this.owlOntology = this.ontologyHelper.createOntology();
+            //this.generateClasses();
+            //this.generateDataProperties();
             this.generateRules();
-            this.mapInstances();
-        }
+            //this.mapInstances();
+        /*}
         catch (OWLOntologyCreationException ce) {
             ce.printStackTrace();
         }
         catch (OWLOntologyStorageException se) {
             se.printStackTrace();
-        }
+        }*/
     }
 
     // Create OWL Class
@@ -82,6 +83,7 @@ public class OntologyGenerator {
     }
 
     // Create OWL Rules
+    @Deprecated
     private void generateRules() {
         // Create rules for Price
         generatePriceRules();
@@ -94,6 +96,7 @@ public class OntologyGenerator {
 
     }
 
+    @Deprecated
     private void generatePriceRules() {
 
         Set<SWRLAtom> body = new HashSet<>();
@@ -127,7 +130,7 @@ public class OntologyGenerator {
             //          Rule for Cheap hotels                                      //
             ///////////////////////////////////////////////////////////////////////*/
 
-            // Create body of "isAverage" rule
+            // Create body of "isCheap" rule
             body.clear();
             atom1 = ontologyHelper.createComparisonAtom("price", ">=", "50");
             body.add(atom1);
@@ -137,13 +140,13 @@ public class OntologyGenerator {
             body.add(k);
             l = ontologyHelper.createMathAtom("k", "/", "50", "l");
             body.add(l);
-            d = ontologyHelper.createMathAtom2("1", "-", "k", "d");
+            d = ontologyHelper.createMathAtom2("1", "-", "l", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
             // Create head of "isVeryCheap" rule
             head.clear();
-            ontologyHelper.createRuleHead("isVeryCheap", "d", head);
+            ontologyHelper.createRuleHead("isCheap", "d", head);
 
             // Create "isVeryCheap" rule
             ontologyHelper.createRule(body, head);
@@ -156,11 +159,36 @@ public class OntologyGenerator {
             body.clear();
             atom1 = ontologyHelper.createComparisonAtom("price", ">=", "100");
             body.add(atom1);
-            atom2 = ontologyHelper.createComparisonAtom("price", "<", "150");
+            atom2 = ontologyHelper.createComparisonAtom("price", "<", "125");
             body.add(atom2);
             k = ontologyHelper.createMathAtom("price", "-", "100", "k");
             body.add(k);
-            d = ontologyHelper.createMathAtom("k", "/", "50", "d");
+            d = ontologyHelper.createMathAtom("k", "/", "25", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
+
+            // Create head of "isAverage" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isAverage", "d", head);
+
+            // Create "isAverage" rule
+            ontologyHelper.createRule(body, head);
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for Average hotels                                    //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isAverage" rule
+            body.clear();
+            atom1 = ontologyHelper.createComparisonAtom("price", ">=", "125");
+            body.add(atom1);
+            atom2 = ontologyHelper.createComparisonAtom("price", "<", "150");
+            body.add(atom2);
+            k = ontologyHelper.createMathAtom("price", "-", "125", "k");
+            body.add(k);
+            l = ontologyHelper.createMathAtom("k", "/", "25", "l");
+            body.add(l);
+            d = ontologyHelper.createMathAtom2("1", "-", "l", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
 
@@ -214,12 +242,30 @@ public class OntologyGenerator {
 
             // Create "isVeryExpensive" rule
             ontologyHelper.createRule(body, head);
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for Very Expensive hotels                             //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isVeryExpensive" rule
+            body.clear();
+            atom = ontologyHelper.createComparisonAtom("price", ">", "250");
+            body.add(atom);
+            body = ontologyHelper.createRuleBody("hasPricePerNight", "price", body);
+
+            // Create head of "isVeryExpensive" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isVeryExpensive", 1, head);
+
+            // Create "isVeryExpensive" rule
+            ontologyHelper.createRule(body, head);
         }
         catch (OWLOntologyStorageException se) {
             se.printStackTrace();
         }
     }
 
+    @Deprecated
     private void generateRatingRules() {
 
         Set<SWRLAtom> body = new HashSet<>();
@@ -329,6 +375,7 @@ public class OntologyGenerator {
         }
     }
 
+    @Deprecated
     public void generateFamilyRules() {
         Set<SWRLAtom> body = new HashSet<>();
         Set<SWRLAtom> head = new HashSet<>();
@@ -355,6 +402,7 @@ public class OntologyGenerator {
         }
     }
 
+    @Deprecated
     public void mapInstances() {
         Set<String> keys = mappings.characteristics.keySet();
         OWLClass owlClass = ontologyHelper.getFirstClass();
