@@ -67,11 +67,11 @@ public class Bookbest {
         //          Create the Ontology and map the data from DBs              //
         ///////////////////////////////////////////////////////////////////////*/
 
-        OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
-        ontologyGenerator.generateOntology();
-        OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
-        //OntologyHelper ontologyHelper = new OntologyHelper();
-        //OWLOntology owlOntology = ontologyHelper.readOntology();
+        //OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
+        //ontologyGenerator.generateOntology();
+        //OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
+        OntologyHelper ontologyHelper = new OntologyHelper();
+        OWLOntology owlOntology = ontologyHelper.readOntology();
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create and Use the Reasoner                                //
@@ -82,7 +82,12 @@ public class Bookbest {
 
         // Classify ontology
         reasoner.classifyOntology();
+        System.out.println();
+        System.out.println();
+        // Get ontology information
+        //reasoner.printOntologyInfo();
 
+        System.out.println();
         try {
             // Print datatype properties
             System.out.println("\nWould you like to see the Datatype Properties?\n(1-Yes, 0-No)");
@@ -104,6 +109,7 @@ public class Bookbest {
                 answer = Integer.parseInt(bufferedReader.readLine());
             } while (answer != 0 && answer != 1);
             if(answer==1)   reasoner.printInstances();
+            System.out.println();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -128,8 +134,8 @@ public class Bookbest {
         //          Answer Queries                                             //
         ///////////////////////////////////////////////////////////////////////*/
 
-       /* SPARQL sparql = new SPARQL();
-        ///sparql.findResults(model,"");
+        SPARQL sparql = new SPARQL();
+        //sparql.findResults(model,"");
         //BufferedReader br = null;
         //br = new BufferedReader(new InputStreamReader(System.in));
         int rating, price, ff, fd;
@@ -189,6 +195,6 @@ public class Bookbest {
                     e.printStackTrace();
                 }
             }
-        }*/
+        }
     }
 }
