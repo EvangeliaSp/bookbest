@@ -43,82 +43,30 @@ public class SPARQL {
         }
     }
 
-    public String hotelsForDisabled(int k) {
+    public String hotelsByCityCenterDistance(int k) {
 
-        return "   ?Hotels hotel:isPleasant ?dRating .";
+        return "";
     }
 
     public void familyFriendlyHotels(InfModel model) {
 
     }
 
-    public void getLuxurious(InfModel model) {
-        String s =
-            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-            "PREFIX hotel: <urn:absolute:bookbest#>" +
-            "SELECT ?Hotels " +
-            "WHERE {" +
-            "   ?Hotels rdf:type hotel:Hotel." +
-            "   ?Hotels hotel:isLuxurious ?value ." +
-            "FILTER (?value = 100) " +
-            "}\n" +
-            "ORDER BY ?Hotels " +
-            "LIMIT 5";
-
-        Query query = QueryFactory.create(s);
-
-        // Execute the query and obtain results
-        QueryExecution queryExecution = QueryExecutionFactory.create(query, model);
-        ResultSet resultSet = queryExecution.execSelect();
-
-        // Output query results
-        ResultSetFormatter.out(System.out, resultSet, query);
-
-        // Free up resources used running the query
-        queryExecution.close();
-    }
-
-    public void getCheap(InfModel model) {
-        // Create query
+    public void findResults(InfModel model, String q, String proposed, int counter) {
+        if(proposed.equals(""))
+            proposed="?name";
+        else
+            proposed = proposed+"/"+counter;
         String s =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
             "PREFIX hotel: <http://example.com/bookbest#>" +
-            "SELECT ?Hotels ?Degree \n" +
-            "WHERE { \n" +
-            "   ?Hotels hotel:isVeryCheap ?Degree.\n"+
-            "}\n" +
-            "ORDER BY DESC(?dPrice+dRating)";
-
-           // "  ?Hotels hotel:isVeryCheap ?degree." +
-           //         "FILTER (?degree = 100) " +
-
-
-        Query query = QueryFactory.create(s);
-
-        // Execute the query and obtain results
-        QueryExecution queryExecution = QueryExecutionFactory.create(query, model);
-        ResultSet resultSet = queryExecution.execSelect();
-
-        // Output query results
-        ResultSetFormatter.out(System.out, resultSet, query);
-
-        // Free up resources used running the query
-        queryExecution.close();
-    }
-
-
-    public void findResults(InfModel model, String q) {
-        String s =
-            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-            "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-            "PREFIX hotel: <http://example.com/bookbest#>" +
-            "SELECT ?name ?Degree\n" +
+            "SELECT ?name ?dPrice ?dRating ("+proposed+" AS ?degree) \n" +
             "WHERE { \n" +
             "  ?Hotels rdf:type hotel:Hotel. " +
             "  ?Hotels hotel:hasName ?name. "+ q +
             "}\n" +
-            "ORDER BY ?Degree";
+            "ORDER BY ?degree";
 
         Query query = QueryFactory.create(s);
 
@@ -133,27 +81,4 @@ public class SPARQL {
         queryExecution.close();
     }
 
-    public void getAccommodations(InfModel model) {
-        String s =
-            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-            "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-            "PREFIX hotel: <http://example.com/bookbest#>" +
-            "SELECT ?Hotels \n" +
-            "WHERE { \n" +
-            "  ?Hotels rdf:type hotel:Hotel" +
-            "} \n" +
-            "ORDER BY ?Hotels";
-
-        Query query = QueryFactory.create(s);
-
-        // Execute the query and obtain results
-        QueryExecution queryExecution = QueryExecutionFactory.create(query, model);
-        ResultSet resultSet = queryExecution.execSelect();
-
-        // Output query results
-        ResultSetFormatter.out(System.out, resultSet, query);
-
-        // Free up resources used running the query
-        queryExecution.close();
-    }
 }

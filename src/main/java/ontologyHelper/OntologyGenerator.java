@@ -92,7 +92,7 @@ public class OntologyGenerator {
         generateRatingRules();
 
         // Create rules for Disable people availability
-        generateFamilyRules();
+       // generateFamilyRules();
 
     }
 
@@ -382,7 +382,7 @@ public class OntologyGenerator {
 
         try {
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that accept Disabled people                //
+            //          Rule for hotels that are Family Friendly                   //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isAvailableForDisabled" rule

@@ -67,9 +67,9 @@ public class Bookbest {
         //          Create the Ontology and map the data from DBs              //
         ///////////////////////////////////////////////////////////////////////*/
 
-        //OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
-        //ontologyGenerator.generateOntology();
-        //OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
+        /*OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
+        ontologyGenerator.generateOntology();
+        OWLOntology owlOntology = ontologyGenerator.getOwlOntology();*/
         OntologyHelper ontologyHelper = new OntologyHelper();
         OWLOntology owlOntology = ontologyHelper.readOntology();
 
@@ -88,7 +88,7 @@ public class Bookbest {
         //reasoner.printOntologyInfo();
 
         System.out.println();
-        try {
+        /*try {
             // Print datatype properties
             System.out.println("\nWould you like to see the Datatype Properties?\n(1-Yes, 0-No)");
             do {
@@ -114,7 +114,7 @@ public class Bookbest {
         catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Graph                                           //
@@ -139,7 +139,8 @@ public class Bookbest {
         //BufferedReader br = null;
         //br = new BufferedReader(new InputStreamReader(System.in));
         int rating, price, ff, fd;
-        String query = null;
+        int counter = 0;
+        String query, proposed="";
         try {
             // Country
             System.out.println("Country: ");
@@ -156,33 +157,42 @@ public class Bookbest {
             do {
                 price = Integer.parseInt(bufferedReader.readLine());
             } while(price<0 || price>5);
-            if (price != 0)
-                query = query+sparql.hotelsByPrice(price);
+            if (price != 0) {
+                query = query + sparql.hotelsByPrice(price);
+                proposed = proposed+"?dPrice";
+                counter++;
+            }
 
             // Rating
             System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
             do {
                 rating = Integer.parseInt(bufferedReader.readLine());
             } while(rating<0 || rating>3);
-            if (rating != 0)
-                query = query+sparql.hotelsByRating(rating);
+            if (rating != 0) {
+                query = query + sparql.hotelsByRating(rating);
+                if(proposed.equals(""))
+                    proposed = proposed+"?dRating";
+                else proposed = proposed+"+?dRating";
+                counter++;
+            }
 
             // For Disabled People
-            System.out.println("For Disabled People: (0-Any, 1-Yes)");
+            /*System.out.println("For Disabled People: (0-Any, 1-Yes)");
             do {
                 fd = Integer.parseInt(bufferedReader.readLine());
             } while (fd<0 || fd>1);
             if (fd == 1)
-                query = query+sparql.hotelsForDisabled(fd);
+                query = query+sparql.hotelsForDisabled(fd);*/
 
             // Family Friendly
-            System.out.println("Family Friendly: (0-Any, 1-Yes)");
+            /*System.out.println("Family Friendly: (0-Any, 1-Yes)");
             do {
                 ff = Integer.parseInt(bufferedReader.readLine());
             } while (ff<0 || ff>1);
             if (ff == 1)
                 ;
-            sparql.findResults(model, query);
+                */
+            sparql.findResults(model, query, proposed, counter);
         }
         catch (IOException exception) {
             exception.printStackTrace();
