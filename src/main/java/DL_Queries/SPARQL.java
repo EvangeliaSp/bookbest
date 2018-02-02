@@ -48,25 +48,25 @@ public class SPARQL {
         return "";
     }
 
-    public void familyFriendlyHotels(InfModel model) {
-
+    public String luxuriousHotels() {
+        return "   ?Hotels hotel:isLuxurious ?dLux .";
     }
 
     public void findResults(InfModel model, String q, String proposed, int counter) {
         if(proposed.equals(""))
             proposed="?name";
-        else
-            proposed = proposed+"/"+counter;
+        else if(counter!=1)
+            proposed = "("+proposed+")/"+counter;
         String s =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-            "PREFIX hotel: <http://example.com/bookbest#>" +
-            "SELECT ?name ?dPrice ?dRating ("+proposed+" AS ?degree) \n" +
+            "PREFIX hotel: <urn:absolute:bookbest.owl#>" +
+            "SELECT ?name ?dPrice ?dRating ?dLux ("+proposed+" AS ?degree) \n" +
             "WHERE { \n" +
             "  ?Hotels rdf:type hotel:Hotel. " +
             "  ?Hotels hotel:hasName ?name. "+ q +
             "}\n" +
-            "ORDER BY ?degree";
+            "ORDER BY DESC(?degree)";
 
         Query query = QueryFactory.create(s);
 

@@ -63,6 +63,7 @@ public class Bookbest {
         //dataGenerator.generateData();
         System.out.println("Database(s) filled successfully.");
 
+
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Ontology and map the data from DBs              //
         ///////////////////////////////////////////////////////////////////////*/
@@ -73,9 +74,11 @@ public class Bookbest {
         OntologyHelper ontologyHelper = new OntologyHelper();
         OWLOntology owlOntology = ontologyHelper.readOntology();
 
+
         /*///////////////////////////////////////////////////////////////////////
         //          Create and Use the Reasoner                                //
         ///////////////////////////////////////////////////////////////////////*/
+
 
         // Create reasoner
         Reasoner reasoner = new Reasoner(owlOntology);
@@ -88,7 +91,7 @@ public class Bookbest {
         //reasoner.printOntologyInfo();
 
         System.out.println();
-        /*try {
+        try {
             // Print datatype properties
             System.out.println("\nWould you like to see the Datatype Properties?\n(1-Yes, 0-No)");
             do {
@@ -114,7 +117,6 @@ public class Bookbest {
         catch (IOException e) {
             e.printStackTrace();
         }
-*/
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Graph                                           //
@@ -138,7 +140,7 @@ public class Bookbest {
         //sparql.findResults(model,"");
         //BufferedReader br = null;
         //br = new BufferedReader(new InputStreamReader(System.in));
-        int rating, price, ff, fd;
+        int rating, price, distance, lux, ff, fd;
         int counter = 0;
         String query, proposed="";
         try {
@@ -175,6 +177,36 @@ public class Bookbest {
                 else proposed = proposed+"+?dRating";
                 counter++;
             }
+
+            // Distance
+            /*
+            System.out.println("City Center Distance: (0-Any, 1-Short, 2-Medium, 3-Long)");
+            do {
+                distance = Integer.parseInt(bufferedReader.readLine());
+            } while(distance<0 || rating>3);
+            if (distance != 0) {
+                query = query + sparql.hotelsByCityCenterDistance(distance);
+                if(proposed.equals(""))
+                    proposed = proposed+"?dDistance";
+                else proposed = proposed+"+?dDistance";
+                counter++;
+            }
+            */
+
+            // Luxurious
+            System.out.println("Luxurious: (0-Any, 1-Yes)");
+            do {
+                lux = Integer.parseInt(bufferedReader.readLine());
+            } while (lux<0 || lux>1);
+            if (lux == 1) {
+                query = query + sparql.luxuriousHotels();
+                if(proposed.equals(""))
+                    proposed = proposed+"?dLux";
+                else proposed = proposed+"+?dLux";
+                counter++;
+            }
+
+
 
             // For Disabled People
             /*System.out.println("For Disabled People: (0-Any, 1-Yes)");

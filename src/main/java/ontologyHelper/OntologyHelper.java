@@ -16,8 +16,10 @@ public class OntologyHelper {
     URI basePhysicalURI = URI.create(prefix + ontFile);//URI basePhysicalURI = URI.create(prefix + ontFile.replace("\\", "/"));
 
     String base = "";
-    private static String ontName = "http://example.com/bookbest";
+    private static String ontName = "urn:absolute:bookbest.owl";
     IRI iri = IRI.create(base+ontName);
+    //IRI iri = IRI.create(this.basePhysicalURI);
+
 
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
     OWLDataFactory owlDataFactory = OWLManager.getOWLDataFactory();
@@ -26,11 +28,6 @@ public class OntologyHelper {
 
     @Deprecated
     PrefixManager prefixManager = new DefaultPrefixManager(this.base+this.ontName+"#");
-
-
-    public void printBasePhysicalURI() {
-        //System.out.println(basePhysicalURI+"#");
-    }
 
 
     // OWL Ontology functions
@@ -43,7 +40,6 @@ public class OntologyHelper {
     public OWLOntology readOntology() {
         try {
             this.owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(IRI.create(this.basePhysicalURI));
-
         }
         catch (OWLOntologyCreationException e) {
             e.printStackTrace();
@@ -51,6 +47,9 @@ public class OntologyHelper {
         return this.owlOntology;
     }
 
+    public IRI getIri() {
+        return IRI.create(this.basePhysicalURI);
+    }
 
     // OWL Class functions
 
@@ -253,6 +252,19 @@ public class OntologyHelper {
         return head;
     }
 
+    public Set<SWRLAtom> createRuleHead(String dataProperty, double d, Set<SWRLAtom> head) throws OWLOntologyStorageException {
+        //OWLClass owlClass = getClass(owlOntology, "Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+
+        OWLDataProperty owlDataProperty = createDataProperty(dataProperty);
+
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(String.valueOf(d), OWL2Datatype.XSD_DOUBLE);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+
+        head.add(this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrldArgument));
+        return head;
+    }
+
     @Deprecated
     public Set<SWRLAtom> createRuleBody(String dataProperty, String variable, Set<SWRLAtom> body) throws OWLOntologyStorageException {
         OWLClass owlClass = getClass("Hotel"); // hotel
@@ -299,6 +311,21 @@ public class OntologyHelper {
     public void createRule(Set<SWRLAtom> body, Set<SWRLAtom> head) throws OWLOntologyStorageException {
         SWRLRule swrlRule = this.owlDataFactory.getSWRLRule(body, head);
         saveOntology(swrlRule);
+    }
+
+    public SWRLClassAtom createClassAtom() {
+        OWLClass owlClass = getClass("Hotel"); // hotel
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+        return this.owlDataFactory.getSWRLClassAtom(owlClass, x);
+    }
+
+    @Deprecated
+    public SWRLDataPropertyAtom createDataPropertyAtom(String dataProperty, int value) {
+        OWLDataProperty owlDataProperty = getDataProperty(dataProperty);
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(String.valueOf(value), OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+        return this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrldArgument);
     }
 
     public SWRLBuiltInAtom createComparisonAtom(String variable, String comparison, String value) {
