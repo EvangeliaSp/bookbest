@@ -179,11 +179,10 @@ public class Bookbest {
             }
 
             // Distance
-            /*
             System.out.println("City Center Distance: (0-Any, 1-Short, 2-Medium, 3-Long)");
             do {
                 distance = Integer.parseInt(bufferedReader.readLine());
-            } while(distance<0 || rating>3);
+            } while(distance<0 || distance>3);
             if (distance != 0) {
                 query = query + sparql.hotelsByCityCenterDistance(distance);
                 if(proposed.equals(""))
@@ -191,7 +190,6 @@ public class Bookbest {
                 else proposed = proposed+"+?dDistance";
                 counter++;
             }
-            */
 
             // Luxurious
             System.out.println("Luxurious: (0-Any, 1-Yes)");

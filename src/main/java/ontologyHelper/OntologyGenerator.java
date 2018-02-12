@@ -92,7 +92,7 @@ public class OntologyGenerator {
         generateRatingRules();
 
         // Create rules for Distance from city center
-        //generateDistanceRules
+        //generateDistanceRules()
 
         // Create rules for Luxurious hotels
         generateLuxuriousRules();
@@ -270,7 +270,6 @@ public class OntologyGenerator {
 
     @Deprecated
     private void generateRatingRules() {
-
         Set<SWRLAtom> body = new HashSet<>();
         Set<SWRLAtom> head = new HashSet<>();
 
@@ -372,6 +371,106 @@ public class OntologyGenerator {
             // Create "isSuperb" rule
             ontologyHelper.createRule(body, head);
 
+        }
+        catch (OWLOntologyStorageException se) {
+            se.printStackTrace();
+        }
+    }
+
+    @Deprecated
+    public void generateDistanceRules() {
+        Set<SWRLAtom> body = new HashSet<>();
+        Set<SWRLAtom> head = new HashSet<>();
+
+        SWRLBuiltInAtom atom, atom1, atom2, k, l, d;
+
+        try {
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for hotels with short distance from center            //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isShort" rule
+            body.clear();
+            atom = ontologyHelper.createComparisonAtom("distance", "<=", "2");
+            body.add(atom);
+            k = ontologyHelper.createMathAtom("distance", "/", "2", "k");
+            body.add(k);
+            d = ontologyHelper.createMathAtom2("1", "-", "k", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasCityCenterDistance", "distance", body);
+
+            // Create head of "isShort" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isShort", "d", head);
+
+            // Create "isShort" rule
+            ontologyHelper.createRule(body, head);
+
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for hotels with medium distance from center           //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isMedium" rule
+            body.clear();
+            atom1 = ontologyHelper.createComparisonAtom("distance", ">", "2");
+            body.add(atom1);
+            atom2 = ontologyHelper.createComparisonAtom("distance", "<=", "5");
+            body.add(atom2);
+            k = ontologyHelper.createMathAtom("distance", "-", "2", "k");
+            body.add(k);
+            d = ontologyHelper.createMathAtom("k", "/", "3", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasCityCenterDistance", "distance", body);
+
+            // Create head of "isMedium" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isMedium", "d", head);
+
+            // Create "isMedium" rule
+            ontologyHelper.createRule(body, head);
+
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for hotels with long distance from center             //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isLong" rule
+            body.clear();
+            atom1 = ontologyHelper.createComparisonAtom("distance", ">", "5");
+            body.add(atom1);
+            atom2 = ontologyHelper.createComparisonAtom("distance", "<=", "10");
+            body.add(atom2);
+            k = ontologyHelper.createMathAtom("distance", "-", "5", "k");
+            body.add(k);
+            d = ontologyHelper.createMathAtom("k", "/", "5", "d");
+            body.add(d);
+            body = ontologyHelper.createRuleBody("hasCityCenterDistance", "distance", body);
+
+            // Create head of "isSuperb" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isLong", "d", head);
+
+            // Create "isLong" rule
+            ontologyHelper.createRule(body, head);
+
+
+            /*///////////////////////////////////////////////////////////////////////
+            //          Rule for hotels with long distance from center             //
+            ///////////////////////////////////////////////////////////////////////*/
+
+            // Create body of "isLong" rule
+            body.clear();
+            atom = ontologyHelper.createComparisonAtom("distance", ">", "10");
+            body.add(atom);
+            body = ontologyHelper.createRuleBody("hasCityCenterDistance", "distance", body);
+
+            // Create head of "isSuperb" rule
+            head.clear();
+            ontologyHelper.createRuleHead("isLong", 1, head);
+
+            // Create "isLong" rule
+            ontologyHelper.createRule(body, head);
         }
         catch (OWLOntologyStorageException se) {
             se.printStackTrace();

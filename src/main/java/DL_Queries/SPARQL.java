@@ -44,8 +44,14 @@ public class SPARQL {
     }
 
     public String hotelsByCityCenterDistance(int k) {
-
-        return "";
+        switch (k) {
+            case 1:
+                return "   ?Hotels hotel:isShort ?dDistance .";
+            case 2:
+                return "   ?Hotels hotel:isMedium ?dDistance .";
+            default:
+                return "   ?Hotels hotel:isLong ?dDistance .";
+        }
     }
 
     public String luxuriousHotels() {
