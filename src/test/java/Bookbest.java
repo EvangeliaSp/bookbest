@@ -6,7 +6,6 @@ import dataMapping.Mappings;
 import database.DBConnection;
 import database.DataGenerator;
 import ontologyHelper.OntologyGenerator;
-import ontologyHelper.OntologyHelper;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.PelletInfGraph;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -141,9 +140,6 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         SPARQL sparql = new SPARQL();
-        //sparql.findResults(model,"");
-        //BufferedReader br = null;
-        //br = new BufferedReader(new InputStreamReader(System.in));
         int rating, price, distance, lux, ff, fd;
         int counter = 0;
         String query, proposed="";
@@ -215,15 +211,6 @@ public class Bookbest {
             } while (fd<0 || fd>1);
             if (fd == 1)
                 query = query+sparql.hotelsForDisabled(fd);*/
-
-            // Family Friendly
-            /*System.out.println("Family Friendly: (0-Any, 1-Yes)");
-            do {
-                ff = Integer.parseInt(bufferedReader.readLine());
-            } while (ff<0 || ff>1);
-            if (ff == 1)
-                ;
-                */
             sparql.findResults(model, query, proposed, counter);
         }
         catch (IOException exception) {

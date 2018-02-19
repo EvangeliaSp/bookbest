@@ -8,27 +8,29 @@ import java.util.Random;
 
 public class CSVReader {
 
-    int mapLength = 6441;
+    int mapLength = 352;
     String[][] map = new String[2][mapLength];
 
+    int nameLength = 5065;
+    String[] names = new String[nameLength];
 
     public CSVReader() {
         this.importFromCSV();
     }
 
-    public String[][] getMap() {
-        return map;
-    }
 
     public void importFromCSV() {
-        String csvFile = "./src/main/resources/dataFiles/simplemaps-worldcities-basic.csv";
+        String csvMapFile = "./src/main/resources/dataFiles/simplemaps-worldcities-basic.csv";
+        String csvNameFile = "./src/main/resources/dataFiles/hotelnames.csv";
         BufferedReader br = null;
         String line;
         String cvsSplitBy = ",";
         int i=0;
 
+
         try {
-            br = new BufferedReader(new FileReader(csvFile));
+            // Import map cities
+            br = new BufferedReader(new FileReader(csvMapFile));
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
@@ -39,6 +41,15 @@ public class CSVReader {
                 i++;
             }
 
+            // Import hotel names
+            i=0;
+            br = new BufferedReader(new FileReader(csvNameFile));
+            while ((line = br.readLine()) != null) {
+                // use comma as separator
+                String name[] = line.split(cvsSplitBy);
+                this.names[i] = name[0];
+                i++;
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -52,7 +63,6 @@ public class CSVReader {
                     e.printStackTrace();
                 }
             }
-
         }
     }
 
@@ -63,6 +73,20 @@ public class CSVReader {
         place[0][1] = this.map[1][k];
 
         return place;
+    }
+
+    public String getRandomName() {
+        int k = new Random().nextInt(nameLength);
+        String name = this.names[k];
+
+        return name;
+    }
+
+    public void print() {
+        for(String name:names) {
+            System.out.println(name);
+        }
+        System.out.println("-->"+names.length);
     }
 
 }

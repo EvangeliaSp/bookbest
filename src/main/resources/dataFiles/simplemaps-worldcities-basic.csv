@@ -1,353 +1,352 @@
-country,city,pop
-Sweden,Luleå,47094.5
-Greece,Lamia,47246
-Greece,Alexandroupoli,48711.5
-Norway,Tromsø,48900.5
-Greece,Xanthi,49395.5
-Greece,Katerini,50850.5
-Greece,Seres,50910.5
-Spain,Toledo,53878.5
-France,Cayenne,57179.5
-Italy,Benevento,59280
-Greece,Kalamata,61465.5
-Greece,Chalkida,63200
-Switzerland,Biel,63661
-Sweden,Borås,64115.5
-Latvia,Jelgava,64499
-Switzerland,Lugano,65876.5
-Greece,Hania,66646.5
-France,Versailles,85416
-Sweden,Jönköping,86491
-Sweden,Linköping,94111.5
-Latvia,Daugavpils,109969.5
-Netherlands,Zwolle,111805
-Hungary,Kecskemet,111871
-Denmark,Aalborg,111917.5
-Turkey,Karabuk,113022.5
-Spain,Ourense,113095
-Spain,Badajoz,115638.5
-France,Amiens,118908.5
-Spain,Huelva,119732
-Greece,Larissa,120122.5
-Italy,Ferrara,121754
-Netherlands,Maastricht,122378
-Italy,Lecce,122942.5
-Italy,Siracusa,123110
-Spain,Logrono,123918.5
-France,Besancon,124193
-Italy,Ravenna,124302.5
-Spain,Albacete,127597
-Germany,Bremerhaven,127598.5
-United Kingdom,Cambridge,128488
-Italy,Treviso,128726.5
-Sweden,Uppsala,130425.5
-Greece,Iraklio,134404
-Iceland,Reykjavík,140059
-Norway,Trondheim,144336
-Italy,Pisa,146515
-Italy,Foggia,147028
-Turkey,Usak,147190.5
-Italy,Taranto,148807
-Spain,Mataro,149826
-Spain,Burgos,150251
-France,Caen,150361.5
-United Kingdom,Dundee,151013.5
-Germany,Wurzburg,151146
-Turkey,Afyon,151564
-United Kingdom,York,151574.5
-Spain,Almeria,152032.5
-Denmark,Odense,152076.5
-Portugal,Funchal,152807
-Spain,Marbella,153069.5
-Spain,Cadiz,153932.5
-Turkey,Antioch,154803
-France,Nimes,158891.5
-Greece,Patra,159579.5
-France,Dijon,159864
-Spain,Salamanca,160456.5
-Italy,Bergamo,160658
-Czech Republic,Pizen,161043
-Turkey,Isparta,161089
-Germany,Oldenburg,163338
-France,Mulhouse,163442
-Switzerland,Luzern,163745.5
-Italy,Parma,164734
-Italy,Caserta,164744
-Italy,Como,167438
-Turkey,Kutahya,168459.5
-Turkey,Corum,168544
-France,Orleans,170725
-France,Fort-de-France,172622
-Germany,Furth,174934.5
-Finland,Turku,175442.5
-Spain,Castello,176360
-France,Reims,177939
-France,Angers,178329.5
-Italy,Reggio di Calabria,179034.5
-Turkey,Aydin,180939.5
-Germany,Potsdam,181693.5
-United Kingdom,Norwich,184196
-Germany,Mainz,184997
-United Kingdom,Aberdeen,186577
-France,Nancy,187155
-Malta,Valletta,187608
-Turkey,Rize,187976.5
-France,Tours,188858.5
-Germany,Erfurt,189365
-Switzerland,Lausanne,191226.5
-Spain,Santander,196025.5
-Switzerland,Bern,198480
-Germany,Osnabrück,198865
-Netherlands,Groningen,198941
-Spain,Vitoria,199109.5
-Norway,Bergen,200389.5
-Germany,Rostock,200686.5
-France,Rennes,204329.5
-Turkey,Kirikkale,208554.5
-Germany,Koblenz,209976
-Italy,Trieste,213609.5
-France,Le Havre,214048
-United Kingdom,Luton,214813.5
-Italy,Pescara,215537.5
-France,Saint-Etienne,220982
-Spain,Oviedo,223524.5
-Germany,Lubeck,223798.5
-Italy,Messina,224047.5
-Germany,Magdeburg,227378.5
-Italy,Cagliari,227880
-Turkey,Iskenderun,228954
-Denmark,Århus,232325.5
-United Kingdom,Swansea,232611
-Spain,Pamplona,233855.5
-Cuba,Santa Clara,234900
-Germany,Freiburg,235427.5
-Turkey,Manisa,237700
-United Kingdom,Plymouth,239436
-Germany,Braunschweig,239884.5
-Germany,Kassel,242212.5
-Cuba,Guantanamo,245069.5
-Turkey,Sivas,245801.5
-Netherlands,Haarlem,248773.5
-Turkey,Balikesir,249833.5
-Germany,Kiel,251092.5
-Turkey,Adapazari,260109
-France,Toulon,263197
-Japan,Yamagata,263373.5
-Austria,Linz,265161.5
-Sweden,Malmö,265448.5
-France,Metz,266550
-Spain,San Sebastián,270498
-Italy,Venice,270816
-Turkey,Elazig,271492
-France,Grenoble,273563
-Germany,Chemnitz,274931.5
-Turkey,Batman,276337.5
-Japan,Fukushima,278961.5
-United Kingdom,Middlesbrough,279374.5
-Japan,Aomori,281571.5
-Germany,Heidelberg,284967.5
-Turkey,Sakarya,286787
-France,Montpellier,287753
-Japan,Hakodate,289357
-Japan,Morioka,294782.5
-United Kingdom,Bournemouth,295272.5
-Spain,Alicante,296345
-Spain,Valladolid,299373.5
-Japan,Mito,300215
-Italy,Verona,300333.5
-Spain,Cordoba,300512
-Japan,Akita,300962.5
-Netherlands,Eindhoven,303836.5
-Spain,Granada,313269
-Spain,Vigo,335848.5
-United Kingdom,Coventry,348292
-France,Strasbourg,357408.5
-France,Nantes,357903
-United Kingdom,Belfast,362588
-Spain,Las Palmas,364718
-Spain,Murcia,368322.5
-Czech Republic,Brno,378918
-Italy,Bari,408554.5
-Italy,Bologna,429694.5
-United Kingdom,Edinburgh,470378.5
-Netherlands,Utrecht,478224
-Italy,Catania,482908
-Turkey,Eskisehir,490644.5
-United Kingdom,Bristol,492120.5
-Germany,Bonn,496834
-Turkey,Trabzon,497556.5
-Switzerland,Basel,500317.5
-Cuba,Santiago de Cuba,500964
-Portugal,Braga,504326
-Japan,Kanazawa,505093
-France,Bordeaux,517422
-Sweden,Göteborg,520940.5
-Germany,Leipzig,523750
-Lithuania,Vilnius,524697.5
-United Kingdom,Newcastle,537191
-Japan,Niigata,537534.5
-Spain,Malaga,539381.5
-Germany,Dresden,552184.5
-United Kingdom,Nottingham,565650
-United States of America,Honolulu,578828.5
-United Arab Emirates,Abu Dhabi,581861
-Czech Republic,Prague,582043.5
-Germany,Dortmund,588462
-Greece,Thessaloniki,591145
-Poland,Poznan,597174.5
-Poland,Gdansk,597915
-Spain,Bilbao,614369.5
-Germany,Nürnberg,618270.5
-Germany,Hannover,618815
-Canada,Hamilton,620501
-Poland,Wroclaw,622471
-Italy,Genoa,624724
-France,Nice,632810
-Germany,Bremen,635705
-France,Lille,636164
-Israel,Haifa,639150
-United Kingdom,Liverpool,639972.5
-France,Toulouse,640027.5
-United States of America,Buffalo,647778.5
-Albania,Tirana,658318
-United States of America,Oklahoma City,660475
-Bosnia and Herzegovina,Sarajevo,662816.5
-Pakistan,Islamabad,690800
-Turkey,Antalya,703468.5
-Norway,Oslo,707500
-Croatia,Zagreb,710746
-Switzerland,Geneva,716192.5
-Latvia,Riga,723802.5
-Switzerland,Zürich,7248657
-Mexico,Chihuahua,750633.5
-Poland,Kraków,755525
-Italy,Palermo,767587.5
-Portugal,Porto,793316.5
-Netherlands,Rotterdam,801599.5
-Spain,Valencia,806652
-Russia,Saratov,814586.5
-Australia,Newcastle,816285.5
-Finland,Helsinki,836728.5
-Germany,Duisburg,882381
-United Kingdom,Glasgow,885134
-Netherlands,Amsterdam,886318
-Japan,Hamamatsu,887242.5
-Germany,Düsseldorf,906196.5
-Israel,Jerusalem,915150
-United Kingdom,Sheffield,922800
-Italy,Florence,935758.5
-France,Lyon,947658.5
-Netherlands,The Hague,953862.5
-United States of America,Kansas City,955272.5
-Spain,Seville,957533
-Canada,Ottawa,978564.5
-Germany,Cologne,983697.5
-Australia,Adelaide,990677
-United Kingdom,Leeds,992061.5
-Guatemala,Guatemala,1009469
-Ireland,Dublin,1013988
-Bulgaria,Sofia,1029913.5
-Kuwait,Kuwait,1061532
-Dominican Republic,Santo Domingo,1078436.5
-Qatar,Doha,1090655
-France,Marseille,1097405.5
-Serbia,Belgrade,1099000
-United Arab Emirates,Dubai,1258173.5
-Sweden,Stockholm,1258654.5
-Germany,Munich,1267695.5
-United Kingdom,Manchester,1312757.5
-Japan,Kawasaki,1372025.5
-Argentina,Córdoba,1374467.5
-Belgium,Brussels,1381011
-United States of America,Baltimore,1432946
-Canada,Vancouver,1458415
-Poland,Katowice,1527362
-Japan,Hiroshima,1594420.5
-Italy,Naples,1619486
-Japan,Kyoto,1632320
-United Kingdom,Birmingham,1634666.5
-Portugal,Lisbon,1664901
-Hungary,Budapest,1679000
-Morocco,Rabat,1680376.5
-Italy,Rome,1687226
-Belarus,Minsk,1691069
-Poland,Warsaw,1704569.5
-Israel,Tel Aviv-Yafo,1745179
-Germany,Hamburg,1748058.5
-Germany,Stuttgart,1775644
-Lebanon,Beirut,1779062.5
-Germany,Frankfurt,1787332
-Romania,Bucharest,1842097
-Greece,Athens,1985568.5
-Azerbaijan,Baku,2007150
-Austria,Vienna,2065500
-Cuba,Havana,2082458.5
-United States of America,San Francisco,2091036
-Italy,Milan,2125830.5
-Australia,Melbourne,2131812.5
-Syria,Aleppo,2170132
-Japan,Sapporo,2202893
-Turkey,Izmir,2454909
-United States of America,Atlanta,2464454
-Syria,Damascus,2466000
-United States of America,Boston,2528070.5
-Egypt,El Giza,2681863
-Japan,Nagoya,2710639.5
-Spain,Madrid,2808718.5
-Taiwan,New Taipei,2821870
-South Africa,Cape Town,2823929
-China,Changchun,2860210.5
-Kenya,Nairobi,2880273.5
-Chile,Santiago,2883305.5
-North Korea,Pyongyang,2899398.5
-Vietnam,Hanoi,2904635
-United States of America,Miami,2983947
-United States of America,Dallas,3004852
-Canada,Montréal,3017278
-Brazil,Salvador,3081422.5
-Brazil,Brasilia,3139979.5
-Afghanistan,Kabul,3160266
-Morocco,Casablanca,3162954.5
-Germany,Berlin,3250007
-Spain,Barcelona,3250797.5
-China,Hechi,3275189.5
-Sudan,Khartoum,3364323.5
-China,Nanjing,3383005
-United States of America,Philadelphia,3504775
-Turkey,Ankara,3511689.5
-Japan,Yokohama,3697894
-Egypt,Alexandria,3988258
-Russia,St. Petersburg,4023106
-United States of America,Houston,4053287
-Australia,Sydney,4135711
-Singapore,Singapore,4236614.5
-Canada,Toronto,4573710.5
-Nigeria,Lagos,4733768
-Taiwan,Taipei,4759522.5
-France,Paris,4957588.5
-Iraq,Baghdad,5054000
-Thailand,Bangkok,5904238
-United States of America,Chicago,5915976
-India,Bangalore,5945523.5
-Brazil,Rio de Janeiro,6879087.5
-Japan,Osaka,6943206.5
-Colombia,Bogota,7052830.5
-Iran,Tehran,7513154.5
-United Kingdom,London,7994104.5
-United States of America,Los Angeles,8097410
-Indonesia,Jakarta,8832560.5
-China,Beijing,9293300.5
-South Korea,Seoul,9796000
-Egypt,Cairo,9813807
-Bangladesh,Dhaka,9899167
-Turkey,Istanbul,10003305
-Russia,Moscow,10452000
-India,Delhi,11779606.5
-Argentina,Buenos Aires,11862073
-Pakistan,Karachi,11877109.5
-United States of America,New York,13524139
-Brazil,Sao Paulo,14433147.5
-China,Shanghai,14797756
-Mexico,Mexico City,14919501
-India,Mumbai,15834918
-Japan,Tokyo,22006299.5
+Sweden,Luleå
+Greece,Lamia
+Greece,Alexandroupoli
+Norway,Tromsø
+Greece,Xanthi
+Greece,Katerini
+Greece,Seres
+Spain,Toledo
+France,Cayenne
+Italy,Benevento
+Greece,Kalamata
+Greece,Chalkida
+Switzerland,Biel
+Sweden,Borås
+Latvia,Jelgava
+Switzerland,Lugano
+Greece,Hania
+France,Versailles
+Sweden,Jönköping
+Sweden,Linköping
+Latvia,Daugavpils
+Netherlands,Zwolle
+Hungary,Kecskemet
+Denmark,Aalborg
+Turkey,Karabuk
+Spain,Ourense
+Spain,Badajoz
+France,Amiens
+Spain,Huelva
+Greece,Larissa
+Italy,Ferrara
+Netherlands,Maastricht
+Italy,Lecce
+Italy,Siracusa
+Spain,Logrono
+France,Besancon
+Italy,Ravenna
+Spain,Albacete
+Germany,Bremerhaven
+United Kingdom,Cambridge
+Italy,Treviso
+Sweden,Uppsala
+Greece,Iraklio
+Iceland,Reykjavík
+Norway,Trondheim
+Italy,Pisa
+Italy,Foggia
+Turkey,Usak
+Italy,Taranto
+Spain,Mataro
+Spain,Burgos
+France,Caen
+United Kingdom,Dundee
+Germany,Wurzburg
+Turkey,Afyon
+United Kingdom,York
+Spain,Almeria
+Denmark,Odense
+Portugal,Funchal
+Spain,Marbella
+Spain,Cadiz
+Turkey,Antioch
+France,Nimes
+Greece,Patra
+France,Dijon
+Spain,Salamanca
+Italy,Bergamo
+Czech Republic,Pizen
+Turkey,Isparta
+Germany,Oldenburg
+France,Mulhouse
+Switzerland,Luzern
+Italy,Parma
+Italy,Caserta
+Italy,Como
+Turkey,Kutahya
+Turkey,Corum
+France,Orleans
+France,Fort-de-France
+Germany,Furth
+Finland,Turku
+Spain,Castello
+France,Reims
+France,Angers
+Italy,Reggio di Calabria
+Turkey,Aydin
+Germany,Potsdam
+United Kingdom,Norwich
+Germany,Mainz
+United Kingdom,Aberdeen
+France,Nancy
+Malta,Valletta
+Turkey,Rize
+France,Tours
+Germany,Erfurt
+Switzerland,Lausanne
+Spain,Santander
+Switzerland,Bern
+Germany,Osnabrück
+Netherlands,Groningen
+Spain,Vitoria
+Norway,Bergen
+Germany,Rostock
+France,Rennes
+Turkey,Kirikkale
+Germany,Koblenz
+Italy,Trieste
+France,Le Havre
+United Kingdom,Luton
+Italy,Pescara
+France,Saint-Etienne
+Spain,Oviedo
+Germany,Lubeck
+Italy,Messina
+Germany,Magdeburg
+Italy,Cagliari
+Turkey,Iskenderun
+Denmark,Århus
+United Kingdom,Swansea
+Spain,Pamplona
+Cuba,Santa Clara
+Germany,Freiburg
+Turkey,Manisa
+United Kingdom,Plymouth
+Germany,Braunschweig
+Germany,Kassel
+Cuba,Guantanamo
+Turkey,Sivas
+Netherlands,Haarlem
+Turkey,Balikesir
+Germany,Kiel
+Turkey,Adapazari
+France,Toulon
+Japan,Yamagata
+Austria,Linz
+Sweden,Malmö
+France,Metz
+Spain,San Sebastián
+Italy,Venice
+Turkey,Elazig
+France,Grenoble
+Germany,Chemnitz
+Turkey,Batman
+Japan,Fukushima
+United Kingdom,Middlesbrough
+Japan,Aomori
+Germany,Heidelberg
+Turkey,Sakarya
+France,Montpellier
+Japan,Hakodate
+Japan,Morioka
+United Kingdom,Bournemouth
+Spain,Alicante
+Spain,Valladolid
+Japan,Mito
+Italy,Verona
+Spain,Cordoba
+Japan,Akita
+Netherlands,Eindhoven
+Spain,Granada
+Spain,Vigo
+United Kingdom,Coventry
+France,Strasbourg
+France,Nantes
+United Kingdom,Belfast
+Spain,Las Palmas
+Spain,Murcia
+Czech Republic,Brno
+Italy,Bari
+Italy,Bologna
+United Kingdom,Edinburgh
+Netherlands,Utrecht
+Italy,Catania
+Turkey,Eskisehir
+United Kingdom,Bristol
+Germany,Bonn
+Turkey,Trabzon
+Switzerland,Basel
+Cuba,Santiago de Cuba
+Portugal,Braga
+Japan,Kanazawa
+France,Bordeaux
+Sweden,Göteborg
+Germany,Leipzig
+Lithuania,Vilnius
+United Kingdom,Newcastle
+Japan,Niigata
+Spain,Malaga
+Germany,Dresden
+United Kingdom,Nottingham
+United States of America,Honolulu
+United Arab Emirates,Abu Dhabi
+Czech Republic,Prague
+Germany,Dortmund
+Greece,Thessaloniki
+Poland,Poznan
+Poland,Gdansk
+Spain,Bilbao
+Germany,Nürnberg
+Germany,Hannover
+Canada,Hamilton
+Poland,Wroclaw
+Italy,Genoa
+France,Nice
+Germany,Bremen
+France,Lille
+Israel,Haifa
+United Kingdom,Liverpool
+France,Toulouse
+United States of America,Buffalo
+Albania,Tirana
+United States of America,Oklahoma City
+Bosnia and Herzegovina,Sarajevo
+Pakistan,Islamabad
+Turkey,Antalya
+Norway,Oslo
+Croatia,Zagreb
+Switzerland,Geneva
+Latvia,Riga
+Switzerland,Zürich
+Mexico,Chihuahua
+Poland,Kraków
+Italy,Palermo
+Portugal,Porto
+Netherlands,Rotterdam
+Spain,Valencia
+Russia,Saratov
+Australia,Newcastle
+Finland,Helsinki
+Germany,Duisburg
+United Kingdom,Glasgow
+Netherlands,Amsterdam
+Japan,Hamamatsu
+Germany,Düsseldorf
+Israel,Jerusalem
+United Kingdom,Sheffield
+Italy,Florence
+France,Lyon
+Netherlands,The Hague
+United States of America,Kansas City
+Spain,Seville
+Canada,Ottawa
+Germany,Cologne
+Australia,Adelaide
+United Kingdom,Leeds
+Guatemala,Guatemala
+Ireland,Dublin
+Bulgaria,Sofia
+Kuwait,Kuwait
+Dominican Republic,Santo Domingo
+Qatar,Doha
+France,Marseille
+Serbia,Belgrade
+United Arab Emirates,Dubai
+Sweden,Stockholm
+Germany,Munich
+United Kingdom,Manchester
+Japan,Kawasaki
+Argentina,Córdoba
+Belgium,Brussels
+United States of America,Baltimore
+Canada,Vancouver
+Poland,Katowice
+Japan,Hiroshima
+Italy,Naples
+Japan,Kyoto
+United Kingdom,Birmingham
+Portugal,Lisbon
+Hungary,Budapest
+Morocco,Rabat
+Italy,Rome
+Belarus,Minsk
+Poland,Warsaw
+Israel,Tel Aviv-Yafo
+Germany,Hamburg
+Germany,Stuttgart
+Lebanon,Beirut
+Germany,Frankfurt
+Romania,Bucharest
+Greece,Athens
+Azerbaijan,Baku
+Austria,Vienna
+Cuba,Havana
+United States of America,San Francisco
+Italy,Milan
+Australia,Melbourne
+Syria,Aleppo
+Japan,Sapporo
+Turkey,Izmir
+United States of America,Atlanta
+Syria,Damascus
+United States of America,Boston
+Egypt,El Giza
+Japan,Nagoya
+Spain,Madrid
+Taiwan,New Taipei
+South Africa,Cape Town
+China,Changchun
+Kenya,Nairobi
+Chile,Santiago
+North Korea,Pyongyang
+Vietnam,Hanoi
+United States of America,Miami
+United States of America,Dallas
+Canada,Montréal
+Brazil,Salvador
+Brazil,Brasilia
+Afghanistan,Kabul
+Morocco,Casablanca
+Germany,Berlin
+Spain,Barcelona
+China,Hechi
+Sudan,Khartoum
+China,Nanjing
+United States of America,Philadelphia
+Turkey,Ankara
+Japan,Yokohama
+Egypt,Alexandria
+Russia,St. Petersburg
+United States of America,Houston
+Australia,Sydney
+Singapore,Singapore
+Canada,Toronto
+Nigeria,Lagos
+Taiwan,Taipei
+France,Paris
+Iraq,Baghdad
+Thailand,Bangkok
+United States of America,Chicago
+India,Bangalore
+Brazil,Rio de Janeiro
+Japan,Osaka
+Colombia,Bogota
+Iran,Tehran
+United Kingdom,London
+United States of America,Los Angeles
+Indonesia,Jakarta
+China,Beijing
+South Korea,Seoul
+Egypt,Cairo
+Bangladesh,Dhaka
+Turkey,Istanbul
+Russia,Moscow
+India,Delhi
+Argentina,Buenos Aires
+Pakistan,Karachi
+United States of America,New York
+Brazil,Sao Paulo
+China,Shanghai
+Mexico,Mexico City
+India,Mumbai
+Japan,Tokyo

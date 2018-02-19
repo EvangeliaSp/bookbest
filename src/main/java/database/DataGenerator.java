@@ -66,7 +66,6 @@ public class DataGenerator {
     }
 
     private void generateHotels(Statement statement, String table, ArrayList<String> columns, String rate) {
-        int k;
         String cols, values, sqlInsert, key;
         CSVReader csvReader = new CSVReader();
         try {
@@ -81,7 +80,7 @@ public class DataGenerator {
                             break;
                         case "hasName":
                             cols = cols + c + ",";
-                            values = values +"'"+name()+"'"+ ",";
+                            values = values +"'"+csvReader.getRandomName()+"'"+ ",";
                             break;
                         case "hasStars":
                             cols = cols + c + ",";

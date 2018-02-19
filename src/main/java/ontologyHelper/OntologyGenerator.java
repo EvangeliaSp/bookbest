@@ -84,13 +84,13 @@ public class OntologyGenerator {
     @Deprecated
     private void generateRules() {
         // Create rules for Price
-        //generatePriceRules();
+        generatePriceRules();
 
         // Create rules for Rating
-        //generateRatingRules();
+        generateRatingRules();
 
         // Create rules for Distance from city center
-        //generateDistanceRules();
+        generateDistanceRules();
 
         // Create rules for Luxurious hotels
         generateLuxuriousRules();
