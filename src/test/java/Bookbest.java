@@ -68,11 +68,11 @@ public class Bookbest {
         //          Create the Ontology and map the data from DBs              //
         ///////////////////////////////////////////////////////////////////////*/
 
-        /*OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
+        OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
         ontologyGenerator.generateOntology();
-        OWLOntology owlOntology = ontologyGenerator.getOwlOntology();*/
-        OntologyHelper ontologyHelper = new OntologyHelper();
-        OWLOntology owlOntology = ontologyHelper.readOntology();
+        OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
+        /*OntologyHelper ontologyHelper = new OntologyHelper();
+        OWLOntology owlOntology = ontologyHelper.readOntology();*/
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -86,12 +86,16 @@ public class Bookbest {
         // Classify ontology
         reasoner.classifyOntology();
         System.out.println();
-        System.out.println();
-        // Get ontology information
-        //reasoner.printOntologyInfo();
 
         System.out.println();
         try {
+            // Print ontology information
+            System.out.println("\nWould you like to see the Ontology Information?\n(1-Yes, 0-No)");
+            do {
+                answer = Integer.parseInt(bufferedReader.readLine());
+            } while (answer != 0 && answer != 1);
+            if(answer==1)   reasoner.printOntologyInfo();
+
             // Print datatype properties
             System.out.println("\nWould you like to see the Datatype Properties?\n(1-Yes, 0-No)");
             do {
@@ -203,8 +207,6 @@ public class Bookbest {
                 else proposed = proposed+"+?dLux";
                 counter++;
             }
-
-
 
             // For Disabled People
             /*System.out.println("For Disabled People: (0-Any, 1-Yes)");

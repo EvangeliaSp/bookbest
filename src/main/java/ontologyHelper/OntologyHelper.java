@@ -5,6 +5,7 @@ import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.semanticweb.owlapi.vocab.SWRLBuiltInsVocabulary;
+import org.semanticweb.owlapitools.builders.BuilderSWRLDataPropertyAtom;
 
 import java.io.File;
 import java.net.URI;
@@ -32,8 +33,13 @@ public class OntologyHelper {
 
     // OWL Ontology functions
 
-    public OWLOntology createOntology() throws OWLOntologyCreationException {
-        this.owlOntology = owlOntologyManager.createOntology(this.iri);
+    public OWLOntology createOntology() {
+        try {
+            this.owlOntology = owlOntologyManager.createOntology(this.iri);
+        }
+        catch (OWLOntologyCreationException e) {
+            e.printStackTrace();
+        }
         return this.owlOntology;
     }
 
@@ -324,6 +330,15 @@ public class OntologyHelper {
         OWLDataProperty owlDataProperty = getDataProperty(dataProperty);
         SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
         OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(String.valueOf(value), OWL2Datatype.XSD_INTEGER);
+        SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
+        return this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrldArgument);
+    }
+
+    @Deprecated
+    public SWRLDataPropertyAtom createDataPropertyAtom(String dataProperty, byte value) {
+        OWLDataProperty owlDataProperty = getDataProperty(dataProperty);
+        SWRLVariable x = this.owlDataFactory.getSWRLVariable(IRI.create(this.base+this.ontName+"#x"));
+        OWLLiteral owlLiteral = this.owlDataFactory.getOWLLiteral(String.valueOf(value), OWL2Datatype.XSD_BYTE);
         SWRLDArgument swrldArgument = this.owlDataFactory.getSWRLLiteralArgument(owlLiteral);
         return this.owlDataFactory.getSWRLDataPropertyAtom(owlDataProperty, x, swrldArgument);
     }

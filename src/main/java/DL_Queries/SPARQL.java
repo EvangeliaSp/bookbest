@@ -67,7 +67,7 @@ public class SPARQL {
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
             "PREFIX hotel: <urn:absolute:bookbest.owl#>" +
-            "SELECT ?name ?dPrice ?dRating ?dLux ("+proposed+" AS ?degree) \n" +
+            "SELECT ?name ?dPrice ?dRating ?dDistance ?dLux ("+proposed+" AS ?degree) \n" +
             "WHERE { \n" +
             "  ?Hotels rdf:type hotel:Hotel. " +
             "  ?Hotels hotel:hasName ?name. "+ q +

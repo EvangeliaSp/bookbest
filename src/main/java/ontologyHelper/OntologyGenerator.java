@@ -20,7 +20,6 @@ public class OntologyGenerator {
     OWLOntology owlOntology;
     Mappings mappings;
     DBConnection dbConnection;
-    DataToOntology dataToOntology;
 
     public OWLOntology getOwlOntology() {
         return owlOntology;
@@ -31,7 +30,6 @@ public class OntologyGenerator {
         this.ontologyHelper = ontologyHelper;
         this.mappings = mappings;
         this.dbConnection = dbConnection;
-        this.dataToOntology = new DataToOntology();
     }
 
     // Create OWL Ontology
@@ -42,7 +40,7 @@ public class OntologyGenerator {
             //this.owlOntology = this.ontologyHelper.createOntology();
             //this.generateClasses();
             //this.generateDataProperties();
-            this.generateRules();
+            //this.generateRules();
             //this.mapInstances();
         /*}
         catch (OWLOntologyCreationException ce) {
@@ -86,13 +84,13 @@ public class OntologyGenerator {
     @Deprecated
     private void generateRules() {
         // Create rules for Price
-        generatePriceRules();
+        //generatePriceRules();
 
         // Create rules for Rating
-        generateRatingRules();
+        //generateRatingRules();
 
         // Create rules for Distance from city center
-        //generateDistanceRules()
+        //generateDistanceRules();
 
         // Create rules for Luxurious hotels
         generateLuxuriousRules();
@@ -382,7 +380,7 @@ public class OntologyGenerator {
         Set<SWRLAtom> body = new HashSet<>();
         Set<SWRLAtom> head = new HashSet<>();
 
-        SWRLBuiltInAtom atom, atom1, atom2, k, l, d;
+        SWRLBuiltInAtom atom, atom1, atom2, k, d;
 
         try {
             /*///////////////////////////////////////////////////////////////////////
@@ -491,10 +489,10 @@ public class OntologyGenerator {
             body.clear();
             SWRLClassAtom swrlClassAtom = ontologyHelper.createClassAtom();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -511,9 +509,9 @@ public class OntologyGenerator {
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -530,9 +528,9 @@ public class OntologyGenerator {
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -549,9 +547,9 @@ public class OntologyGenerator {
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -562,15 +560,15 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 75% Luxurious                    //
+            //          Rule for hotels that are 75% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -581,14 +579,14 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 50% Luxurious                    //
+            //          Rule for hotels that are 50% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -599,14 +597,14 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 50% Luxurious                    //
+            //          Rule for hotels that are 50% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -617,14 +615,14 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 50% Luxurious                    //
+            //          Rule for hotels that are 50% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -635,14 +633,14 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 50% Luxurious                    //
+            //          Rule for hotels that are 50% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -653,14 +651,14 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 50% Luxurious                    //
+            //          Rule for hotels that are 50% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -671,14 +669,14 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 50% Luxurious                    //
+            //          Rule for hotels that are 50% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -689,13 +687,13 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 25% Luxurious                    //
+            //          Rule for hotels that are 25% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
             body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSwimmingPool", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
@@ -706,54 +704,54 @@ public class OntologyGenerator {
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 25% Luxurious                    //
+            //          Rule for hotels that are 25% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
-            body.clear();
+            /*body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
             ontologyHelper.createRuleHead("isLuxurious", 0.25, head);
 
             // Create "isLuxurious" rule
-            ontologyHelper.createRule(body, head);
+            ontologyHelper.createRule(body, head);*/
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 25% Luxurious                    //
+            //          Rule for hotels that are 25% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
-            body.clear();
+            /*body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
             ontologyHelper.createRuleHead("isLuxurious", 0.25, head);
 
             // Create "isLuxurious" rule
-            ontologyHelper.createRule(body, head);
+            ontologyHelper.createRule(body, head);*/
 
 
             /*///////////////////////////////////////////////////////////////////////
-            //          Rule for hotels that are 25% Luxurious                    //
+            //          Rule for hotels that are 25% Luxurious                     //
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
-            body.clear();
+            /*body.clear();
             body.add(swrlClassAtom);
-            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", 1));
+            body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
             // Create head of "isLuxurious" rule
             head.clear();
             ontologyHelper.createRuleHead("isLuxurious", 0.25, head);
 
             // Create "isLuxurious" rule
-            ontologyHelper.createRule(body, head);
+            ontologyHelper.createRule(body, head);*/
 
         }
         catch (OWLOntologyStorageException se) {
