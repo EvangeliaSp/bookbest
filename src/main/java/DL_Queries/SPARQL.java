@@ -3,6 +3,8 @@ package DL_Queries;
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.InfModel;
 
+import java.util.*;
+
 public class SPARQL {
 
     public String hotelsByCountry(String country) {
@@ -80,14 +82,75 @@ public class SPARQL {
         // Execute the query and obtain results
         QueryExecution queryExecution = QueryExecutionFactory.create(query, model);
         ResultSet resultSet = queryExecution.execSelect();
+        dempsterCombination(resultSet);
 
         // Output query results
         //ResultSetFormatter.out(System.out, resultSet, query);
-        while(resultSet.hasNext())
-            System.out.println(resultSet.next());
 
         // Free up resources used running the query
         queryExecution.close();
     }
 
+    private void dempsterCombination(ResultSet resultSet) {
+        HashMap<ArrayList<String>, Double> results = new HashMap<>();
+
+        while(resultSet.hasNext()) {
+            QuerySolution querySolution = resultSet.next();
+            //System.out.println(querySolution);
+
+            ArrayList<String> key = new ArrayList<>();
+            key.add(querySolution.get("name").asLiteral().getString());
+            key.add(querySolution.get("city").asLiteral().getString());
+            double value = querySolution.get("degree").asLiteral().getDouble();
+
+            if(results.containsKey(key)) {
+                System.out.println("YYY");
+                value = (value+results.get(key))/2;
+                results.replace(key, value);
+            }
+            else {
+                results.put(key, value);
+            }
+            System.out.println("name: "+key.get(0)+",city: "+key.get(1)+",value: "+value);
+        }
+        System.out.println(results.size());
+
+        sortMapByValues(results);
+
+        //System.out.println(sortedMap);
+    }
+
+    private static void sortMapByValues(Map<ArrayList<String>, Double> aMap) {
+        Set<Map.Entry<ArrayList<String>, Double>> mapEntries = aMap.entrySet();
+
+        // used linked list to sort, because insertion of elements in linked list is faster than an array list.
+        List<Map.Entry<ArrayList<String>, Double>> aList = new LinkedList<>(mapEntries);
+
+        // sorting the List
+        Collections.sort(aList, new Comparator<Map.Entry<ArrayList<String>, Double>>() {
+
+            @Override
+            public int compare(Map.Entry<ArrayList<String>, Double> ele1,
+                               Map.Entry<ArrayList<String>, Double> ele2) {
+
+                return ele2.getValue().compareTo(ele1.getValue());
+            }
+        });
+
+        // Storing the list into Linked HashMap to preserve the order of insertion.
+        Map<ArrayList<String>, Double> aMap2 = new LinkedHashMap<>();
+        for(Map.Entry<ArrayList<String>, Double> entry: aList) {
+            aMap2.put(entry.getKey(), entry.getValue());
+        }
+
+        // printing values after soring of map
+        System.out.println("Value " + " - " + "Key");
+        for(Map.Entry<ArrayList<String>, Double> entry : aMap2.entrySet()) {
+            System.out.println(entry.getKey().get(0)+"  -  "+entry.getValue());
+        }
+        System.out.println(aMap2.size());
+
+    }
 }
+
+

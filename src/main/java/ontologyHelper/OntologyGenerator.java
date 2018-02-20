@@ -38,10 +38,10 @@ public class OntologyGenerator {
         //try {
             this.owlOntology = this.ontologyHelper.readOntology();
             //this.owlOntology = this.ontologyHelper.createOntology();
-            this.generateClasses();
-            this.generateDataProperties();
-            this.generateRules();
-            this.mapInstances();
+            //this.generateClasses();
+            //this.generateDataProperties();
+            //this.generateRules();
+            //this.mapInstances();
         /*}
         catch (OWLOntologyCreationException ce) {
             ce.printStackTrace();

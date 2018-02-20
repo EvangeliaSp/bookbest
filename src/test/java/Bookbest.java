@@ -50,7 +50,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DBConnection dbConnection = new DBConnection(filenameDBs);
-        dbConnection.createDatabases();
+        //dbConnection.createDatabases();
         System.out.println("Database(s) created successfully.");
 
 
@@ -59,7 +59,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DataGenerator dataGenerator = new DataGenerator(filenameDBs, mappings, dbConnection);
-        dataGenerator.generateData();
+        //dataGenerator.generateData();
         System.out.println("Database(s) filled successfully.");
 
 
@@ -85,7 +85,7 @@ public class Bookbest {
         System.out.println();
 
         System.out.println();
-        try {
+        /*try {
             // Print ontology information
             System.out.println("\nWould you like to see the Ontology Information?\n(1-Yes, 0-No)");
             do {
@@ -117,7 +117,7 @@ public class Bookbest {
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Graph                                           //
