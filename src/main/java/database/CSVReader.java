@@ -11,7 +11,7 @@ public class CSVReader {
     int mapLength = 352;
     String[][] map = new String[2][mapLength];
 
-    int nameLength = 5065;
+    int nameLength = 5066;
     String[] names = new String[nameLength];
 
     public CSVReader() {
@@ -45,9 +45,7 @@ public class CSVReader {
             i=0;
             br = new BufferedReader(new FileReader(csvNameFile));
             while ((line = br.readLine()) != null) {
-                // use comma as separator
-                String name[] = line.split(cvsSplitBy);
-                this.names[i] = name[0];
+                this.names[i] =line;
                 i++;
             }
         } catch (FileNotFoundException e) {
@@ -55,7 +53,6 @@ public class CSVReader {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            this.mapLength = i;
             if (br != null) {
                 try {
                     br.close();
@@ -86,7 +83,7 @@ public class CSVReader {
         for(String name:names) {
             System.out.println(name);
         }
-        System.out.println("-->"+names.length);
+        System.out.println(names.length);
     }
 
 }

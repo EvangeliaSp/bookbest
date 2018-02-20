@@ -50,7 +50,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DBConnection dbConnection = new DBConnection(filenameDBs);
-        //dbConnection.createDatabases();
+        dbConnection.createDatabases();
         System.out.println("Database(s) created successfully.");
 
 
@@ -59,7 +59,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DataGenerator dataGenerator = new DataGenerator(filenameDBs, mappings, dbConnection);
-        //dataGenerator.generateData();
+        dataGenerator.generateData();
         System.out.println("Database(s) filled successfully.");
 
 
@@ -70,8 +70,6 @@ public class Bookbest {
         OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
         ontologyGenerator.generateOntology();
         OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
-        /*OntologyHelper ontologyHelper = new OntologyHelper();
-        OWLOntology owlOntology = ontologyHelper.readOntology();*/
 
 
         /*///////////////////////////////////////////////////////////////////////

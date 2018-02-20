@@ -60,16 +60,17 @@ public class SPARQL {
 
     public void findResults(InfModel model, String q, String proposed, int counter) {
         if(proposed.equals(""))
-            proposed="?name";
+            proposed="1.0";
         else if(counter!=1)
             proposed = "("+proposed+")/"+counter;
         String s =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
             "PREFIX hotel: <urn:absolute:bookbest.owl#>" +
-            "SELECT ?name ?dPrice ?dRating ?dDistance ?dLux ("+proposed+" AS ?degree) \n" +
+            "SELECT ?name ?city ?dPrice ?dRating ?dDistance ?dLux ("+proposed+" AS ?degree) \n" +
             "WHERE { \n" +
             "  ?Hotels rdf:type hotel:Hotel. " +
+            "  ?Hotels hotel:isInCity ?city. " +
             "  ?Hotels hotel:hasName ?name. "+ q +
             "}\n" +
             "ORDER BY DESC(?degree)";
@@ -81,7 +82,9 @@ public class SPARQL {
         ResultSet resultSet = queryExecution.execSelect();
 
         // Output query results
-        ResultSetFormatter.out(System.out, resultSet, query);
+        //ResultSetFormatter.out(System.out, resultSet, query);
+        while(resultSet.hasNext())
+            System.out.println(resultSet.next());
 
         // Free up resources used running the query
         queryExecution.close();

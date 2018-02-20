@@ -76,7 +76,6 @@ public class DBConnection {
         String sqlCreate = "CREATE TABLE " + table +"(" +
                 columns +
                 " PRIMARY KEY ("+key+"))";
-
         statement.executeUpdate(sqlCreate);
         return key;
     }
@@ -92,7 +91,6 @@ public class DBConnection {
     }
 
     public void createDatabases() {
-
         try {
             FileReader fileReader = new FileReader(this.filename);
             BufferedReader br = new BufferedReader(fileReader);
@@ -110,18 +108,17 @@ public class DBConnection {
                     table = currentLine;
                     if((currentLine = br.readLine()) != null) {
                         key = this.createTable(statement, table, currentLine);
-                        ArrayList<String> cols = this.getColumns(connection, database, table);
+                        //ArrayList<String> cols = this.getColumns(connection, database, table);
                         if((currentLine = br.readLine()) != null) {
                             table2 = currentLine;
                             if((currentLine = br.readLine()) != null) {
                                 this.createTable2(statement, table2, currentLine, key, table);
-                                cols = this.getColumns(connection, database, table2);
+                                //cols = this.getColumns(connection, database, table2);
                             }
                         }
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

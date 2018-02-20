@@ -38,10 +38,10 @@ public class OntologyGenerator {
         //try {
             this.owlOntology = this.ontologyHelper.readOntology();
             //this.owlOntology = this.ontologyHelper.createOntology();
-            //this.generateClasses();
-            //this.generateDataProperties();
-            //this.generateRules();
-            //this.mapInstances();
+            this.generateClasses();
+            this.generateDataProperties();
+            this.generateRules();
+            this.mapInstances();
         /*}
         catch (OWLOntologyCreationException ce) {
             ce.printStackTrace();
@@ -52,13 +52,18 @@ public class OntologyGenerator {
     }
 
     // Create OWL Class
-    private void generateClasses() throws OWLOntologyStorageException {
-        OWLClass owlClass = ontologyHelper.createClass("Hotel");
-        ontologyHelper.saveOntology(owlClass);
+    private void generateClasses() {
+        try {
+            OWLClass owlClass = ontologyHelper.createClass("Hotel");
+            ontologyHelper.saveOntology(owlClass);
+        }
+        catch (OWLOntologyStorageException e) {
+            e.printStackTrace();
+        }
     }
 
     // Create OWL Data Properties
-    private void generateDataProperties() throws OWLOntologyStorageException {
+    private void generateDataProperties() {
         String filename = mappings.getFilename(), line, value;
         OWLDataProperty owlDataProperty;
 
@@ -74,6 +79,9 @@ public class OntologyGenerator {
         }
         catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
+        }
+        catch (OWLOntologyStorageException se) {
+            se.printStackTrace();
         }
         catch (IOException e) {
             e.printStackTrace();
