@@ -11,7 +11,7 @@ public class CSVReader {
     int mapLength = 352;
     String[][] map = new String[2][mapLength];
 
-    int nameLength = 5066;
+    int nameLength = 5065;
     String[] names = new String[nameLength];
 
     public CSVReader() {

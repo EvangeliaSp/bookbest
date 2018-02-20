@@ -820,9 +820,9 @@ public class OntologyGenerator {
                     for (String c: facilitiesCols) {
                         if((facility=facilities.getString(c)) != null) {
                             dp = facilitiesDataProps.get(j);
-                            if (dp.equals("hasId"))
-                                this.ontologyHelper.addIntegerDataToIndividual(owlIndividual, dp, facility);
-                            else  this.ontologyHelper.addByteDataToIndividual(owlIndividual, dp, facility);
+                            if (!dp.equals("hasId"))
+                                //this.ontologyHelper.addIntegerDataToIndividual(owlIndividual, dp, facility);
+                                this.ontologyHelper.addByteDataToIndividual(owlIndividual, dp, facility);
                         }
                         j++;
                     }

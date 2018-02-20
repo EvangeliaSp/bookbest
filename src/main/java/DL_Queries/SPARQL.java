@@ -113,11 +113,7 @@ public class SPARQL {
             }
             System.out.println("name: "+key.get(0)+",city: "+key.get(1)+",value: "+value);
         }
-        System.out.println(results.size());
-
         sortMapByValues(results);
-
-        //System.out.println(sortedMap);
     }
 
     private static void sortMapByValues(Map<ArrayList<String>, Double> aMap) {
@@ -148,8 +144,6 @@ public class SPARQL {
         for(Map.Entry<ArrayList<String>, Double> entry : aMap2.entrySet()) {
             System.out.println(entry.getKey().get(0)+"  -  "+entry.getValue());
         }
-        System.out.println(aMap2.size());
-
     }
 }
 

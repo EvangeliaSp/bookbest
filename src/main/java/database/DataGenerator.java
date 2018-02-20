@@ -4,23 +4,17 @@ import dataMapping.Mappings;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
-
-
 
 public class DataGenerator {
 
     private static final int DATA=1000;
 
     private String filename;
-    private static String jdbcDriver = "com.mysql.jdbc.Driver";
     Mappings mappings;
     DBConnection dbConnection;
 
@@ -41,7 +35,6 @@ public class DataGenerator {
             Statement statement;
             ArrayList<String> idValues = mappings.getHasIdValues();
 
-
             while ((database = bufferedReader.readLine()) != null) {
                 dbConnection.connect(database);
                 connection = dbConnection.getConnection();
@@ -59,7 +52,6 @@ public class DataGenerator {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +65,7 @@ public class DataGenerator {
                 cols = "";
                 values = "";
                 String[][] place = csvReader.getRandomPlace();
-                for (String c : columns) {
+                for (String c: columns) {
                     key = mappings.findColumn(c);
                     switch (key) {
                         case "hasId":
@@ -151,19 +143,6 @@ public class DataGenerator {
         return new Random().nextInt(3);
     }
 
-    private String name() {
-        try {
-            NameGenerator nameGenerator = new NameGenerator("./src/main/resources/dataFiles/names.txt");
-            String name;
-            name = nameGenerator.compose();
-            return name;
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     private int stars() {
         int k = new Random().nextInt(6);
         return k;
@@ -180,7 +159,7 @@ public class DataGenerator {
     }
 
     private double rating(int n) {
-        double k = (new Random().nextInt(n+1))/10.0;
+        double k = (new Random().nextInt(n+1)+n%2)/10.0;
         return k;
     }
 }

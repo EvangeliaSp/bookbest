@@ -85,7 +85,7 @@ public class Bookbest {
         System.out.println();
 
         System.out.println();
-        /*try {
+        try {
             // Print ontology information
             System.out.println("\nWould you like to see the Ontology Information?\n(1-Yes, 0-No)");
             do {
@@ -117,7 +117,7 @@ public class Bookbest {
         }
         catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Graph                                           //
@@ -202,13 +202,6 @@ public class Bookbest {
                 counter++;
             }
 
-            // For Disabled People
-            /*System.out.println("For Disabled People: (0-Any, 1-Yes)");
-            do {
-                fd = Integer.parseInt(bufferedReader.readLine());
-            } while (fd<0 || fd>1);
-            if (fd == 1)
-                query = query+sparql.hotelsForDisabled(fd);*/
             sparql.findResults(model, query, proposed, counter);
         }
         catch (IOException exception) {
