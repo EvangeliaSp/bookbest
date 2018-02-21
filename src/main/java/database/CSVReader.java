@@ -45,7 +45,7 @@ public class CSVReader {
             i=0;
             br = new BufferedReader(new FileReader(csvNameFile));
             while ((line = br.readLine()) != null) {
-                this.names[i] =line;
+                this.names[i] =line.substring(0, line.indexOf(","));
                 i++;
             }
         } catch (FileNotFoundException e) {

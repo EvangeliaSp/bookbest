@@ -144,7 +144,7 @@ public class DataGenerator {
     }
 
     private int stars() {
-        int k = new Random().nextInt(6);
+        int k = new Random().nextInt((5-1)+1)+1;
         return k;
     }
 
@@ -158,8 +158,9 @@ public class DataGenerator {
         return k;
     }
 
-    private double rating(int n) {
-        double k = (new Random().nextInt(n+1)+n%2)/10.0;
+    private double rating(int max) {
+        int min = max/2;
+        double k = new Random().nextInt((max-min)+1)+min;
         return k;
     }
 }

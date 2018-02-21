@@ -84,7 +84,6 @@ public class Bookbest {
         reasoner.classifyOntology();
         System.out.println();
 
-        System.out.println();
         try {
             // Print ontology information
             System.out.println("\nWould you like to see the Ontology Information?\n(1-Yes, 0-No)");
