@@ -61,14 +61,6 @@ public class Reasoner {
                 System.out.println(subClass.getIRI().getFragment() + "\tsubclass of\t"
                         + c.getIRI().getFragment());
             }
-            /*this.owlReasoner.getKB().realize();
-            this.owlReasoner.getKB().printClassTree();
-            Set<ATermAppl> inds = this.owlReasoner.getKB().getIndividuals();
-            System.out.println("Individuals::: "+inds.size());
-
-            for(ATermAppl a: inds) {
-                //System.out.println(a.getName().toString());
-            }*/
         }
     }
 
@@ -115,6 +107,7 @@ public class Reasoner {
             System.out.println(rule.toString());
             System.out.println("Body: "+rule.getBody().toString());
             System.out.println("Head: "+rule.getHead().toString());
+            System.out.println();
         }
     }
 }

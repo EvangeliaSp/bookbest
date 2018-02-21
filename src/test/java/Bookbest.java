@@ -81,7 +81,7 @@ public class Bookbest {
         Reasoner reasoner = new Reasoner(owlOntology);
 
         // Classify ontology
-        reasoner.classifyOntology();
+/*        reasoner.classifyOntology();
         System.out.println();
 
         try {
@@ -117,7 +117,7 @@ public class Bookbest {
         catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Graph                                           //
         ///////////////////////////////////////////////////////////////////////*/

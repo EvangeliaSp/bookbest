@@ -282,9 +282,9 @@ public class OntologyGenerator {
             body.clear();
             atom = ontologyHelper.createComparisonAtom("rating", "<", "5");
             body.add(atom);
-            k = ontologyHelper.createMathAtom("rating", "/", "5", "k");
-            body.add(k);
-            d = ontologyHelper.createMathAtom("k", "*", "100", "d");
+            d = ontologyHelper.createMathAtom("rating", "/", "5", "d");
+            //body.add(k);
+            //d = ontologyHelper.createMathAtom("k", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 
@@ -308,9 +308,9 @@ public class OntologyGenerator {
             body.add(atom2);
             k = ontologyHelper.createMathAtom("rating", "-", "5", "k");
             body.add(k);
-            l = ontologyHelper.createMathAtom("k", "/", "2", "l");
-            body.add(l);
-            d = ontologyHelper.createMathAtom("l", "*", "100", "d");
+            d = ontologyHelper.createMathAtom("k", "/", "2", "d");
+            //body.add(l);
+            //d = ontologyHelper.createMathAtom("l", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 
@@ -334,9 +334,9 @@ public class OntologyGenerator {
             body.add(atom2);
             k = ontologyHelper.createMathAtom("rating", "-", "7", "k");
             body.add(k);
-            l = ontologyHelper.createMathAtom("k", "/", "2", "l");
-            body.add(l);
-            d = ontologyHelper.createMathAtom("l", "*", "100", "d");
+            d = ontologyHelper.createMathAtom("k", "/", "2", "d");
+            //body.add(l);
+            //d = ontologyHelper.createMathAtom("l", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 
@@ -356,9 +356,9 @@ public class OntologyGenerator {
             body.clear();
             atom1 = ontologyHelper.createComparisonAtom("rating", ">=", "9");
             body.add(atom1);
-            k = ontologyHelper.createMathAtom("rating", "-", "9", "k");
-            body.add(k);
-            d = ontologyHelper.createMathAtom("k", "*", "100", "d");
+            d = ontologyHelper.createMathAtom("rating", "-", "9", "d");
+            //body.add(k);
+            //d = ontologyHelper.createMathAtom("k", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 

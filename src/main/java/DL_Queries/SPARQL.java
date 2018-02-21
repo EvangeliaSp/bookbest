@@ -73,7 +73,8 @@ public class SPARQL {
             "WHERE { \n" +
             "  ?Hotels rdf:type hotel:Hotel. " +
             "  ?Hotels hotel:isInCity ?city. " +
-            "  ?Hotels hotel:hasName ?name. "+ q +
+            "  ?Hotels hotel:hasName ?name. " + q +
+            "  FILTER (("+proposed+") > 0.5)" +
             "}\n" +
             "ORDER BY DESC(?degree)";
 
@@ -104,7 +105,6 @@ public class SPARQL {
             double value = querySolution.get("degree").asLiteral().getDouble();
 
             if(results.containsKey(key)) {
-                System.out.println("YYY");
                 value = (value+results.get(key))/2;
                 results.replace(key, value);
             }
@@ -140,10 +140,28 @@ public class SPARQL {
         }
 
         // printing values after soring of map
-        System.out.println("Value " + " - " + "Key");
+        System.out.println();
+        for(int i=0; i<32; i++)
+            System.out.print(" ");
+        System.out.println("PROPOSED HOTELS");
+        for(int i=0; i<47; i++)
+            System.out.print(" ");
+        System.out.println();
+
+        for(int i=0; i<80; i++)
+            System.out.print("-");
+        System.out.println();
         for(Map.Entry<ArrayList<String>, Double> entry : aMap2.entrySet()) {
-            System.out.println(entry.getKey().get(0)+"  -  "+entry.getValue());
+            //System.out.println(entry.getKey().get(0)+"  -  "+entry.getValue());
+            System.out.print("|   "+entry.getKey().get(0));
+            int l=entry.getKey().get(0).length()+"|   ".length()+1;
+            l=80-l;
+            for(int i=0; i<l; i++)
+                System.out.print(" ");
+            System.out.println("|");
         }
+        for(int i=0; i<80; i++)
+            System.out.print("-");
     }
 }
 
