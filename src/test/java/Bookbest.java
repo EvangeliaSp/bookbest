@@ -29,13 +29,6 @@ public class Bookbest {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int answer;
 
-
-        /*///////////////////////////////////////////////////////////////////////
-        //          START                                                      //
-        ///////////////////////////////////////////////////////////////////////*/
-
-        //System.out.println("Please, type the name of the file which contains the databases: (including the path)");
-
         /*///////////////////////////////////////////////////////////////////////
         //          Create mappings                                            //
         ///////////////////////////////////////////////////////////////////////*/
@@ -50,7 +43,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DBConnection dbConnection = new DBConnection(filenameDBs);
-        //dbConnection.createDatabases();
+        dbConnection.createDatabases();
         System.out.println("Database(s) created successfully.");
 
 
@@ -59,7 +52,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DataGenerator dataGenerator = new DataGenerator(filenameDBs, mappings, dbConnection);
-        //dataGenerator.generateData();
+        dataGenerator.generateData();
         System.out.println("Database(s) filled successfully.");
 
 
@@ -70,6 +63,7 @@ public class Bookbest {
         OntologyGenerator ontologyGenerator = new OntologyGenerator(mappings, dbConnection);
         ontologyGenerator.generateOntology();
         OWLOntology owlOntology = ontologyGenerator.getOwlOntology();
+        System.out.println("Ontology created successfully.");
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -81,7 +75,7 @@ public class Bookbest {
         Reasoner reasoner = new Reasoner(owlOntology);
 
         // Classify ontology
-/*        reasoner.classifyOntology();
+        reasoner.classifyOntology();
         System.out.println();
 
         try {
@@ -117,7 +111,7 @@ public class Bookbest {
         catch (IOException e) {
             e.printStackTrace();
         }
-*/
+
         /*///////////////////////////////////////////////////////////////////////
         //          Create the Graph                                           //
         ///////////////////////////////////////////////////////////////////////*/

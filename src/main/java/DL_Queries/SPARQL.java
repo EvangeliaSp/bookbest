@@ -74,7 +74,7 @@ public class SPARQL {
             "  ?Hotels rdf:type hotel:Hotel. " +
             "  ?Hotels hotel:isInCity ?city. " +
             "  ?Hotels hotel:hasName ?name. " + q +
-            "  FILTER (("+proposed+") > 0.5)" +
+            "  FILTER (("+proposed+") > 0.25)" +
             "}\n" +
             "ORDER BY DESC(?degree)";
 
@@ -152,7 +152,6 @@ public class SPARQL {
             System.out.print("-");
         System.out.println();
         for(Map.Entry<ArrayList<String>, Double> entry : aMap2.entrySet()) {
-            //System.out.println(entry.getKey().get(0)+"  -  "+entry.getValue());
             System.out.print("|   "+entry.getKey().get(0));
             int l=entry.getKey().get(0).length()+"|   ".length()+1;
             l=80-l;

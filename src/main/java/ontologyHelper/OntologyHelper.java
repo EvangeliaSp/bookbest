@@ -20,6 +20,7 @@ public class OntologyHelper {
     private static String ontName = "urn:absolute:bookbest.owl";
     IRI iri = IRI.create(base+ontName);
     //IRI iri = IRI.create(this.basePhysicalURI);
+    List<AddAxiom> addAxioms = new LinkedList<>();
 
 
     OWLOntologyManager owlOntologyManager = OWLManager.createOWLOntologyManager();
@@ -153,7 +154,8 @@ public class OntologyHelper {
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
         AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
-        saveOntology(addAxiom);
+        addAxioms.add(addAxiom);
+        //saveOntology(addAxiom);
     }
 
     @Deprecated
@@ -164,7 +166,8 @@ public class OntologyHelper {
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
         AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
-        saveOntology(addAxiom);
+        addAxioms.add(addAxiom);
+        //saveOntology(addAxiom);
     }
 
     @Deprecated
@@ -175,7 +178,8 @@ public class OntologyHelper {
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
         AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
-        saveOntology(addAxiom);
+        addAxioms.add(addAxiom);
+        //saveOntology(addAxiom);
     }
 
     @Deprecated
@@ -186,7 +190,8 @@ public class OntologyHelper {
         OWLDataPropertyAssertionAxiom owlAxiom = owlDataFactory.getOWLDataPropertyAssertionAxiom(owlDataProperty, owlIndividual, literal);
 
         AddAxiom addAxiom = new AddAxiom(this.owlOntology, owlAxiom);
-        saveOntology(addAxiom);
+        addAxioms.add(addAxiom);
+        //saveOntology(addAxiom);
     }
 
     public void saveOntology(AddAxiom addAxiom) throws OWLOntologyStorageException {
@@ -228,7 +233,7 @@ public class OntologyHelper {
 
     public void saveOntology() throws OWLOntologyStorageException {
         File file = new File(this.ontFile);
-
+        owlOntologyManager.applyChanges(addAxioms);
         owlOntologyManager.saveOntology(this.owlOntology, IRI.create(file.toURI()));
     }
 

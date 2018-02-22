@@ -35,12 +35,12 @@ public class OntologyGenerator {
     // Create OWL Ontology
     @Deprecated
     public void generateOntology() {
-            this.owlOntology = this.ontologyHelper.readOntology();
-            //this.owlOntology = this.ontologyHelper.createOntology();
-            //this.generateClasses();
-            //this.generateDataProperties();
-            //this.generateRules();
-            //this.mapInstances();
+            //this.owlOntology = this.ontologyHelper.readOntology();
+            this.owlOntology = this.ontologyHelper.createOntology();
+            this.generateClasses();
+            this.generateDataProperties();
+            this.generateRules();
+            this.mapInstances();
     }
 
     // Create OWL Class
@@ -708,7 +708,7 @@ public class OntologyGenerator {
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
-            /*body.clear();
+            body.clear();
             body.add(swrlClassAtom);
             body.add(ontologyHelper.createDataPropertyAtom("hasFitnessCenter", (byte)1));
 
@@ -717,7 +717,7 @@ public class OntologyGenerator {
             ontologyHelper.createRuleHead("isLuxurious", 0.25, head);
 
             // Create "isLuxurious" rule
-            ontologyHelper.createRule(body, head);*/
+            ontologyHelper.createRule(body, head);
 
 
             /*///////////////////////////////////////////////////////////////////////
@@ -725,7 +725,7 @@ public class OntologyGenerator {
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
-            /*body.clear();
+            body.clear();
             body.add(swrlClassAtom);
             body.add(ontologyHelper.createDataPropertyAtom("hasSpaWellnessCenter", (byte)1));
 
@@ -734,7 +734,7 @@ public class OntologyGenerator {
             ontologyHelper.createRuleHead("isLuxurious", 0.25, head);
 
             // Create "isLuxurious" rule
-            ontologyHelper.createRule(body, head);*/
+            ontologyHelper.createRule(body, head);
 
 
             /*///////////////////////////////////////////////////////////////////////
@@ -742,7 +742,7 @@ public class OntologyGenerator {
             ///////////////////////////////////////////////////////////////////////*/
 
             // Create body of "isLuxurious" rule
-            /*body.clear();
+            body.clear();
             body.add(swrlClassAtom);
             body.add(ontologyHelper.createDataPropertyAtom("hasCasino", (byte)1));
 
@@ -751,7 +751,7 @@ public class OntologyGenerator {
             ontologyHelper.createRuleHead("isLuxurious", 0.25, head);
 
             // Create "isLuxurious" rule
-            ontologyHelper.createRule(body, head);*/
+            ontologyHelper.createRule(body, head);
 
         }
         catch (OWLOntologyStorageException se) {
@@ -813,7 +813,6 @@ public class OntologyGenerator {
                         if((facility=facilities.getString(c)) != null) {
                             dp = facilitiesDataProps.get(j);
                             if (!dp.equals("hasId"))
-                                //this.ontologyHelper.addIntegerDataToIndividual(owlIndividual, dp, facility);
                                 this.ontologyHelper.addByteDataToIndividual(owlIndividual, dp, facility);
                         }
                         j++;
@@ -827,6 +826,12 @@ public class OntologyGenerator {
                 se.printStackTrace();
             }
             dbConnection.disconnect();
+        }
+        try {
+            ontologyHelper.saveOntology();
+        }
+        catch (OWLOntologyStorageException ee) {
+            ee.printStackTrace();
         }
     }
 }
