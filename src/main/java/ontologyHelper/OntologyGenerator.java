@@ -35,7 +35,6 @@ public class OntologyGenerator {
     // Create OWL Ontology
     @Deprecated
     public void generateOntology() {
-            //this.owlOntology = this.ontologyHelper.readOntology();
             this.owlOntology = this.ontologyHelper.createOntology();
             this.generateClasses();
             this.generateDataProperties();

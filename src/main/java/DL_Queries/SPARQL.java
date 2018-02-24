@@ -111,7 +111,6 @@ public class SPARQL {
             else {
                 results.put(key, value);
             }
-            System.out.println("name: "+key.get(0)+",city: "+key.get(1)+",value: "+value);
         }
         sortMapByValues(results);
     }
