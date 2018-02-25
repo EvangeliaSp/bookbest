@@ -41,7 +41,7 @@ public class SPARQL {
             case 2:
                 return "   ?Hotels hotel:isGood ?dRating .";
             default:
-                return "   ?Hotels hotel:isVeryGood ?dRating .";
+                return "   ?Hotels hotel:isSuperb ?dRating .";
         }
     }
 
@@ -85,9 +85,6 @@ public class SPARQL {
         ResultSet resultSet = queryExecution.execSelect();
         dempsterCombination(resultSet);
 
-        // Output query results
-        //ResultSetFormatter.out(System.out, resultSet, query);
-
         // Free up resources used running the query
         queryExecution.close();
     }
@@ -97,7 +94,6 @@ public class SPARQL {
 
         while(resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();
-            //System.out.println(querySolution);
 
             ArrayList<String> key = new ArrayList<>();
             key.add(querySolution.get("name").asLiteral().getString());
@@ -138,7 +134,7 @@ public class SPARQL {
             aMap2.put(entry.getKey(), entry.getValue());
         }
 
-        // printing values after soring of map
+        // printing values after sorting of map
         System.out.println();
         for(int i=0; i<32; i++)
             System.out.print(" ");

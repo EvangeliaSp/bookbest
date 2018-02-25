@@ -35,6 +35,7 @@ public class OntologyGenerator {
     // Create OWL Ontology
     @Deprecated
     public void generateOntology() {
+            //this.owlOntology = this.ontologyHelper.readOntology();
             this.owlOntology = this.ontologyHelper.createOntology();
             this.generateClasses();
             this.generateDataProperties();
@@ -282,8 +283,6 @@ public class OntologyGenerator {
             atom = ontologyHelper.createComparisonAtom("rating", "<", "5");
             body.add(atom);
             d = ontologyHelper.createMathAtom("rating", "/", "5", "d");
-            //body.add(k);
-            //d = ontologyHelper.createMathAtom("k", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 
@@ -308,8 +307,6 @@ public class OntologyGenerator {
             k = ontologyHelper.createMathAtom("rating", "-", "5", "k");
             body.add(k);
             d = ontologyHelper.createMathAtom("k", "/", "2", "d");
-            //body.add(l);
-            //d = ontologyHelper.createMathAtom("l", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 
@@ -334,8 +331,6 @@ public class OntologyGenerator {
             k = ontologyHelper.createMathAtom("rating", "-", "7", "k");
             body.add(k);
             d = ontologyHelper.createMathAtom("k", "/", "2", "d");
-            //body.add(l);
-            //d = ontologyHelper.createMathAtom("l", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 
@@ -356,8 +351,6 @@ public class OntologyGenerator {
             atom1 = ontologyHelper.createComparisonAtom("rating", ">=", "9");
             body.add(atom1);
             d = ontologyHelper.createMathAtom("rating", "-", "9", "d");
-            //body.add(k);
-            //d = ontologyHelper.createMathAtom("k", "*", "100", "d");
             body.add(d);
             body = ontologyHelper.createRuleBody("hasRating", "rating", body);
 

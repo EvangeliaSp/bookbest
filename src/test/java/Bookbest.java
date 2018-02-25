@@ -43,7 +43,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DBConnection dbConnection = new DBConnection(filenameDBs);
-        dbConnection.createDatabases();
+        //dbConnection.createDatabases();
         System.out.println("Database(s) created successfully.");
 
 
@@ -52,7 +52,7 @@ public class Bookbest {
         ///////////////////////////////////////////////////////////////////////*/
 
         DataGenerator dataGenerator = new DataGenerator(filenameDBs, mappings, dbConnection);
-        dataGenerator.generateData();
+        //dataGenerator.generateData();
         System.out.println("Database(s) filled successfully.");
 
 
@@ -132,11 +132,14 @@ public class Bookbest {
 
         SPARQL sparql = new SPARQL();
         int rating, price, distance, lux, again;
-        int counter = 0;
-        String query, proposed="";
+        int counter;
+        String query, proposed;
 
         try {
             do {
+                proposed = "";
+                counter = 0;
+
                 // Country
                 System.out.println("Country: ");
                 String country = bufferedReader.readLine();
@@ -201,7 +204,6 @@ public class Bookbest {
 
                 System.out.println("\n\n"+"New Search? (1-Yes, 0-No)");
                 again = Integer.parseInt(bufferedReader.readLine());
-                proposed="";
                 System.out.println();
             } while (again==1);
         }
