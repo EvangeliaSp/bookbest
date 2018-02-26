@@ -75,7 +75,7 @@ public class Bookbest {
         Reasoner reasoner = new Reasoner(owlOntology);
 
         // Classify ontology
-        reasoner.classifyOntology();
+        //reasoner.classifyOntology();
         System.out.println();
 
         try {
@@ -132,14 +132,10 @@ public class Bookbest {
 
         SPARQL sparql = new SPARQL();
         int rating, price, distance, lux, again;
-        int counter;
-        String query, proposed;
+        String query;
 
         try {
             do {
-                proposed = "";
-                counter = 0;
-
                 // Country
                 System.out.println("Country: ");
                 String country = bufferedReader.readLine();
@@ -155,52 +151,34 @@ public class Bookbest {
                 do {
                     price = Integer.parseInt(bufferedReader.readLine());
                 } while (price < 0 || price > 5);
-                if (price != 0) {
+                if (price != 0)
                     query = query + sparql.hotelsByPrice(price);
-                    proposed = proposed + "?dPrice";
-                    counter++;
-                }
 
                 // Rating
                 System.out.println("Rating: (0-Any, 1-Pleasant, 2-Good, 3-Superb)");
                 do {
                     rating = Integer.parseInt(bufferedReader.readLine());
                 } while (rating < 0 || rating > 3);
-                if (rating != 0) {
+                if (rating != 0)
                     query = query + sparql.hotelsByRating(rating);
-                    if (proposed.equals(""))
-                        proposed = proposed + "?dRating";
-                    else proposed = proposed + "+?dRating";
-                    counter++;
-                }
 
                 // Distance
                 System.out.println("City Center Distance: (0-Any, 1-Short, 2-Medium, 3-Long)");
                 do {
                     distance = Integer.parseInt(bufferedReader.readLine());
                 } while (distance < 0 || distance > 3);
-                if (distance != 0) {
+                if (distance != 0)
                     query = query + sparql.hotelsByCityCenterDistance(distance);
-                    if (proposed.equals(""))
-                        proposed = proposed + "?dDistance";
-                    else proposed = proposed + "+?dDistance";
-                    counter++;
-                }
 
                 // Luxurious
                 System.out.println("Luxurious: (0-Any, 1-Yes)");
                 do {
                     lux = Integer.parseInt(bufferedReader.readLine());
                 } while (lux < 0 || lux > 1);
-                if (lux == 1) {
+                if (lux == 1)
                     query = query + sparql.luxuriousHotels();
-                    if (proposed.equals(""))
-                        proposed = proposed + "?dLux";
-                    else proposed = proposed + "+?dLux";
-                    counter++;
-                }
 
-                sparql.findResults(model, query, proposed, counter);
+                sparql.findResults(model, query);
 
                 System.out.println("\n\n"+"New Search? (1-Yes, 0-No)");
                 again = Integer.parseInt(bufferedReader.readLine());
