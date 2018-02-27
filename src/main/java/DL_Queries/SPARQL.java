@@ -73,8 +73,7 @@ public class SPARQL {
             "  ?Hotels rdf:type hotel:Hotel. " +
             "  ?Hotels hotel:isInCity ?city. " +
             "  ?Hotels hotel:hasName ?name. " + q +
-            "}\n" +
-            "ORDER BY DESC(?degree)";
+            "}\n";
 
         Query query = QueryFactory.create(s);
 
@@ -221,6 +220,7 @@ public class SPARQL {
             return v1;
         else return 0.0;
     }
+    
 }
 
 
